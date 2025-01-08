@@ -29,9 +29,10 @@ const colors = {
 };
 
 const fonts = {
-  heading: "Geist, sans-serif",
-  body: "Geist_Mono, monospace",
+  heading: "Montserrat, sans-serif",
+  body: "Lato, sans-serif",
 };
+
 
 const breakpoints = {
   sm: "30em",

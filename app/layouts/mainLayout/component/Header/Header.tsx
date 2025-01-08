@@ -8,7 +8,7 @@ import HeroNavButton from "./component/HeroNavButton";
 const Header = () => {
   return (
     <Flex alignItems="center" justifyContent="space-between">
-      <Image src="/images/logo.png" alt="" height="114px" width="315.49px"/>
+      <Image src="/images/logo.png" alt="" h="85px" />
       <NavItemsLayout />
       <HeroNavButton />
     </Flex>
