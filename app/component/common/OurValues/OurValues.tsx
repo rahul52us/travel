@@ -4,35 +4,55 @@ import {
   Center,
   Flex,
   Grid,
-  Heading,
   Icon,
   Image,
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
 import { FaHeartbeat } from "react-icons/fa";
 
 const OurValues = () => {
   return (
     <Box bg={"#065F680D"} py={"8rem"}>
-      <Grid templateColumns={"1.15fr 1fr"} placeItems={"center"}>
-        <Box>
-            <Box bg={'#FFB8B2'} h={'20rem'} w={'400px'} borderTopRightRadius={'220px'} borderBottomLeftRadius={'220px'}  />
-          <Image src="images/aboutimage2.png"  />
+      <Grid templateColumns={"1.15fr 1fr"} alignItems={"end"}>
+        <Box position="relative" mb={10}>
+          <Flex gap={3} align="flex-end" justify={"center"}>
+            <Box
+              bg="#FFB8B2"
+              h="22rem"
+              w="24.5rem"
+              borderTopRightRadius="190px"
+              borderBottomLeftRadius="190px"
+            />
+            <Box
+              bg="#065F68"
+              h="17.5rem"
+              w="9rem"
+              borderTopLeftRadius="90px"
+              borderBottomRightRadius="90px"
+            />
+          </Flex>
 
-
-
-          <Center>
-          <Box
-            height="37px"
-            bgColor="#494949"
-            opacity="0.70"
-            filter="blur(73px)"
-            borderRadius="40%" // Assuming it's a perfect ellipse
+          {/* Adjusted Image Position */}
+          <Image
+            src="images/aboutimage2.png"
+            position="absolute"
+            bottom="2" // Aligns the base of the image with the base of the boxes
+            left="50%"
+            transform="translateX(-50%)"
+            zIndex="1" // Ensures the image appears above the boxes
           />
+          <Center>
+            <Box
+              height="37px"
+              bgColor="#494949"
+              opacity="0.70"
+              filter="blur(73px)"
+              borderRadius="40%"
+            />
           </Center>
         </Box>
+
         <Box>
           <Text fontSize={"54px"} fontWeight={400} color={"#0F0F0F"}>
             What Makes
