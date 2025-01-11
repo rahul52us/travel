@@ -37,7 +37,7 @@ const CardComponent1 = ({
           alt={title}
         />
         <Box flexGrow={1}>
-          <Text mt={5} mb={3} fontWeight={600} fontSize={"22px"} noOfLines={1}>
+          <Text mt={5} mb={3} fontWeight={500} fontSize={"22px"} noOfLines={1}>
             {title}
           </Text>
           <Text
