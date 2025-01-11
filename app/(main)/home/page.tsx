@@ -12,6 +12,7 @@ import HeroSection from "../../component/common/HeroSection/HeroSection";
 import OurValues from "../../component/common/OurValues/OurValues";
 import CardComponent1 from "../../component/common/CardComponent1/CardComponent1";
 import CardComponent2 from "../../component/common/CardComponent2/CardComponent2";
+import ProvidersSection from "../../component/common/ProvidersSection/ProvidersSection";
 const cardData = [
   {
     title: "Individual Therapy",
@@ -113,7 +114,7 @@ export default function GamePage() {
           textAlign={"center"}
           as={"h2"}
           fontWeight={400}
-          fontSize={"44px"}
+          fontSize={"48px"}
           my={2}
         >
           Care that goes{" "}
@@ -144,6 +145,11 @@ export default function GamePage() {
             );
           })}
         </Grid>
+      </Box>
+
+
+      <Box my={'4rem'} maxW={'90%'} mx={'auto'}>
+        <ProvidersSection/>
       </Box>
     </Box>
   );
