@@ -3,26 +3,23 @@ import React from "react";
 
 const BookCallComponent = () => {
   return (
-    <Box w={"95%"} mx={"auto"} p={6} rounded={"24px"} bg={"#FFF1F0"}>
-      {/* <Image
-        src="images/shape1.png"
-        w={'12rem'}
-        h={'10rem'}
-        // transform={'rotate'}
-        position={"absolute"}
-        right={"4.8rem"}
-        top={"2rem"}
-      /> */}
-
+    <Box
+      w={"95%"}
+      mx={"auto"}
+      p={6}
+      rounded={"24px"}
+      bg={"#FFF1F0"}
+      position="relative"
+    >
       <Image
         src="images/shape1.png"
         transform={"scaleX(-1)"}
         w={"12rem"}
         h={"10rem"}
         position={"absolute"}
-        right={"4.5rem"}
+        right={"1rem"}
+        top={"1.5rem"}
       />
-
       <Box
         rounded={"24px"}
         bgGradient={"linear(to-r, #045B64, #066D77)"}
@@ -64,12 +61,11 @@ const BookCallComponent = () => {
       </Box>
       <Image
         src="images/shape1.png"
-        // boxSize={"10.5rem"}
         w={"12rem"}
         h={"10rem"}
         position={"absolute"}
-        left={"4.8rem"}
-        bottom={"2rem"}
+        left={"1rem"}
+        bottom={"1rem"}
       />
     </Box>
   );
