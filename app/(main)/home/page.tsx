@@ -13,6 +13,7 @@ import OurValues from "../../component/common/OurValues/OurValues";
 import CardComponent1 from "../../component/common/CardComponent1/CardComponent1";
 import CardComponent2 from "../../component/common/CardComponent2/CardComponent2";
 import ProvidersSection from "../../component/common/ProvidersSection/ProvidersSection";
+import BookCallComponent from "../../component/common/BookCallComponent/BookCallComponent";
 const cardData = [
   {
     title: "Individual Therapy",
@@ -150,6 +151,9 @@ export default function GamePage() {
 
       <Box my={'4rem'} maxW={'90%'} mx={'auto'}>
         <ProvidersSection/>
+      </Box>
+      <Box>
+        <BookCallComponent/>
       </Box>
     </Box>
   );
