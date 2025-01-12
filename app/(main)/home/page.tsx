@@ -161,9 +161,9 @@ export default function GamePage() {
         <KnowYourselfSection/>
       </Box>
 
-      <Box maxW={'60%'} mx={'auto'} my={12}>
+      {/* <Box maxW={'60%'} mx={'auto'} my={12}>
       <TestimonialCard/>
-      </Box>
+      </Box> */}
     </Box>
   );
 }

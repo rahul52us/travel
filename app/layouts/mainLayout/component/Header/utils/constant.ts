@@ -1,6 +1,8 @@
 export const navItems = [
-    {title : 'Specialist'},
-    {title : 'How it Works'},
-    {title : 'Client Reviews'},
+    {title : 'Our Values'},
+    {title : 'Services'},
+    {title : 'Features'},
+    {title : 'Therapists'},
+    {title : 'Testimonials'},
     {title : 'Contact Us'},
 ]
