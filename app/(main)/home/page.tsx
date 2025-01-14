@@ -16,6 +16,7 @@ import ProvidersSection from "../../component/common/ProvidersSection/ProvidersS
 import BookCallComponent from "../../component/common/BookCallComponent/BookCallComponent";
 import KnowYourselfSection from "../../component/common/KnowYourselfSection/KnowYourselfSection";
 import TestimonialCard from "../../component/common/TestimonialCard/TestimonialCard";
+import ContactUs from "../../component/ContactUs/ContactUs";
 const cardData = [
   {
     title: "Individual Therapy",
@@ -163,6 +164,9 @@ export default function GamePage() {
 
       <Box maxW={'60%'} mx={'auto'} my={12}>
       <TestimonialCard/>
+      </Box>
+      <Box>
+        <ContactUs/>
       </Box>
     </Box>
   );

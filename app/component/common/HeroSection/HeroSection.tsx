@@ -15,17 +15,17 @@ const HeroSection = () => {
     <Box mx={"auto"} my={12} maxW={"85%"}>
       <Grid templateColumns={"1fr 1fr"} gap={6}>
         <Box>
-          <Flex align={"center"} justify={"center"} h={"100%"}>
+          <Flex align={"center"} h={"100%"}>
             <Box py={6} maxW="90%">
               <Text textTransform="uppercase" color="#DF837C">
-                Our Providers
+                SEEK HELP
               </Text>
               <Heading
                 as="h1"
                 fontWeight={400}
                 fontSize="5.25rem"
                 my={3}
-                lineHeight="1.2"
+                lineHeight="1.15"
               >
                 For Better <br />{" "}
                 <Text as="span" fontWeight={600}>
