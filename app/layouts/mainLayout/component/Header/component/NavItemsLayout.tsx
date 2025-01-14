@@ -6,7 +6,7 @@ import NavItem from "../element/NavItem";
 
 const NavItemsLayout = () => {
   return (
-    <Flex justifyContent="center" gap={8} >
+    <Flex justifyContent="start" gap={8} >
       {navItems.map((item: any) => {
         return <NavItem item={item} key={item.title} />;
       })}

@@ -4,10 +4,10 @@ import React from "react";
 const BookCallComponent = () => {
   return (
     <Box
-      w={"95%"}
-      mx={"auto"}
-      p={6}
-      rounded={"24px"}
+      // w={"95%"}
+      // mx={"auto"}
+      // p={6}
+      // rounded={"24px"}
       bg={"#FFF1F0"}
       position="relative"
     >
@@ -17,33 +17,37 @@ const BookCallComponent = () => {
         w={"12rem"}
         h={"10rem"}
         position={"absolute"}
-        right={"1rem"}
-        top={"1.5rem"}
+        right={"0"}
+        top={"0"}
       />
       <Box
-        rounded={"24px"}
+        // rounded={"24px"}
         bgGradient={"linear(to-r, #045B64, #066D77)"}
-        py={"4.5rem"}
+        py={"3rem"}
         px={"12rem"}
         color={"#FFFFFF"}
       >
-        <Text textAlign={"center"} fontSize={"18px"} mb={1}>
+        <Text textAlign={"center"} fontSize={"18px"} >
           Still Unsure? Let’s Talk.
         </Text>
         <Text
-          fontSize={"44px"}
+          fontSize={"40px"}
           textAlign={"center"}
           lineHeight={"56px"}
           color={"#FFFFFF"}
           fontWeight={400}
+          my={1}
         >
           Book a{" "}
           <Text as={"span"} fontWeight={500}>
             {" "}
             Free 15-minute{" "}
           </Text>{" "}
-          call with a licensed therapist. Ask questions, clear doubts, and take
-          the first step toward better mental health
+          call with a licensed therapist.
+        </Text>
+        <Text textAlign={'center'} fontSize={'18px'}>
+          At Metamind, our licensed therapists specialize in various treatments,
+          including CBT, ACT, Psychodynamic{" "}
         </Text>
         <Center>
           <Button
@@ -64,8 +68,8 @@ const BookCallComponent = () => {
         w={"12rem"}
         h={"10rem"}
         position={"absolute"}
-        left={"1rem"}
-        bottom={"1rem"}
+        left={"0"}
+        bottom={"0"}
       />
     </Box>
   );

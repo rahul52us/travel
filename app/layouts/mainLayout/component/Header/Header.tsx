@@ -8,12 +8,12 @@ import HeroNavButton from "./component/HeroNavButton";
 const Header = () => {
   return (
     <Box>
-<Box h={'2.5rem'} bg={'#045B64'} />
-    <Flex alignItems="center" justify={'space-evenly'}  >
-      <Image src="/images/logo.png" alt="" h="90px" />
-      <NavItemsLayout />
-      <HeroNavButton />
-    </Flex>
+      <Box h={"2.5rem"} bg={"#045B64"} />
+      <Flex alignItems="center" justify={"space-around"}>
+        <Image src="/images/logo.png" alt="" h="90px" />
+        <NavItemsLayout />
+        <HeroNavButton />
+      </Flex>
     </Box>
   );
 };
