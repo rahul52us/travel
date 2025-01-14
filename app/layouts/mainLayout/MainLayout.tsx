@@ -6,7 +6,7 @@ import Header from "./component/Header/Header";
 
 const MainLayout = ({ children }: any) => {
   return (
-    <Box p={5}>
+    <Box>
       <Header />
       <Box>
       {children}
