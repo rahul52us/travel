@@ -15,12 +15,12 @@ const CardComponent1 = ({
   return (
     <Box>
       <Card
-        maxW={"xs"}
+        maxW={"19rem"}
         p={4}
         bg={bgColor}
         pb={8}
         rounded={"10px"}
-        h={"500px"} // Fixed height for the card
+        h={"30rem"} // Fixed height for the card
         display="flex"
         flexDirection="column"
         borderTopLeftRadius={index === 0 ? "84px" : "8px"}
@@ -33,7 +33,7 @@ const CardComponent1 = ({
           borderBottomRightRadius={index === 3 ? "80px" : "8px"}
           objectFit={"cover"}
           w={"100%"}
-          h={"280px"} // Fixed height for the image
+          h={"250px"} // Fixed height for the image
           alt={title}
         />
         <Box flexGrow={1}>
