@@ -27,7 +27,7 @@ const BookCallComponent = () => {
         px={"12rem"}
         color={"#FFFFFF"}
       >
-        <Text textAlign={"center"} fontSize={"18px"} >
+        <Text textAlign={"center"} fontSize={"18px"}>
           Still Unsure? Let’s Talk.
         </Text>
         <Text

@@ -15,6 +15,8 @@ import ProvidersSection from "../../component/common/ProvidersSection/ProvidersS
 import TestimonialCard from "../../component/common/TestimonialCard/TestimonialCard";
 import ContactUs from "../../component/ContactUs/ContactUs";
 import OurOfferings from "../../component/OurOfferings/OurOfferings";
+import NewTestimonialCard from "../../component/common/NewTestimonialCard/NewTestimonialCard";
+import TestimonialSection from "../../component/TestimonialSection/TestimonialSection";
 
 
 const cardData2 = [
@@ -97,6 +99,8 @@ export default function GamePage() {
       <Box my={'4rem'} maxW={'90%'} mx={'auto'}>
         <ProvidersSection/>
       </Box>
+      <TestimonialSection/>
+      {/* <NewTestimonialCard/> */}
       <Box>
         <BookCallComponent/>
       </Box>
@@ -104,9 +108,9 @@ export default function GamePage() {
         <KnowYourselfSection/>
       </Box>
 
-      <Box maxW={'60%'} mx={'auto'} my={12}>
+      {/* <Box maxW={'60%'} mx={'auto'} my={12}>
       <TestimonialCard/>
-      </Box>
+      </Box> */}
       <Box>
         <ContactUs/>
       </Box>
