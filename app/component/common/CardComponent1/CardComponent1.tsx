@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from "@chakra-ui/icons";
+import { FaChevronRight } from "react-icons/fa";
 import { Box, Button, Card, Image, Text } from "@chakra-ui/react";
 import React from "react";
 
@@ -50,7 +50,7 @@ const CardComponent1 = ({
           </Text>
         </Box>
         <Button
-          rightIcon={<ChevronRightIcon />}
+          rightIcon={<FaChevronRight  />}
           color={"#065F68"}
           w={"fit-content"}
           textAlign={"start"}
