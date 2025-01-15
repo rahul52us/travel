@@ -1,14 +1,13 @@
 import {
-  Box,
-  Button,
-  Flex,
-  Grid,
-  Input,
-  Text,
-  Textarea,
-  VStack,
+    Box,
+    Button,
+    Grid,
+    Input,
+    Text,
+    Textarea,
+    VStack
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { LuArrowUpRight } from "react-icons/lu";
 
 const ContactUs = () => {
