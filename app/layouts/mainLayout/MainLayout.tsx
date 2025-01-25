@@ -1,18 +1,22 @@
 "use client";
 
 import { Box } from "@chakra-ui/react";
-import React from "react";
+import React, { ReactNode } from "react";
 import Header from "./component/Header/Header";
 import { Footer } from "./component/Footer/Footer";
 
-const MainLayout = ({ children }: any) => {
+interface MainLayoutProps {
+  children: ReactNode;
+}
+
+const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <Box>
       <Header />
       <Box>
-      {children}
+        {children}
       </Box>
-      <Footer/>
+      <Footer />
     </Box>
   );
 };

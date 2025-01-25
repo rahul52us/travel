@@ -1,6 +1,14 @@
-import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  GridItem,
+  Heading,
+  Text,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import React from "react";
 import NewTestimonialCard from "../common/NewTestimonialCard/NewTestimonialCard";
+import CustomCarousel from "../common/CustomCarousal/CustomCarousal";
 
 const testimonials = [
   {
@@ -19,8 +27,8 @@ const testimonials = [
     name: "Gojo Saturo",
     time: "1 month ago",
     logoSrc:
-    "https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA",
-},
+      "https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA",
+  },
   {
     stars: 4,
     text: "Another dummy testimonial content for testing.",
@@ -28,8 +36,17 @@ const testimonials = [
     name: "Madara Uchiha",
     time: "1 month ago",
     logoSrc:
-    "https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA",
-},
+      "https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA",
+  },
+  {
+    stars: 4,
+    text: "Another dummy testimonial content for testing. new",
+    avatarSrc: "",
+    name: "Madara Uchiha",
+    time: "1 month ago",
+    logoSrc:
+      "https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA",
+  },
 ];
 
 const statsData = [
@@ -41,14 +58,20 @@ const statsData = [
 ];
 
 const TestimonialSection = () => {
+  const noOfSlides = useBreakpointValue({ base: 1, md: 2, lg: 3 });
   return (
     <Box bg={"#FDFFDD"}>
-      <Box maxW={"85%"} py={20} mx={"auto"}>
+      <Box
+        maxW={{ md: "90%" }}
+        py={{ base: "3rem", md: "6rem" }}
+        px={{ base: 4, md: 0 }}
+        mx={"auto"}
+      >
         <Text
           textAlign={"center"}
           color={"#DF837C"}
           textTransform={"uppercase"}
-          fontSize={"16px"}
+          fontSize={{ base: "14px", md: "16px" }}
         >
           OUR TESTIMONIALS
         </Text>
@@ -56,36 +79,72 @@ const TestimonialSection = () => {
           textAlign={"center"}
           as={"h2"}
           fontWeight={400}
-          fontSize={"48px"}
-          my={2}
+          fontSize={{ base: "24px", md: "48px" }}
+          my={{ base: 1, md: 2 }}
+          px={1}
         >
           Hear from Those Who’ve{" "}
           <Text as={"span"} fontWeight={600}>
             Found Recovery
           </Text>
         </Heading>
-        <Grid templateColumns={"1fr 1fr 1fr "} gap={8} mt={12}>
+        {/* <Grid templateColumns={"1fr 1fr 1fr "} gap={8} mt={12}>
           {testimonials.map((testimonial, index) => (
             <NewTestimonialCard key={index} {...testimonial} />
           ))}
-        </Grid>
+        </Grid> */}
+        <Box mt={{ base: 4, md: 8 }}>
+          <CustomCarousel
+            slidesToShow={noOfSlides}
+            autoplay={true}
+            showArrows={false}
+          >
+            {testimonials.map((testimonial, index) => (
+              <NewTestimonialCard key={index} {...testimonial} />
+            ))}
+          </CustomCarousel>
+        </Box>
 
-        <Grid templateColumns={"repeat(5, 1fr)"} mt={14} gap={4}>
+        <Grid
+          templateColumns={{ base: "1fr 1fr", md: "repeat(5, 1fr)" }}
+          mt={{ base: 8, lg: 14 }}
+          gap={{ base: 8, md: 8,lg:4 }}
+        >
           {statsData.map((stat, index) => (
-            <Box
+            <GridItem
               key={index}
-              borderRight={
-                index < statsData.length - 1 ? "1px solid #DEDEDE" : "none"
-              }
-              pr={1}
+              colSpan={{
+                base: index === statsData.length - 1 ? 2 : 1, // Center the last item
+                md: 1,
+              }}
+              justifySelf={{
+                base: index === statsData.length - 1 ? "center" : "unset",
+                md: "unset",
+              }}
             >
-              <Text textAlign={"center"} fontSize={"3.6rem"} fontWeight={500}>
-                {stat.value}
-              </Text>
-              <Text color={"#0F0F0F"} textAlign={"center"}>
-                {stat.label}
-              </Text>
-            </Box>
+              <Box
+                borderRight={
+                  index < statsData.length - 1 ? "1px solid #DEDEDE" : "none"
+                }
+                pr={{lg:1}}
+              >
+                <Text
+                  textAlign={"center"}
+                  fontSize={{ base: "2rem", md:"2.4rem",lg: "3.6rem" }}
+                  fontWeight={500}
+                  lineHeight={{ base: "3rem" }}
+                >
+                  {stat.value}
+                </Text>
+                <Text
+                  color={"#0F0F0F"}
+                  textAlign={"center"}
+                  fontSize={{ base: "xs", lg: "md" }}
+                >
+                  {stat.label}
+                </Text>
+              </Box>
+            </GridItem>
           ))}
         </Grid>
       </Box>

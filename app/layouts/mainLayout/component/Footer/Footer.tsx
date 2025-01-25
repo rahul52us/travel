@@ -16,31 +16,47 @@ import ContactSection from "./components/ContactSection";
 import FooterSection from "./components/FooterSection";
 import { footerData } from "./components/footerData";
 
-export const Footer: React.FC<any> = () => {
-  const bgColor = useColorModeValue("teal.700", "teal.900");
+// Removed empty interface
+export const Footer: React.FC = () => {
   const textColor = useColorModeValue("white", "white");
 
   return (
-    <Box bg={"#065F68"} color={textColor} borderTopRadius={"40px"} py={14}>
-      <Container as={Stack} maxW={"85%"}>
+    <Box bg={"#065F68"} color={textColor} borderTopRadius={{base:"24px",md:"40px"}} py={{base:"8",md:14}}>
+      <Container as={Stack} maxW={{lg:"90%"}} px={{ base: 4, md: 8 }}>
         <SimpleGrid
-          templateColumns={{ sm: "1fr 1fr", md: "2.5fr 1fr 1fr 1fr" }}
-          spacing={2}
+          templateColumns={{
+            base: "1fr", // Stacks items on small screens
+            sm: "1fr 1fr", // Two columns on small screens
+            md: "1.5fr 1fr 1fr 1fr", // Standard grid layout on medium and larger screens
+            lg: "2.5fr 1fr 1fr 1fr", // Standard grid layout on medium and larger screens
+          }}
+          spacing={{ base: 3, md: 4 }}
         >
           {/* Company Info */}
-          <Stack spacing={4}>
-            <Box>
-              <Image src="/images/whiteLogo.png" alt="logo" h={"100px"} />
-              {/* <Heading size="md" mb={2}>{footerData.companyInfo?.name}</Heading> */}
-              <Text pl={1} fontSize={"2xl"} mt={-2}>
+          <Stack
+            spacing={{ base: 4, md: 4 }}
+            align={{ base: "center", md: "flex-start" }}
+          >
+            <Box textAlign={{ base: "center", md: "left" }}>
+              <Image
+                src="/images/whiteLogo.png" 
+                alt="logo"
+                h={{base:"70px",lg:"100px"}}
+                mx={{ base: "auto", md: 0 }}
+              />
+              <Text pl={1} fontSize={{ base: "lg", md:"xl",lg: "2xl" }} mt={-2}>
                 {footerData.companyInfo.tagline}
               </Text>
             </Box>
-            <Stack direction="row" spacing={4}>
+            <Stack
+              direction="row"
+              spacing={4}
+              justify={{ base: "center", md: "flex-start" }}
+            >
               {footerData.companyInfo.socialLinks.map((social) => (
                 <Link key={social.name} href={social.url}>
                   <Box
-                    boxSize={7} // Outer box size
+                    boxSize={7}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
@@ -48,10 +64,7 @@ export const Footer: React.FC<any> = () => {
                     bg="#FFFFFF1C"
                     _hover={{ color: "gray.300" }}
                   >
-                    <Icon
-                      as={social.icon}
-                      boxSize="60%" // Icon size relative to the container
-                    />
+                    <Icon as={social.icon} boxSize="60%" />
                   </Box>
                 </Link>
               ))}
@@ -68,25 +81,27 @@ export const Footer: React.FC<any> = () => {
         </SimpleGrid>
 
         {/* Crisis Notice */}
-        <Box pt={10} pb={2}>
-          <Text textAlign={"center"}>
-            We're not a crisis service. For immediate help, call{" "}
+        <Box pt={{base:4,md:10}} pb={2} textAlign={{ base: "center", md: "left" }}>
+          <Text textAlign={'center'} fontSize={{base:"sm",md:"lg"}}>
+            {`We're not a crisis service. For immediate help, call `}
             {footerData.companyInfo.crisisNumber}.
           </Text>
         </Box>
-
-        {/* Bottom Bar */}
       </Container>
+
       <Box>
         <Divider borderColor={"#FFFFFF33"} />
         <Grid
           pt={6}
           gap={4}
-          templateColumns={"1fr 1fr 1fr"}
-          // justify={{ base: "center", md: "end" }}
-          // align={{ base: "center", md: "center" }}
+          templateColumns={{
+            base: "1fr", // Single column on small screens
+            lg: "1fr 1fr 1fr", // Three columns on medium and larger screens
+          }}
+          textAlign={{ base: "center", lg: "left" }}
+          alignItems={"center"}
         >
-          <Box>
+          <Box display={{ base: "none", sm: "block" }}>
             <Image
               position={"absolute"}
               h={"260px"}
@@ -97,25 +112,37 @@ export const Footer: React.FC<any> = () => {
               mixBlendMode={"multiply"}
             />
           </Box>
-          <Text textAlign={"center"} fontSize={"sm"} pl={2}>
+          <Text fontSize={{ base: "xs", sm: "sm" }} textAlign={'center'}>
             ©{new Date().getFullYear()}{" "}
             <Text as={"span"} color={"#DF837C"}>
               {footerData.companyInfo.name}
             </Text>{" "}
             . All rights reserved.
           </Text>
-          <Stack direction={"row"} spacing={5}>
+          <Stack
+            direction="row" // Always a horizontal row
+            spacing={2} // Small spacing between items
+            justify={{base:"center",lg:"flex-end"}} // Align to the right
+            align="center" // Vertically center items
+            wrap="wrap" // Wrap items if needed on very small screens
+            pr={{md:8}}
+          >
             {footerData.legalLinks.map((link, index) => (
               <React.Fragment key={link.name}>
                 <Link
                   href={link.href}
                   _hover={{ color: "gray.300" }}
-                  fontSize={"sm"}
-                  textAlign={"end"}
+                  fontSize={{ base: "xs", sm: "sm" }} // Smaller font size for better scaling
                 >
                   {link.name}
                 </Link>
-                {index < footerData.legalLinks.length - 1 && <Text>/</Text>}
+                {index < footerData.legalLinks.length - 1 && (
+                  <Text
+                    fontSize={{ base: "xs", sm: "sm" }} // Match separator size with links
+                  >
+                    /
+                  </Text>
+                )}
               </React.Fragment>
             ))}
           </Stack>

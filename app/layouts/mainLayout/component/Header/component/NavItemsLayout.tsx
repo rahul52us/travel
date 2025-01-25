@@ -4,12 +4,22 @@ import React from "react";
 import { navItems } from "../utils/constant";
 import NavItem from "../element/NavItem";
 
-const NavItemsLayout = () => {
+interface NavItemType {
+  title: string;
+}
+
+const NavItemsLayout: React.FC = () => {
   return (
-    <Flex justifyContent="start" gap={8} >
-      {navItems.map((item: any) => {
-        return <NavItem item={item} key={item.title} />;
-      })}
+    <Flex
+      direction={{ base: "column", md: "row" }}
+      gap={{ base: 4, md: 6 }}
+      alignItems={{ base: "center", md: "start" }}
+      justifyContent="center"
+      wrap={{ base: "wrap", md: "nowrap" }}
+    >
+      {navItems.map((item: NavItemType) => (
+        <NavItem item={item} key={item.title} />
+      ))}
     </Flex>
   );
 };

@@ -1,14 +1,15 @@
 import {
-    Box,
-    Button,
-    Grid,
-    Input,
-    Text,
-    Textarea,
-    VStack
+  Box,
+  Grid,
+  Image,
+  Input,
+  Text,
+  Textarea,
+  VStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { LuArrowUpRight } from "react-icons/lu";
+import CustomButton from "../common/CustomButton/CustomButton";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,9 @@ const ContactUs = () => {
     needs: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -35,74 +38,128 @@ const ContactUs = () => {
     };
 
     console.log("Payload:", payload);
-    // Send payload to the server
-    // Example: axios.post('/api/endpoint', payload)
   };
+
   return (
-    <Box maxW={"90%"} mx={"auto"} my={12}>
-      <Grid templateColumns={"1fr 1fr"} gap={4}>
-        <Box>hello world!</Box>
-        <Box w={"90%"}>
-          <Text textTransform="uppercase" color="#DF837C">
-            Contact us
+    <Box maxW="90%" mx="auto" my={12}>
+      <Box display={{ base: "block", lg: "none" }}>
+        <Text
+          textTransform="uppercase"
+          color="#DF837C"
+          textAlign={{ base: "center", lg: "left" }}
+        >
+          Contact us
+        </Text>
+        <Text
+          fontSize={{ base: "1.8rem", md: "2.6rem" }}
+          fontWeight={400}
+          lineHeight={{ base: "2.2rem", md: "3.4rem" }}
+          w="100%"
+          px={{ base: 2, md:4,lg: 0 }}
+          textAlign={{ base: "center", lg: "left" }}
+          mt={{ base: 1, md: 0 }}
+        >
+          Support for you or a loved one?{" "}
+          <Text as="span" fontWeight={600}>
+            Let&apos;s connect
           </Text>
-          <Text fontSize={"2.6rem"} fontWeight={400} lineHeight={"3.4rem"}>
-            Support for you or a loved one?
-            <Text as="span" fontWeight={600}>
-              {" "}
-              Let's connect
+        </Text>
+      </Box>
+      <Grid
+        templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+        gap={{ base: 2, md: 6 }}
+        alignItems="center"
+      >
+        <Box textAlign={{ base: "center", lg: "left" }}>
+          <Image
+            src="/images/contactUsImage.png"
+            alt="Contact Us"
+            mt={{ base: 4, md: 8 }}
+            mx={{ base: "auto", md: "0" }}
+            maxW={{ base: "100%", md: "90%" }}
+          />
+        </Box>
+        <Box w="100%" maxW={{ base: "100%", lg: "90%" }}>
+          <Box display={{ base: "none", md: "block" }}>
+            <Text
+              textTransform="uppercase"
+              color="#DF837C"
+              textAlign={{ base: "center", lg: "left" }}
+            >
+              Contact us
             </Text>
-          </Text>
-          <Box p={8} border={"1px solid #065F68"} rounded={"16px"} mt={6}>
-            <Text fontSize={"2xl"}>Enter Your Details</Text>
-            <VStack spacing={5} align={"stretch"} mt={4}>
+            <Text
+              fontSize={{ base: "1.8rem", md: "2.6rem" }}
+              fontWeight={400}
+              lineHeight={{ base: "2.2rem", md: "3.4rem" }}
+              w="100%"
+              px={{ base: 2, md:4,lg: 0 }}
+              textAlign={{ base: "center", lg: "left" }}
+              mt={{ base: 1, md: 0 }}
+            >
+              Support for you or a loved one?{" "}
+              <Text as="span" fontWeight={600}>
+                Let&apos;s connect
+              </Text>
+            </Text>
+          </Box>
+          <Box
+            p={{ base: 6, md: 8 }}
+            border="1px solid #065F68"
+            rounded="16px"
+            mt={6}
+          >
+            <Text
+              fontSize={{ base: "xl", md: "2xl" }}
+              pb={3}
+              textAlign={{ base: "center", md: "left" }}
+            >
+              Enter Your Details
+            </Text>
+            <VStack spacing={5} align="stretch" mt={4}>
               <Input
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                variant={"filled"}
+                variant="filled"
                 placeholder="Name"
-                bg={"#CBCBCB1A"}
+                bg="#CBCBCB1A"
               />
               <Input
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                variant={"filled"}
+                variant="filled"
                 placeholder="Email"
-                bg={"#CBCBCB1A"}
+                bg="#CBCBCB1A"
               />
               <Input
                 name="companyName"
                 value={formData.companyName}
                 onChange={handleChange}
-                variant={"filled"}
+                variant="filled"
                 placeholder="Company Name"
-                bg={"#CBCBCB1A"}
+                bg="#CBCBCB1A"
               />
               <Textarea
                 name="needs"
                 value={formData.needs}
                 onChange={handleChange}
-                variant={"filled"}
+                variant="filled"
                 placeholder="Tell Us About Your Needs"
-                h={"5rem"}
+                h="5rem"
                 noOfLines={8}
-                bg={"#CBCBCB1A"}
+                bg="#CBCBCB1A"
               />
-              <Button
-                bgGradient="linear(to-r, #065F68,#065F68, #2A8A94)"
-                mt={2}
-                shadow="base"
-                w="100%"
-                h="50px"
-                rounded="8px"
-                rightIcon={<LuArrowUpRight fontSize="22px" />}
-                fontWeight={500}
+              <CustomButton
+                size="lg"
+                width="100%"
+                icon={LuArrowUpRight}
                 onClick={handleSubmit}
+                mt={6}
               >
-                Take The First Step
-              </Button>
+                Take Assessment
+              </CustomButton>
             </VStack>
           </Box>
         </Box>

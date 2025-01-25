@@ -1,5 +1,5 @@
 'use client';
-import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+import { extendTheme, ThemeConfig, StyleFunctionProps } from "@chakra-ui/react";
 
 const colors = {
   brand: {
@@ -33,7 +33,6 @@ const fonts = {
   body: "Lato, sans-serif",
 };
 
-
 const breakpoints = {
   sm: "30em",
   md: "48em",
@@ -66,7 +65,7 @@ const components = {
 };
 
 const styles = {
-  global: (props: any) => ({
+  global: (props: StyleFunctionProps) => ({
     body: {
       bg: props.colorMode === "light" ? "brand.50" : "darkBrand.900",
       color: props.colorMode === "light" ? "brand.900" : "darkBrand.50",

@@ -1,8 +1,12 @@
-import type { Metadata } from "next";
+'use client'
+
 import { Geist, Geist_Mono } from "next/font/google";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import theme from "./theme/theme";
 import MainLayout from "./layouts/mainLayout/MainLayout";
+import AuthenticationLayout from "./layouts/authenticationLayout/AuthenticationLayout";
+import DashboardLayout from "./layouts/dashboardLayout/DashboardLayout";
+import { usePathname } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,16 +18,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: process.env.WEBSITE_TITLE,
-  description: process.env.WEBSITE_DESCRIPTION
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+
+  const getLayout = () => {
+    if (pathname === '/login' || pathname === '/register' || pathname === "/forgot-password" || pathname === "/register") {
+      return AuthenticationLayout;
+    } else if (pathname.startsWith('/dashboard')) {
+      return DashboardLayout;
+    }
+    return MainLayout;
+  };
+
+  const LayoutComponent = getLayout();
+
   return (
     <html lang="en">
       <head>
@@ -31,8 +43,8 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ChakraProvider theme={theme}>
-          <MainLayout children={children} />
-          </ChakraProvider>
+          <LayoutComponent>{children}</LayoutComponent>
+        </ChakraProvider>
       </body>
     </html>
   );

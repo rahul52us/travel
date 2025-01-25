@@ -1,23 +1,30 @@
 import React from 'react';
 import { Stack, Text, Link } from '@chakra-ui/react';
-// import { FooterSection as FooterSectionType } from './types';
 
-// interface FooterSectionProps {
-//   section: FooterSectionType;
-// }
+interface FooterLink {
+  name: string;
+  href: string;
+}
 
-const FooterSection: React.FC<any> = ({ section }) => {
+interface FooterSectionProps {
+  section: {
+    title: string;
+    links: FooterLink[];
+  };
+}
+
+const FooterSection: React.FC<FooterSectionProps> = ({ section }) => {
   return (
-    <Stack align={'flex-start'} mt={4}>
-      <Text fontWeight={'400'} fontSize={'lg'} mb={1}>
+    <Stack align="flex-start" mt={4}>
+      <Text fontWeight="400" fontSize="lg" mb={1}>
         {section.title}
       </Text>
       {section.links.map((link) => (
         <Link
           key={link.name}
-          mb={2}
+          mb={{md:2}}
           href={link.href}
-          fontSize={'15px'}
+          fontSize={{base:"sm",md:"15px"}}
           _hover={{ color: 'gray.300' }}
         >
           {link.name}

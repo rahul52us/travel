@@ -4,7 +4,6 @@ import React from "react";
 
 // Reusable Card Component
 const CardComponent1 = ({
-  index,
   title,
   description,
   image,
@@ -13,28 +12,35 @@ const CardComponent1 = ({
   bgColor,
 }) => {
   return (
-    <Box>
+    <Box
+      cursor={"pointer"}
+      overflow={"hidden"} // Ensures the zoomed image doesn't overflow
+      _hover={{
+        img: {
+          transform: "scale(1.1)", // Zoom effect
+        },
+      }}
+    >
       <Card
-        maxW={"19rem"}
+        maxW={{lg:"19rem"}}
+        shadow={"none"}
         p={4}
         bg={bgColor}
         pb={8}
         rounded={"10px"}
-        h={"30rem"} // Fixed height for the card
+        h={"30.5rem"} // Fixed height for the card
         display="flex"
         flexDirection="column"
-        borderTopLeftRadius={index === 0 ? "84px" : "8px"}
-        borderBottomRightRadius={index === 3 ? "80px" : "8px"}
         justifyContent="space-between"
       >
         <Image
           src={image}
-          borderTopLeftRadius={index === 0 ? "80px" : "8px"}
-          borderBottomRightRadius={index === 3 ? "80px" : "8px"}
+          rounded={"8px"}
           objectFit={"cover"}
           w={"100%"}
-          h={"250px"} // Fixed height for the image
+          h={"270px"} // Fixed height for the image
           alt={title}
+          transition={"transform 0.3s ease-in-out"} // Smooth zoom transition
         />
         <Box flexGrow={1}>
           <Text mt={5} mb={3} fontWeight={500} fontSize={"22px"} noOfLines={1}>
@@ -50,7 +56,7 @@ const CardComponent1 = ({
           </Text>
         </Box>
         <Button
-          rightIcon={<FaChevronRight  />}
+          rightIcon={<FaChevronRight />}
           color={"#065F68"}
           w={"fit-content"}
           textAlign={"start"}
@@ -58,7 +64,7 @@ const CardComponent1 = ({
           p={0}
           variant={"link"}
           fontSize={"18px"}
-          mt={4}
+          mt={2}
           onClick={() => window.open(buttonLink, "_blank")}
         >
           {buttonText}

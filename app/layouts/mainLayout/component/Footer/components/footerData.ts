@@ -1,4 +1,4 @@
-import { FaTwitter, FaLinkedin, FaInstagram, FaLinkedinIn, FaPinterestP } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaLinkedinIn, FaPinterestP } from 'react-icons/fa';
 // import { FooterProps } from '../components/footer/types';
 
 export const footerData = {
@@ -10,7 +10,7 @@ export const footerData = {
       {
         name: "LinkedIn",
         url: "https://linkedin.com",
-        icon: FaLinkedinIn 
+        icon: FaLinkedinIn
       },
       {
         name: "Twitter",
@@ -25,7 +25,7 @@ export const footerData = {
       {
         name: "Pintrest",
         url: "https://instagram.com",
-        icon: FaPinterestP 
+        icon: FaPinterestP
       },
     ]
   },

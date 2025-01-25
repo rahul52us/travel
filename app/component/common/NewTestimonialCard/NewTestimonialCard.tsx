@@ -14,11 +14,11 @@ const NewTestimonialCard = ({
     <Box>
       <Card
         // maxW={"sm"}
-        h={"300px"} // Set a fixed height for the card
-        py={10}
-        px={6}
-        border={"1px solid #045B64"}
+        h={{base:"240px",md:"300px"}} // Set a fixed height for the card
+        py={{ base: 4,md:6 ,lg: 10 }}
+        px={{ base: 4, md: 6 }}
         rounded={"16px"}
+        border={"1px solid #045B64"}
         bg={"#FFFFFF"}
         display={"flex"}
         flexDirection={"column"}
@@ -32,8 +32,8 @@ const NewTestimonialCard = ({
           </Flex>
           <Text
             noOfLines={4} // Limit the number of lines for text
-            fontSize={"18px"}
-            mt={6}
+            fontSize={{base:"15px",md:"18px"}}
+            mt={{base:4,md:6}}
             color={"#4D4D4D"}
           >
             {text}
@@ -41,9 +41,9 @@ const NewTestimonialCard = ({
         </Box>
         <Flex justify={"space-between"} align={"end"}>
           <Flex mt={6} gap={3} align={"center"}>
-            <Avatar boxSize={"40px"} name={name} src={avatarSrc} />
+            <Avatar boxSize={{base:"32px",md:"40px"}} name={name} src={avatarSrc} />
             <Box>
-              <Text fontSize={"18px"} color={"#063231"}>
+              <Text fontSize={{base:"16px",md:"18px"}} color={"#063231"}>
                 {name}
               </Text>
               <Text fontSize={"xs"} color={"#063231"}>
@@ -52,7 +52,7 @@ const NewTestimonialCard = ({
             </Box>
           </Flex>
           <Box boxSize={8} mb={2}>
-            <Image src={logoSrc} />
+            <Image src={logoSrc} alt="logo" />
           </Box>
         </Flex>
       </Card>

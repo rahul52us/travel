@@ -1,23 +1,16 @@
 "use client";
 // src/app/game/page.tsx
-import {
-  Box,
-  Grid,
-  Heading,
-  Text
-} from "@chakra-ui/react";
+import { Box, Grid, Heading, Text } from "@chakra-ui/react";
 import BookCallComponent from "../../component/common/BookCallComponent/BookCallComponent";
 import CardComponent2 from "../../component/common/CardComponent2/CardComponent2";
 import HeroSection from "../../component/common/HeroSection/HeroSection";
 import KnowYourselfSection from "../../component/common/KnowYourselfSection/KnowYourselfSection";
 import OurValues from "../../component/common/OurValues/OurValues";
 import ProvidersSection from "../../component/common/ProvidersSection/ProvidersSection";
-import TestimonialCard from "../../component/common/TestimonialCard/TestimonialCard";
 import ContactUs from "../../component/ContactUs/ContactUs";
 import OurOfferings from "../../component/OurOfferings/OurOfferings";
-import NewTestimonialCard from "../../component/common/NewTestimonialCard/NewTestimonialCard";
 import TestimonialSection from "../../component/TestimonialSection/TestimonialSection";
-
+import FAQ from "../../component/FAQ/FAQ";
 
 const cardData2 = [
   {
@@ -46,15 +39,21 @@ export default function GamePage() {
       {/* <Text fontSize="xl" fontWeight="bold">Welcome to the Home Page</Text> */}
       <HeroSection />
       <OurValues />
-     <OurOfferings/>
+      <OurOfferings />
 
-      <Box maxW={"90%"} mx={"auto"} my={"8rem"}>
+      <Box
+        maxW={{ md: "90%" }}
+        mx={"auto"}
+        my={{ base: "0rem", md:"2rem",lg: "6rem" }}
+        py={{ base: "2rem", md: "3rem" }}
+        px={{ base: 4 }}
+      >
         {/* <Center> */}
         <Text
-          textAlign={"center"}
           color={"#DF837C"}
           textTransform={"uppercase"}
-          fontSize={"16px"}
+          textAlign={"center"}
+          fontSize={{ base: "14px", md: "16px" }}
         >
           science behind our practice
         </Text>
@@ -62,7 +61,7 @@ export default function GamePage() {
           textAlign={"center"}
           as={"h2"}
           fontWeight={400}
-          fontSize={"48px"}
+          fontSize={{ base: "24px", md: "48px" }}
           my={2}
         >
           Care that goes{" "}
@@ -75,7 +74,11 @@ export default function GamePage() {
           recovery
         </Text>
         {/* </Center> */}
-        <Grid templateColumns={"1fr 1fr 1fr"} gap={4} mt={10}>
+        <Grid
+          templateColumns={{ md: "1fr 1fr", lg: "1fr 1fr 1fr" }}
+          gap={4}
+          mt={10}
+        >
           {cardData2.map((card, index) => {
             const borderRadius = {
               topLeft: index === 0 ? "50px" : "10px",
@@ -95,24 +98,24 @@ export default function GamePage() {
         </Grid>
       </Box>
 
-
-      <Box my={'4rem'} maxW={'90%'} mx={'auto'}>
-        <ProvidersSection/>
+      <Box my={"4rem"} maxW={"90%"} mx={"auto"}>
+        <ProvidersSection />
       </Box>
-      <TestimonialSection/>
+      <TestimonialSection />
       {/* <NewTestimonialCard/> */}
       <Box>
-        <BookCallComponent/>
+        <BookCallComponent />
       </Box>
-      <Box my={'4rem'} maxW={'90%'} mx={'auto'}>
-        <KnowYourselfSection/>
+      <Box my={"4rem"} maxW={"95%"} mx={"auto"}>
+        <KnowYourselfSection />
       </Box>
 
       {/* <Box maxW={'60%'} mx={'auto'} my={12}>
       <TestimonialCard/>
       </Box> */}
+      <FAQ />
       <Box>
-        <ContactUs/>
+        <ContactUs />
       </Box>
     </Box>
   );
