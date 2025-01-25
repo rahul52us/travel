@@ -1,8 +1,10 @@
-"use client";
+'use client';
 
+import { Box } from "@chakra-ui/react";
 import Banner from "./component/Banner";
 
-const cardData = [
+// Data for the first Banner
+const cardData1 = [
   {
     imageSrc: "/images/aboutImage.png",
     title: "Card Title 1",
@@ -24,17 +26,41 @@ const cardData = [
     description: "This is the fourth card description.",
   },
   {
-    imageSrc: "/images/cardImage1.png",
-    title: "Card Title 3",
-    description: "This is the third card description.",
-  },
-  {
     imageSrc: "/images/homeImage2.png",
     title: "Card Title 4",
     description: "This is the fourth card description.",
   },
 ];
 
+// Data for the second Banner
+const cardData2 = [
+  {
+    imageSrc: "/images/homeImage3.png",
+    title: "Card Title 5",
+    description: "This is the fifth card description.",
+  },
+  {
+    imageSrc: "/images/homeImage4.png",
+    title: "Card Title 6",
+    description: "This is the sixth card description.",
+  },
+  {
+    imageSrc: "/images/cardImage2.png",
+    title: "Card Title 7",
+    description: "This is the seventh card description.",
+  },
+  {
+    imageSrc: "/images/homeImage5.png",
+    title: "Card Title 8",
+    description: "This is the eighth card description.",
+  },
+];
+
 export default function Home() {
-  return <Banner data={cardData} heading="Explore Our Cards" />;
+  return (
+    <Box>
+      <Banner data={cardData1} heading="Explore Our First Set of Cards" />
+      <Banner data={cardData2} heading="Explore Our Second Set of Cards" />
+    </Box>
+  );
 }
