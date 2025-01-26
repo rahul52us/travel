@@ -9,6 +9,7 @@ import StatsSection from "../../travelComponent/StatsSection/StatsSection";
 import LocationCarousel from "../../component/common/LocationCarousel/LocationCarousel";
 import Banner from "./component/Banner";
 import TravelpackagesCard from "../../component/common/TravelPackageCard/TravelPackageList";
+import WhyChooseUs from "../../travelComponent/WhyChooseUs/WhyChooseUs";
 
 // Data for the first Banner
 const cardData1 = [
@@ -76,6 +77,7 @@ export default function Home() {
       <StatsSection/>
       <LocationCarousel/>
       <TravelpackagesCard/>
+      <WhyChooseUs/>
       {/* <TestimonialSection />  */}
       {/* <OurValues />
       <OurOfferings /> */}
