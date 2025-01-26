@@ -1,16 +1,9 @@
 "use client";
 // src/app/game/page.tsx
-import { Box, Grid, Heading, Text } from "@chakra-ui/react";
-import BookCallComponent from "../../component/common/BookCallComponent/BookCallComponent";
-import CardComponent2 from "../../component/common/CardComponent2/CardComponent2";
+import { Box } from "@chakra-ui/react";
 import HeroSection from "../../component/common/HeroSection/HeroSection";
-import KnowYourselfSection from "../../component/common/KnowYourselfSection/KnowYourselfSection";
-import OurValues from "../../component/common/OurValues/OurValues";
-import ProvidersSection from "../../component/common/ProvidersSection/ProvidersSection";
 import ContactUs from "../../component/ContactUs/ContactUs";
-import OurOfferings from "../../component/OurOfferings/OurOfferings";
-import TestimonialSection from "../../component/TestimonialSection/TestimonialSection";
-import FAQ from "../../component/FAQ/FAQ";
+import TravelBentoGrid from "../../travelComponent/common/TravelBentoGrid/TravelBentoGrid";
 
 const cardData2 = [
   {
@@ -38,17 +31,20 @@ export default function GamePage() {
     <Box>
       {/* <Text fontSize="xl" fontWeight="bold">Welcome to the Home Page</Text> */}
       <HeroSection />
-      <OurValues />
-      <OurOfferings />
 
-      <Box
+
+      <TravelBentoGrid/>
+      {/* <OurValues />
+      <OurOfferings /> */}
+
+      {/* <Box
         maxW={{ md: "90%" }}
         mx={"auto"}
         my={{ base: "0rem", md:"2rem",lg: "6rem" }}
         py={{ base: "2rem", md: "3rem" }}
         px={{ base: 4 }}
       >
-        {/* <Center> */}
+      
         <Text
           color={"#DF837C"}
           textTransform={"uppercase"}
@@ -73,7 +69,7 @@ export default function GamePage() {
           At Metamind, we combine science and care to help you achieve better
           recovery
         </Text>
-        {/* </Center> */}
+      
         <Grid
           templateColumns={{ md: "1fr 1fr", lg: "1fr 1fr 1fr" }}
           gap={4}
@@ -96,24 +92,24 @@ export default function GamePage() {
             );
           })}
         </Grid>
-      </Box>
+      </Box> */}
 
-      <Box my={"4rem"} maxW={"90%"} mx={"auto"}>
+      {/* <Box my={"4rem"} maxW={"90%"} mx={"auto"}>
         <ProvidersSection />
       </Box>
-      <TestimonialSection />
+      <TestimonialSection /> */}
       {/* <NewTestimonialCard/> */}
-      <Box>
+      {/* <Box>
         <BookCallComponent />
       </Box>
       <Box my={"4rem"} maxW={"95%"} mx={"auto"}>
         <KnowYourselfSection />
-      </Box>
+      </Box> */}
 
       {/* <Box maxW={'60%'} mx={'auto'} my={12}>
       <TestimonialCard/>
       </Box> */}
-      <FAQ />
+      {/* <FAQ /> */}
       <Box>
         <ContactUs />
       </Box>
