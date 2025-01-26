@@ -13,7 +13,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <Box>
       <Header />
-      <Box>
+      <Box mt={20}>
         {children}
       </Box>
       <Footer />

@@ -17,6 +17,7 @@ import React from "react";
 import NavItemsLayout from "./component/NavItemsLayout";
 import HeroNavButton from "./component/HeroNavButton";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import AnimatedBox from "../../../../component/common/motion/Animatedbox/AnimatedBox";
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -24,7 +25,7 @@ const Header = () => {
   return (
     <Box>
       {/* Top Bar */}
-      <Box h={"2.5rem"} bg={"#045B64"} />
+      <AnimatedBox  />
       {/* Header for Mobile */}
       <Flex
         alignItems="center"
@@ -66,6 +67,7 @@ const Header = () => {
         px={8}
         py={4}
         display={{ base: "none", md: "flex" }}
+        mt={10}
       >
         <Image src="/images/logo.png" alt="Logo" h="90px" />
         <NavItemsLayout />
