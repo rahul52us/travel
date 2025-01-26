@@ -1,6 +1,6 @@
 'use client'
-import { useState, useEffect } from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, Input, FormLabel, FormControl, Flex, Box, Heading, Image } from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, FormLabel, Heading, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
 const DelayedModal = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -17,9 +17,9 @@ const OverlayCard: React.FC<OverlayCardProps> = ({ imageSrc, title, description 
       boxShadow="lg"
       _hover={{
         transform: 'scale(1.05)',
-        transition: 'all 0.3s ease-in-out',
         boxShadow: 'xl',
       }}
+      transition='all 0.3s ease-in-out'
       cursor="pointer"
       mx="auto" // Center the card horizontally within its parent
     >

@@ -6,6 +6,7 @@ import ContactUs from "../../component/ContactUs/ContactUs";
 import TravelBentoGrid from "../../travelComponent/common/TravelBentoGrid/TravelBentoGrid";
 import StatsSection from "../../travelComponent/StatsSection/StatsSection";
 
+import LocationCarousel from "../../component/common/LocationCarousel/LocationCarousel";
 import Banner from "./component/Banner";
 
 // Data for the first Banner
@@ -72,6 +73,7 @@ export default function Home() {
 
       <TravelBentoGrid/>
       <StatsSection/>
+      <LocationCarousel/>
       {/* <TestimonialSection />  */}
       {/* <OurValues />
       <OurOfferings /> */}
