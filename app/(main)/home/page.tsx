@@ -8,6 +8,7 @@ import StatsSection from "../../travelComponent/StatsSection/StatsSection";
 
 import LocationCarousel from "../../component/common/LocationCarousel/LocationCarousel";
 import Banner from "./component/Banner";
+import TravelpackagesCard from "../../component/common/TravelPackageCard/TravelPackageCard";
 
 // Data for the first Banner
 const cardData1 = [
@@ -74,6 +75,7 @@ export default function Home() {
       <TravelBentoGrid/>
       <StatsSection/>
       <LocationCarousel/>
+      <TravelpackagesCard/>
       {/* <TestimonialSection />  */}
       {/* <OurValues />
       <OurOfferings /> */}
