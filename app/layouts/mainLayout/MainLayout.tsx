@@ -13,7 +13,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <Box>
       <Header />
-      <Box mt={20}>
+      <Box style={{marginTop:'8rem'}}>
         {children}
       </Box>
       <Footer />

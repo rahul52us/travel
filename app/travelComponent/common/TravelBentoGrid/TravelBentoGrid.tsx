@@ -1,6 +1,15 @@
 import {
-    Box, Grid, GridItem, Image, Modal, ModalBody, ModalCloseButton, ModalContent,
-    ModalHeader, ModalOverlay, useDisclosure
+  Box,
+  Grid,
+  GridItem,
+  Image,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
 

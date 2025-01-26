@@ -12,67 +12,116 @@ import {
   DrawerCloseButton,
   useDisclosure,
   Center,
+  useBreakpointValue,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import NavItemsLayout from "./component/NavItemsLayout";
 import HeroNavButton from "./component/HeroNavButton";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import AnimatedBox from "../../../../component/common/motion/Animatedbox/AnimatedBox";
 
+// Throttling function to limit the number of scroll event triggers
+const throttle = (func: Function, delay: number) => {
+  let lastCall = 0;
+  return function () {
+    const now = new Date().getTime();
+    if (now - lastCall >= delay) {
+      lastCall = now;
+      func();
+    }
+  };
+};
+
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [scrolling, setScrolling] = useState(false);
+
+  const handleScroll = useCallback(
+    throttle(() => {
+      const documentHeight = document.documentElement.scrollHeight; // Get the full document height
+      const windowHeight = window.innerHeight; // Get the window height
+      const scrollY = window.scrollY; // Get the current scroll position
+      const scrollPercentage = (scrollY / (documentHeight - windowHeight)) * 100; // Calculate the scroll percentage
+
+      // Set scrolling state to true when scroll reaches 40% of the document height
+      setScrolling(scrollPercentage > 40);
+    }, 100), // Throttling at 100ms intervals
+    []
+  );
+
+  // Attach scroll event listener only once on mount
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
     <Box>
       {/* Top Bar */}
-      <AnimatedBox  />
-      {/* Header for Mobile */}
-      <Flex
-        alignItems="center"
-        justify="space-between"
-        px={4}
-        py={1}
-        bg="white"
-        display={{ base: "flex", md: "none" }}
-      >
-        <Image src="/images/logo.png" alt="Logo" h="50px" />
-        <IconButton
-          icon={<HamburgerIcon />}
-          onClick={onOpen}
-          aria-label="Open menu"
-          variant="ghost"
-        />
-      </Flex>
-      {/* Drawer for Mobile Navigation */}
+      <AnimatedBox />
+
+      {/* Conditional Rendering for Mobile Header */}
+      {isMobile ? (
+        <Flex
+          alignItems="center"
+          justify="space-between"
+          px={4}
+          py={1}
+          bg={scrolling ? "rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.5)"} // Scroll transition
+          color="white"
+          position="fixed"
+          top="3rem" // Added margin-top to avoid overlap with animated box
+          left={0}
+          right={0}
+          zIndex={100}
+          transition="background-color 0.3s ease"
+        >
+          <Image src="/images/logo.png" alt="Logo" h={scrolling ? "40px" : "50px"} />
+          <IconButton
+            icon={<HamburgerIcon />}
+            onClick={onOpen}
+            aria-label="Open menu"
+            variant="ghost"
+          />
+        </Flex>
+      ) : (
+        // Desktop Header
+        <Flex
+          alignItems="center"
+          justify="space-between"
+          px={8}
+          py={scrolling ? 2 : 4}
+          bg={scrolling ? "rgba(0, 0, 0, 0.9)" : "transparent"}
+          color="white"
+          position="fixed"
+          top={scrolling ? 0 : "1rem"} // Added margin-top to avoid overlap with animated box
+          left={0}
+          right={0}
+          zIndex={100}
+        >
+          <Image src="/images/logo.png" alt="Logo" h={scrolling ? "60px" : "90px"} />
+          <NavItemsLayout />
+          <HeroNavButton />
+        </Flex>
+      )}
+
+      {/* Mobile Drawer Navigation */}
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerBody>
-            {/* Centered Logo */}
             <Center mt={8} mb={6}>
               <Image src="/images/logo.png" alt="Logo" h="60px" />
             </Center>
-            {/* Navigation Items */}
             <Box px={4}>
               <NavItemsLayout />
             </Box>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-      {/* Header for Desktop */}
-      <Flex
-        alignItems="center"
-        justify="space-around"
-        px={8}
-        py={4}
-        display={{ base: "none", md: "flex" }}
-        mt={10}
-      >
-        <Image src="/images/logo.png" alt="Logo" h="90px" />
-        <NavItemsLayout />
-        <HeroNavButton />
-      </Flex>
     </Box>
   );
 };

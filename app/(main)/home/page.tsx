@@ -8,7 +8,7 @@ import StatsSection from "../../travelComponent/StatsSection/StatsSection";
 
 import LocationCarousel from "../../component/common/LocationCarousel/LocationCarousel";
 import Banner from "./component/Banner";
-import TravelpackagesCard from "../../component/common/TravelPackageCard/TravelPackageCard";
+import TravelpackagesCard from "../../component/common/TravelPackageCard/TravelPackageList";
 
 // Data for the first Banner
 const cardData1 = [
