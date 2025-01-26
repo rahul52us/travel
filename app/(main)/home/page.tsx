@@ -4,6 +4,7 @@ import { Box } from "@chakra-ui/react";
 import HeroSection from "../../component/common/HeroSection/HeroSection";
 import ContactUs from "../../component/ContactUs/ContactUs";
 import TravelBentoGrid from "../../travelComponent/common/TravelBentoGrid/TravelBentoGrid";
+import StatsSection from "../../travelComponent/StatsSection/StatsSection";
 
 const cardData2 = [
   {
@@ -34,6 +35,8 @@ export default function GamePage() {
 
 
       <TravelBentoGrid/>
+      <StatsSection/>
+      {/* <TestimonialSection />  */}
       {/* <OurValues />
       <OurOfferings /> */}
 
