@@ -20,7 +20,6 @@ import HeroNavButton from "./component/HeroNavButton";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import AnimatedBox from "../../../../component/common/motion/Animatedbox/AnimatedBox";
 
-// Throttling function to limit the number of scroll event triggers
 const throttle = (func: Function, delay: number) => {
   let lastCall = 0;
   return function () {
@@ -38,18 +37,16 @@ const Header = () => {
 
   const handleScroll = useCallback(
     throttle(() => {
-      const documentHeight = document.documentElement.scrollHeight; // Get the full document height
-      const windowHeight = window.innerHeight; // Get the window height
-      const scrollY = window.scrollY; // Get the current scroll position
-      const scrollPercentage = (scrollY / (documentHeight - windowHeight)) * 100; // Calculate the scroll percentage
+      const documentHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      const scrollPercentage = (scrollY / (documentHeight - windowHeight)) * 100;
 
-      // Set scrolling state to true when scroll reaches 40% of the document height
       setScrolling(scrollPercentage > 40);
-    }, 100), // Throttling at 100ms intervals
+    }, 100),
     []
   );
 
-  // Attach scroll event listener only once on mount
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -59,20 +56,18 @@ const Header = () => {
 
   return (
     <Box>
-      {/* Top Bar */}
       <AnimatedBox />
 
-      {/* Conditional Rendering for Mobile Header */}
       {isMobile ? (
         <Flex
           alignItems="center"
           justify="space-between"
           px={4}
           py={1}
-          bg={scrolling ? "rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.5)"} // Scroll transition
+          bg={scrolling ? "rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.5)"}
           color="white"
           position="fixed"
-          top="3rem" // Added margin-top to avoid overlap with animated box
+          top="3rem"
           left={0}
           right={0}
           zIndex={100}
