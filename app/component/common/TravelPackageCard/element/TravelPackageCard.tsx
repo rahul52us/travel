@@ -1,22 +1,21 @@
 import {
-    AspectRatio,
-    Box,
-    Button,
-    Card,
-    CardBody,
-    CardFooter,
-    Flex,
-    Heading,
-    Icon,
-    Tag,
-    Text,
-    SimpleGrid,
-    useTheme,
-  } from "@chakra-ui/react";
-  import { useState } from "react";
-  import { keyframes } from "@emotion/react";
-  import { IconType } from "react-icons";
-  import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "react-icons/fa";
+  AspectRatio,
+  Box,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  Flex,
+  Heading,
+  Icon,
+  SimpleGrid,
+  Tag,
+  Text
+} from "@chakra-ui/react";
+import { keyframes } from "@emotion/react";
+import { useState } from "react";
+import { IconType } from "react-icons";
+import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "react-icons/fa";
 
   // Bounce animation for the button
   const bounce = keyframes`
@@ -59,7 +58,6 @@ import {
   // Main Card Component
   const TravelPackageCard = ({ pkg }: { pkg: TravelPackage }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const theme = useTheme();
 
     // Toggle function to show/hide details
     const toggleDetails = () => setIsOpen((prev) => !prev);

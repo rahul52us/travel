@@ -7,10 +7,10 @@ import TravelBentoGrid from "../../travelComponent/common/TravelBentoGrid/Travel
 import StatsSection from "../../travelComponent/StatsSection/StatsSection";
 
 import LocationCarousel from "../../component/common/LocationCarousel/LocationCarousel";
-import Banner from "./component/Banner";
 import TravelpackagesCard from "../../component/common/TravelPackageCard/TravelPackageList";
+import SightseeingList from "../../travelComponent/common/SightseeingCard/SightseeingList";
 import WhyChooseUs from "../../travelComponent/WhyChooseUs/WhyChooseUs";
-import BudgetComponent from "../../component/common/CircleBadge/CircleBadge";
+import Banner from "./component/Banner";
 import BudgetWrapper from "./component/BudgetWrapper/BudgetWrapper";
 
 // Data for the first Banner
@@ -66,6 +66,8 @@ const cardData2 = [
   },
 ];
 
+
+
 export default function Home() {
   return (
     <Box>
@@ -78,6 +80,8 @@ export default function Home() {
       <LocationCarousel />
       <TravelpackagesCard />
       <WhyChooseUs />
+
+      <SightseeingList/>
 
       <Box>
         <ContactUs />
