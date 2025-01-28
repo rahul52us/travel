@@ -1,14 +1,15 @@
 import {
-    Box,
-    Flex,
-    Heading,
-    Icon,
-    Image,
-    Text,
-    useColorModeValue
+  Box,
+  Flex,
+  Heading,
+  Icon,
+  Image,
+  Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FaCompass, FaHandshake, FaLockOpen } from "react-icons/fa";
+import HeadingSection from "../../component/common/headingSection/HeadingSection";
 
 const MotionFlex = motion(Flex);
 
@@ -20,20 +21,20 @@ const WhyChooseUs = () => {
       icon: FaCompass,
       title: "Unparalleled Expertise",
       text: "Decades of travel industry experience crafting unforgettable journeys through our global network of travel experts.",
-      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800"
+      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800",
     },
     {
       icon: FaHandshake,
       title: "Personalized Service",
       text: "Tailor-made itineraries designed around your unique preferences, interests, and travel style.",
-      image: "https://images.unsplash.com/photo-1503220317375-aaad61436b1b"
+      image: "https://images.unsplash.com/photo-1503220317375-aaad61436b1b",
     },
     {
       icon: FaLockOpen,
       title: "Exclusive Access",
       text: "VIP experiences and hidden gems unavailable to regular travelers, curated by our local insiders.",
-      image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2"
-    }
+      image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2",
+    },
   ];
 
   return (
@@ -42,30 +43,15 @@ const WhyChooseUs = () => {
       overflow="hidden"
       py={28}
       px={{ base: 4, md: 8, lg: 16 }}
-      maxW={'90%'}
-      mx={'auto'}
-    //   bg={bgColor}
+      maxW={"90%"}
+      mx={"auto"}
+      //   bg={bgColor}
     >
       <Box position="relative" zIndex="1" textAlign="center" mb={16}>
-        <Text
-          fontSize="lg"
-          color="teal.400"
-          mb={4}
-          fontWeight="bold"
-          letterSpacing="2px"
-        >
-          WHY CHOOSE US
-        </Text>
-        <Heading
-          as="h2"
-          size="xl"
-          mb={8}
-          bgGradient="linear(to-r, purple.400, blue.500)"
-          bgClip="text"
-          fontWeight="extrabold"
-        >
-          Crafting Extraordinary Journeys
-        </Heading>
+        <HeadingSection
+          title="WHY CHOOSE US"
+          subtitle="Crafting Extraordinary Journeys"
+        />
       </Box>
 
       <Flex
@@ -106,31 +92,31 @@ const WhyChooseUs = () => {
               p={6}
               bgGradient={`linear(to-t, ${overlayColor}, transparent)`}
             >
-                <Icon
-                  as={feature.icon}
-                  w={8}
-                  h={8}
-                  color="white"
-                  mb={4}
-                  filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"
-                />
-                <Heading
-                  as="h3"
+              <Icon
+                as={feature.icon}
+                w={8}
+                h={8}
+                color="white"
+                mb={4}
+                filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"
+              />
+              <Heading
+                as="h3"
                 //   size="lg"
-                fontSize={{base: "20px", md: "28px"}}
-                  color="white"
-                  mb={3}
-                  textShadow="0 2px 4px rgba(0,0,0,0.3)"
-                >
-                  {feature.title}
-                </Heading>
-                <Text
-                  color="whiteAlpha.900"
-                  fontSize="lg"
-                  textShadow="0 1px 2px rgba(0,0,0,0.3)"
-                >
-                  {feature.text}
-                </Text>
+                fontSize={{ base: "20px", md: "28px" }}
+                color="white"
+                mb={3}
+                textShadow="0 2px 4px rgba(0,0,0,0.3)"
+              >
+                {feature.title}
+              </Heading>
+              <Text
+                color="whiteAlpha.900"
+                fontSize="lg"
+                textShadow="0 1px 2px rgba(0,0,0,0.3)"
+              >
+                {feature.text}
+              </Text>
             </Box>
           </MotionFlex>
         ))}
