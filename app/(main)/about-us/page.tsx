@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   Box,
@@ -10,21 +10,25 @@ import {
   Flex,
   Button,
   useBreakpointValue,
-  HStack,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 
 // Motion Components for Animation
 const MotionBox = motion(Box);
-const MotionText = motion(Text);
 
 export default function AboutPage() {
   // Responsive text size
   const textSize = useBreakpointValue({ base: "sm", md: "md" });
 
   return (
-    <VStack spacing={8} align="center" p={{ base: 4, md: 6 }} maxW="1200px" mx="auto">
+    <VStack
+      spacing={8}
+      align="center"
+      p={{ base: 4, md: 6 }}
+      maxW="1200px"
+      mx="auto"
+    >
       {/* Hero Section */}
       <MotionBox
         textAlign="center"
@@ -37,7 +41,13 @@ export default function AboutPage() {
         <Heading as="h1" size="2xl" color="teal.500" mb={4} fontWeight="bold">
           About Us
         </Heading>
-        <Text fontSize={textSize} color="gray.700" maxW="800px" mx="auto" mb={6}>
+        <Text
+          fontSize={textSize}
+          color="gray.700"
+          maxW="800px"
+          mx="auto"
+          mb={6}
+        >
           {`Welcome to Cosmic Travel, your gateway to Europe's most breathtaking wonders.
           We specialize in curating extraordinary travel experiences that immerse you
           in the rich cultures, diverse landscapes, and timeless histories of this magical continent.`}
@@ -100,14 +110,14 @@ export default function AboutPage() {
             What Sets Us Apart
           </Heading>
           <Text fontSize="md" color="gray.700" lineHeight="1.7">
-           {`We go beyond standard travel itineraries. Our team of local experts and
+            {`We go beyond standard travel itineraries. Our team of local experts and
             passionate travel planners are dedicated to providing experiences that resonate
             with your unique interests, offering a deep dive into Europe’s culture,
             history, and natural beauty.`}
           </Text>
           <Text fontSize="md" color="gray.700" lineHeight="1.7">
-            From exclusive guided tours to hidden gems off the beaten path, we ensure
-            every journey with us feels exceptional.
+            From exclusive guided tours to hidden gems off the beaten path, we
+            ensure every journey with us feels exceptional.
           </Text>
         </VStack>
 
@@ -172,7 +182,12 @@ export default function AboutPage() {
       <Divider borderColor="teal.200" w="full" />
 
       {/* Call to Action Section */}
-      <VStack spacing={6} align="center" textAlign="center" py={{ base: 6, md: 8 }}>
+      <VStack
+        spacing={6}
+        align="center"
+        textAlign="center"
+        py={{ base: 6, md: 8 }}
+      >
         <Heading as="h3" size="lg" color="teal.500">
           Ready to Start Your European Journey?
         </Heading>
