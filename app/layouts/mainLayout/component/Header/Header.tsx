@@ -20,22 +20,22 @@ import HeroNavButton from "./component/HeroNavButton";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import AnimatedBox from "../../../../component/common/motion/Animatedbox/AnimatedBox";
 
-const throttle = (func: Function, delay: number) => {
+const throttle = <T extends (...args: unknown[]) => void>(func: T, delay: number): T => {
   let lastCall = 0;
-  return function () {
+  return ((...args: Parameters<T>) => {
     const now = new Date().getTime();
     if (now - lastCall >= delay) {
       lastCall = now;
-      func();
+      func(...args);
     }
-  };
+  }) as T;
 };
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [scrolling, setScrolling] = useState(false);
 
-  const handleScroll = useCallback(
+  const handleScroll = useCallback(() => {
     throttle(() => {
       const documentHeight = document.documentElement.scrollHeight;
       const windowHeight = window.innerHeight;
@@ -43,9 +43,8 @@ const Header = () => {
       const scrollPercentage = (scrollY / (documentHeight - windowHeight)) * 100;
 
       setScrolling(scrollPercentage > 40);
-    }, 100),
-    []
-  );
+    }, 100)();
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -91,7 +90,7 @@ const Header = () => {
           bg={scrolling ? "rgba(0, 0, 0, 0.9)" : "transparent"}
           color="white"
           position="fixed"
-          top={scrolling ? 0 : "1rem"} // Added margin-top to avoid overlap with animated box
+          top={scrolling ? 0 : "1rem"}
           left={0}
           right={0}
           zIndex={100}

@@ -88,9 +88,9 @@ export default function FirstSection() {
               About Us
             </Heading>
             <Text fontSize="md" color="gray.700" mb={4}>
-              Our mission is to connect art enthusiasts with talented artists from
+              {`Our mission is to connect art enthusiasts with talented artists from
               around the globe. Whether you're looking for a unique piece to adorn
-              your walls or an inspiring gift, you'll find it here.
+              your walls or an inspiring gift, you'll find it here.`}
             </Text>
             <Button colorScheme="purple" size="md">
               Learn More

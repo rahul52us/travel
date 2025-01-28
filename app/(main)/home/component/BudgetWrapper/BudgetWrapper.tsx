@@ -96,9 +96,9 @@ const BudgetWrapper = () => {
           borderRadius="lg"
         />
         <Text fontSize="lg" color="gray.600" maxWidth="600px" margin="auto">
-          Discover the best travel options tailored for your budget. Whether
+          {`Discover the best travel options tailored for your budget. Whether
           you're planning a luxury escape or a cost-effective adventure, we’ve
-          got you covered!
+          got you covered!`}
         </Text>
       </Box>
 
