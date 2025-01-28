@@ -12,6 +12,7 @@ import SightseeingList from "../../travelComponent/common/SightseeingCard/Sights
 import WhyChooseUs from "../../travelComponent/WhyChooseUs/WhyChooseUs";
 import Banner from "./component/Banner";
 import BudgetWrapper from "./component/BudgetWrapper/BudgetWrapper";
+import WhyChoose from "./component/WhyChoose/WhyChoose";
 
 // Data for the first Banner
 const cardData1 = [
@@ -80,9 +81,8 @@ export default function Home() {
       <LocationCarousel />
       <TravelpackagesCard />
       <WhyChooseUs />
-
       <SightseeingList/>
-
+      <WhyChoose />
       <Box>
         <ContactUs />
       </Box>
