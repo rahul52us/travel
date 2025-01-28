@@ -1,8 +1,8 @@
 export const navItems = [
-    {title : 'Our Values'},
-    {title : 'Services'},
-    {title : 'Features'},
-    {title : 'Therapists'},
-    {title : 'Testimonials'},
-    {title : 'Contact Us'},
-]
+    { title: "Our Values", link: "/our-values" },
+    { title: "About Us", link: "/about-us" },
+    { title: "Features", link: "/features" },
+    { title: "Therapists", link: "/therapists" },
+    { title: "Testimonials", link: "/testimonials" },
+    { title: "Contact Us", link: "/contact-us" },
+  ];

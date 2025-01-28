@@ -6,6 +6,7 @@ import NavItem from "../element/NavItem";
 
 interface NavItemType {
   title: string;
+  link : string
 }
 
 const NavItemsLayout: React.FC = () => {

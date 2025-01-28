@@ -1,15 +1,18 @@
 "use client";
 import { Box } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 // Define the type for the item prop
 interface NavItemProps {
   item: {
     title: string;
+    link:string
   };
 }
 
 const NavItem: React.FC<NavItemProps> = ({ item }) => {
+  const router = useRouter()
   return (
     <Box
       as="span"
@@ -27,6 +30,9 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
           height: "4px",
           backgroundColor: "#045B64",
         },
+      }}
+      onClick={() => {
+        router.push(item.link)
       }}
     >
       {item.title}
