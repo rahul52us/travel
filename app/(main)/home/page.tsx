@@ -1,7 +1,7 @@
 "use client";
 // src/app/game/page.tsx
 import { Box } from "@chakra-ui/react";
-import HeroSection from "../../component/common/HeroSection/HeroSection";
+// import HeroSection from "../../component/common/HeroSection/HeroSection";
 import ContactUs from "../../component/ContactUs/ContactUs";
 import TravelBentoGrid from "../../travelComponent/common/TravelBentoGrid/TravelBentoGrid";
 import StatsSection from "../../travelComponent/StatsSection/StatsSection";
@@ -9,6 +9,8 @@ import StatsSection from "../../travelComponent/StatsSection/StatsSection";
 import LocationCarousel from "../../component/common/LocationCarousel/LocationCarousel";
 import TravelpackagesCard from "../../component/common/TravelPackageCard/TravelPackageList";
 import SightseeingList from "../../travelComponent/common/SightseeingCard/SightseeingList";
+import TransfersEurailSection from "../../travelComponent/TransfersEurailSection/TransfersEurailSection";
+import HeroSection from "../../travelComponent/TravelHeroSection/TravelHeroSection";
 import WhyChooseUs from "../../travelComponent/WhyChooseUs/WhyChooseUs";
 import Banner from "./component/Banner";
 import BudgetWrapper from "./component/BudgetWrapper/BudgetWrapper";
@@ -69,12 +71,14 @@ const cardData2 = [
 
 
 
+
 export default function Home() {
   return (
     <Box>
+      <HeroSection/>
       <Banner data={cardData1} heading="Explore Our First Set of Cards" />
       <Banner data={cardData2} heading="Explore Our Second Set of Cards" />
-      <HeroSection />
+      {/* <HeroSection /> */}
       <BudgetWrapper />
       <TravelBentoGrid />
       <StatsSection />
@@ -83,9 +87,14 @@ export default function Home() {
       <WhyChooseUs />
       <SightseeingList/>
       <WhyChoose />
+     <TransfersEurailSection/>
       <Box>
         <ContactUs />
       </Box>
+
+
+
+
     </Box>
   );
 }

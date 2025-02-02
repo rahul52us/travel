@@ -50,8 +50,8 @@ const SightseeingList = () => {
         // px={4}
         bg={useColorModeValue("gray.50", "gray.900")}
       >
-        {data.map((place) => (
-          <SightseeingCard key={place.name} place={place} />
+        {data.map((place,index) => (
+          <SightseeingCard key={index} place={place} />
         ))}
       </Flex>
     );
