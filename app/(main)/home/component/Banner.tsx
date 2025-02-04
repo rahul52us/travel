@@ -1,5 +1,5 @@
 "use client";
-import { Box, Divider, Flex } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import OverlayCard from "../../../component/common/cards/OverlayCard/OverlayCard";
 import HeadingSection from "../../../component/common/headingSection/HeadingSection";

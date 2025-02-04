@@ -14,7 +14,7 @@ const locations = [
   {
     image:
       "https://images.pexels.com/photos/28539583/pexels-photo-28539583/free-photo-of-majestic-mountain-peaks-at-sunrise.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    title: "Ajsdy",
+    title: "Amsterdam",
     trips: "3+ Trips",
     text: "Rapidiously simplify covalent leadership whereas distributed results.",
   },
@@ -28,7 +28,7 @@ const locations = [
   {
     image:
       "https://images.pexels.com/photos/28539583/pexels-photo-28539583/free-photo-of-majestic-mountain-peaks-at-sunrise.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    title: "U2323uuu",
+    title: "Paris",
     trips: "3+ Trips",
     text: "Rapidiously simplify covalent leadership whereas distributed results.",
   },

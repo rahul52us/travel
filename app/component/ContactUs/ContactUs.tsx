@@ -41,7 +41,9 @@ const ContactUs = () => {
   };
 
   return (
-    <Box maxW="90%" mx="auto" my={12}>
+    <Box bg={'white'} py={8}>
+
+    <Box maxW="90%" mx="auto" my={12} >
       <Box display={{ base: "block", lg: "none" }}>
         <Text
           textTransform="uppercase"
@@ -50,19 +52,19 @@ const ContactUs = () => {
         >
           Contact us
         </Text>
-        <Text
-          fontSize={{ base: "1.8rem", md: "2.6rem" }}
-          fontWeight={400}
-          lineHeight={{ base: "2.2rem", md: "3.4rem" }}
-          w="100%"
-          px={{ base: 2, md:4,lg: 0 }}
-          textAlign={{ base: "center", lg: "left" }}
-          mt={{ base: 1, md: 0 }}
-        >
-          Support for you or a loved one?{" "}
-          <Text as="span" fontWeight={600}>
-            Let&apos;s connect
-          </Text>
+        <Text  
+          fontSize={{ base: "1.8rem", md: "2.6rem" }}  
+          fontWeight={400}  
+          lineHeight={{ base: "2.2rem", md: "3.4rem" }}  
+          w="100%"  
+          px={{ base: 2, md:4,lg: 0 }}  
+          textAlign={{ base: "center", lg: "left" }}  
+          mt={{ base: 1, md: 0 }}  
+        >  
+          Ready to explore the world?{" "}  
+          <Text as="span" fontWeight={600}>  
+            Let&apos;s plan your adventure.  
+          </Text>  
         </Text>
       </Box>
       <Grid
@@ -72,11 +74,11 @@ const ContactUs = () => {
       >
         <Box textAlign={{ base: "center", lg: "left" }}>
           <Image
-            src="/images/contactUsImage.png"
+            src="/images/contact/contactUs.jpg"
             alt="Contact Us"
             mt={{ base: 4, md: 8 }}
             mx={{ base: "auto", md: "0" }}
-            maxW={{ base: "100%", md: "90%" }}
+            maxW={{ base: "100%", md: "85%" }}
           />
         </Box>
         <Box w="100%" maxW={{ base: "100%", lg: "90%" }}>
@@ -88,20 +90,20 @@ const ContactUs = () => {
             >
               Contact us
             </Text>
-            <Text
-              fontSize={{ base: "1.8rem", md: "2.6rem" }}
-              fontWeight={400}
-              lineHeight={{ base: "2.2rem", md: "3.4rem" }}
-              w="100%"
-              px={{ base: 2, md:4,lg: 0 }}
-              textAlign={{ base: "center", lg: "left" }}
-              mt={{ base: 1, md: 0 }}
-            >
-              Support for you or a loved one?{" "}
-              <Text as="span" fontWeight={600}>
-                Let&apos;s connect
-              </Text>
-            </Text>
+            <Text  
+          fontSize={{ base: "1.8rem", md: "2.4rem" }}  
+          fontWeight={400}  
+          lineHeight={{ base: "2.2rem", md: "3.4rem" }}  
+          w="100%"  
+          px={{ base: 2, md:4,lg: 0 }}  
+          textAlign={{ base: "center", lg: "left" }}  
+          mt={{ base: 1, md: 0 }}  
+        >  
+          Ready to explore the world?{" "}  
+          <Text as="span" fontWeight={600}>  
+            Let&apos;s plan your adventure.  
+          </Text>  
+        </Text>
           </Box>
           <Box
             p={{ base: 6, md: 8 }}
@@ -116,7 +118,7 @@ const ContactUs = () => {
             >
               Enter Your Details
             </Text>
-            <VStack spacing={5} align="stretch" mt={4}>
+            <VStack spacing={4} align="stretch" mt={2}>
               <Input
                 name="name"
                 value={formData.name}
@@ -138,7 +140,7 @@ const ContactUs = () => {
                 value={formData.companyName}
                 onChange={handleChange}
                 variant="filled"
-                placeholder="Company Name"
+                placeholder="Phone Number"
                 bg="#CBCBCB1A"
               />
               <Textarea
@@ -158,12 +160,13 @@ const ContactUs = () => {
                 onClick={handleSubmit}
                 mt={6}
               >
-                Take Assessment
+                Contact Now
               </CustomButton>
             </VStack>
           </Box>
         </Box>
       </Grid>
+    </Box>
     </Box>
   );
 };
