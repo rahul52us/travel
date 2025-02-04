@@ -12,6 +12,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import CustomSubHeading from "../CustomSubHeading/CustomSubHeading";
 
 const travelImages = [
   {
@@ -61,8 +62,11 @@ export default function TravelBentoGrid() {
   };
 
   return (
-    <Box p={5} maxW={"80%"} mx={"auto"}>
-      <Grid templateColumns="repeat(3, 1fr)" gap={3} h="600px">
+    <Box p={5} maxW={"80%"} mx={"auto"} my={12}>
+      <CustomSubHeading highlightText="Our World">
+      Wander Through 
+      </CustomSubHeading>
+      <Grid templateColumns="repeat(3, 1fr)" gap={3} h="580px" mt={8}>
         {travelImages.map((img, index) => (
           <GridItem
             key={index}
@@ -72,7 +76,7 @@ export default function TravelBentoGrid() {
             overflow="hidden"
             cursor="pointer"
             transition="transform 0.3s"
-            _hover={{ transform: "scale(1.05)" }}
+            _hover={{ transform: "scale(1.03)" }}
             onClick={() => handleImageClick(img)}
           >
             <Image

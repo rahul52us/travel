@@ -45,13 +45,14 @@ const HeroSection = () => {
   };
 
   return (
-    <Box position="relative" h="100vh" w="100%" overflow="hidden">
+    <Box position="relative" h="90vh" w="100%" overflow="hidden">
       <AnimatePresence initial={false} custom={direction}>
         <MotionBox
           key={activeIndex}
           position="absolute"
           w="100%"
           h="100%"
+          filter="brightness(0.4)"
           bg={`url('${slides[activeIndex].image}')`}
           bgSize="cover"
           bgPosition="center"
@@ -149,7 +150,8 @@ const HeroSection = () => {
       </Flex>
 
       {/* Progress Bar */}
-      <MotionBox
+      
+      {/* <MotionBox
         position="absolute"
         bottom="0"
         left="0"
@@ -159,7 +161,7 @@ const HeroSection = () => {
         animate={{ width: '100%' }}
         transition={{ duration: 8, ease: 'linear' }}
         key={activeIndex}
-      />
+      /> */}
     </Box>
   );
 };

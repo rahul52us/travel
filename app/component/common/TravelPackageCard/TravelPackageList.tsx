@@ -1,7 +1,7 @@
 // TravelPackageList.tsx
 
-import React from "react";
-import { SimpleGrid } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import CustomCarousel from "../CustomCarousal/CustomCarousal";
 import TravelPackageCard from "./element/TravelPackageCard";
 
 const travelPackages = [
@@ -45,15 +45,58 @@ const travelPackages = [
       { place: "Arashiyama", nights: 4 },
     ],
   },
+  {
+    id: 3,
+    location: "Kyoto, Japan",
+    image: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b",
+    price: 184000,
+    days: 10,
+    rating: 4.9,
+    perks: [
+      "Ryokan stay",
+      "Kaiseki dinner",
+      "Tea ceremony",
+      "Bullet train pass",
+    ],
+    highlights: ["Cherry blossoms", "Bamboo forest", "Golden Pavilion"],
+    discount: 10,
+    itinerary: [
+      { place: "Kyoto Town", nights: 3 },
+      { place: "Arashiyama", nights: 4 },
+    ],
+  },
+  {
+    id: 4,
+    location: "Kyoto, Japan",
+    image: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b",
+    price: 184000,
+    days: 10,
+    rating: 4.9,
+    perks: [
+      "Ryokan stay",
+      "Kaiseki dinner",
+      "Tea ceremony",
+      "Bullet train pass",
+    ],
+    highlights: ["Cherry blossoms", "Bamboo forest", "Golden Pavilion"],
+    discount: 10,
+    itinerary: [
+      { place: "Kyoto Town", nights: 3 },
+      { place: "Arashiyama", nights: 4 },
+    ],
+  },
 ];
 
 const TravelPackageList = () => {
   return (
-    <SimpleGrid columns={[1, 2, 2, 3]} spacing={8} p={8} maxW="90%" mx="auto">
+    <Box maxW={{lg:"95%",xl:"90%"}} mx="auto">
+      <CustomCarousel autoplay={true}>
+
       {travelPackages.map((pkg) => (
         <TravelPackageCard key={pkg.id} pkg={pkg} />
       ))}
-    </SimpleGrid>
+      </CustomCarousel>
+    </Box>
   );
 };
 

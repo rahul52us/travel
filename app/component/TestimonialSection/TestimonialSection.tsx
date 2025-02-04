@@ -1,14 +1,12 @@
 import {
   Box,
-  Grid,
-  GridItem,
   Heading,
   Text,
-  useBreakpointValue,
+  useBreakpointValue
 } from "@chakra-ui/react";
-import React from "react";
-import NewTestimonialCard from "../common/NewTestimonialCard/NewTestimonialCard";
+import StatsSection from "../../travelComponent/StatsSection/StatsSection";
 import CustomCarousel from "../common/CustomCarousal/CustomCarousal";
+import NewTestimonialCard from "../common/NewTestimonialCard/NewTestimonialCard";
 
 const testimonials = [
   {
@@ -49,32 +47,25 @@ const testimonials = [
   },
 ];
 
-const statsData = [
-  { value: "12+", label: "Therapies Offered" },
-  { value: "2-13", label: "Years of Experience" },
-  { value: "19000+", label: "Therapy Hours Delivered" },
-  { value: "2000+", label: "Assessments Taken" },
-  { value: "100%", label: "Licensed Professional" },
-];
+// const statsData = [
+//   { value: "12+", label: "Therapies Offered" },
+//   { value: "2-13", label: "Years of Experience" },
+//   { value: "19000+", label: "Therapy Hours Delivered" },
+//   { value: "2000+", label: "Assessments Taken" },
+//   { value: "100%", label: "Licensed Professional" },
+// ];
 
 const TestimonialSection = () => {
   const noOfSlides = useBreakpointValue({ base: 1, md: 2, lg: 3 });
   return (
-    <Box bg={"#FDFFDD"}>
+    <Box bg={'#E1F0EE'} my={12}>
       <Box
+
         maxW={{ md: "90%" }}
         py={{ base: "3rem", md: "6rem" }}
         px={{ base: 4, md: 0 }}
         mx={"auto"}
       >
-        <Text
-          textAlign={"center"}
-          color={"#DF837C"}
-          textTransform={"uppercase"}
-          fontSize={{ base: "14px", md: "16px" }}
-        >
-          OUR TESTIMONIALS
-        </Text>
         <Heading
           textAlign={"center"}
           as={"h2"}
@@ -83,9 +74,9 @@ const TestimonialSection = () => {
           my={{ base: 1, md: 2 }}
           px={1}
         >
-          Hear from Those Who’ve{" "}
+          Inspired Travelers Share {" "}
           <Text as={"span"} fontWeight={600}>
-            Found Recovery
+          Their Stories
           </Text>
         </Heading>
         {/* <Grid templateColumns={"1fr 1fr 1fr "} gap={8} mt={12}>
@@ -104,8 +95,9 @@ const TestimonialSection = () => {
             ))}
           </CustomCarousel>
         </Box>
+        <StatsSection />
 
-        <Grid
+        {/* <Grid
           templateColumns={{ base: "1fr 1fr", md: "repeat(5, 1fr)" }}
           mt={{ base: 8, lg: 14 }}
           gap={{ base: 8, md: 8,lg:4 }}
@@ -146,7 +138,7 @@ const TestimonialSection = () => {
               </Box>
             </GridItem>
           ))}
-        </Grid>
+        </Grid> */}
       </Box>
     </Box>
   );

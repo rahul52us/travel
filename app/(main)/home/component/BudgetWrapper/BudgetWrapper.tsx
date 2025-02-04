@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import CircleBadge from "../../../../component/common/CircleBadge/CircleBadge";
+import CustomSubHeading from "../../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 
 const badgeData = [
   {
@@ -66,27 +66,20 @@ const BudgetWrapper = () => {
   return (
     <Box
       padding={{ base: "24px", md: "48px" }}
-      bgGradient="linear(to-tr, teal.50, white)"
-      boxShadow="2xl"
-      borderRadius="3xl"
-      maxWidth="1200px"
-      margin="auto"
+      // bgGradient="linear(to-tr, teal.50, white)"
+      // boxShadow="2xl"
+      // borderRadius="3xl"
+      maxWidth="90%"
+      mx="auto"
       textAlign="center"
-      border="1px solid"
+      // border="1px solid"
       borderColor="gray.200"
       overflow="hidden"
     >
       {/* Heading Section */}
       <Box marginBottom="32px">
-        <Heading
-          as="h1"
-          size="2xl"
-          color="teal.700"
-          fontWeight="extrabold"
-          marginBottom="16px"
-        >
-          Holidays for Every Budget
-        </Heading>
+      <CustomSubHeading highlightText='Every Budget '>Holiday For  </CustomSubHeading>
+
         <Box
           height="3px"
           width="80px"
@@ -108,7 +101,7 @@ const BudgetWrapper = () => {
         justifyContent={{ base: "center", md: "space-between" }}
         gap="24px"
         padding="16px"
-        bg="white"
+        // bg="white"
         borderRadius="xl"
       >
         {badgeData.map((badge, index) => (

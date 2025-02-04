@@ -22,7 +22,7 @@ const SightseeingCard = ({ place }) => {
       borderRadius="md"
       overflow="hidden"
       boxShadow="md"
-      maxW="xs"
+      // maxW="xs"
       bg={cardBg}
     >
       <Box position={"relative"}>
