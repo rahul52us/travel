@@ -66,7 +66,7 @@ const VisaServicesPage = () => {
         {/* Image */}
         <Box flex={1} maxH="500px" borderRadius="lg" overflow="hidden">
           <Image
-            src="/images/visa/visaService.jpg"
+            src="https://img.freepik.com/free-photo/happy-young-woman-holding-passport-boarding-pass-with-globe-while-standing-against-blue-background_662251-547.jpg?ga=GA1.1.1822911562.1716356990&semt=ais_hybrid"
             alt="Customer Satisfaction"
             w="100%"
             h="80%"
