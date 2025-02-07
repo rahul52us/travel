@@ -2,8 +2,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, IconButton } from "@chakra-ui/react";
 import React, { ReactElement } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 interface ArrowProps {
   onClick?: () => void;
@@ -31,6 +31,7 @@ const PrevArrow = ({
       left={position}
       top="50%"
       transform="translateY(-50%)"
+      border={'1px solid #DF837C'}
       zIndex={2}
       rounded="full"
       bg="white"
@@ -69,6 +70,7 @@ const NextArrow = ({
       zIndex={2}
       rounded="full"
       bg="white"
+      border={'1px solid #DF837C'}
       shadow="base"
       _hover={{ bg: hoverBgColor }}
       sx={{

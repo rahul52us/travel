@@ -45,7 +45,7 @@ const HeroSection = () => {
   };
 
   return (
-    <Box position="relative" h="90vh" w="100%" overflow="hidden">
+    <Box position="relative" h="85vh" w="100%" overflow="hidden">
       <AnimatePresence initial={false} custom={direction}>
         <MotionBox
           key={activeIndex}

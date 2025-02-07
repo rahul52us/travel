@@ -52,7 +52,7 @@ const data = [
 const SightseeingList = () => {
   const noOfSlides = useBreakpointValue({ base: 1, md: 2, lg: 4 });
   return (
-    <Box my={"5rem"} maxW={"90%"} mx={"auto"}>
+    <Box my={"6rem"} maxW={"90%"} mx={"auto"}>
       <CustomSubHeading highlightText="Sightseeing Adventures">
         Unmissable Views
       </CustomSubHeading>

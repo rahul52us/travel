@@ -1,10 +1,34 @@
-'use client'
-import { Box, Button, Flex, FormControl, Heading, Icon, Input, InputGroup, InputLeftAddon, Modal, ModalBody, ModalContent, ModalOverlay, Select, Stack, Text } from '@chakra-ui/react';
-import { keyframes } from '@emotion/react';
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { BsHeadsetVr } from 'react-icons/bs';
-import { FaCertificate, FaChevronRight, FaEnvelope, FaGlobe, FaPhone, FaUser } from 'react-icons/fa';
+"use client";
+import {
+  Box,
+  Button,
+  Flex,
+  FormControl,
+  Heading,
+  Icon,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalOverlay,
+  Select,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { keyframes } from "@emotion/react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { BsHeadsetVr } from "react-icons/bs";
+import {
+  FaCertificate,
+  FaChevronRight,
+  FaEnvelope,
+  FaGlobe,
+  FaPhone,
+  FaUser,
+} from "react-icons/fa";
 
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
@@ -29,20 +53,26 @@ const DelayedModal = () => {
     setIsOpen(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted');
-    closeModal();
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   console.log('Form submitted');
+  //   closeModal();
+  // };
 
-  const accentGradient = 'linear-gradient(135deg, #319795 0%, #3182CE 100%)';
+  const accentGradient = "linear-gradient(135deg, #319795 0%, #3182CE 100%)";
   const floatAnimation = `${float} 6s ease-in-out infinite`;
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} motionPreset="slideInBottom" size={'5xl'} isCentered>
+    <Modal
+      isOpen={isOpen}
+      onClose={closeModal}
+      motionPreset="slideInBottom"
+      size={"5xl"}
+      isCentered
+    >
       <ModalOverlay />
-      <ModalContent 
-        borderRadius="3xl" 
+      <ModalContent
+        borderRadius="3xl"
         overflow="hidden"
         boxShadow="2xl"
         // border="1px solid"
@@ -59,7 +89,7 @@ const DelayedModal = () => {
               position="relative"
               color="white"
               cursor="pointer"
-              _hover={{ '& .feature-item': { transform: 'translateX(10px)' } }}
+              _hover={{ "& .feature-item": { transform: "translateX(10px)" } }}
             >
               <Box
                 position="absolute"
@@ -76,8 +106,8 @@ const DelayedModal = () => {
                   transition={{ duration: 0.8 }}
                   mt={24}
                 >
-                  <AnimatedFeatureItem 
-                    icon={BsHeadsetVr} 
+                  <AnimatedFeatureItem
+                    icon={BsHeadsetVr}
                     title="Tailor-Made Adventures"
                     delay={0.3}
                   />
@@ -108,16 +138,16 @@ const DelayedModal = () => {
             </Box>
 
             {/* Right Side - Modern Form */}
-            <Box 
-              w="60%" 
+            <Box
+              w="60%"
               p={10}
               bgGradient="linear(to-br, white, gray.50)"
               position="relative"
             >
               <Box position="relative" zIndex={1}>
-                <Heading 
-                  fontSize="3xl" 
-                  mb={8} 
+                <Heading
+                  fontSize="3xl"
+                  mb={8}
                   bgGradient={accentGradient}
                   bgClip="text"
                   fontWeight="bold"
@@ -126,19 +156,19 @@ const DelayedModal = () => {
                 </Heading>
 
                 <Stack spacing={6}>
-                  <AnimatedInput 
-                    icon={FaUser} 
-                    label="Full Name" 
+                  <AnimatedInput
+                    icon={FaUser}
+                    label="Full Name"
                     placeholder="Alexandra Smith"
                   />
-                  
+
                   <FormControl>
                     <Text mb={2} fontWeight="500" color="gray.600">
                       Mobile Number
                     </Text>
                     <Flex gap={3}>
-                      <Select 
-                        w="30%" 
+                      <Select
+                        w="30%"
                         defaultValue="+91"
                         borderRadius="lg"
                         focusBorderColor="teal.400"
@@ -150,17 +180,16 @@ const DelayedModal = () => {
                         <option value="+44">🇬🇧 +44</option>
                       </Select>
                       <InputGroup>
-                        <InputLeftAddon 
-                          children={<FaPhone />} 
-                          bg="gray.100" 
-                          borderColor="gray.200"
-                        />
+                        <InputLeftAddon bg="gray.100" borderColor="gray.200">
+                          <FaPhone />
+                        </InputLeftAddon>
+
                         <Input
                           type="tel"
                           placeholder="98765 43210"
                           variant="filled"
                           focusBorderColor="teal.400"
-                          _focus={{ bg: 'white' }}
+                          _focus={{ bg: "white" }}
                         />
                       </InputGroup>
                     </Flex>
@@ -178,16 +207,19 @@ const DelayedModal = () => {
                       Dream Destination
                     </Text>
                     <InputGroup>
-                      <InputLeftAddon 
+                      {/* <InputLeftAddon 
                         children={<FaGlobe />} 
                         bg="gray.100" 
                         borderColor="gray.200"
-                      />
+                      /> */}
+                      <InputLeftAddon bg="gray.100" borderColor="gray.200">
+                        <FaGlobe />
+                      </InputLeftAddon>
                       <Select
                         placeholder="Select region"
                         variant="filled"
                         focusBorderColor="teal.400"
-                        _focus={{ bg: 'white' }}
+                        _focus={{ bg: "white" }}
                       >
                         <option>European Escapades</option>
                         <option>Asian Odyssey</option>
@@ -204,11 +236,11 @@ const DelayedModal = () => {
                     mt={4}
                     w="full"
                     borderRadius="xl"
-                    _hover={{ 
-                      bgGradient: 'linear(135deg, #3182CE 0%, #319795 100%)',
-                      transform: 'translateY(-2px)'
+                    _hover={{
+                      bgGradient: "linear(135deg, #3182CE 0%, #319795 100%)",
+                      transform: "translateY(-2px)",
                     }}
-                    _active={{ transform: 'scale(0.98)' }}
+                    _active={{ transform: "scale(0.98)" }}
                     rightIcon={<FaChevronRight />}
                     // transition="all 0.3s cubic-bezier(.25,.8,.25,1)"
                     whileHover={{ scale: 1.02 }}
@@ -240,18 +272,6 @@ const DelayedModal = () => {
 
 export default DelayedModal;
 
-
-const FeatureItem = ({ icon: Icon, title }) => (
-  <Flex align="center" gap={3}>
-    <Box p={2} bg="rgba(255,255,255,0.1)" borderRadius="md">
-      <Icon size={20} />
-    </Box>
-    <Text fontSize="lg" fontWeight="500" textShadow="0 2px 4px rgba(0,0,0,0.2)">
-      {title}
-    </Text>
-  </Flex>
-);
-
 const AnimatedFeatureItem = ({ icon, title, delay }) => (
   <MotionBox
     initial={{ opacity: 0, x: -20 }}
@@ -262,7 +282,7 @@ const AnimatedFeatureItem = ({ icon, title, delay }) => (
     p={4}
     borderRadius="xl"
     bg="whiteAlpha.200"
-    _hover={{ bg: 'whiteAlpha.300' }}
+    _hover={{ bg: "whiteAlpha.300" }}
     // transition="all 0.3s ease"
     cursor="pointer"
   >
@@ -276,21 +296,19 @@ const AnimatedFeatureItem = ({ icon, title, delay }) => (
 );
 
 const AnimatedInput = ({ icon, label, ...props }) => (
-  <Box >
+  <Box>
     <FormControl>
       <Text mb={2} fontWeight="500" color="gray.600">
         {label}
       </Text>
       <InputGroup>
-        <InputLeftAddon 
-          children={<Icon as={icon} />} 
-          bg="gray.100" 
-          borderColor="gray.200"
-        />
+        <InputLeftAddon bg="gray.100" borderColor="gray.200">
+          <Icon as={icon} />
+        </InputLeftAddon>
         <Input
           variant="filled"
           focusBorderColor="teal.400"
-          _focus={{ bg: 'white' }}
+          _focus={{ bg: "white" }}
           {...props}
         />
       </InputGroup>

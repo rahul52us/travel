@@ -64,6 +64,8 @@ const badgeData = [
 
 const BudgetWrapper = () => {
   return (
+    <Box  bgGradient={'linear(to-r, teal.50,cyan.100)'}>
+
     <Box
       padding={{ base: "24px", md: "48px" }}
       // bgGradient="linear(to-tr, teal.50, white)"
@@ -98,8 +100,8 @@ const BudgetWrapper = () => {
       {/* Badge Display Section */}
       <Flex
         flexWrap="wrap"
-        justifyContent={{ base: "center", md: "space-between" }}
-        gap="24px"
+        justifyContent={{ base: "center", md: "center" }}
+        gap={16}
         padding="16px"
         // bg="white"
         borderRadius="xl"
@@ -119,6 +121,7 @@ const BudgetWrapper = () => {
           />
         ))}
       </Flex>
+    </Box>
     </Box>
   );
 };

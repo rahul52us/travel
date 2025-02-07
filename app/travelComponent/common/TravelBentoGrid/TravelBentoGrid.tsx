@@ -9,6 +9,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
@@ -62,17 +63,18 @@ export default function TravelBentoGrid() {
   };
 
   return (
-    <Box p={5} maxW={"80%"} mx={"auto"} my={12}>
+    <Box p={5} maxW={"70%"} mx={"auto"} my={12}>
       <CustomSubHeading highlightText="Our World">
-      Wander Through 
+        Wander Through
       </CustomSubHeading>
-      <Grid templateColumns="repeat(3, 1fr)" gap={3} h="580px" mt={8}>
+      <Grid templateColumns="repeat(3, 1fr)" gap={3} h="520px" mt={8}>
         {travelImages.map((img, index) => (
           <GridItem
             key={index}
             colSpan={img.span[0]}
             rowSpan={img.span[1]}
             position="relative"
+            rounded={'10px'}
             overflow="hidden"
             cursor="pointer"
             transition="transform 0.3s"
@@ -87,6 +89,21 @@ export default function TravelBentoGrid() {
               w="100%"
               h="100%"
             />
+            <Box
+              position="absolute"
+              bottom={0}
+              left={0}
+              right={0}
+              bgGradient="linear(to-t, rgba(0, 0, 0, 0.7), transparent)"
+              color="white"
+              p={3}
+              
+              textAlign="center"
+            >
+              <Text fontSize="lg" fontWeight="bold">
+                {img.alt}
+              </Text>
+            </Box>
           </GridItem>
         ))}
       </Grid>
@@ -95,7 +112,7 @@ export default function TravelBentoGrid() {
         <Modal isOpen={isOpen} onClose={onClose} size="xl">
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>{selectedImage.alt}</ModalHeader>
+            <ModalHeader pb={0}>{selectedImage.alt}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <Image

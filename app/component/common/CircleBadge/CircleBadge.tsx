@@ -8,8 +8,8 @@ const CircleBadge = ({ price, label, icon, gradientStart, gradientEnd, borderCol
   return (
     <Box
       position="relative"
-      width="180px"
-      height="180px"
+      width="140px"
+      height="140px"
       bgGradient={`linear(to-b, ${gradientStart || 'blue.50'}, ${gradientEnd || 'blue.100'})`}
       clipPath="circle(50% at 50% 50%)"
       display="flex"

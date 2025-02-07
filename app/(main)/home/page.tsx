@@ -12,8 +12,9 @@ import HeroSection from "../../travelComponent/TravelHeroSection/TravelHeroSecti
 // import WhyChooseUs from "../../travelComponent/WhyChooseUs/WhyChooseUs";
 // import Banner from "./component/Banner";
 import TestimonialSection from "../../component/TestimonialSection/TestimonialSection";
+import ExploreEuropeCarousel from "../../travelComponent/ExploreSection/ExploreSection";
+import FeaturedDestination from "../../travelComponent/FeaturedDestination/FeaturedDestination";
 import TourPackageSection from "../../travelComponent/TourPackageSection/TourPackageSection";
-import BudgetWrapper from "./component/BudgetWrapper/BudgetWrapper";
 import WhyChoose from "./component/WhyChoose/WhyChoose";
 
 // Data for the first Banner
@@ -85,14 +86,18 @@ export default function Home() {
 
       <TourPackageSection/>
       
-      <BudgetWrapper />
       <TravelBentoGrid />
       <LocationCarousel />
       {/* <WhyChooseUs /> */}
+      {/* <BudgetWrapper /> */}
+
+    <ExploreEuropeCarousel/>
+
       <SightseeingList/>
       <TestimonialSection/>
-      {/* <StatsSection /> */}
       <WhyChoose />
+      <FeaturedDestination/>
+      {/* <StatsSection /> */}
      <TransfersEurailSection/>
       <Box>
         <ContactUs />
