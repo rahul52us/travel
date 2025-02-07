@@ -1,37 +1,28 @@
 import {
   Box,
-  Flex,
   Heading,
-  Icon,
-  Image,
-  Tag,
   Text
 } from '@chakra-ui/react';
-import { FaCompass } from 'react-icons/fa';
 import '../../component/FAQ/FAQAccordion/scroll.css';
 import AllBlogsSection from './AllBlogsSection/AllBlogsSection';
 import BlogHighlight from './BlogHighlight/BlogHighlight';
+import RecentBlogsSection from './RecentBlogsSection/RecentBlogsSection';
   
   const BlogPage = () => {
     // const isMobile = useBreakpointValue({ base: true, md: false });
   
     return (
-      <Box maxW="7xl" mx="auto" px={{ base: 4, md: 8 }} py={8}>
+      <Box maxW="7xl" mx="auto" px={{ base: 4, md: 8 }}>
         {/* Page Header */}
-        <Box textAlign="center" mb={12}>
-          <Heading as="h1" fontSize={{ base: '4xl', md: '5xl' }} mb={4} fontWeight="900">
+        <Box textAlign="center" mb={6}>
+          <Heading as="h1" fontSize={{ base: '4xl', md: '4xl' }} mb={2} fontWeight="900">
             Wander<span style={{ color: '#3182CE' }}>Lens</span>
           </Heading>
           <Text fontSize="lg" color="gray.600" maxW="2xl" mx="auto">
             Journey through stories that redefine travel experiences
           </Text>
         </Box>
-  
-        {/* Bento Grid Highlights */}
         <BlogHighlight/>
-
-
-
   
         {/* Creative All Stories Grid */}
         <Heading as="h3" fontSize="2xl" mb={8} position="relative">
@@ -54,10 +45,10 @@ import BlogHighlight from './BlogHighlight/BlogHighlight';
 
         
         <Box mb={16} mt={12}>
-        <Heading as="h3" fontSize="2xl" mb={6}>
-          Recently Published
-        </Heading>
-        <Flex overflowX="auto" pb={4} className='customScrollBar'>
+
+          <RecentBlogsSection/>
+       
+        {/* <Flex overflowX="auto" pb={4} className='customScrollBar'>
           {[1, 2, 3, 4, 5].map((item) => (
             <Box
               key={item}
@@ -87,7 +78,7 @@ import BlogHighlight from './BlogHighlight/BlogHighlight';
               </Box>
             </Box>
           ))}
-        </Flex>
+        </Flex> */}
       </Box>
         
   

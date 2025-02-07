@@ -5,12 +5,11 @@ import { FiArrowUpRight } from 'react-icons/fi'
 const BlogHighlight = () => {
   return (
     <Box>
-
-<Grid
+        <Grid
           templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }}
-          templateRows={{ md: '340px 240px' }}
-          gap={6}
-          mb={16}
+          templateRows={{ md: '320px 220px' }}
+          gap={4}
+          mb={20}
         >
           {/* Main Highlight */}
           <Box 
@@ -115,7 +114,7 @@ const BlogHighlight = () => {
               bottom={0}
               left={0}
               right={0}
-              p={6}
+              p={4}
               bg="white"
               m={4}
               borderRadius="2xl"
@@ -143,7 +142,7 @@ const BlogHighlight = () => {
               bottom={0}
               left={0}
               right={0}
-              p={6}
+              p={4}
               bg="white"
               m={4}
               borderRadius="2xl"
