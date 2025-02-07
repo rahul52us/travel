@@ -1,5 +1,6 @@
 import {
   Box,
+  Center,
   Container,
   Divider,
   Grid,
@@ -18,10 +19,13 @@ import { footerData } from "./components/footerData";
 
 // Removed empty interface
 export const Footer: React.FC = () => {
-  const textColor = useColorModeValue("white", "white");
+  const textColor = useColorModeValue("gray.100", "white");
 
   return (
-    <Box bg={"#065F68"} color={textColor} borderTopRadius={{base:"24px",md:"40px"}} py={{base:"8",md:14}}>
+    <Box 
+    // bg={'#1C2B47 '}
+bgGradient={'linear(to-r, #1C2B47,#0A192F)'}
+     color={textColor} borderTopRadius={{base:"24px",md:"40px"}} py={{base:"8",md:14}}>
       <Container as={Stack} maxW={{lg:"90%"}} px={{ base: 4, md: 8 }}>
         <SimpleGrid
           templateColumns={{
@@ -38,13 +42,17 @@ export const Footer: React.FC = () => {
             align={{ base: "center", md: "flex-start" }}
           >
             <Box textAlign={{ base: "center", md: "left" }}>
+              <Center bg={'blackAlpha.200'} rounded={'xl'}>
+
               <Image
-                src="/images/whiteLogo.png" 
+                src="/images/logo3.png" 
                 alt="logo"
-                h={{base:"70px",lg:"100px"}}
+                objectFit={'cover'}
+                h={{base:"70px",lg:"160px"}}
                 mx={{ base: "auto", md: 0 }}
-              />
-              <Text pl={1} fontSize={{ base: "lg", md:"xl",lg: "2xl" }} mt={-2}>
+                />
+                </Center>
+              <Text pl={1} fontSize={{ base: "lg", md:"xl",lg: "2xl" }} mt={2}>
                 {footerData.companyInfo.tagline}
               </Text>
             </Box>
@@ -114,7 +122,7 @@ export const Footer: React.FC = () => {
           </Box>
           <Text fontSize={{ base: "xs", sm: "sm" }} textAlign={'center'}>
             ©{new Date().getFullYear()}{" "}
-            <Text as={"span"} color={"#DF837C"}>
+            <Text as={"span"} color={"teal.400"}>
               {footerData.companyInfo.name}
             </Text>{" "}
             . All rights reserved.

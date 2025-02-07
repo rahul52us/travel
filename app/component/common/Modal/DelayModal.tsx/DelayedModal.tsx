@@ -6,6 +6,7 @@ import {
   FormControl,
   Heading,
   Icon,
+  Image,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -97,7 +98,7 @@ const DelayedModal = () => {
                 left={0}
                 right={0}
                 bottom={0}
-                bgGradient="linear(45deg, rgba(49, 130, 206, 0.8) 0%, rgba(49, 151, 149, 0.6) 100%)"
+                bgGradient="linear(45deg, rgba(49, 130, 206, 0.6) 0%, rgba(49, 151, 149, 0.6) 100%)"
                 p={8}
               >
                 <MotionBox
@@ -145,16 +146,30 @@ const DelayedModal = () => {
               position="relative"
             >
               <Box position="relative" zIndex={1}>
+                <Flex justify={'space-between'} align={'center'}>
+
                 <Heading
                   fontSize="3xl"
-                  mb={8}
+                  mb={6}
+                  pt={4}
                   bgGradient={accentGradient}
                   bgClip="text"
                   fontWeight="bold"
                 >
                   Craft Your Adventure
                 </Heading>
+                <Box>
+                <Image
+                src="/images/logo3.png" 
+                alt="logo"
+                objectFit={'cover'}
+                h={{base:"70px",lg:"80px"}}
+                w={'100%'}
+                mx={{ base: "auto", md: 0 }}
+                />
+                </Box>
 
+                  </Flex>
                 <Stack spacing={6}>
                   <AnimatedInput
                     icon={FaUser}

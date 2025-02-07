@@ -1,9 +1,9 @@
-import { FaTwitter, FaInstagram, FaLinkedinIn, FaPinterestP } from 'react-icons/fa';
+import { FaInstagram, FaLinkedinIn, FaPinterestP, FaTwitter } from 'react-icons/fa';
 // import { FooterProps } from '../components/footer/types';
 
 export const footerData = {
   companyInfo: {
-    name: "Metamind",
+    name: "Cosmic Travels",
     tagline: "Talk. Listen. Recover",
     crisisNumber: "888-888-88",
     socialLinks: [
@@ -38,19 +38,19 @@ export const footerData = {
     {
       title: "Quick Links",
       links: [
-        { name: "Specialist", href: "/specialist" },
-        { name: "How It Works", href: "/how-it-works" },
-        { name: "Client Reviews", href: "/reviews" },
-        { name: "Contact Us", href: "/contact" }
+        { name: "Home", href: "/" },
+        { name: "About Us", href: "/about-us" },
+        { name: "FAQ", href: "/faq" },
+        { name: "Contact Us", href: "/contact-us" }
       ]
     },
     {
       title: "Our Services",
       links: [
-        { name: "Individual Therapy", href: "/services/individual" },
-        { name: "Couples Therapy", href: "/services/couples" },
-        { name: "Teen Therapy", href: "/services/teen" },
-        { name: "Psychological Assessment", href: "/services/assessment" }
+        { name: "Tour Packages", href: "/packages" },
+        { name: "Visa Servises", href: "/visa-service" },
+        { name: "Blogs", href: "/blogs" },
+      
       ]
     }
   ],

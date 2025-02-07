@@ -1,5 +1,6 @@
+import { Link, Stack, Text } from '@chakra-ui/react';
+import { useRouter } from "next/navigation";
 import React from 'react';
-import { Stack, Text, Link } from '@chakra-ui/react';
 
 interface FooterLink {
   name: string;
@@ -14,16 +15,21 @@ interface FooterSectionProps {
 }
 
 const FooterSection: React.FC<FooterSectionProps> = ({ section }) => {
+  const router = useRouter()
+
   return (
     <Stack align="flex-start" mt={4}>
-      <Text fontWeight="400" fontSize="lg" mb={1}>
+      <Text fontWeight="400" fontSize="lg" mb={1} color={'teal.400'}>
         {section.title}
       </Text>
       {section.links.map((link) => (
         <Link
           key={link.name}
           mb={{md:2}}
-          href={link.href}
+          // href={link.href}
+          onClick={() => {
+            router.push(link.href)
+          }}
           fontSize={{base:"sm",md:"15px"}}
           _hover={{ color: 'gray.300' }}
         >
