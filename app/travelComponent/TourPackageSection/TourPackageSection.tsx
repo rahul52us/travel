@@ -1,15 +1,16 @@
-import { Box } from '@chakra-ui/react';
+import { Box } from "@chakra-ui/react";
 import TravelpackagesCard from "../../component/common/TravelPackageCard/TravelPackageList";
-import CustomSubHeading from '../common/CustomSubHeading/CustomSubHeading';
+import CustomSubHeading from "../common/CustomSubHeading/CustomSubHeading";
 
 const TourPackageSection = () => {
   return (
-    <Box my={"6rem"} >
-<CustomSubHeading highlightText='Starts Here '>Your Escape </CustomSubHeading>
-        <TravelpackagesCard/>
-      
+    <Box my={"6rem"}>
+      <CustomSubHeading highlightText="Starts Here ">
+        Your Escape{" "}
+      </CustomSubHeading>
+      <TravelpackagesCard />
     </Box>
-  )
-}
+  );
+};
 
-export default TourPackageSection
+export default TourPackageSection;

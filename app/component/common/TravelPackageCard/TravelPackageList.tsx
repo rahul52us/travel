@@ -4,7 +4,7 @@ import { Box } from "@chakra-ui/react";
 import CustomCarousel from "../CustomCarousal/CustomCarousal";
 import TravelPackageCard from "./element/TravelPackageCard";
 
-const travelPackages = [
+export const travelPackages = [
   {
     id: 1,
     location: "Santorini, Greece",
