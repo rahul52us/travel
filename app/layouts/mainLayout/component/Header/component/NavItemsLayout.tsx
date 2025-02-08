@@ -6,7 +6,8 @@ import NavItem from "../element/NavItem";
 
 interface NavItemType {
   title: string;
-  link : string
+  link?: string;
+  subItems?: { title: string; link: string }[];
 }
 
 const NavItemsLayout: React.FC = () => {
@@ -14,7 +15,7 @@ const NavItemsLayout: React.FC = () => {
     <Flex
       direction={{ base: "column", md: "row" }}
       gap={{ base: 4, md: 6 }}
-      alignItems={{ base: "center", md: "start" }}
+      alignItems={{ base: "center", md: "center" }}
       justifyContent="center"
       wrap={{ base: "wrap", md: "nowrap" }}
     >

@@ -42,7 +42,7 @@ const Header = () => {
       const scrollY = window.scrollY;
       const scrollPercentage = (scrollY / (documentHeight - windowHeight)) * 100;
 
-      setScrolling(scrollPercentage > 40);
+      setScrolling(scrollPercentage > 5);
     }, 100)();
   }, []);
 
@@ -87,7 +87,7 @@ const Header = () => {
           justify="space-between"
           px={8}
           py={scrolling ? 2 : 4}
-          bg={scrolling ? "rgba(0, 0, 0, 0.9)" : "transparent"}
+          bg={scrolling ? "white" : "transparent"}
           color="white"
           position="fixed"
           top={scrolling ? 0 : "1rem"}
@@ -95,7 +95,7 @@ const Header = () => {
           right={0}
           zIndex={100}
         >
-          <Image src="/images/logo.png" alt="Logo" h={scrolling ? "60px" : "90px"} />
+          <Image src="/images/logo3.png" alt="Logo" h={scrolling ? "60px" : "80px"} />
           <NavItemsLayout />
           <HeroNavButton />
         </Flex>
