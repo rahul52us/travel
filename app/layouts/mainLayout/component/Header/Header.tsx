@@ -18,7 +18,8 @@ import React, { useEffect, useState, useCallback } from "react";
 import NavItemsLayout from "./component/NavItemsLayout";
 import HeroNavButton from "./component/HeroNavButton";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import AnimatedBox from "../../../../component/common/motion/Animatedbox/AnimatedBox";
+import { headerLargeHeight, headerSmallHeight } from "./utils/constant";
+// import AnimatedBox from "../../../../component/common/motion/Animatedbox/AnimatedBox";
 
 const throttle = <T extends (...args: unknown[]) => void>(func: T, delay: number): T => {
   let lastCall = 0;
@@ -33,18 +34,17 @@ const throttle = <T extends (...args: unknown[]) => void>(func: T, delay: number
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [scrolling, setScrolling] = useState(false);
+  const setScrolling = useState(false)[1];
 
   const handleScroll = useCallback(() => {
     throttle(() => {
-      const documentHeight = document.documentElement.scrollHeight;
-      const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY;
-      const scrollPercentage = (scrollY / (documentHeight - windowHeight)) * 100;
-
-      setScrolling(scrollPercentage > 5);
+      // const documentHeight = document.documentElement.scrollHeight;
+      // const windowHeight = window.innerHeight;
+      // const scrollY = window.scrollY;
+      // const scrollPercentage = (scrollY / (documentHeight - windowHeight)) * 100;
+      setScrolling(true);
     }, 100)();
-  }, []);
+  }, [setScrolling]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -55,24 +55,22 @@ const Header = () => {
 
   return (
     <Box>
-      <AnimatedBox />
-
       {isMobile ? (
         <Flex
           alignItems="center"
           justify="space-between"
           px={4}
           py={1}
-          bg={scrolling ? "rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.5)"}
           color="white"
           position="fixed"
-          top="3rem"
+          // top="3rem"
           left={0}
           right={0}
+          top={0}
           zIndex={100}
-          transition="background-color 0.3s ease"
+          height={headerSmallHeight}
         >
-          <Image src="/images/logo.png" alt="Logo" h={scrolling ? "40px" : "50px"} />
+          <Image src="/images/logo3.png" alt="Logo" h={'40px'} />
           <IconButton
             icon={<HamburgerIcon />}
             onClick={onOpen}
@@ -86,16 +84,17 @@ const Header = () => {
           alignItems="center"
           justify="space-between"
           px={8}
-          py={scrolling ? 2 : 4}
-          bg={scrolling ? "white" : "transparent"}
+          py={2}
+          bg={'white'}
           color="white"
           position="fixed"
-          top={scrolling ? 0 : "1rem"}
+          top={0}
           left={0}
           right={0}
           zIndex={100}
+          height={headerLargeHeight}
         >
-          <Image src="/images/logo3.png" alt="Logo" h={scrolling ? "60px" : "80px"} />
+          <Image src="/images/logo3.png" alt="Logo" h={'60px'} />
           <NavItemsLayout />
           <HeroNavButton />
         </Flex>
@@ -108,7 +107,7 @@ const Header = () => {
           <DrawerCloseButton />
           <DrawerBody>
             <Center mt={8} mb={6}>
-              <Image src="/images/logo.png" alt="Logo" h="60px" />
+              <Image src="/images/logo3.png" alt="Logo" h="60px" />
             </Center>
             <Box px={4}>
               <NavItemsLayout />

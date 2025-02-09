@@ -5,7 +5,7 @@ import React from "react";
 const HeroNavButton = () => {
   return (
     <Button bg={"#045B64"} size={"lg"} fontWeight={500} fontSize={"sm"}>
-      Book Apppointment
+      Book Trip
     </Button>
   );
 };
