@@ -190,7 +190,7 @@ const DelayedModal = () => {
                         iconColor="teal.400"
                         variant="filled"
                       >
-                        <option value="+91">🇮🇳 +91</option>
+                        <option value="+91">🇮🇳 +91</option> 
                         <option value="+1">🇺🇸 +1</option>
                         <option value="+44">🇬🇧 +44</option>
                       </Select>

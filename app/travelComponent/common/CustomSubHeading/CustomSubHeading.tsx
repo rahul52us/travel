@@ -16,7 +16,7 @@ const CustomSubHeading = ({
   children,
   textAlign = "center", // Default text alignment
   fontWeight = 400, // Default font weight
-  fontSize = { base: "24px", md: "42px" }, // Default font size with breakpoints
+  fontSize = { base: "24px", md: "38px" }, // Default font size with breakpoints
   my = { base: 1, md: 2 }, // Default margin-y with breakpoints
   px = 1, // Default padding-x
   highlightText = "", // Custom text for the highlighted span
