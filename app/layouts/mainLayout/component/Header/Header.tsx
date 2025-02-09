@@ -34,7 +34,7 @@ const throttle = <T extends (...args: unknown[]) => void>(func: T, delay: number
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [scrolling, setScrolling] = useState(false);
+  const setScrolling = useState(false)[1];
 
   const handleScroll = useCallback(() => {
     throttle(() => {
@@ -44,7 +44,7 @@ const Header = () => {
       // const scrollPercentage = (scrollY / (documentHeight - windowHeight)) * 100;
       setScrolling(true);
     }, 100)();
-  }, []);
+  }, [setScrolling]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -55,8 +55,6 @@ const Header = () => {
 
   return (
     <Box>
-      {/* <AnimatedBox /> */}
-
       {isMobile ? (
         <Flex
           alignItems="center"
@@ -64,7 +62,6 @@ const Header = () => {
           px={4}
           py={1}
           color="white"
-          bgColor={'white'}
           position="fixed"
           // top="3rem"
           left={0}
@@ -110,7 +107,7 @@ const Header = () => {
           <DrawerCloseButton />
           <DrawerBody>
             <Center mt={8} mb={6}>
-              <Image src="/images/logo.png" alt="Logo" h="60px" />
+              <Image src="/images/logo3.png" alt="Logo" h="60px" />
             </Center>
             <Box px={4}>
               <NavItemsLayout />

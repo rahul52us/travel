@@ -47,7 +47,7 @@ const storyData = [
       authorImage: "https://bit.ly/sage-adebayo",
     },
   ];
-  
+
   const AllBlogsSection = () => {
     return (
       <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} gap={6}>
@@ -57,5 +57,5 @@ const storyData = [
       </Grid>
     );
   };
-  
+
   export default AllBlogsSection;
