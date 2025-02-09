@@ -20,5 +20,6 @@ export const navItems = [
   //     { title: "Therapists", link: "/therapists" },
   //   ],
   // },
+  { title: "Testimonials", link: "/testimonials" },
   { title: "Contact Us", link: "/contact-us" },
 ];
