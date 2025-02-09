@@ -1,35 +1,29 @@
 "use client";
 
 import {
-  Box,
-  Heading,
-  Text,
-  VStack,
-  Image,
-  Divider,
-  Flex,
-  Button,
-  useBreakpointValue,
+  Box
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import { FiArrowRight } from "react-icons/fi";
+import AboutUsPage from "./components/AboutUsPage";
 
 // Motion Components for Animation
-const MotionBox = motion(Box);
+// const MotionBox = motion(Box);
 
 export default function AboutPage() {
   // Responsive text size
-  const textSize = useBreakpointValue({ base: "sm", md: "md" });
-
+  // const textSize = useBreakpointValue({ base: "sm", md: "md" });
   return (
-    <VStack
+
+    <Box>
+
+      <AboutUsPage/>
+
+    {/* <VStack
       spacing={8}
       align="center"
       p={{ base: 4, md: 6 }}
       maxW="1200px"
       mx="auto"
     >
-      {/* Hero Section */}
       <MotionBox
         textAlign="center"
         initial={{ opacity: 0, y: -50 }}
@@ -54,7 +48,6 @@ export default function AboutPage() {
         </Text>
       </MotionBox>
 
-      {/* Mission Section */}
       <Flex
         direction={{ base: "column", md: "row" }}
         align="center"
@@ -63,7 +56,6 @@ export default function AboutPage() {
         gap={{ base: 6, md: 10 }}
         py={{ base: 6, md: 8 }}
       >
-        {/* Content */}
         <VStack align="start" spacing={4} flex={1} maxW="600px">
           <Heading as="h2" size="lg" color="teal.500">
             Our Mission
@@ -79,7 +71,6 @@ export default function AboutPage() {
           </Button>
         </VStack>
 
-        {/* Image */}
         <Box flex={1} maxH="500px" borderRadius="lg" overflow="hidden">
           <Image
             src="/images/travel/about-1.jpg"
@@ -95,7 +86,6 @@ export default function AboutPage() {
 
       <Divider borderColor="teal.200" w="full" />
 
-      {/* What Sets Us Apart Section */}
       <Flex
         direction={{ base: "column", md: "row-reverse" }}
         align="center"
@@ -104,7 +94,6 @@ export default function AboutPage() {
         gap={{ base: 6, md: 10 }}
         py={{ base: 6, md: 8 }}
       >
-        {/* Content */}
         <VStack align="start" spacing={4} flex={1} maxW="600px">
           <Heading as="h2" size="lg" color="teal.500">
             What Sets Us Apart
@@ -121,7 +110,6 @@ export default function AboutPage() {
           </Text>
         </VStack>
 
-        {/* Image */}
         <Box flex={1} maxH="500px" borderRadius="lg" overflow="hidden">
           <Image
             src="/images/travel/about-2.jpg"
@@ -137,7 +125,6 @@ export default function AboutPage() {
 
       <Divider borderColor="teal.200" w="full" />
 
-      {/* Our Services Section */}
       <Flex
         direction={{ base: "column", md: "row" }}
         align="center"
@@ -146,7 +133,6 @@ export default function AboutPage() {
         gap={{ base: 6, md: 10 }}
         py={{ base: 6, md: 8 }}
       >
-        {/* Content */}
         <VStack align="start" spacing={4} flex={1} maxW="600px">
           <Heading as="h2" size="lg" color="teal.500">
             Our Services
@@ -165,7 +151,6 @@ export default function AboutPage() {
           </Button>
         </VStack>
 
-        {/* Image */}
         <Box flex={1} maxH="500px" borderRadius="lg" overflow="hidden">
           <Image
             src="/images/travel/about-3.jpg"
@@ -181,7 +166,6 @@ export default function AboutPage() {
 
       <Divider borderColor="teal.200" w="full" />
 
-      {/* Call to Action Section */}
       <VStack
         spacing={6}
         align="center"
@@ -204,6 +188,8 @@ export default function AboutPage() {
           Contact Us Today
         </Button>
       </VStack>
-    </VStack>
+    </VStack> */}
+    
+    </Box>
   );
 }
