@@ -1,26 +1,26 @@
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import React from "react";
+import { Box, Flex, Image } from "@chakra-ui/react";
+import CustomSubHeading from "../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 import FAQAccordion from "./FAQAccordion/FAQAccordion";
 import "./FAQAccordion/scroll.css";
 
 const FAQ = () => {
   return (
     <Box
-      my={{ md: 10 }}
+      mt={{ md: 10 }}
       pt={{ base: "3rem", md: "6rem" }}
       pb={{ base: "4rem", md: "8rem" }}
       bg={"#E1F0EE"}
       position={"relative"}
     >
-      <Text
+      {/* <Text
         textAlign={"center"}
         color={"#DF837C"}
         textTransform={"uppercase"}
         fontSize={{ base: "14px", md: "16px" }}
       >
         FAQS
-      </Text>
-      <Heading
+      </Text> */}
+      {/* <Heading
         textAlign={"center"}
         as={"h2"}
         fontWeight={400}
@@ -31,7 +31,10 @@ const FAQ = () => {
         <Text as={"span"} fontWeight={600}>
           Need to Know
         </Text>
-      </Heading>
+      </Heading> */}
+      <CustomSubHeading highlightText=" Need to Know ">
+      Everything You{" "}
+      </CustomSubHeading>
       <Flex justify="center" mt={{base:6,md:12}} maxH="26rem">
         <Box
           zIndex={2}

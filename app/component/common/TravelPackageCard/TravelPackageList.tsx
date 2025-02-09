@@ -89,7 +89,7 @@ export const travelPackages = [
 
 const TravelPackageList = () => {
   return (
-    <Box maxW={{lg:"95%",xl:"90%"}} mx="auto">
+    <Box maxW={{lg:"95%",xl:"90%"}} mx="auto" py={2}>
       <CustomCarousel autoplay={true}>
 
       {travelPackages.map((pkg) => (

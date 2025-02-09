@@ -12,6 +12,7 @@ import FeaturedDestination from "../../travelComponent/FeaturedDestination/Featu
 import TourPackageSection from "../../travelComponent/TourPackageSection/TourPackageSection";
 import WhyChoose from "./component/WhyChoose/WhyChoose";
 import BudgetWrapper from "./component/BudgetWrapper/BudgetWrapper";
+import FAQ from "../../component/FAQ/FAQ";
 
 export default function Home() {
   return (
@@ -37,6 +38,7 @@ export default function Home() {
       <FeaturedDestination />
       {/* <StatsSection /> */}
       <TransfersEurailSection />
+      <FAQ/>
       <Box>
         <ContactUs />
       </Box>

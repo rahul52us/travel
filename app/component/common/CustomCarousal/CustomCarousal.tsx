@@ -179,7 +179,7 @@ const CustomCarousel: React.FC<CustomCarouselProps> = ({
     <Box position="relative" width="full" p={{ base: 4, md: 4 }} maxWidth={maxWidth}>
       <Slider {...settings}>
         {React.Children.map(children, (child) => (
-          <Box px={2} pb={2}>{child}</Box>
+          <Box py={2} px={2} >{child}</Box>
         ))}
       </Slider>
     </Box>

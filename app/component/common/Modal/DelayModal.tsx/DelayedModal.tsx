@@ -30,6 +30,7 @@ import {
   FaPhone,
   FaUser,
 } from "react-icons/fa";
+import { RiCustomerServiceFill } from "react-icons/ri";
 
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
@@ -98,14 +99,14 @@ const DelayedModal = () => {
                 left={0}
                 right={0}
                 bottom={0}
-                bgGradient="linear(45deg, rgba(49, 130, 206, 0.6) 0%, rgba(49, 151, 149, 0.6) 100%)"
+                bgGradient="linear(45deg, rgba(49, 130, 206, 0.8) 0%, rgba(49, 151, 149, 0.7) 100%)"
                 p={8}
               >
                 <MotionBox
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8 }}
-                  mt={24}
+                  mt={28}
                 >
                   <AnimatedFeatureItem
                     icon={BsHeadsetVr}
@@ -118,7 +119,7 @@ const DelayedModal = () => {
                     delay={0.6}
                   />
                   <AnimatedFeatureItem
-                    icon={BsHeadsetVr}
+                    icon={RiCustomerServiceFill}
                     title="Global Support Network"
                     delay={0.9}
                   />
@@ -296,14 +297,14 @@ const AnimatedFeatureItem = ({ icon, title, delay }) => (
     mb={8}
     p={4}
     borderRadius="xl"
-    bg="whiteAlpha.200"
+    bg="whiteAlpha.400"
     _hover={{ bg: "whiteAlpha.300" }}
     // transition="all 0.3s ease"
     cursor="pointer"
   >
     <Flex align="center" gap={4}>
       <Icon as={icon} boxSize={8} color="whiteAlpha.900" />
-      <Text fontSize="lg" fontWeight="500" letterSpacing="wide">
+      <Text fontSize="lg" fontWeight="500" letterSpacing="wide" textShadow={"md"}>
         {title}
       </Text>
     </Flex>
