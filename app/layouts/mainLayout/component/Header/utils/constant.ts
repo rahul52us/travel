@@ -1,20 +1,11 @@
-// export const navItems = [
-//     { title: "Our Values", link: "/our-values" },
-//     { title: "About Us", link: "/about-us" },
-//     // { title: "Features", link: "/features" },
-//     { title: "Visa Service", link: "/visa-service" },
-//     // { title: "Therapists", link: "/therapists" },
-//     // { title: "Testimonials", link: "/testimonials" },
-//     { title: "Blogs", link: "/blogs" },
-//     { title: "Contact Us", link: "/contact-us" },
-//   ];
-
+export const headerSmallHeight = '50px'
+export const headerLargeHeight = '80px'
 
 export const navItems = [
-  { title: "Our Values", link: "/our-values" },
+  { title: "Home", link: "/" },
   { title: "About Us", link: "/about-us" },
-  { 
-    title: "Services", 
+  {
+    title: "Services",
     subItems: [
       { title: "Visa Services", link: "/visa-service" },
       { title: "Business Visa", link: "/visa-service/business" },
@@ -22,8 +13,8 @@ export const navItems = [
     ],
   },
   { title: "Blogs", link: "/blogs" },
-  // { 
-  //   title: "More", 
+  // {
+  //   title: "More",
   //   subItems: [
   //     { title: "Testimonials", link: "/testimonials" },
   //     { title: "Therapists", link: "/therapists" },

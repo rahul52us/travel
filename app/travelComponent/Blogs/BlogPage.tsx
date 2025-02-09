@@ -7,10 +7,10 @@ import '../../component/FAQ/FAQAccordion/scroll.css';
 import AllBlogsSection from './AllBlogsSection/AllBlogsSection';
 import BlogHighlight from './BlogHighlight/BlogHighlight';
 import RecentBlogsSection from './RecentBlogsSection/RecentBlogsSection';
-  
+
   const BlogPage = () => {
     // const isMobile = useBreakpointValue({ base: true, md: false });
-  
+
     return (
       <Box maxW="7xl" mx="auto" px={{ base: 4, md: 8 }}>
         {/* Page Header */}
@@ -23,19 +23,19 @@ import RecentBlogsSection from './RecentBlogsSection/RecentBlogsSection';
           </Text>
         </Box>
         <BlogHighlight/>
-  
+
         {/* Creative All Stories Grid */}
         <Heading as="h3" fontSize="2xl" mb={8} position="relative">
           <Text as="span" position="relative" zIndex={1} bg={'gray.50'} pr={4}>
             All Stories
           </Text>
-          <Box 
-            position="absolute" 
-            left={0} 
-            right={0} 
-            top="50%" 
-            height="2px" 
-            bg="gray.200" 
+          <Box
+            position="absolute"
+            left={0}
+            right={0}
+            top="50%"
+            height="2px"
+            bg="gray.200"
             zIndex={0}
           />
         </Heading>
@@ -43,11 +43,11 @@ import RecentBlogsSection from './RecentBlogsSection/RecentBlogsSection';
         <AllBlogsSection/>
 
 
-        
+
         <Box mb={16} mt={12}>
 
           <RecentBlogsSection/>
-       
+
         {/* <Flex overflowX="auto" pb={4} className='customScrollBar'>
           {[1, 2, 3, 4, 5].map((item) => (
             <Box
@@ -80,17 +80,17 @@ import RecentBlogsSection from './RecentBlogsSection/RecentBlogsSection';
           ))}
         </Flex> */}
       </Box>
-        
-  
-        {/* <Grid 
-          templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} 
+
+
+        {/* <Grid
+          templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
           gap={8}
         >
           {[1, 2, 3, 4, 5, 6].map((item) => (
             <Box
               key={item}
               position="relative"
-              _hover={{ 
+              _hover={{
                 '.story-content': { transform: 'translateY(-10px)' },
                 'img': { transform: 'scale(1.05)' }
               }}
@@ -108,7 +108,7 @@ import RecentBlogsSection from './RecentBlogsSection/RecentBlogsSection';
                 opacity="0.1"
                 zIndex={-1}
               />
-              
+
               <Box
                 position="relative"
                 overflow="hidden"
@@ -126,7 +126,7 @@ import RecentBlogsSection from './RecentBlogsSection/RecentBlogsSection';
                     transition="transform 0.4s"
                   />
                 </Box>
-  
+
                 <Box p={6} className="story-content" transition="transform 0.3s">
                   <Flex justify="space-between" mb={4}>
                     <Tag variant="outline" colorScheme="blue">Road Trip</Tag>
@@ -145,15 +145,15 @@ import RecentBlogsSection from './RecentBlogsSection/RecentBlogsSection';
                       />
                     </HStack>
                   </Flex>
-  
+
                   <Heading fontSize="xl" mb={3} lineHeight="tall">
                     Coastal Highway Adventure: Pacific Northwest
                   </Heading>
-  
+
                   <Flex align="center" mb={4}>
-                    <Avatar 
-                      size="sm" 
-                      name="Sarah Johnson" 
+                    <Avatar
+                      size="sm"
+                      name="Sarah Johnson"
                       src="https://bit.ly/sage-adebayo"
                       border="2px solid"
                       borderColor="blue.200"
@@ -162,7 +162,7 @@ import RecentBlogsSection from './RecentBlogsSection/RecentBlogsSection';
                     <Box mx={3} w={1} h={1} bg="gray.400" borderRadius="full" />
                     <Text fontSize="sm" color="gray.500">May 15, 2023</Text>
                   </Flex>
-  
+
                   <Flex align="center" color="gray.500">
                     <Icon as={FaCompass} mr={2} />
                     <Text fontSize="sm">Oregon Coast, USA</Text>
@@ -175,9 +175,9 @@ import RecentBlogsSection from './RecentBlogsSection/RecentBlogsSection';
             </Box>
           ))}
         </Grid> */}
-        
+
       </Box>
     );
   };
-  
+
   export default BlogPage;

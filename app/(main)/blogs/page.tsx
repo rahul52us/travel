@@ -7,7 +7,7 @@ const page = () => {
   return (
     <Box>
         <BlogPage/>
-      
+
     </Box>
   )
 }
