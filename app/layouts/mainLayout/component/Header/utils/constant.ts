@@ -8,7 +8,7 @@ export const navItems = [
     title: "Services",
     subItems: [
       { title: "Visa Services", link: "/visa-service" },
-      { title: "Business Visa", link: "/visa-service/business" },
+      { title: "Sightseeing", link: "/sightseeing" },
       { title: "Student Visa", link: "/visa-service/student" },
     ],
   },
