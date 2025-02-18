@@ -18,11 +18,6 @@ export default function Home() {
   return (
     <Box>
       <HeroSection />
-      {/* <Banner data={cardData1} heading="Explore Our First Set of Cards" /> */}
-      {/* <Banner data={cardData2} heading="Explore Our Second Set of Cards" /> */}
-      {/* <HeroSection /> */}
-
-      {/* <TravelpackagesCard /> */}
 
       <TourPackageSection />
 
@@ -36,7 +31,6 @@ export default function Home() {
       <TestimonialSection />
       <WhyChoose />
       <FeaturedDestination />
-      {/* <StatsSection /> */}
       <TransfersEurailSection />
       <FAQ/>
       <Box>

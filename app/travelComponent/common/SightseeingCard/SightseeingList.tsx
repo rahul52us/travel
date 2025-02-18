@@ -51,13 +51,15 @@ const data = [
 
 const SightseeingList = () => {
   const noOfSlides = useBreakpointValue({ base: 1, md: 2, lg: 4 });
+  const showArrows = useBreakpointValue({base:false,lg:true})
+
   return (
-    <Box my={"6rem"} maxW={"90%"} mx={"auto"}>
+    <Box my={"4rem"} maxW={{base:"95%",lg:"90%"}} mx={"auto"}>
       <CustomSubHeading highlightText="Sightseeing Adventures">
         Unmissable Views
       </CustomSubHeading>
-      <Box mt={12}>
-        <CustomCarousel autoplay={true} slidesToShow={noOfSlides}>
+      <Box mt={{base:4,lg:12}}>
+        <CustomCarousel autoplay={true} slidesToShow={noOfSlides} showArrows={showArrows}>
           {data.map((place, index) => (
             <SightseeingCard key={index} place={place} />
           ))}

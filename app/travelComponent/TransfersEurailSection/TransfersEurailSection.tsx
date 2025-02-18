@@ -43,14 +43,14 @@ const transferData = [
   },
 ];
 
-const TransfersEurailSection = () => {
+const   TransfersEurailSection = () => {
   const noOfSlides = useBreakpointValue({ base: 1, md: 2, lg: 4 });
 
   return (
-    <Box maxW={{ xl: "95%" }} mx={"auto"} my={"5rem"}>
+    <Box maxW={{ base: "95%" }} mx={"auto"} my={"5rem"}>
       {/* <Grid templateColumns={'1fr 1fr 1fr 1fr'} gap={4}> */}
       <CustomSubHeading highlightText="Eurail">Transfers and</CustomSubHeading>
-      <Box mt={8}>
+      <Box mt={{base:2,lg:8}}>
 
       <CustomCarousel
         slidesToShow={noOfSlides}

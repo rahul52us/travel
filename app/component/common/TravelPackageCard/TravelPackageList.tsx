@@ -1,6 +1,6 @@
 // TravelPackageList.tsx
 
-import { Box } from "@chakra-ui/react";
+import { Box, useBreakpointValue } from "@chakra-ui/react";
 import CustomCarousel from "../CustomCarousal/CustomCarousal";
 import TravelPackageCard from "./element/TravelPackageCard";
 
@@ -88,9 +88,10 @@ export const travelPackages = [
 ];
 
 const TravelPackageList = () => {
+  const showArrows = useBreakpointValue({base:false,lg:true})
   return (
-    <Box maxW={{lg:"95%",xl:"90%"}} mx="auto" py={2}>
-      <CustomCarousel autoplay={true}>
+    <Box maxW={{base:"95%",xl:"90%"}} mx="auto" py={2}>
+      <CustomCarousel autoplay={true} showArrows={showArrows}>
 
       {travelPackages.map((pkg) => (
         <TravelPackageCard key={pkg.id} pkg={pkg} />

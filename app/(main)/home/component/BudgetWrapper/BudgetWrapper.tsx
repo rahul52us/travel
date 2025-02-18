@@ -67,7 +67,8 @@ const BudgetWrapper = () => {
     <Box  bgGradient={'linear(to-r, teal.50,cyan.100)'}>
 
     <Box
-      padding={{ base: "24px", md: "48px" }}
+      padding={{ base: "12px", md: "48px" }}
+      py={{base:"24px",md:"48px"}}
       // bgGradient="linear(to-tr, teal.50, white)"
       // boxShadow="2xl"
       // borderRadius="3xl"
@@ -101,8 +102,8 @@ const BudgetWrapper = () => {
       <Flex
         flexWrap="wrap"
         justifyContent={{ base: "center", md: "center" }}
-        gap={16}
-        padding="16px"
+        gap={{base:6,lg:16}}
+        padding={{lg:"16px"}}
         // bg="white"
         borderRadius="xl"
       >

@@ -30,31 +30,33 @@ export const Footer: React.FC = () => {
       // borderTopRadius={{ base: "24px", md: "40px" }}
       py={{ base: "8", md: 6 }}
     >
-      <Flex
-        align={"center"}
-        justify={"space-between"}
-        maxW={"75%"}
-        mx={"auto"}
-        mb={4}
-        pt={2}
-      >
-        <Flex align={"center"} gap={2}>
-          <Box>
-            <Image src="/icons/support.png" alt="Support" boxSize={"70px"} />
-          </Box>
-          <Text ml={4} fontSize={{ base: "2xl", md: "xl" }} fontWeight={700}>
-            Need Any Support For Tour & Travels ?
-          </Text>
-        </Flex>
-        <Flex align={"center"} gap={2}>
-          <Box>
-            <Image src="/icons/vacation.png" alt="Support" boxSize={"70px"} />
-          </Box>
-          <Text ml={4} fontSize={{ base: "2xl", md: "xl" }} fontWeight={700}>
-            Ready to Get Started With Vacations!
-          </Text>
-        </Flex>
-      </Flex>
+   <Flex  
+  align={"center"}  
+  justify={"space-between"}  
+  maxW={{ base: "90%", md: "75%" }} // Adjust max width for mobile and tablet  
+  mx={"auto"}  
+  mb={4}  
+  pt={2}  
+  direction={{ base: "column", md: "row" }} // Stack vertically on mobile, row on tablet and above  
+  gap={{ base: 4, md: 0 }} // Add gap between items on mobile  
+>  
+  <Flex align={"center"} gap={2}>  
+    <Box>  
+      <Image src="/icons/support.png" alt="Support" boxSize={{ base: "50px", md: "70px" }} objectFit={'contain'} />  
+    </Box>  
+    <Text ml={4} fontSize={{ base: "lg", md: "2xl" }} fontWeight={700}>  
+      Need Any Support For Tour & Travels ?  
+    </Text>  
+  </Flex>  
+  <Flex align={"center"} gap={2}>  
+    <Box>  
+      <Image src="/icons/vacation.png" alt="Support" boxSize={{ base: "50px", md: "70px" }} objectFit={'contain'} />   
+    </Box>  
+    <Text ml={4} fontSize={{ base: "xl", md: "2xl" }} fontWeight={700}>  
+      Ready to Get Started With Vacations!  
+    </Text>  
+  </Flex>  
+</Flex>
       <Divider mb={6} maxW={"80%"} mx={"auto"} />
       <Box>
         <Container as={Stack} maxW={{ lg: "90%" }} px={{ base: 4, md: 8 }}>

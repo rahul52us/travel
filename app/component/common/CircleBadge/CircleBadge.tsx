@@ -8,8 +8,8 @@ const CircleBadge = ({ price, label, icon, gradientStart, gradientEnd, borderCol
   return (
     <Box
       position="relative"
-      width="140px"
-      height="140px"
+      width={{base:"120px",lg:"140px"}}
+      height={{base:"120px",lg:"140px"}}
       bgGradient={`linear(to-b, ${gradientStart || 'blue.50'}, ${gradientEnd || 'blue.100'})`}
       clipPath="circle(50% at 50% 50%)"
       display="flex"
@@ -51,8 +51,8 @@ const CircleBadge = ({ price, label, icon, gradientStart, gradientEnd, borderCol
         as="span"
         bg={bgColor || 'blue.200'} // dynamic background color for the icon
         color={iconColor || 'blue.700'} // dynamic icon color
-        px="8px"
-        py="3px"
+        px={{base:"6px",lg:"8px"}}
+        py={{lg:"3px"}}
         borderRadius="full"
         fontSize="lg"
         position="absolute"

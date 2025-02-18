@@ -1,4 +1,4 @@
-import { Box, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Heading, Image, Text, useBreakpointValue } from "@chakra-ui/react";
 import CustomCarousel from "../../component/common/CustomCarousal/CustomCarousal";
 import CustomSubHeading from "../common/CustomSubHeading/CustomSubHeading";
 
@@ -36,19 +36,20 @@ const europeanPlaces = [
 ];
 
 const ExploreEuropeCarousel = () => {
+  const showArrows = useBreakpointValue({base:false,lg:true})
 
   return (
-    <Box py="10" bg="gray.50" position="relative" maxW={'90%'} mx={'auto'}>
+    <Box py="10" bg="gray.50" position="relative" maxW={'90%'} mx={'auto'} mt={{base:6,md:12}}>
       {/* <Heading as="h2" size="xl" textAlign="center" mb="8" color="teal.600">
         Explore Europe
       </Heading> */}
       <CustomSubHeading highlightText="You" my={{base:2,md:3}}>
       Europe Awaits 
       </CustomSubHeading>
-        <Text textAlign={'center'} color={'gray.500'} mb={6}>
+        <Text textAlign={'center'} color={'gray.500'} mb={{base:2,lg:6}}>
             Discover the Magic of Europe: A Journey Through Timeless Beauty and Diverse Cultures
         </Text>
-        <CustomCarousel slidesToShow={5} showArrows={true}>
+        <CustomCarousel slidesToShow={5} showArrows={showArrows} showDots={true}>
         {europeanPlaces.map((place, index) => (
             <Box
               key={index}

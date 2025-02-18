@@ -117,7 +117,7 @@ import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "
         {/* Card Body */}
         <CardBody bg="white">
           <Flex justify="space-between" align="center" mb={3}>
-            <Tag colorScheme="blue" borderRadius="full" px={4}>
+            <Tag colorScheme="blue" borderRadius="full" px={4} size={{base:"sm",md:"md"}}>
               {pkg.days} Days / {pkg.days - 1} Nights
             </Tag>
             <Flex align="center">
@@ -133,7 +133,7 @@ import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "
             {pkg.perks.map((perk, index) => (
               <Flex key={index} align="center">
                 <PerkIcon type={perk} />
-                <Text ml={2} fontSize="sm" fontWeight="medium">
+                <Text ml={2} fontSize={{base:"xs",lg:"sm"}} fontWeight="medium">
                   {perk}
                 </Text>
               </Flex>
@@ -143,6 +143,7 @@ import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "
           {/* Itinerary Section */}
           <Box mt={4}>
             <Flex
+            
               overflowX="auto"
               align="center"
               sx={{
@@ -192,13 +193,13 @@ import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "
           borderColor="gray.100"
           py={3}
           justifyContent="space-between"
-          alignItems="center"
+          alignItems={{base:"flex-end",lg:"center"}}
         >
           <Box>
-            <Text fontSize="sm" color="gray.500">
+            <Text fontSize={{base:"xs",lg:"sm"}} color="gray.500">
               Starting from
             </Text>
-            <Heading fontSize="2xl" color="blue.600">
+            <Heading fontSize={{base:"xl",lg:"2xl"}} color="blue.600">
               ₹{pkg.price.toLocaleString()}
               <Text as="span" fontSize="sm" color="gray.500">
                 /person
@@ -208,7 +209,7 @@ import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "
           <Button
             colorScheme="blue"
             borderRadius="full"
-            size="sm"
+            size={{base:"xs",lg:"sm"}}
             onClick={toggleDetails}
             animation={`${bounce} 2s infinite`}
           >

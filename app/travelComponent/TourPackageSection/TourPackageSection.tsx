@@ -4,7 +4,7 @@ import CustomSubHeading from "../common/CustomSubHeading/CustomSubHeading";
 
 const TourPackageSection = () => {
   return (
-    <Box my={"6rem"} py={4}>
+    <Box my={{base:"30px",lg:"60px"}} py={4}>
       <CustomSubHeading highlightText="Starts Here ">
         Your Escape{" "}
       </CustomSubHeading>

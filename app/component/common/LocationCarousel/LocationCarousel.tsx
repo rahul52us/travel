@@ -2,7 +2,6 @@ import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import CustomSubHeading from "../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 
 const locations = [
   {
@@ -48,35 +47,25 @@ const fadeInOut = {
 
 const LocationCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
 
+  // Automatically change the active index every 5 seconds
   useEffect(() => {
-    if (!isHovered) {
-      const interval = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % locations.length);
-      }, 5000);
-      return () => clearInterval(interval);
-    }
-  }, [isHovered]);
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % locations.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <Box py={8} my={'6rem'} px={8} maxW="95%" mx="auto">
-      <CustomSubHeading highlightText="Next Destination">
-      Discover Your
-      </CustomSubHeading>
+    <Box py={8} my={{ base: "2rem", md: "6rem" }} px={{ base: 4, md: 8 }} maxW="95%" mx="auto">
       <Flex gap={8} direction={{ base: "column", md: "row" }} mt={12}>
         {/* Image Gallery */}
-        <Flex
-          flex={2}
-          gap={6}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
+        <Flex flex={2} gap={{ base: 4, md: 6 }} direction={{ base: "column", md: "row" }}>
           {locations.map((location, index) => (
             <Box
               key={index}
-              w={activeIndex === index ? "50%" : "150px"}
-              h={"320px"}
+              w={{ base: "100%", md: activeIndex === index ? "50%" : "150px" }}
+              h={{ base: "250px", md: "320px" }}
               bgImage={location.image}
               bgSize="cover"
               bgPosition="center"
@@ -87,9 +76,9 @@ const LocationCarousel = () => {
               position="relative"
               filter={activeIndex === index ? "brightness(1)" : "brightness(0.8)"}
               onMouseEnter={() => setActiveIndex(index)}
+              display={{ base: activeIndex === index ? "block" : "none", md: "block" }} // Only show active image on mobile
             >
-              {/* Show title on inactive images */}
-              {activeIndex !== index && (
+               {activeIndex !== index && (
                 <Flex
                   position="absolute"
                   top={0}
@@ -107,7 +96,6 @@ const LocationCarousel = () => {
                   </Text>
                 </Flex>
               )}
-
               {/* Progress Bar */}
               {activeIndex === index && (
                 <Box
@@ -124,34 +112,35 @@ const LocationCarousel = () => {
         </Flex>
 
         {/* Content */}
-        <Flex flex={1} direction="column" justify="center">
+        <Flex flex={1} direction="column" justify="center" mt={{ base: 6, md: 0 }}>
           <motion.div
-            key={activeIndex}
+            key={activeIndex} // Force re-render when activeIndex changes
             initial="initial"
             animate="animate"
             exit="exit"
             variants={fadeInOut}
           >
-            <Heading fontSize="2xl" mb={2} color="gray.700">
+            <Heading fontSize={{ base: "xl", md: "2xl" }} mb={2} color="gray.700">
               {locations[activeIndex].title}
             </Heading>
-            <Text fontSize="md" mb={4} color={"gray.600"}>
+            <Text fontSize={{ base: "sm", md: "md" }} mb={4} color={"gray.600"}>
               {locations[activeIndex].text}
             </Text>
           </motion.div>
           <Flex align="center" gap={4}>
-            <Text fontWeight="bold" fontSize="lg" color="gray.800">
+            <Text fontWeight="bold" fontSize={{ base: "md", md: "lg" }} color="gray.800">
               {locations[activeIndex].trips}
             </Text>
             <Box
               as="button"
-              px={6}
-              py={2}
+              px={{ base: 4, md: 6 }}
+              py={{ base: 1, md: 2 }}
               bg="black"
               color="white"
               borderRadius="full"
               _hover={{ transform: "scale(1.05)" }}
               transition="all 0.5s ease"
+              fontSize={{ base: "sm", md: "md" }}
             >
               EXPLORE ALL
             </Box>
