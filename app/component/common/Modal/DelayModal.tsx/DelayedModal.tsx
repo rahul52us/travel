@@ -62,227 +62,98 @@ const DelayedModal = () => {
   // };
 
   const accentGradient = "linear-gradient(135deg, #319795 0%, #3182CE 100%)";
-  const floatAnimation = `${float} 6s ease-in-out infinite`;
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={closeModal}
-      motionPreset="slideInBottom"
-      size={"5xl"}
-      isCentered
-    >
-      <ModalOverlay />
-      <ModalContent
-        borderRadius="3xl"
-        overflow="hidden"
-        boxShadow="2xl"
-        // border="1px solid"
-        // borderColor="whiteAlpha.300"
-      >
-        <ModalBody p={0}>
-          <Flex>
-            {/* Left Side - Interactive Feature Showcase */}
-            <Box
-              w="40%"
-              bgImage="url('https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80')"
-              bgSize="cover"
-              bgPosition="center"
-              position="relative"
-              color="white"
-              cursor="pointer"
-              _hover={{ "& .feature-item": { transform: "translateX(10px)" } }}
-            >
-              <Box
-                position="absolute"
-                top={0}
-                left={0}
-                right={0}
-                bottom={0}
-                bgGradient="linear(45deg, rgba(49, 130, 206, 0.8) 0%, rgba(49, 151, 149, 0.7) 100%)"
-                p={8}
-              >
-                <MotionBox
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8 }}
-                  mt={28}
-                >
-                  <AnimatedFeatureItem
-                    icon={BsHeadsetVr}
-                    title="Tailor-Made Adventures"
-                    delay={0.3}
-                  />
-                  <AnimatedFeatureItem
-                    icon={FaCertificate}
-                    title="96% Visa Assurance"
-                    delay={0.6}
-                  />
-                  <AnimatedFeatureItem
-                    icon={RiCustomerServiceFill}
-                    title="Global Support Network"
-                    delay={0.9}
-                  />
-                </MotionBox>
-
-                {/* Floating Elements */}
-                <MotionBox
-                  position="absolute"
-                  top="10%"
-                  right="-30px"
-                  w="60px"
-                  h="60px"
-                  borderRadius="full"
-                  bg="whiteAlpha.400"
-                  animation={floatAnimation}
-                />
-              </Box>
+    <Modal isOpen={isOpen} onClose={closeModal} motionPreset="slideInBottom" size={{ base: "xs", md: "4xl" }} isCentered>
+    <ModalOverlay />
+    <ModalContent borderRadius="3xl" overflow="hidden" boxShadow="2xl">
+      <ModalBody p={0}>
+        <Flex direction={{ base: "column", md: "row" }}>
+          {/* Left Section - Hidden on Mobile */}
+          <Box
+            w="70%"
+            display={{ base: "none", md: "block" }} 
+            bgImage="url('https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80')"
+            bgSize="cover"
+            bgPosition="center"
+            position="relative"
+            color="white"
+          >
+            <Box position="absolute" top={0} left={0} right={0} bottom={0} bgGradient="linear(45deg, rgba(49, 130, 206, 0.8) 0%, rgba(49, 151, 149, 0.7) 100%)" p={8}>
+              <MotionBox initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }} mt={28}>
+                <AnimatedFeatureItem icon={BsHeadsetVr} title="Tailor-Made Adventures" delay={0.3} />
+                <AnimatedFeatureItem icon={FaCertificate} title="96% Visa Assurance" delay={0.6} />
+                <AnimatedFeatureItem icon={RiCustomerServiceFill} title="Global Support Network" delay={0.9} />
+              </MotionBox>
             </Box>
-
-            {/* Right Side - Modern Form */}
-            <Box
-              w="60%"
-              p={10}
-              bgGradient="linear(to-br, white, gray.50)"
-              position="relative"
-            >
-              <Box position="relative" zIndex={1}>
-                <Flex justify={'space-between'} align={'center'}>
-
-                <Heading
-                  fontSize="3xl"
-                  mb={6}
-                  pt={4}
-                  bgGradient={accentGradient}
-                  bgClip="text"
-                  fontWeight="bold"
-                >
+          </Box>
+  
+          {/* Right Side - Form */}
+          <Box w="100%" p={{ base: 5, md: 10 }} bgGradient="linear(to-br, white, gray.50)">
+            <Box position="relative">
+              <Flex justify="space-between" align="center" direction={{ base: "column", sm: "row" }} mb={4}>
+                <Heading fontSize={{ base: "xl", md: "3xl" }} textAlign="center" mb={{ base: 4, sm: 0 }} bgGradient={accentGradient} bgClip="text" fontWeight="bold">
                   Craft Your Adventure
                 </Heading>
-                <Box>
-                <Image
-                src="/images/logo3.png" 
-                alt="logo"
-                objectFit={'cover'}
-                h={{base:"70px",lg:"80px"}}
-                w={'100%'}
-                mx={{ base: "auto", md: 0 }}
-                />
-                </Box>
-
-                  </Flex>
-                <Stack spacing={6}>
-                  <AnimatedInput
-                    icon={FaUser}
-                    label="Full Name"
-                    placeholder="Alexandra Smith"
-                  />
-
-                  <FormControl>
-                    <Text mb={2} fontWeight="500" color="gray.600">
-                      Mobile Number
-                    </Text>
-                    <Flex gap={3}>
-                      <Select
-                        w="30%"
-                        defaultValue="+91"
-                        borderRadius="lg"
-                        focusBorderColor="teal.400"
-                        iconColor="teal.400"
-                        variant="filled"
-                      >
-                        <option value="+91">🇮🇳 +91</option> 
-                        <option value="+1">🇺🇸 +1</option>
-                        <option value="+44">🇬🇧 +44</option>
-                      </Select>
-                      <InputGroup>
-                        <InputLeftAddon bg="gray.100" borderColor="gray.200">
-                          <FaPhone />
-                        </InputLeftAddon>
-
-                        <Input
-                          type="tel"
-                          placeholder="98765 43210"
-                          variant="filled"
-                          focusBorderColor="teal.400"
-                          _focus={{ bg: "white" }}
-                        />
-                      </InputGroup>
-                    </Flex>
-                  </FormControl>
-
-                  <AnimatedInput
-                    icon={FaEnvelope}
-                    label="Email Address"
-                    placeholder="alex@example.com"
-                    type="email"
-                  />
-
-                  <FormControl>
-                    <Text mb={2} fontWeight="500" color="gray.600">
-                      Dream Destination
-                    </Text>
+                <Image src="/images/logo3.png" alt="logo" objectFit="cover" h={{ base: "50px", md: "80px" }} w="auto" />
+              </Flex>
+  
+              <Stack spacing={4}>
+                <AnimatedInput icon={FaUser} label="Full Name" placeholder="Alexandra Smith" />
+  
+                <FormControl>
+                  <Text mb={2} fontWeight="500" color="gray.600">Mobile Number</Text>
+                  <Flex gap={3} direction={{ base: "column", sm: "row" }}>
+                    <Select display={{base:"none",md:"block"}} w={{ base: "100%", sm: "30%" }} defaultValue="+91" borderRadius="lg" focusBorderColor="teal.400" variant="filled">
+                      <option value="+91">🇮🇳 +91</option> 
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+44">🇬🇧 +44</option>
+                    </Select>
                     <InputGroup>
-                      {/* <InputLeftAddon 
-                        children={<FaGlobe />} 
-                        bg="gray.100" 
-                        borderColor="gray.200"
-                      /> */}
-                      <InputLeftAddon bg="gray.100" borderColor="gray.200">
-                        <FaGlobe />
-                      </InputLeftAddon>
-                      <Select
-                        placeholder="Select region"
-                        variant="filled"
-                        focusBorderColor="teal.400"
-                        _focus={{ bg: "white" }}
-                      >
-                        <option>European Escapades</option>
-                        <option>Asian Odyssey</option>
-                        <option>American Expedition</option>
-                        <option>African Safari</option>
-                      </Select>
+                      <InputLeftAddon bg="gray.100" borderColor="gray.200"><FaPhone /></InputLeftAddon>
+                      <Input type="tel" placeholder="98765 43210" variant="filled" focusBorderColor="teal.400" _focus={{ bg: "white" }} />
                     </InputGroup>
-                  </FormControl>
-
-                  <MotionButton
-                    bgGradient={accentGradient}
-                    color="white"
-                    size="lg"
-                    mt={4}
-                    w="full"
-                    borderRadius="xl"
-                    _hover={{
-                      bgGradient: "linear(135deg, #3182CE 0%, #319795 100%)",
-                      transform: "translateY(-2px)",
-                    }}
-                    _active={{ transform: "scale(0.98)" }}
-                    rightIcon={<FaChevronRight />}
-                    // transition="all 0.3s cubic-bezier(.25,.8,.25,1)"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Begin Exploration
-                  </MotionButton>
-                </Stack>
-              </Box>
-
-              {/* Decorative Background Elements */}
-              <Box
-                position="absolute"
-                top={-10}
-                right={-20}
-                w="120px"
-                h="120px"
-                borderRadius="full"
-                bg="teal.100"
-                opacity="0.1"
-              />
+                  </Flex>
+                </FormControl>
+  
+                <AnimatedInput icon={FaEnvelope} label="Email Address" placeholder="alex@example.com" type="email" />
+  
+                <FormControl>
+                  <Text mb={2} fontWeight="500" color="gray.600">Dream Destination</Text>
+                  <InputGroup>
+                    <InputLeftAddon bg="gray.100" borderColor="gray.200"><FaGlobe /></InputLeftAddon>
+                    <Select placeholder="Select region" variant="filled" focusBorderColor="teal.400" _focus={{ bg: "white" }}>
+                      <option>European Escapades</option>
+                      <option>Asian Odyssey</option>
+                      <option>American Expedition</option>
+                      <option>African Safari</option>
+                    </Select>
+                  </InputGroup>
+                </FormControl>
+  
+                <MotionButton
+                  bgGradient={accentGradient}
+                  color="white"
+                  size="lg"
+                  mt={4}
+                  w="full"
+                  borderRadius="xl"
+                  _hover={{ bgGradient: "linear(135deg, #3182CE 0%, #319795 100%)", transform: "translateY(-2px)" }}
+                  _active={{ transform: "scale(0.98)" }}
+                  rightIcon={<FaChevronRight />}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Begin Exploration
+                </MotionButton>
+              </Stack>
             </Box>
-          </Flex>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+          </Box>
+        </Flex>
+      </ModalBody>
+    </ModalContent>
+  </Modal>
+  
   );
 };
 
@@ -312,7 +183,7 @@ const AnimatedFeatureItem = ({ icon, title, delay }) => (
 );
 
 const AnimatedInput = ({ icon, label, ...props }) => (
-  <Box>
+  <Box w="100%">
     <FormControl>
       <Text mb={2} fontWeight="500" color="gray.600">
         {label}
@@ -322,6 +193,7 @@ const AnimatedInput = ({ icon, label, ...props }) => (
           <Icon as={icon} />
         </InputLeftAddon>
         <Input
+          w="100%"
           variant="filled"
           focusBorderColor="teal.400"
           _focus={{ bg: "white" }}
@@ -331,3 +203,4 @@ const AnimatedInput = ({ icon, label, ...props }) => (
     </FormControl>
   </Box>
 );
+
