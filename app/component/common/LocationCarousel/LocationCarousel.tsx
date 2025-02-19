@@ -32,6 +32,13 @@ const locations = [
     trips: "8+ Trips Available",
     text: "The city of love awaits! Discover the Eiffel Tower, exquisite cuisine, and timeless art in one of the most romantic destinations in the world.",
   },
+  {
+    image:
+      "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "Paris",
+    trips: "8+ Trips Available",
+    text: "The city of love awaits! Discover the Eiffel Tower, exquisite cuisine, and timeless art in one of the most romantic destinations in the world.",
+  },
 ];
 
 const progress = keyframes`
@@ -57,10 +64,10 @@ const LocationCarousel = () => {
   }, []);
 
   return (
-    <Box py={8} my={{ base: "2rem", md: "6rem" }} px={{ base: 4, md: 8 }} maxW="95%" mx="auto">
+    <Box py={8} my={{ base: "2rem", md: "6rem" }} px={{ base: 4, md: 2 }} maxW="95%" mx="auto">
       <Flex gap={8} direction={{ base: "column", md: "row" }} mt={12}>
         {/* Image Gallery */}
-        <Flex flex={2} gap={{ base: 4, md: 6 }} direction={{ base: "column", md: "row" }}>
+        <Flex flex={2} gap={{ base: 4, md: 5 }} direction={{ base: "column", md: "row" }}>
           {locations.map((location, index) => (
             <Box
               key={index}

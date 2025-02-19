@@ -18,7 +18,6 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { keyframes } from "@emotion/react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { BsHeadsetVr } from "react-icons/bs";
@@ -35,11 +34,11 @@ import { RiCustomerServiceFill } from "react-icons/ri";
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
 
-const float = keyframes`
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-`;
+// const float = keyframes`
+//   0% { transform: translateY(0px); }
+//   50% { transform: translateY(-10px); }
+//   100% { transform: translateY(0px); }
+// `;
 const DelayedModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 

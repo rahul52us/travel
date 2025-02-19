@@ -48,10 +48,14 @@ export default function AboutUsPage() {
   
 
       {/* Mission Section */}
-      <Box  py={16} my={8}>
-        <Container maxW="80%">
-          <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={8}>
-            <Box w={'95%'}>
+      <Box  py={{base:4,lg:16}} my={8}>
+        <Container maxW={{base:"95%",lg:"80%"}} mx={'auto'}>
+        <Heading size={{base:"lg",lg:"xl"}} color="teal.600" textAlign={'center'} display={{base:"block",lg:"none"}}>
+                Our Mission
+              </Heading>
+          <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={{lg:8}}>
+
+            <Box w={{lg:'95%'}} mt={2}>
               <Image
                 src="/images/travel/about-1.jpg"
                 alt="Our Mission"
@@ -61,15 +65,15 @@ export default function AboutUsPage() {
             </Box>
             <VStack align="start" spacing={6}>
               
-              <Heading size="xl" color="teal.600">
+              <Heading size={{base:"lg",lg:"xl"}} color="teal.600" display={{base:"none",lg:"block"}}>
                 Our Mission
               </Heading>
-              <Text fontSize="lg" color="gray.600">
+              <Text fontSize={{lg:"lg"}} mt={4} color="gray.600">
                 At Cosmic Travel, our mission is to provide unparalleled travel experiences that inspire, educate, and enchant our clients. We are dedicated to showcasing the beauty, diversity, and cultural heritage of Europe while ensuring the highest standards of service, authenticity, and sustainability.
               </Text>
               <Button
                 colorScheme="teal"
-                size="lg"
+                size={{base:"md",lg:"lg"}}
                 rightIcon={<FiArrowRight />}
                 variant="outline"
               >
@@ -89,28 +93,28 @@ export default function AboutUsPage() {
     <ServicesSection/>
 
       {/* CTA Section */}
-      <Box py={16} position="relative" overflow="hidden">
+      <Box py={{base:6,lg:16}} position="relative" overflow="hidden">
         <Container maxW="1200px">
           <Flex
             bg="teal.600"
             borderRadius="3xl"
-            p={8}
+            p={{base:4,lg:8}}
             position="relative"
             overflow="hidden"
             align="center"
             direction={{ base: "column", md: "row" }}
           >
-            <Box flex={1} color="white" zIndex={1} p={8}>
-              <Heading size="xl" mb={4}>
+            <Box flex={1} color="white" zIndex={1} p={{base:2,lg:8}}>
+              <Heading size={{base:"md",lg:"xl"}} mb={4}>
                 Ready for Your European Odyssey?
               </Heading>
-              <Text fontSize="xl" mb={8}>
+              <Text fontSize={{lg:"xl"}} mb={8}>
                 Let us guide you through Europe&apos;s timeless wonders and create unforgettable memories
               </Text>
               <Button
                 colorScheme="white"
                 variant="outline"
-                size="lg"
+                size={{base:"md",lg:"lg"}}
                 rightIcon={<FiArrowRight />}
                 _hover={{ bg: "white", color: "teal.600" }}
               >

@@ -1,13 +1,13 @@
 import {
-    Box,
-    Container,
-    Flex,
-    Grid,
-    Heading,
-    Icon,
-    SlideFade,
-    Text,
-    useColorModeValue,
+  Box,
+  Container,
+  Flex,
+  Grid,
+  Heading,
+  Icon,
+  SlideFade,
+  Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { FaThumbsUp } from "react-icons/fa";
 import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSection";
@@ -35,9 +35,9 @@ const TestimonialsPage = () => {
         bgImage="url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
       />
       {/* Testimonials Grid Section */}
-      <Container maxW={"90%"} py={16}>
+      <Container maxW={{base:"95%",lg:"90%"}} py={{base:12,lg:16}}>
         <SlideFade in={true} offsetY={20}>
-          <Heading mb={8} textAlign="center" fontSize={"4xl"}>
+          <Heading mb={{base:2,lg:8}} textAlign="center" fontSize={{base:"2xl",lg:"4xl"}}>
             What Our Travelers Say
           </Heading>
         </SlideFade>
@@ -48,7 +48,7 @@ const TestimonialsPage = () => {
 
       <Flex
         justify="center"
-        mt={8}
+        mt={{lg:8}}
         p={4}
         borderRadius="lg"
         bg={useColorModeValue('teal.50', 'teal.900')}
@@ -59,15 +59,37 @@ const TestimonialsPage = () => {
         </Text>
       </Flex>
 
-      <Container maxW="7xl" py={16}>
+
+      <Container maxW="7xl" py={{ base: 8, md: 12, lg: 16 }}>
+  <Grid
+    templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
+    gap={{ base: 6, md: 10, lg: 12 }}
+  >
+    {/* Image Gallery */}
+    <Box position={{ base: "relative", lg: "sticky" }} top="0">
+      <TravelGallery />
+    </Box>
+
+    {/* Reviews Section - Fixed height with scrolling */}
+    <Box 
+      overflowY="auto"
+      maxHeight="70vh"
+      pr={{ base: 2, md: 4 }}
+      className="customScrollBar"
+    >
+      <RevireCard2 />
+    </Box>
+  </Grid>
+</Container>
+
+
+
+      {/* <Container maxW="7xl" py={16}>
         <Grid
           templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
           gap={12}
           height="80vh"
         >
-          {/* Left Section - Scrollable */}
-
-          {/* Right Section - Fixed */}
           <Box position="sticky" top="0">
             <TravelGallery />
           </Box>
@@ -75,7 +97,7 @@ const TestimonialsPage = () => {
             <RevireCard2 />
           </Box>
         </Grid>
-      </Container>
+      </Container> */}
     </Box>
   );
 };

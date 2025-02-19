@@ -1,19 +1,19 @@
 "use client"
 import { StarIcon } from "@chakra-ui/icons"
 import {
-    Box,
-    Circle,
-    Flex,
-    Grid,
-    HStack,
-    Progress,
-    Stat,
-    StatHelpText,
-    StatLabel,
-    StatNumber,
-    Text,
-    Tooltip,
-    VStack,
+  Box,
+  Circle,
+  Flex,
+  Grid,
+  HStack,
+  Progress,
+  Stat,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
+  Text,
+  Tooltip,
+  VStack,
 } from "@chakra-ui/react"
 import { FaCoffee, FaHeart } from "react-icons/fa"
 import { FaLocationPin, FaSun } from "react-icons/fa6"
@@ -38,7 +38,7 @@ export default function RatingsSummary() {
   const totalReviews = 1234
 
   return (
-    <Box  borderRadius="2xl" p={8} maxWidth="7xl" mx="auto" my={16}>
+    <Box  borderRadius="2xl" p={8} maxWidth="7xl" mx="auto" my={{base:6,lg:16}}>
       <Flex direction={{ base: "column", md: "row" }} gap={8}>
         <Box flex={1}>
           <Text fontSize="2xl" fontWeight="bold" mb={4}>
@@ -75,14 +75,14 @@ export default function RatingsSummary() {
           </Grid>
         </Box>
         <Box flex={1}>
-          <Text fontSize="2xl" fontWeight="bold" mb={4}>
+          <Text fontSize={{base:"xl",lg:"2xl"}} fontWeight="bold" mb={{base:2,lg:4}}>
             Rating Distribution
           </Text>
           {ratingDistribution.map((item) => (
             <Tooltip key={item.stars} label={`${item.percentage}%`} placement="top">
               <Flex align="center" mb={2}>
-                <Text width="40px">{item.stars} stars</Text>
-                <Progress flex={1} value={item.percentage} size="lg" colorScheme="orange" borderRadius="full" mx={2} />
+                <Text width={{lg:"40px"}}>{item.stars} stars</Text>
+                <Progress flex={1} value={item.percentage} size={{base:"sm",lg:"lg"}} colorScheme="orange" borderRadius="full" mx={2} />
                 <Text width="40px" textAlign="right">
                   {item.percentage}%
                 </Text>

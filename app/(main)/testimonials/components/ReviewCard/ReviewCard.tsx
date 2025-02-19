@@ -4,6 +4,7 @@ import {
   HStack,
   Icon,
   Text,
+  useBreakpointValue,
   useColorModeValue,
   VStack
 } from "@chakra-ui/react";
@@ -13,20 +14,21 @@ import CustomCarousel from "../../../../component/common/CustomCarousal/CustomCa
 const ReviewCard = ({ review, rating, name, avatar }) => {
   return (
     <Box
-      p={6}
+      p={{base:5,lg:6}}
       borderWidth="1px"
       borderRadius="lg"
       boxShadow="lg"
+      w={'100%'}
       bg={useColorModeValue("white", "gray.700")}
-      height="280px"
+      height={{base:"250px",lg:"280px"}}
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
     >
-      <VStack align="start" spacing={4} flexGrow={1}>
+      <VStack align="start" spacing={{base:2,lg:4}} flexGrow={1}>
         <Icon as={FaQuoteLeft} w={6} h={6} color="teal.500" />
         <Text
-          fontSize="md"
+          fontSize={{base:"sm",lg:"md"}}
           color={useColorModeValue("gray.600", "gray.300")}
           noOfLines={4}
         >
@@ -34,11 +36,11 @@ const ReviewCard = ({ review, rating, name, avatar }) => {
         </Text>
         <HStack>
           {[...Array(rating)].map((_, i) => (
-            <Icon key={i} as={FaStar} w={5} h={5} color="yellow.400" />
+            <Icon key={i} as={FaStar} w={{base:4,lg:5}} h={{base:4,lg:5}} color="yellow.400" />
           ))}
         </HStack>
       </VStack>
-      <HStack mt={4}>
+      <HStack mt={{base:2,lg:4}}>
         <Avatar size="md" name={name} src={avatar} />
         <Text fontWeight="bold">{name}</Text>
       </HStack>
@@ -70,9 +72,10 @@ const dummyReviews = [
 ];
 
 const ReviewsList = () => {
+  const showArrows = useBreakpointValue({ base: false, md: true });
   return (
     <Box>
-      <CustomCarousel showDots={true} autoplay={true}>
+      <CustomCarousel showDots={true} autoplay={true} showArrows={showArrows}>
         {dummyReviews.map((testimonial, index) => (
           <ReviewCard key={index} {...testimonial} />
         ))}

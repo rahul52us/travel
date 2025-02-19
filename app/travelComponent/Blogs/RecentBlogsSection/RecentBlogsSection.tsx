@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text, useBreakpointValue } from '@chakra-ui/react';
 import CustomCarousel from '../../../component/common/CustomCarousal/CustomCarousal';
 import RecentBlogCard from '../../common/RecentBlogCard/RecentBlogCard';
 
@@ -40,10 +40,11 @@ const travelData = [
     },
   ];
 const RecentBlogsSection = () => {
+  const showArrows = useBreakpointValue({base:false,lg:true})
   return (
-    <Box my={'5rem'}>
+    <Box my={{base:"2rem",lg:'5rem'}}>
 
-<Heading as="h3" fontSize="2xl" mb={6} position="relative">
+<Heading as="h3" fontSize={{base:"xl",lg:"2xl"}} mb={{base:3,lg:6}} position="relative">
           <Text as="span" position="relative" zIndex={1} bg={'gray.50'} pr={4}>
             Recently Published
           </Text>
@@ -57,7 +58,7 @@ const RecentBlogsSection = () => {
             zIndex={0}
           />
         </Heading>
-        <CustomCarousel autoplay={true} slidesToShow={4}>
+        <CustomCarousel autoplay={true} slidesToShow={4}  showArrows={showArrows}>
 
          {travelData.map((item) => (
              <RecentBlogCard

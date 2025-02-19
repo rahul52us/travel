@@ -4,8 +4,8 @@ import CustomSubHeading from '../../../../travelComponent/common/CustomSubHeadin
 
 const ServicesSection = () => {
   return (
-    <Box bg="white" py={16}>
-        <Container maxW="80%">
+    <Box py={{base:6,lg:16}}>
+        <Container maxW={{base:"95%",lg:"80%"}}>
           <VStack spacing={4} textAlign="center" mb={12}>
             {/* <Badge colorScheme="teal" variant="subtle">
               Our Offerings
@@ -16,7 +16,7 @@ const ServicesSection = () => {
             <CustomSubHeading highlightText='Services'>
             Our
             </CustomSubHeading>
-            <Text fontSize="lg" color="gray.600" maxW="800px">
+            <Text fontSize={{lg:"lg"}} color="gray.600" maxW="800px">
               From romantic getaways to family adventures and cultural immersions, we offer tailor-made travel options to suit every taste and budget.
             </Text>
           </VStack>
@@ -40,7 +40,7 @@ const ServicesSection = () => {
               ].map((service, i) => (
                 <Flex key={i} align="center">
                   <Icon as={FiArrowRight} color="blue.500" mr={3} />
-                  <Text fontSize="lg" color="gray.600">
+                  <Text fontSize={{lg:"lg"}} color="gray.600">
                     {service}
                   </Text>
                 </Flex>

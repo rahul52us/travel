@@ -25,18 +25,18 @@ const features = [
 
 const SetsApart = () => {
   return (
-    <Box py={16}>
-    <Container maxW="80%">
-      <VStack spacing={4} textAlign="center" mb={12}>
+    <Box py={{base:4,lg:16}}>
+    <Container maxW={{base:"95%",lg:"80%"}}>
+      <VStack spacing={{base:2,lg:4}} textAlign="center" mb={12}>
         <CustomSubHeading highlightText='Us Apart?'>
         What Sets
         </CustomSubHeading>
-        <Text color="gray.600" maxW="800px" fontSize={'lg'}>
+        <Text color="gray.600" maxW={{lg:"800px"}} fontSize={{lg:'lg'}}>
           Our passion for Europe and unwavering commitment to excellence sets us apart. With extensive knowledge, expertise, and local connections, we curate bespoke itineraries that reflect each traveler&apos;s unique interests.
         </Text>
       </VStack>
 
-      <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={8}>
+      <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={{base:4,lg:8}}>
         {features.map((feature, i) => (
           <MotionBox
             key={i}

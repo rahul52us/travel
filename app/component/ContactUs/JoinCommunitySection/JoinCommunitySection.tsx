@@ -15,7 +15,7 @@ const JoinCommunitySection = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <Box my={"6rem"} maxW={{ md: "90%", xl: "85%" }} mx={"auto"}>
+    <Box my={{lg:"6rem"}} maxW={{ base:"95%",md: "90%", xl: "85%" }} mx={"auto"}>
       {isMobile ? (
         // Mobile View
         <Flex direction="column" align="center" p={4}>
@@ -32,7 +32,7 @@ const JoinCommunitySection = () => {
           </Box>
 
           {/* Image */}
-          <Box mt={6} ml={-4}>
+          <Box mt={6} ml={{lg:-4}}>
             <Image
               src="https://media.istockphoto.com/id/1217093906/photo/womens-hand-typing-on-mobile-smartphone-live-chat-chatting-on-application-communication.jpg?s=2048x2048&w=is&k=20&c=5ruD84xHuW8x0d8W1uJK63UEbe4f-gGhgcY0RXp5Y-c="
               alt="Community Image"

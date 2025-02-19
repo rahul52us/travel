@@ -8,12 +8,14 @@ const BlogPage = () => {
   // const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <Box maxW="7xl" mx="auto" px={{ base: 4, md: 8 }}>
+    <Box maxW={{base:"95%",lg:"7xl"}} mx="auto" px={{ base: 0, md: 8 }}>
       {/* Page Header */}
       <Box textAlign="center" mb={6}>
         <Heading
           as="h1"
-          fontSize={{ base: "4xl", md: "4xl" }}
+          fontSize={{ base: "3xl", md: "4xl" }
+        }
+        letterSpacing={'2px'}
           mb={2}
           fontWeight="900"
         >
@@ -26,7 +28,7 @@ const BlogPage = () => {
       <BlogHighlight />
 
       {/* Creative All Stories Grid */}
-      <Heading as="h3" fontSize="2xl" mb={8} position="relative">
+      <Heading as="h3" fontSize={{base:"xl",lg:"2xl"}} mb={{lg:8}} position="relative">
         <Text as="span" position="relative" zIndex={1} bg={"gray.50"} pr={4}>
           All Stories
         </Text>

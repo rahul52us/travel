@@ -1,5 +1,6 @@
-import { Grid } from "@chakra-ui/react";
+import { Box, Grid, useBreakpointValue } from "@chakra-ui/react";
 import AllBlogCard from "../../common/AllBlogCard/AllBlogCard";
+import CustomCarousel from "../../../component/common/CustomCarousal/CustomCarousal";
 
 const storyData = [
     {
@@ -49,12 +50,25 @@ const storyData = [
   ];
 
   const AllBlogsSection = () => {
+      const showArrows = useBreakpointValue({base:false,lg:true})
+  
     return (
-      <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} gap={6}>
+      <Box>
+        <Box display={{base:"none",lg:"block"}}>
+      <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }} gap={6} >
         {storyData.map((story, index) => (
           <AllBlogCard key={index} {...story} />
         ))}
       </Grid>
+        </Box>
+      <Box display={{base:"block",lg:"none"}}>
+      <CustomCarousel autoplay={true} slidesToShow={4}  showArrows={showArrows}>
+      {storyData.map((story, index) => (
+          <AllBlogCard key={index} {...story} />
+        ))}
+      </CustomCarousel>
+      </Box>
+        </Box>
     );
   };
 
