@@ -15,7 +15,7 @@ import {
 import { keyframes } from "@emotion/react";
 import { useState } from "react";
 import { IconType } from "react-icons";
-import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "react-icons/fa";
+import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, FaShip, FaStar, FaTrain, FaUtensils } from "react-icons/fa";
 
   // Bounce animation for the button
   const bounce = keyframes`
@@ -25,8 +25,21 @@ import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "
   `;
 
   // Component for displaying icons based on perk type
+  // const PerkIcon = ({ type }: { type: string }) => {
+  //   const icons: Record<string, IconType> = {
+  //     "5-star hotels": FaBed,
+  //     "Daily breakfast": FaUtensils,
+  //     "Guided tours": FaBinoculars,
+  //     "Airport transfer": FaBus,
+  //     "Ryokan stay": FaBed,
+  //     "Kaiseki dinner": FaUtensils,
+  //     "Tea ceremony": FaBinoculars,
+  //     "Bullet train pass": FaBus,
+  //   };
+
   const PerkIcon = ({ type }: { type: string }) => {
     const icons: Record<string, IconType> = {
+      // Existing icons
       "5-star hotels": FaBed,
       "Daily breakfast": FaUtensils,
       "Guided tours": FaBinoculars,
@@ -35,6 +48,16 @@ import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "
       "Kaiseki dinner": FaUtensils,
       "Tea ceremony": FaBinoculars,
       "Bullet train pass": FaBus,
+  
+      // New icons for the provided perks
+      "4 Star Hotels": FaHotel,
+      "3 Star Hotels": FaHotel,
+      "Breakfast": FaUtensils,
+      "Lunch": FaUtensils,
+      "Dinner": FaUtensils,
+      "Sightseeing and Tours": FaMapMarkedAlt,
+      "Transfers and Boat": FaShip,
+      "Transfers and EURAIL": FaTrain,
     };
 
     const SelectedIcon = icons[type];
@@ -107,7 +130,7 @@ import { FaBed, FaBinoculars, FaBus, FaMapMarkerAlt, FaStar, FaUtensils } from "
           >
             <Flex position="absolute" bottom={4} left={4} color="white" zIndex={1} align="center">
               <FaMapMarkerAlt size={20} />
-              <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.6)">
+              <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)">
                 {pkg.location}
               </Heading>
             </Flex>
