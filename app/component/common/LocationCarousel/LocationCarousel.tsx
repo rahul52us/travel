@@ -3,41 +3,78 @@ import { keyframes } from "@emotion/react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+// const locations = [
+//   {
+//     image:
+//       "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+//     title: "Nepal",
+//     trips: "5+ Trips Available",
+//     text: "Explore the breathtaking Himalayas, ancient temples, and vibrant culture of Nepal. A perfect destination for adventure seekers and nature lovers alike.",
+//   },
+//   {
+//     image:
+//       "https://images.pexels.com/photos/358528/pexels-photo-358528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+//     title: "Amsterdam",
+//     trips: "7+ Trips Available",
+//     text: "Experience the charm of Amsterdam with its iconic canals, world-class museums, and lively atmosphere. A perfect mix of history and modernity.",
+//   },
+//   {
+//     image:
+//       "https://media.istockphoto.com/id/827065008/photo/holy-town-varanasi-and-the-river-ganges.jpg?s=2048x2048&w=is&k=20&c=aagij0PmM8L3ak7GWbUnqLq98ZnKVTVNq74RwwS3C-c=",
+//     title: "India",
+//     trips: "10+ Trips Available",
+//     text: "From the majestic Taj Mahal to the serene backwaters of Kerala, India offers a diverse and vibrant travel experience like no other.",
+//   },
+//   {
+//     image:
+//       "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+//     title: "Paris",
+//     trips: "8+ Trips Available",
+//     text: "The city of love awaits! Discover the Eiffel Tower, exquisite cuisine, and timeless art in one of the most romantic destinations in the world.",
+//   },
+//   {
+//     image:
+//       "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+//     title: "Paris",
+//     trips: "8+ Trips Available",
+//     text: "The city of love awaits! Discover the Eiffel Tower, exquisite cuisine, and timeless art in one of the most romantic destinations in the world.",
+//   },
+// ];
 const locations = [
   {
     image:
-      "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    title: "Nepal",
+      "https://images.unsplash.com/photo-1491557345352-5929e343eb89?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZXVyb3BlfGVufDB8fDB8fHwy",
+    title: "Europe",
     trips: "5+ Trips Available",
-    text: "Explore the breathtaking Himalayas, ancient temples, and vibrant culture of Nepal. A perfect destination for adventure seekers and nature lovers alike.",
+    text:"Discover the rich history, stunning architecture, and diverse cultures of Europe. From the romantic streets of Paris to the ancient ruins of Rome, Europe offers something for every traveler."
   },
   {
     image:
-      "https://images.pexels.com/photos/358528/pexels-photo-358528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    title: "Amsterdam",
+      "https://images.unsplash.com/photo-1496939376851-89342e90adcd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2luZ2Fwb3JlfGVufDB8fDB8fHwy",
+    title: "Singapore",
     trips: "7+ Trips Available",
-    text: "Experience the charm of Amsterdam with its iconic canals, world-class museums, and lively atmosphere. A perfect mix of history and modernity.",
+    text:"Immerse yourself in the futuristic cityscape, lush gardens, and vibrant street food scene of Singapore. A melting pot of cultures and a hub of innovation."
   },
   {
     image:
-      "https://media.istockphoto.com/id/827065008/photo/holy-town-varanasi-and-the-river-ganges.jpg?s=2048x2048&w=is&k=20&c=aagij0PmM8L3ak7GWbUnqLq98ZnKVTVNq74RwwS3C-c=",
-    title: "India",
+      "https://images.unsplash.com/photo-1626308888778-2b77082d53b6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG1hbGF5c2lhJTIwYmVhY2hlc3xlbnwwfDB8MHx8fDI%3D",
+    title: "Malaysia",
     trips: "10+ Trips Available",
-    text: "From the majestic Taj Mahal to the serene backwaters of Kerala, India offers a diverse and vibrant travel experience like no other.",
+    text:"Explore the tropical rainforests, pristine beaches, and bustling cities of Malaysia. A perfect blend of natural beauty and cultural diversity."
   },
   {
     image:
-      "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    title: "Paris",
+      "https://images.unsplash.com/photo-1596879857570-7b6b9018bcb6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRoYWlsYW5kfGVufDB8MHwwfHx8Mg%3D%3D",
+    title: "Thailand",
     trips: "8+ Trips Available",
-    text: "The city of love awaits! Discover the Eiffel Tower, exquisite cuisine, and timeless art in one of the most romantic destinations in the world.",
+    text:"Experience the vibrant nightlife, serene temples, and stunning islands of Thailand. A destination that offers both adventure and relaxation."
   },
   {
     image:
-      "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    title: "Paris",
+      "https://images.unsplash.com/photo-1489516408517-0c0a15662682?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8RHViYWl8ZW58MHwwfDB8fHwy",
+    title: "Dubai",
     trips: "8+ Trips Available",
-    text: "The city of love awaits! Discover the Eiffel Tower, exquisite cuisine, and timeless art in one of the most romantic destinations in the world.",
+    text:"Indulge in the luxury, modern marvels, and desert adventures of Dubai. From towering skyscrapers to golden sand dunes, Dubai is a city of contrasts."
   },
 ];
 
@@ -67,11 +104,11 @@ const LocationCarousel = () => {
     <Box py={8} my={{ base: "2rem", md: "6rem" }} px={{ base: 4, md: 2 }} maxW="95%" mx="auto">
       <Flex gap={8} direction={{ base: "column", md: "row" }} mt={12}>
         {/* Image Gallery */}
-        <Flex flex={2} gap={{ base: 4, md: 5 }} direction={{ base: "column", md: "row" }}>
+        <Flex flex={2} gap={{ base: 4, md: 4 }} direction={{ base: "column", md: "row" }}>
           {locations.map((location, index) => (
             <Box
               key={index}
-              w={{ base: "100%", md: activeIndex === index ? "50%" : "150px" }}
+              w={{ base: "100%", md: activeIndex === index ? "50%" : "120px" }}
               h={{ base: "250px", md: "320px" }}
               bgImage={location.image}
               bgSize="cover"

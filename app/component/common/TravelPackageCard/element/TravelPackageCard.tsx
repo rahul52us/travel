@@ -165,32 +165,31 @@ import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, Fa
 
           {/* Itinerary Section */}
           <Box mt={4}>
-            <Flex
-            
-              overflowX="auto"
-              align="center"
-              sx={{
-                "::-webkit-scrollbar": { display: "none" },
-                scrollbarWidth: "none",
-              }}
-            >
-              {pkg.itinerary.map((stop, index) => (
-                <Flex key={index} align="center" mr={3}>
-                  <Box textAlign="center">
-                    <Text fontSize="xs" fontWeight="medium" color="gray.700">
-                      {stop.place}
-                    </Text>
-                    <Text fontSize="xs" color="gray.500">
-                      {stop.nights} nights
-                    </Text>
-                  </Box>
-                  {index < pkg.itinerary.length - 1 && (
-                    <Box flex="1" height="2px" bg="gray.300" mx={2} />
-                  )}
-                </Flex>
-              ))}
-            </Flex>
-          </Box>
+  <Flex
+    overflowX="auto"
+    align="center"
+    sx={{
+      "::-webkit-scrollbar": { display: "none" },
+      scrollbarWidth: "none",
+    }}
+  >
+    {pkg.itinerary.map((stop, index) => (
+      <Flex key={index} align="center" mr={3} whiteSpace="nowrap">
+        <Box textAlign="center">
+          <Text fontSize="xs" fontWeight="medium" color="gray.700" noOfLines={1}>
+            {stop.place}
+          </Text>
+          <Text fontSize="xs" color="gray.500" noOfLines={1}>
+            {stop.nights} nights
+          </Text>
+        </Box>
+        {index < pkg.itinerary.length - 1 && (
+          <Box flex="1" height="2px" bg="gray.300" mx={2} />
+        )}
+      </Flex>
+    ))}
+  </Flex>
+</Box>
 
           {/* Highlights Section */}
           {isOpen && (
@@ -230,14 +229,23 @@ import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, Fa
             </Heading>
           </Box>
           <Button
-            colorScheme="blue"
+            // colorScheme="red"
+            borderRadius="full"
+            size={{base:"xs",lg:"sm"}}
+            animation={`${bounce} 2s infinite`}
+            
+          >
+            Book Now
+          </Button>
+          {/* <Button
+            colorScheme="red"
             borderRadius="full"
             size={{base:"xs",lg:"sm"}}
             onClick={toggleDetails}
             animation={`${bounce} 2s infinite`}
           >
             {isOpen ? "Hide Details" : "View Details"}
-          </Button>
+          </Button> */}
         </CardFooter>
       </Card>
     );

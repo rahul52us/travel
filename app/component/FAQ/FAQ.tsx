@@ -7,8 +7,8 @@ const FAQ = () => {
   return (
     <Box
       mt={{ md: 10 }}
-      pt={{ base: "3rem", md: "6rem" }}
-      pb={{ base: "4rem", md: "8rem" }}
+      pt={{ base: "3rem", md: "4rem" }}
+      pb={{ base: "4rem", md: "6rem" }}
       bg={"#E1F0EE"}
       position={"relative"}
     >
