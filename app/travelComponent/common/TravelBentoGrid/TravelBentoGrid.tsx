@@ -67,9 +67,25 @@ export default function TravelBentoGrid() {
   const gridRows = useBreakpointValue({ base: "auto", md: "520px" });
 
   return (
-    <Box p={{ base: 2, md: 5 }} maxW={{ base: "95%", md: "70%" }} mx="auto" my={{base:'40px',lg:'60px'}}>
-      <CustomSubHeading highlightText="Our World">Wander Through</CustomSubHeading>
-      <Grid templateColumns={`repeat(${gridColumns}, 1fr)`} gap={{base:2,lg:3}} h={gridRows} mt={8}>
+    <Box
+      p={{ base: 2, md: 5 }}
+      maxW={{ base: "95%", md: "70%" }}
+      mx="auto"
+      my={{ base: "40px", lg: "60px" }}
+    >
+      <CustomSubHeading highlightText="Our World">
+        Wander Through
+      </CustomSubHeading>
+
+      <Text fontSize={'md'} maxW={'90%'} mx={'auto'} color={'gray.500'} mb={4} textAlign={'center'}>
+      Explore diverse destinations for every traveler. From serene beaches to vibrant cities and thrilling adventures, find your next unforgettable journey here.
+      </Text>
+      <Grid
+        templateColumns={`repeat(${gridColumns}, 1fr)`}
+        gap={{ base: 2, lg: 3 }}
+        h={gridRows}
+        mt={8}
+      >
         {travelImages.map((img, index) => (
           <GridItem
             key={index}
@@ -110,7 +126,11 @@ export default function TravelBentoGrid() {
       </Grid>
 
       {selectedImage && (
-        <Modal isOpen={isOpen} onClose={onClose} size={{ base: "md", md: "xl" }}>
+        <Modal
+          isOpen={isOpen}
+          onClose={onClose}
+          size={{ base: "md", md: "xl" }}
+        >
           <ModalOverlay />
           <ModalContent>
             <ModalHeader pb={0}>{selectedImage.alt}</ModalHeader>
