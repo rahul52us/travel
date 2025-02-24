@@ -39,7 +39,8 @@ const SightSeeingCard2 = ({ tour }) => {
                     justifyContent="center"
                     gap={2}
                 >
-                    {tour.images.map((img, index) => (
+
+                    {tour.images.length > 0 && tour.images.map((img, index) => (
                         <Box
                             key={index}
                             cursor="pointer"
@@ -86,7 +87,7 @@ const SightSeeingCard2 = ({ tour }) => {
           <Stack spacing={3}>
             <Flex align="center" fontSize="sm">
               <Icon as={FiArrowRightCircle} mr={2} color="blue.500" />
-              <Text fontWeight="500">Includes: {tour.includes.join(', ')}</Text>
+              {/* <Text fontWeight="500">Includes: {tour.includes.join(', ')}</Text> */}
             </Flex>
           </Stack>
   

@@ -18,7 +18,7 @@ const PageHero = ({
 
   return (
     <Box
-      minHeight={{ base: "60vh", md: "65vh",xl:"70vh" }}
+      minHeight={{ base: "50vh", md: "65vh",xl:"70vh" }}
       display="flex"
       alignItems="center"
       justifyContent="center"

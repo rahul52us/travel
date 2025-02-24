@@ -27,6 +27,7 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
       <Menu>
         <MenuButton
           as={Button}
+          _hover={{bg:"transparent"}}
           rightIcon={<ChevronDownIcon />}
           variant="ghost"
           fontSize={{ lg: "16px", xl: "18px" }}

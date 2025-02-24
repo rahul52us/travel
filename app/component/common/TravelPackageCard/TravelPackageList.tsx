@@ -4,89 +4,6 @@ import { Box, useBreakpointValue } from "@chakra-ui/react";
 import CustomCarousel from "../CustomCarousal/CustomCarousal";
 import TravelPackageCard from "./element/TravelPackageCard";
 
-// export const travelPackages = [
-//   {
-//     id: 1,
-//     location: "Santorini, Greece",
-//     image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff",
-//     price: 105000,
-//     days: 7,
-//     rating: 4.8,
-//     perks: [
-//       "5-star hotels",
-//       "Daily breakfast",
-//       "Guided tours",
-//       "Airport transfer",
-//     ],
-//     highlights: ["Sunset cruise", "Volcano tour", "Wine tasting"],
-//     discount: 15,
-//     itinerary: [
-//       { place: "Santorini Town", nights: 3 },
-//       { place: "Oia Village", nights: 4 },
-//     ],
-//   },
-//   {
-//     id: 2,
-//     location: "Kyoto, Japan",
-//     image: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b",
-//     price: 184000,
-//     days: 10,
-//     rating: 4.9,
-//     perks: [
-//       "Ryokan stay",
-//       "Kaiseki dinner",
-//       "Tea ceremony",
-//       "Bullet train pass",
-//     ],
-//     highlights: ["Cherry blossoms", "Bamboo forest", "Golden Pavilion"],
-//     discount: 10,
-//     itinerary: [
-//       { place: "Kyoto Town", nights: 3 },
-//       { place: "Arashiyama", nights: 4 },
-//     ],
-//   },
-//   {
-//     id: 3,
-//     location: "Kyoto, Japan",
-//     image: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b",
-//     price: 184000,
-//     days: 10,
-//     rating: 4.9,
-//     perks: [
-//       "Ryokan stay",
-//       "Kaiseki dinner",
-//       "Tea ceremony",
-//       "Bullet train pass",
-//     ],
-//     highlights: ["Cherry blossoms", "Bamboo forest", "Golden Pavilion"],
-//     discount: 10,
-//     itinerary: [
-//       { place: "Kyoto Town", nights: 3 },
-//       { place: "Arashiyama", nights: 4 },
-//     ],
-//   },
-//   {
-//     id: 4,
-//     location: "Kyoto, Japan",
-//     image: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b",
-//     price: 184000,
-//     days: 10,
-//     rating: 4.9,
-//     perks: [
-//       "Ryokan stay",
-//       "Kaiseki dinner",
-//       "Tea ceremony",
-//       "Bullet train pass",
-//     ],
-//     highlights: ["Cherry blossoms", "Bamboo forest", "Golden Pavilion"],
-//     discount: 10,
-//     itinerary: [
-//       { place: "Kyoto Town", nights: 3 },
-//       { place: "Arashiyama", nights: 4 },
-//     ],
-//   },
-// ];
-
 export const travelPackages = [
   {
     id: 1,
@@ -95,6 +12,7 @@ export const travelPackages = [
     price: 79000,
     days: 6,
     rating: 4.7,
+    destination:"western-europe",
     perks: ["4 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and Boat"],
     highlights: ["Amsterdam", "Paris"],
     itinerary: [
@@ -109,6 +27,7 @@ export const travelPackages = [
     price: 320000,
     days: 11,
     rating: 4.5,
+    destination:"western-europe",
     perks: ["3 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Amsterdam", "Paris", "Zurich", "Innsbruck", "Venice"],
     itinerary: [
@@ -126,6 +45,7 @@ export const travelPackages = [
     price: 299000,
     days: 10,
     rating: 4.6,
+    destination:"western-europe",
     perks: ["3 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["London", "Paris", "Zurich", "Interlaken"],
     itinerary: [
@@ -142,6 +62,7 @@ export const travelPackages = [
     price: 220000,
     days: 9,
     rating: 4.8,
+    destination:"western-europe",
     perks: ["3 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Rome", "Florence", "Venice", "Milan"],
     itinerary: [
@@ -158,6 +79,7 @@ export const travelPackages = [
     price: 188000,
     days: 8,
     rating: 4.4,
+    destination:"western-europe",
     perks: ["3 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Amsterdam", "Brussels", "Luxembourg"],
     itinerary: [
@@ -173,6 +95,7 @@ export const travelPackages = [
     price: 110000,
     days: 8,
     rating: 4.3,
+    destination:"western-europe",
     perks: ["3 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Madrid", "Lisbon", "Porto", "Santiago De Compostela"],
     itinerary: [
@@ -190,6 +113,7 @@ export const travelPackages = [
     price: 114000,
     days: 8,
     rating: 4.7,
+    destination:"western-europe",
     perks: ["4 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Madrid", "Granada", "Seville", "Barcelona"],
     itinerary: [
@@ -206,6 +130,7 @@ export const travelPackages = [
     price: 98000,
     days: 8,
     rating: 4.6,
+    destination:"dubai",
     perks: ["4 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Istanbul", "Ankara", "Cappadocia", "Safranbolu"],
     itinerary: [
@@ -223,6 +148,7 @@ export const travelPackages = [
     price: 75000,
     days: 6,
     rating: 4.5,
+    destination:"dubai",
     perks: ["4 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Istanbul", "Kusadasi"],
     itinerary: [
@@ -238,6 +164,7 @@ export const travelPackages = [
     price: 158000,
     days: 10,
     rating: 4.8,
+    destination:"western-europe",
     perks: ["4 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Rome", "Florence", "Venice", "Zurich", "Paris"],
     itinerary: [
@@ -255,6 +182,7 @@ export const travelPackages = [
     price: 178000,
     days: 7,
     rating: 4.4,
+    destination:"central-europe",
     perks: ["3 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Vienna", "Salzburg", "Innsbruck"],
     itinerary: [
@@ -270,6 +198,7 @@ export const travelPackages = [
     price: 168000,
     days: 12,
     rating: 4.7,
+    destination:"central-europe",
     perks: ["4 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and Boat"],
     highlights: ["Rome", "Florence", "Venice", "Kitzbuhel", "Vienna", "Budapest", "Prague", "Frankfurt"],
     itinerary: [
@@ -290,6 +219,7 @@ export const travelPackages = [
     price: 238000,
     days: 9,
     rating: 4.6,
+    destination:"eastern-europe",
     perks: ["3 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Prague", "Vienna", "Budapest", "Ljubljana", "Salzburg"],
     itinerary: [
@@ -307,6 +237,7 @@ export const travelPackages = [
     price: 69000,
     days: 6,
     rating: 4.3,
+    destination:"eastern-europe",
     perks: ["4 Star Hotels", "Breakfast", "Sightseeing and Tours", "Transfers and EURAIL"],
     highlights: ["Vienna", "Budapest", "Prague"],
     itinerary: [

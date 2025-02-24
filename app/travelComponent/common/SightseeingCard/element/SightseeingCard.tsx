@@ -33,7 +33,7 @@ const SightseeingCard = ({ place }) => {
           h="220px"
           w="full"
         />
-        <Tag
+        {/* <Tag
           colorScheme="purple"
           rounded={"full"}
           opacity={0.7}
@@ -43,7 +43,7 @@ const SightseeingCard = ({ place }) => {
           cursor="pointer"
         >
           {place.type}
-        </Tag>
+        </Tag> */}
       </Box>
 
       <Box p={4}>

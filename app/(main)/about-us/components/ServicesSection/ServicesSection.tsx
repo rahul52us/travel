@@ -4,9 +4,9 @@ import CustomSubHeading from '../../../../travelComponent/common/CustomSubHeadin
 
 const ServicesSection = () => {
   return (
-    <Box py={{base:6,lg:16}}>
+    <Box py={{base:6,lg:8}}>
         <Container maxW={{base:"95%",lg:"80%"}}>
-          <VStack spacing={4} textAlign="center" mb={12}>
+          <VStack spacing={4} textAlign="center" mb={{base:6,lg:12}}>
             {/* <Badge colorScheme="teal" variant="subtle">
               Our Offerings
             </Badge> */}
@@ -16,7 +16,7 @@ const ServicesSection = () => {
             <CustomSubHeading highlightText='Services'>
             Our
             </CustomSubHeading>
-            <Text fontSize={{lg:"lg"}} color="gray.600" maxW="800px">
+            <Text fontSize={{lg:"lg"}} color="gray.600" maxW={{lg:"800px"}}>
               From romantic getaways to family adventures and cultural immersions, we offer tailor-made travel options to suit every taste and budget.
             </Text>
           </VStack>
@@ -29,7 +29,7 @@ const ServicesSection = () => {
                 borderRadius="xl"
               />
             </Box>
-            <VStack align="start" spacing={6}>
+            <VStack align="start" spacing={{base:3,lg:6}}>
               {[
                 "Guided tours with expert local guides",
                 "Luxury escapes with boutique accommodations",

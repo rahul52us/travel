@@ -25,7 +25,7 @@ const features = [
 
 const SetsApart = () => {
   return (
-    <Box py={{base:4,lg:16}}>
+    <Box py={{base:4,lg:12}}>
     <Container maxW={{base:"95%",lg:"80%"}}>
       <VStack spacing={{base:2,lg:4}} textAlign="center" mb={12}>
         <CustomSubHeading highlightText='Us Apart?'>

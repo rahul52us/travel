@@ -1,15 +1,15 @@
 "use client";
 
 import {
-    Box,
-    Button,
-    Container,
-    Flex,
-    Grid,
-    Heading,
-    Image,
-    Text,
-    VStack
+  Box,
+  Button,
+  Container,
+  Flex,
+  Grid,
+  Heading,
+  Image,
+  Text,
+  VStack
 } from "@chakra-ui/react";
 import { FiArrowRight } from "react-icons/fi";
 import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSection";
@@ -48,7 +48,7 @@ export default function AboutUsPage() {
   
 
       {/* Mission Section */}
-      <Box  py={{base:4,lg:16}} my={8}>
+      <Box  py={{base:4,lg:16}} my={{base:4,lg:8}}>
         <Container maxW={{base:"95%",lg:"80%"}} mx={'auto'}>
         <Heading size={{base:"lg",lg:"xl"}} color="teal.600" textAlign={'center'} display={{base:"block",lg:"none"}}>
                 Our Mission
@@ -93,47 +93,54 @@ export default function AboutUsPage() {
     <ServicesSection/>
 
       {/* CTA Section */}
-      <Box py={{base:6,lg:16}} position="relative" overflow="hidden">
-        <Container maxW="1200px">
-          <Flex
-            bg="teal.600"
-            borderRadius="3xl"
-            p={{base:4,lg:8}}
-            position="relative"
-            overflow="hidden"
-            align="center"
-            direction={{ base: "column", md: "row" }}
-          >
-            <Box flex={1} color="white" zIndex={1} p={{base:2,lg:8}}>
-              <Heading size={{base:"md",lg:"xl"}} mb={4}>
-                Ready for Your European Odyssey?
-              </Heading>
-              <Text fontSize={{lg:"xl"}} mb={8}>
-                Let us guide you through Europe&apos;s timeless wonders and create unforgettable memories
-              </Text>
-              <Button
-                colorScheme="white"
-                variant="outline"
-                size={{base:"md",lg:"lg"}}
-                rightIcon={<FiArrowRight />}
-                _hover={{ bg: "white", color: "teal.600" }}
-              >
-                Contact Us Today
-              </Button>
-            </Box>
-            <Box flex={1} position="relative" h="400px">
-              <Image
-                src="/images/travel/cta-image.jpg"
-                alt="Adventure Awaits"
-                w="100%"
-                h="100%"
-                objectFit="cover"
-                borderRadius="2xl"
-              />
-            </Box>
-          </Flex>
-        </Container>
+      <Box py={{ base: 6, lg: 12 }} position="relative" overflow="hidden">
+  <Container maxW={{lg:"85%"}}>
+    <Flex
+      bg="teal.600"
+      borderRadius="3xl"
+      p={{ base: 4, lg: 0 }}
+      position="relative"
+      overflow="hidden"
+      align="center"
+      direction={{ base: "column", md: "row" }}
+      backgroundImage="url('https://images.unsplash.com/photo-1609601540898-52ca92508901?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
+      backgroundSize="cover"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      h={{lg:'20rem'}}
+      _before={{
+        content: '""',
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        bg: "black",
+        opacity: 0.3, // Adjust for readability
+        borderRadius: "3xl",
+      }}
+    >
+      <Box flex={1} color="white" zIndex={1} p={{ base: 2, lg: 8 }}>
+      <Heading size={{ base: "md", lg: "xl" }} mb={4} textShadow={'md'}>
+Ready for Your Perfect Escape?
+</Heading>
+<Text fontSize={{ lg: "xl" }} mb={{base:4,lg:8}} textShadow={'md'}>
+Let us guide you to serene destinations and create relaxing memories worldwide
+</Text>
+        <Button
+          colorScheme="white"
+          variant="outline"
+          size={{ base: "md", lg: "lg" }}
+          rightIcon={<FiArrowRight />}
+          _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
+        >
+          Contact Us Today
+        </Button>
       </Box>
+    </Flex>
+  </Container>
+</Box>
+
     </Box>
   );
 }
