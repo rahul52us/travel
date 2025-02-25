@@ -5,6 +5,7 @@ import {
 import CustomCarousel from "../../../component/common/CustomCarousal/CustomCarousal";
 import CustomSubHeading from "../CustomSubHeading/CustomSubHeading";
 import SightseeingCard from "./element/SightseeingCard";
+import { sightseeingData } from "../../../(main)/sightseeing/component/utils/sightseeingData";
 
 const data = [
   {
@@ -60,7 +61,7 @@ const SightseeingList = () => {
       </CustomSubHeading>
       <Box mt={{base:4,lg:12}}>
         <CustomCarousel autoplay={true} slidesToShow={noOfSlides} showArrows={showArrows}>
-          {data.map((place, index) => (
+          {sightseeingData.map((place, index) => (
             <SightseeingCard key={index} place={place} />
           ))}
         </CustomCarousel>

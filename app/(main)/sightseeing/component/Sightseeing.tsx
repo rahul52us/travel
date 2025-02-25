@@ -3,43 +3,6 @@ import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSect
 import SightSeeingCard2 from "./SightseeingCard2";
 import { sightseeingData } from "./utils/sightseeingData";
 
-// Dummy data for demonstration
-const dummyTour = [
-  {
-    title: "Keukenhof and Zaanse Schans Windmills Day Trip from Amsterdam",
-    duration: "9 hours",
-    description:
-      "Make the most of your time in the Netherlands by seeing Keukenhof botanical garden and Zaanse Schans in one day with stress-free transport from Amsterdam included. This day trip from Amsterdam takes you to the garden in the morning to see its impressive flower fields on a Lisse guided tour. Afterward, it’s on to Zaanse Schans to see its windmills and clog museum before enjoying a cheese tasting at a farm. Easy drop-off in Amsterdam concludes your experience.",
-    price: "€89.99",
-    maxGroupSize: 15,
-   
-    images: [
-      "https://img.freepik.com/premium-photo/trees-growing-forest_1048944-30368869.jpg?w=1060",
-      "https://img.freepik.com/free-photo/dark-clouds-canal-amsterdam_1304-5376.jpg?ga=GA1.1.1625681573.1739726311&semt=ais_hybrid",
-      "https://img.freepik.com/free-photo/bicycles-street-amsterdam_1321-1775.jpg?ga=GA1.1.1625681573.1739726311&semt=ais_hybrid",
-    ],
-  },
-  {
-    title: "Keukenhof and Zaanse Schans Windmills Day Trip from Amsterdam",
-    duration: "9 hours",
-    description:
-      "Make the most of your time in the Netherlands by seeing Keukenhof botanical garden and Zaanse Schans in one day with stress-free transport from Amsterdam included. This day trip from Amsterdam takes you to the garden in the morning to see its impressive flower fields on a Lisse guided tour. Afterward, it’s on to Zaanse Schans to see its windmills and clog museum before enjoying a cheese tasting at a farm. Easy drop-off in Amsterdam concludes your experience.",
-    price: "€89.99",
-    maxGroupSize: 15,
-    includes: [
-      "Transportation",
-      "Guided Tour",
-      "Cheese Tasting",
-      "Entrance Fees",
-    ],
-    images: [
-      "https://img.freepik.com/premium-photo/trees-growing-forest_1048944-30368869.jpg?w=1060",
-      "https://img.freepik.com/free-photo/dark-clouds-canal-amsterdam_1304-5376.jpg?ga=GA1.1.1625681573.1739726311&semt=ais_hybrid",
-      "https://img.freepik.com/free-photo/bicycles-street-amsterdam_1321-1775.jpg?ga=GA1.1.1625681573.1739726311&semt=ais_hybrid",
-    ],
-  },
-];
-
 // Usage in your component
 const SightSeeingPage = () => {
   return (

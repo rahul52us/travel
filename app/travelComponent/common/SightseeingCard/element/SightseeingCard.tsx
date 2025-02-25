@@ -14,7 +14,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 const SightseeingCard = ({ place }) => {
   const cardBg = useColorModeValue("white", "gray.800");
-  const textColor = useColorModeValue("gray.800", "gray.100");
+  const textColor = useColorModeValue("blue.700", "gray.100");
   const priceColor = useColorModeValue("blue.500", "blue.300");
 
   return (
@@ -27,8 +27,8 @@ const SightseeingCard = ({ place }) => {
     >
       <Box position={"relative"}>
         <Image
-          src={place.image}
-          alt={place.name}
+          src={place.images[0]}
+          alt={place.title}
           objectFit="cover"
           h="220px"
           w="full"
@@ -50,14 +50,14 @@ const SightseeingCard = ({ place }) => {
         <HStack justify="space-between" align="center" mb={2}>
           <HStack spacing={2} align="center">
             <Icon as={FaMapMarkerAlt} color="red.400" />
-            <Text fontSize="sm" color="gray.500">
-              {place.location}
+            <Text fontSize="sm" color="gray.500" textTransform={'capitalize'}>
+              {place.destination}
             </Text>
           </HStack>
         </HStack>
 
-        <Text fontSize="lg" fontWeight="bold" color={textColor} mb={2}>
-          {place.name}
+        <Text fontSize="md" fontWeight="bold" color={textColor} mb={2} noOfLines={2}>
+          {place.title}
         </Text>
 
         <Text fontSize="sm" color="gray.500" noOfLines={2} mb={2}>
@@ -65,12 +65,12 @@ const SightseeingCard = ({ place }) => {
         </Text>
 
         <HStack justify="space-between" align="center">
-          <Text fontSize="xl" fontWeight="bold" color={priceColor}>
-            ₹{place.price}
+          <Text fontSize="lg" fontWeight="600" color={priceColor}>
+            {place.price}
           </Text>
           <Tag colorScheme="purple" variant={"outline"}>
           <TagLeftIcon boxSize="12px" as={TimeIcon} />
-            {place.hours} Hrs
+            {place.duration}
           </Tag>
         </HStack>
 
