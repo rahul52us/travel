@@ -2,13 +2,14 @@
 
 import { Box } from '@chakra-ui/react';
 import SightseeingPage from './component/Sightseeing';
+import Destinations from './SightseeingDestinations';
 
 const page = () => {
   return (
     <Box>
 
-      
-<SightseeingPage/>
+      <Destinations/>
+{/* <SightseeingPage/> */}
         
     </Box>
   )
