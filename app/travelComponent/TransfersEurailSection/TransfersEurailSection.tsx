@@ -192,6 +192,7 @@ const transferData = [
 
 const   TransfersEurailSection = () => {
   const noOfSlides = useBreakpointValue({ base: 1, md: 2, lg: 4 });
+  const showArrows = useBreakpointValue({base:false,lg:true})
 
   return (
     <Box maxW={{ base: "95%" }} mx={"auto"} my={"5rem"}>
@@ -201,7 +202,7 @@ const   TransfersEurailSection = () => {
 
       <CustomCarousel
         slidesToShow={noOfSlides}
-        showArrows={true}
+        showArrows={showArrows}
         autoplay={true}
       >
         {transferData.map((item, index) => (

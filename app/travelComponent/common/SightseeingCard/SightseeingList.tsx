@@ -60,7 +60,7 @@ const SightseeingList = () => {
       <CustomSubHeading highlightText="Sightseeing Adventures">
         Unmissable Views
       </CustomSubHeading>
-      <Text textAlign={'center'} maxW={'80%'} color={'gray.500'} mx={'auto'}>
+      <Text textAlign={'center'} fontSize={{base:"sm",lg:"md"}} maxW={{base:"95%",lg:'80%'}} color={'gray.500'} mx={'auto'}>
 
       From iconic landmarks to hidden treasures, discover the world’s most breathtaking sights that will leave you inspired and in awe. Let your curiosity guide you to unforgettable experiences.
       </Text>

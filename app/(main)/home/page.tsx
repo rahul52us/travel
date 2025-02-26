@@ -13,6 +13,7 @@ import TourPackageSection from "../../travelComponent/TourPackageSection/TourPac
 import WhyChoose from "./component/WhyChoose/WhyChoose";
 import BudgetWrapper from "./component/BudgetWrapper/BudgetWrapper";
 import FAQ from "../../component/FAQ/FAQ";
+import FloatingSocialIcons from "../../travelComponent/common/FloatingIcons/FloatingIcons";
 
 export default function Home() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
       <Box>
         <ContactUs />
       </Box>
+      <FloatingSocialIcons/>
     </Box>
   );
 }
