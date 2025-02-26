@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { FiArrowRight } from "react-icons/fi";
 
 const FeaturedDestination = () => {
   return (
@@ -48,10 +49,13 @@ const FeaturedDestination = () => {
           Discover breathtaking landscapes, charming villages, and thrilling adventures in the heart of Europe.
         </Text>
         <Button
-          colorScheme="teal"
-          size="lg"
-          _hover={{ bg: "teal.600" }}
-          onClick={() => alert("Explore more clicked!")}
+          // colorScheme="teal"
+                  colorScheme="white"
+                  variant="outline"
+                  size={{ base: "md", lg: "lg" }}
+                  rightIcon={<FiArrowRight />}
+                  _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
+        
         >
           Explore More
         </Button>

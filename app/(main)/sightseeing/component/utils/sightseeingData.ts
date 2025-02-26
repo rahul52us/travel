@@ -189,9 +189,9 @@ export const sightseeingData = [
         maxGroupSize: 15,
         destination: "eastern-europe",
         images: [
-            "",
-            "",
-            ""
+            "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TW9uaSUyMGV1cm9wZXxlbnwwfDB8MHx8fDI%3D",
+            "https://images.unsplash.com/photo-1609879520260-1a5bcf3e4ebf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8QWdpc3RyaXxlbnwwfDB8MHx8fDI%3D",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPpfwjOVO2yaN1GXjsAobwew65Ujc9_CunFQ&s"
         ]
       },
       {

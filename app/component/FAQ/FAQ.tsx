@@ -9,7 +9,8 @@ const FAQ = () => {
       mt={{ md: 10 }}
       pt={{ base: "3rem", md: "4rem" }}
       pb={{ base: "4rem", md: "6rem" }}
-      bg={"#E1F0EE"}
+      // bg={"#E1F0EE"}
+      bgGradient={"linear(to-r, teal.50 ,blue.100)"}
       position={"relative"}
     >
       {/* <Text

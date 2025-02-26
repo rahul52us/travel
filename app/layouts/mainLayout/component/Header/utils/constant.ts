@@ -16,6 +16,7 @@ export const navItems = [
       { title: "Thailand", link: "/visa-service/student" },
     ],
   },
+  { title: "Sightseeing", link: "/sightseeing" },
   { title: "Blogs", link: "/blogs" },
   // {
   //   title: "More",

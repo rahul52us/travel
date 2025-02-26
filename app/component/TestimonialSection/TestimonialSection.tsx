@@ -58,11 +58,14 @@ const testimonials = [
 const TestimonialSection = () => {
   const noOfSlides = useBreakpointValue({ base: 1, md: 2, lg: 3 });
   return (
-    <Box bg={'#E1F0EE'} my={12}>
+    <Box  my={12}
+    
+    bgGradient={"linear(to-b, cyan.50 , blue.100)"}
+    >
       <Box
 
         maxW={{ md: "90%" }}
-        py={{ base: "3rem", md: "6rem" }}
+        py={{ base: "3rem", md: "5rem" }}
         px={{ base: 4, md: 0 }}
         mx={"auto"}
       >

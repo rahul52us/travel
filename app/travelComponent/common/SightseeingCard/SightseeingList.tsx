@@ -1,5 +1,6 @@
 import {
   Box,
+  Text,
   useBreakpointValue
 } from "@chakra-ui/react";
 import CustomCarousel from "../../../component/common/CustomCarousal/CustomCarousal";
@@ -59,7 +60,11 @@ const SightseeingList = () => {
       <CustomSubHeading highlightText="Sightseeing Adventures">
         Unmissable Views
       </CustomSubHeading>
-      <Box mt={{base:4,lg:12}}>
+      <Text textAlign={'center'} maxW={'80%'} color={'gray.500'} mx={'auto'}>
+
+      From iconic landmarks to hidden treasures, discover the world’s most breathtaking sights that will leave you inspired and in awe. Let your curiosity guide you to unforgettable experiences.
+      </Text>
+      <Box mt={{base:4,lg:6}}>
         <CustomCarousel autoplay={true} slidesToShow={noOfSlides} showArrows={showArrows}>
           {sightseeingData.map((place, index) => (
             <SightseeingCard key={index} place={place} />

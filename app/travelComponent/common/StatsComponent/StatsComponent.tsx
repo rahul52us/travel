@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, Icon, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Icon, Image, Text } from "@chakra-ui/react";
 import { animate, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { FaRoute } from "react-icons/fa6";
@@ -31,6 +31,7 @@ const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
 interface Stat {
   value: number;
   label: string;
+  icon?: string;
 }
 
 interface StatsGridProps {
@@ -44,16 +45,16 @@ const StatsGrid: React.FC<StatsGridProps> = ({ statsData }) => {
     <Grid
       ref={ref}
       templateColumns={{ base: "1fr 1fr", md: "repeat(4, 1fr)" }}
-      mt={{ base: 8, lg: 14 }}
-      gap={{ base: 8, md: 8, lg: 4 }}
+      mt={{ base: 8, lg: 12 }}
+      gap={{ base: 6, md: 8, lg: 4 }}
     >
       {statsData.map((stat, index) => (
         <GridItem
           key={index}
-          colSpan={{
-            base: index === statsData.length - 1 ? 2 : 1,
-            md: 1,
-          }}
+          // colSpan={{
+          //   base: index === statsData.length - 1 ? 2 : 1,
+          //   md: 1,
+          // }}
           justifySelf={{
             base: index === statsData.length - 1 ? "center" : "unset",
             md: "unset",
@@ -66,21 +67,31 @@ const StatsGrid: React.FC<StatsGridProps> = ({ statsData }) => {
             pr={{ lg: 1 }}
           >
             <Flex justifyContent="center">
-              <Icon
-                boxSize={{ base: 10, md: 14 }}
-                color={"blue.400"}
+              {/* <Icon
+                boxSize={{ base: 12, md: 14 }}
+                color={"teal.400"}
                 as={FaRoute}
-                bg={"blue.100"}
+                bg={"white"}
+                shadow={'md'}
                 p={3}
                 rounded={"30%"}
-              />
+              /> */}
+              <Image  
+  boxSize={{ base: 12, md: 14 }}  
+  src={stat.icon}   // Replace with the path to your image  
+  alt="Route Icon" // Add a descriptive alt text  
+  bg={"white"}  
+  shadow={'md'}  
+  p={2}  
+  rounded={"30%"}  
+/>  
             </Flex>
             <Text
               textAlign="center"
               fontSize={{ base: "2rem", md: "2.4rem", lg: "3rem" }}
               fontWeight={600}
               lineHeight={{ base: "3rem" }}
-              mt={4}
+              mt={{base:2,lg:4}}
             >
               {inView ? <AnimatedNumber value={stat.value} /> : 0}+
             </Text>
