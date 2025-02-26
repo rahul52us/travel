@@ -6,7 +6,7 @@ import DestinationsPage from './components/DestinationsPage';
 const page = () => {
   return (
     <Box>
-      <DestinationsPage/>
+      <DestinationsPage />
     </Box>
 
   )

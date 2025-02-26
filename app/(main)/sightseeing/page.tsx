@@ -9,8 +9,8 @@ const page = () => {
     <Box>
 
       <Destinations/>
-{/* <SightseeingPage/> */}
-        
+<SightseeingPage/>
+
     </Box>
   )
 }

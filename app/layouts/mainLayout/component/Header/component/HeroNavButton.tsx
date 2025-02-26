@@ -4,9 +4,16 @@ import React from "react";
 
 const HeroNavButton = () => {
   return (
-    <Button bg={"#045B64"} size={"lg"} fontWeight={500} fontSize={"sm"}>
-      Book Trip
-    </Button>
+    <Button
+  bgGradient="linear(to-r, #6DD5FA, #2980B9)"
+  size="lg"
+  fontWeight={500}
+  fontSize="sm"
+  _hover={{ bgGradient: "linear(to-r, #2980B9, #6DD5FA)" }}
+>
+  Book Trip
+</Button>
+
   );
 };
 

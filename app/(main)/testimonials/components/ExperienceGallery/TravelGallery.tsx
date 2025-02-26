@@ -1,4 +1,4 @@
-import { Box, Grid, Heading, Text } from '@chakra-ui/react';
+import { Box, Grid, Heading } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
 const travelData = [
@@ -21,29 +21,29 @@ const travelData = [
   { id: 17, name: "Travel Memory #4", imageUrl: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFwYW58ZW58MHwwfDB8fHwy" },
   { id: 18, name: "Travel Memory #4", imageUrl: "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9tZXxlbnwwfDB8MHx8fDI%3D" },
   { id: 19, name: "Travel Memory #4", imageUrl: "https://images.unsplash.com/photo-1566999573217-25c859ec1450?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHRyaXB8ZW58MHwwfDB8fHwy" },
-  
+
   // Add more as needed
 ];
 
 const TravelGallery = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [opacity, setOpacity] = useState(1);
-  
+
     useEffect(() => {
       const interval = setInterval(() => {
         // Start fading out
         setOpacity(0);
-  
+
         // After the fade-out transition is complete, update the index and fade in
         setTimeout(() => {
           setCurrentIndex((prevIndex) => (prevIndex + 4) % travelData.length);
           setOpacity(1); // Fade in the new images
         }, 1000); // Wait for the fade-out transition to complete (0.5s)
       }, 5000); // Change images every 5 seconds
-  
+
       return () => clearInterval(interval);
     }, []);
-  
+
     return (
       <Box>
         <Heading fontSize="3xl" mb={8}>

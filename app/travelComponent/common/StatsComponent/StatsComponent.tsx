@@ -1,7 +1,6 @@
-import { Box, Flex, Grid, GridItem, Icon, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import { animate, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { FaRoute } from "react-icons/fa6";
 import { useInView } from "react-intersection-observer";
 
 interface AnimatedNumberProps {
@@ -76,15 +75,15 @@ const StatsGrid: React.FC<StatsGridProps> = ({ statsData }) => {
                 p={3}
                 rounded={"30%"}
               /> */}
-              <Image  
-  boxSize={{ base: 12, md: 14 }}  
-  src={stat.icon}   // Replace with the path to your image  
-  alt="Route Icon" // Add a descriptive alt text  
-  bg={"white"}  
-  shadow={'md'}  
-  p={2}  
-  rounded={"30%"}  
-/>  
+              <Image
+  boxSize={{ base: 12, md: 14 }}
+  src={stat.icon}   // Replace with the path to your image
+  alt="Route Icon" // Add a descriptive alt text
+  bg={"white"}
+  shadow={'md'}
+  p={2}
+  rounded={"30%"}
+/>
             </Flex>
             <Text
               textAlign="center"

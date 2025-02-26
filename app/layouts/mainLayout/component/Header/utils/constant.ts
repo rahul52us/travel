@@ -7,24 +7,17 @@ export const navItems = [
   {
     title: "Destinations",
     subItems: [
-      { title: "Eastern Europe", link: "/destinations" },
+      { title: "Eastern Europe", link: "/destinations/eastern-europe" },
       { title: "Singapore", link: "/destinations/singapore" },
-      { title: "Scandanavia", link: "/visa-service/student" },
-      { title: "Dubai", link: "/visa-service/student" },
-      { title: "Malaysia", link: "/visa-service/student" },
-      { title: "Central Europe", link: "/visa-service" },
-      { title: "Thailand", link: "/visa-service/student" },
+      { title: "Scandanavia", link: "/destinations/Scandanavia" },
+      { title: "Dubai", link: "/destinations/dubai" },
+      { title: "Malaysia", link: "/destinations/malaysia" },
+      { title: "Central Europe", link: "/destinations/central-europe" },
+      { title: "Thailand", link: "/destinations/thailand" },
     ],
   },
   { title: "Sightseeing", link: "/sightseeing" },
   { title: "Blogs", link: "/blogs" },
-  // {
-  //   title: "More",
-  //   subItems: [
-  //     { title: "Testimonials", link: "/testimonials" },
-  //     { title: "Therapists", link: "/therapists" },
-  //   ],
-  // },
   { title: "Testimonials", link: "/testimonials" },
   { title: "Contact Us", link: "/contact-us" },
 ];

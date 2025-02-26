@@ -14,82 +14,80 @@ interface ArrowProps {
   initialIconColor?: string;
 }
 
-const PrevArrow = ({  
-  onClick,  
-  position = -10,  
-  icon,  
-  hoverBgColor = "#3182CE", // Blue shade  
-  hoverIconColor = "white",  
-  initialIconColor = "#2C7A7B" // Teal shade  
-}: ArrowProps) => {  
-  return (  
-    <IconButton  
-      aria-label="Previous slide"  
-      icon={icon || <ChevronLeftIcon />}  
-      onClick={onClick}  
-      position="absolute"  
-      left={position}  
-      top="50%"  
-      transform="translateY(-50%)"  
-      border={'1px solid #3182CE'} // Blue shade  
-      zIndex={2}  
-      rounded="full"  
-      bg="#E6FFFA" // Light teal background  
-      shadow="base"  
-      _hover={{   
-        bg: "blue.300", // Blue shade on hover  
-        // borderColor: hoverBgColor, // Match border color with hover background  
-      }}   
-      sx={{  
-        '& svg': {  
-          color: initialIconColor  
-        },  
-        '&:hover svg': {  
-          color: hoverIconColor // White icon on hover  
-        }  
-      }}  
-      className="opacity-70 hover:opacity-100"  
-    />  
-  );  
-};  
+const PrevArrow = ({
+  onClick,
+  position = -10,
+  icon,
+  hoverIconColor = "white",
+  initialIconColor = "#2C7A7B" // Teal shade
+}: ArrowProps) => {
+  return (
+    <IconButton
+      aria-label="Previous slide"
+      icon={icon || <ChevronLeftIcon />}
+      onClick={onClick}
+      position="absolute"
+      left={position}
+      top="50%"
+      transform="translateY(-50%)"
+      border={'1px solid #3182CE'} // Blue shade
+      zIndex={2}
+      rounded="full"
+      bg="#E6FFFA" // Light teal background
+      shadow="base"
+      _hover={{
+        bg: "blue.300", // Blue shade on hover
+        // borderColor: hoverBgColor, // Match border color with hover background
+      }}
+      sx={{
+        '& svg': {
+          color: initialIconColor
+        },
+        '&:hover svg': {
+          color: hoverIconColor // White icon on hover
+        }
+      }}
+      className="opacity-70 hover:opacity-100"
+    />
+  );
+};
 
-const NextArrow = ({  
-  onClick,  
-  position = -10,  
-  icon,  
-  hoverBgColor = "#3182CE", // Blue shade  
-  hoverIconColor = "white",  
-  initialIconColor = "#2C7A7B" // Teal shade  
-}: ArrowProps) => {  
-  return (  
-    <IconButton  
-      aria-label="Next slide"  
-      icon={icon || <ChevronRightIcon />}  
-      onClick={onClick}  
-      position="absolute"  
-      right={position}  
-      top="50%"  
-      transform="translateY(-50%)"  
-      zIndex={2}  
-      rounded="full"  
-      bg="#E6FFFA" // Light teal background  
-      border={'1px solid #3182CE'} // Blue shade  
-      shadow="base"  
-      _hover={{   
-        bg: "blue.300", // Blue shade on hover  
-        // borderColor: hoverBgColor, // Match border color with hover background  
-      }}  
-      sx={{  
-        '& svg': {  
-          color: initialIconColor  
-        },  
-        '&:hover svg': {  
-          color: hoverIconColor // White icon on hover  
-        }  
-      }}  
-      className="opacity-70 hover:opacity-100"  
-    />  
-  );  
+const NextArrow = ({
+  onClick,
+  position = -10,
+  icon,
+  hoverIconColor = "white",
+  initialIconColor = "#2C7A7B" // Teal shade
+}: ArrowProps) => {
+  return (
+    <IconButton
+      aria-label="Next slide"
+      icon={icon || <ChevronRightIcon />}
+      onClick={onClick}
+      position="absolute"
+      right={position}
+      top="50%"
+      transform="translateY(-50%)"
+      zIndex={2}
+      rounded="full"
+      bg="#E6FFFA" // Light teal background
+      border={'1px solid #3182CE'} // Blue shade
+      shadow="base"
+      _hover={{
+        bg: "blue.300", // Blue shade on hover
+        // borderColor: hoverBgColor, // Match border color with hover background
+      }}
+      sx={{
+        '& svg': {
+          color: initialIconColor
+        },
+        '&:hover svg': {
+          color: hoverIconColor // White icon on hover
+        }
+      }}
+      className="opacity-70 hover:opacity-100"
+    />
+  );
 };
 
 interface CustomCarouselProps {

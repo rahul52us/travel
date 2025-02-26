@@ -1,3 +1,4 @@
+'use client'
 import {
   AspectRatio,
   Box,
@@ -48,7 +49,7 @@ import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, Fa
       "Kaiseki dinner": FaUtensils,
       "Tea ceremony": FaBinoculars,
       "Bullet train pass": FaBus,
-  
+
       // New icons for the provided perks
       "4 Star Hotels": FaHotel,
       "3 Star Hotels": FaHotel,
@@ -80,10 +81,9 @@ import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, Fa
 
   // Main Card Component
   const TravelPackageCard = ({ pkg }: { pkg: TravelPackage }) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen] = useState(false);
 
     // Toggle function to show/hide details
-    const toggleDetails = () => setIsOpen((prev) => !prev);
 
     return (
       <Card
@@ -233,7 +233,7 @@ import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, Fa
             borderRadius="full"
             size={{base:"xs",lg:"sm"}}
             animation={`${bounce} 2s infinite`}
-            
+
           >
             Book Now
           </Button>
