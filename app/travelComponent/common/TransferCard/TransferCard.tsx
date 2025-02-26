@@ -11,7 +11,7 @@ const TransferCard = ({ image, title, description, price, buttonText, category }
         return <Icon as={FaPlane} color="blue.500" boxSize={5} />;
       case 'Eurail Ticket':
         return <Icon as={FaTrain} color="blue.500" boxSize={5} />;
-      case 'Hop on Hop off Tour':
+      case 'Hop on Hop Off Tour':
         return <Icon as={FaBus} color="blue.500" boxSize={5} />;
       default:
         return <Icon as={FaInfoCircle} color="blue.500" boxSize={5} />;
