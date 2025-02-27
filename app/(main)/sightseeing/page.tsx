@@ -8,8 +8,8 @@ const page = () => {
   return (
     <Box>
 
-      <Destinations/>
-<SightseeingPage/>
+      <Destinations />
+       <SightseeingPage/>
 
     </Box>
   )

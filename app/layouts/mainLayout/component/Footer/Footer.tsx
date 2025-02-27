@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
               base: "1fr", // Stacks items on small screens
               sm: "1fr 1fr", // Two columns on small screens
               md: "1.5fr 1fr 1fr 1fr", // Standard grid layout on medium and larger screens
-              lg: "2.5fr 1fr 1fr 1fr", // Standard grid layout on medium and larger screens
+              lg: "2fr 1fr 1fr 1fr", // Standard grid layout on medium and larger screens
             }}
             spacing={{ base: 3, md: 4 }}
           >
@@ -86,8 +86,8 @@ export const Footer: React.FC = () => {
                 </Center>
                 <Text
                   pl={1}
-                  fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
-                  mt={2}
+                  fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                  mt={3}
                 >
                   {footerData.companyInfo.tagline}
                 </Text>
@@ -125,7 +125,7 @@ export const Footer: React.FC = () => {
           </SimpleGrid>
 
           {/* Crisis Notice */}
-          <Box
+          {/* <Box
             pt={{ base: 4, md: 10 }}
             pb={2}
             textAlign={{ base: "center", md: "left" }}
@@ -134,10 +134,10 @@ export const Footer: React.FC = () => {
               {`We're not a crisis service. For immediate help, call `}
               {footerData.companyInfo.crisisNumber}.
             </Text>
-          </Box>
+          </Box> */}
         </Container>
 
-        <Box>
+        <Box mt={6}>
           <Divider borderColor={"#FFFFFF33"} />
           <Grid
             pt={6}

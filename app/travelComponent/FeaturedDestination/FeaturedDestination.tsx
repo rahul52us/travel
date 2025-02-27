@@ -39,13 +39,13 @@ const FeaturedDestination = () => {
         color="white"
         flexDirection="column"
         alignItems="center"
-        width="90%"
-        maxWidth="600px"
+        width={{lg:"90%"}}
+        maxWidth={{base:"95%",lg:"600px"}}
       >
-        <Heading as="h2" size="2xl" mb="4" textShadow="0 2px 4px rgba(0, 0, 0, 0.2)">
+        <Heading as="h2" size={{base:"xl",lg:"2xl"}} mb="4" textShadow="0 2px 4px rgba(0, 0, 0, 0.2)">
           Explore the Beauty of Switzerland
         </Heading>
-        <Text fontSize="lg" mb="6">
+        <Text fontSize={{lg:"lg"}} mb="6">
           Discover breathtaking landscapes, charming villages, and thrilling adventures in the heart of Europe.
         </Text>
         <Button
@@ -55,7 +55,6 @@ const FeaturedDestination = () => {
                   size={{ base: "md", lg: "lg" }}
                   rightIcon={<FiArrowRight />}
                   _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
-        
         >
           Explore More
         </Button>

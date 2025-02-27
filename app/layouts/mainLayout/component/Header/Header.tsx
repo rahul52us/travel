@@ -95,7 +95,7 @@ const Header = () => {
           height={headerLargeHeight}
         >
           <Image src="/images/logo3.png" alt="Logo" h={'60px'} />
-          <NavItemsLayout />
+          <NavItemsLayout  />
           <HeroNavButton />
         </Flex>
       )}
@@ -110,7 +110,7 @@ const Header = () => {
               <Image src="/images/logo3.png" alt="Logo" h="60px" />
             </Center>
             <Box px={4}>
-              <NavItemsLayout />
+              <NavItemsLayout onClose={onClose} />
             </Box>
           </DrawerBody>
         </DrawerContent>

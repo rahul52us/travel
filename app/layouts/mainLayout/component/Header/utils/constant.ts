@@ -9,10 +9,11 @@ export const navItems = [
     subItems: [
       { title: "Eastern Europe", link: "/destinations/eastern-europe" },
       { title: "Singapore", link: "/destinations/singapore" },
-      { title: "Scandanavia", link: "/destinations/Scandanavia" },
       { title: "Dubai", link: "/destinations/dubai" },
-      { title: "Malaysia", link: "/destinations/malaysia" },
+      { title: "Scandanavia", link: "/destinations/Scandanavia" },
+      { title: "Western Europe", link: "/destinations/western-europe" },
       { title: "Central Europe", link: "/destinations/central-europe" },
+      { title: "Malaysia", link: "/destinations/malaysia" },
       { title: "Thailand", link: "/destinations/thailand" },
     ],
   },

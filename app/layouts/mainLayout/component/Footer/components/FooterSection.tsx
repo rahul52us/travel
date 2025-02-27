@@ -25,7 +25,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ section }) => {
       {section.links.map((link) => (
         <Link
           key={link.name}
-          mb={{md:2}}
+          mb={{md:0}}
           // href={link.href}
           onClick={() => {
             router.push(link.href)

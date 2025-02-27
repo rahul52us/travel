@@ -21,10 +21,10 @@ const FloatingSocialIcons = () => {
   const handleClick = (platform: string) => {
     switch(platform) {
       case 'whatsapp':
-        window.open('https://wa.me/9022042374', '_blank');
+        window.open('https://wa.me/9958805754', '_blank');
         break;
       case 'instagram':
-        window.open('https://www.instagram.com/__vivek_kush_08/', '_blank');
+        window.open('https://www.instagram.com/cosmic_travels_official/', '_blank');
         break;
     }
   };

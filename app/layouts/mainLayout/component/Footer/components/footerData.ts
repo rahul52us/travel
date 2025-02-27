@@ -1,38 +1,43 @@
-import { FaInstagram, FaLinkedinIn, FaPinterestP, FaTwitter } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 // import { FooterProps } from '../components/footer/types';
 
 export const footerData = {
   companyInfo: {
     name: "Cosmic Travels",
-    tagline: "Talk. Listen. Recover",
+    tagline: "Explore. Dream. Discover",
     crisisNumber: "888-888-88",
     socialLinks: [
-      {
-        name: "LinkedIn",
-        url: "https://linkedin.com",
-        icon: FaLinkedinIn
-      },
-      {
-        name: "Twitter",
-        url: "https://twitter.com",
-        icon: FaTwitter
-      },
+      // {
+      //   name: "LinkedIn",
+      //   url: "https://linkedin.com",
+      //   icon: FaLinkedinIn
+      // },
+      // {
+      //   name: "Twitter",
+      //   url: "https://twitter.com",
+      //   icon: FaTwitter
+      // },
       {
         name: "Instagram",
         url: "https://instagram.com",
         icon: FaInstagram
       },
       {
-        name: "Pintrest",
-        url: "https://instagram.com",
-        icon: FaPinterestP
+        name: "Whatsapp",
+        url: "https://www.instagram.com/cosmic_travels_official/",
+        icon: FaWhatsapp
       },
+      // {
+      //   name: "Pintrest",
+      //   url: "https://instagram.com",
+      //   icon: FaPinterestP
+      // },
     ]
   },
   contactInfo: {
-    phone: "+1 (800) 123-4567",
-    email: "contact@wellforceit.com",
-    address: "123 Innovation Drive, Suite 789, Tech City, CA 90210"
+    phone: "+91 - 9958 805 754",
+    email: "hello@cosmictravels.in",
+    address: "Khasra No. 328, Near Peer Baba, Main Sultanpur Market, Sultanpur, New Delhi- 110030"
   },
   sections: [
     {
@@ -40,16 +45,23 @@ export const footerData = {
       links: [
         { name: "Home", href: "/" },
         { name: "About Us", href: "/about-us" },
-        { name: "FAQ", href: "/faq" },
+        { name: "Sightseeing", href: "/sightseeing" },
+        { name: "Blogs", href: "/blogs" },
+        { name: "Testimonials", href: "/testimonials" },
         { name: "Contact Us", href: "/contact-us" }
       ]
     },
     {
-      title: "Our Services",
+      title: "Destinations",
       links: [
-        { name: "Tour Packages", href: "/packages" },
-        { name: "Visa Servises", href: "/visa-service" },
-        { name: "Blogs", href: "/blogs" },
+        { name: "Eastern Europe", href: "/destinations/eastern-europe" },
+        { name: "Singapore", href: "/destinations/singapore" },
+        { name: "Dubai", href: "/destinations/dubai" },
+        { name: "Scandanavia", href: "/destinations/Scandanavia" },
+        { name: "Western Europe", href: "/destinations/western-europe" },
+        { name: "Central Europe", href: "/destinations/central-europe" },
+        { name: "Malaysia", href: "/destinations/malaysia" },
+        { name: "Thailand", href: "/destinations/thailand" },
       
       ]
     }

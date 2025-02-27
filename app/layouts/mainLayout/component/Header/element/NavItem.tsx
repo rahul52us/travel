@@ -17,9 +17,10 @@ interface NavItemProps {
     link?: string;
     subItems?: { title: string; link: string }[];
   };
+  onClose:()=> void;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ item }) => {
+const NavItem: React.FC<NavItemProps> = ({ item ,onClose}) => {
   const router = useRouter();
 
   if (item.subItems) {
@@ -42,7 +43,8 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
             <MenuItem
               key={subItem.title}
               onClick={() => router.push(subItem.link)}
-              _hover={{ bg: "#1C2B47", color: "white" }}
+              // _hover={{ bg: "#1C2B47", color: "white" }}
+              _hover={{bgGradient:"linear(to-r, #6DD5FA, #2980B9)"}}
               color={"#1C2B47"}
               transition={"all 0.2s ease"}
             >
@@ -74,6 +76,7 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
       }}
       onClick={() => {
         if (item.link) router.push(item.link);
+        onClose();
       }}
     >
       {item.title}
