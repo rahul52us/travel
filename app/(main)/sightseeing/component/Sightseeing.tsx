@@ -1,7 +1,8 @@
+'use client';
 import { Box, Text, VStack } from "@chakra-ui/react";
 import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSection";
 import SightSeeingCard2 from "./SightseeingCard2";
-import { sightseeingData } from "./utils/sightseeingData";
+import { sightseeingData } from "../utils/sightseeingData";
 
 // Usage in your component
 const SightSeeingPage = () => {

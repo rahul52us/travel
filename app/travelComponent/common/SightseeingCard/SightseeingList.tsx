@@ -6,7 +6,7 @@ import {
 import CustomCarousel from "../../../component/common/CustomCarousal/CustomCarousal";
 import CustomSubHeading from "../CustomSubHeading/CustomSubHeading";
 import SightseeingCard from "./element/SightseeingCard";
-import { sightseeingData } from "../../../(main)/sightseeing/component/utils/sightseeingData";
+import { sightseeingData } from "../../../(main)/sightseeing/utils/sightseeingData";
 
 const SightseeingList = () => {
   const noOfSlides = useBreakpointValue({ base: 1, md: 2, lg: 4 });

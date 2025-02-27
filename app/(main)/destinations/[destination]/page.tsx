@@ -3,33 +3,47 @@
 import { useParams } from "next/navigation";
 import TravelPackageCard from "../../../component/common/TravelPackageCard/element/TravelPackageCard";
 import { travelPackages } from "../../../component/common/TravelPackageCard/utils/constant";
-import { Box, Text, Center, VStack, Image, Button, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Center,
+  VStack,
+  Image,
+  Button,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import CustomCarousel from "../../../component/common/CustomCarousal/CustomCarousal";
 import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSection";
 import { useRouter } from "next/navigation";
 import CustomSubHeading from "../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 import SightseeingCard from "../../../travelComponent/common/SightseeingCard/element/SightseeingCard";
-import { sightseeingData } from "../../sightseeing/component/utils/sightseeingData";
+import { sightseeingData } from "../../sightseeing/utils/sightseeingData";
 
 const Page = () => {
   const params = useParams();
-  const router = useRouter();  // Call useRouter here
+  const router = useRouter(); // Call useRouter here
 
   const noOfSlides = useBreakpointValue({ base: 1, md: 2, lg: 4 });
-  const showArrows = useBreakpointValue({base:false,lg:true})
+  const showArrows = useBreakpointValue({ base: false, lg: true });
 
   // Ensure it's a string and handle cases where params.destination is a string array
-  const destination = typeof params?.destination === 'string'
-    ? params.destination.toLowerCase()
-    : ''; // default to empty string if it's an array
+  const destination =
+    typeof params?.destination === "string"
+      ? params.destination.toLowerCase()
+      : ""; // default to empty string if it's an array
 
   if (!destination) {
-    return <Center h="50vh"><Text fontSize="xl">Loading...</Text></Center>;
+    return (
+      <Center h="50vh">
+        <Text fontSize="xl">Loading...</Text>
+      </Center>
+    );
   }
 
-  // Capitalize first letter for better UI display
-  const formattedDestination =
-    destination.charAt(0).toUpperCase() + destination.slice(1);
+  const formattedDestination = destination
+    ?.split("-")
+    ?.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    ?.join(" ");
 
   // Filter travel packages by matching destination
   const filteredPackages = travelPackages.filter(
@@ -39,8 +53,6 @@ const Page = () => {
   const filteredSightseeing = sightseeingData.filter(
     (pkg) => pkg.destination.toLowerCase() === destination
   );
-
-
 
   return (
     <Box>
@@ -70,14 +82,19 @@ const Page = () => {
               <Text fontSize="xl" fontWeight="bold" color="gray.600">
                 Oops! No travel packages found for {formattedDestination}.
               </Text>
-              <Text fontSize="md" color="gray.500" textAlign="center" maxW="400px">
+              <Text
+                fontSize="md"
+                color="gray.500"
+                textAlign="center"
+                maxW="400px"
+              >
                 {`We're always adding new destinations. Try exploring other amazing places!`}
               </Text>
               <Button
                 colorScheme="cyan"
                 variant="solid"
                 size="md"
-                onClick={() => router.push("/destinations")}  // Use router object here
+                onClick={() => router.push("/destinations")} // Use router object here
               >
                 Explore Other Destinations
               </Button>
@@ -87,44 +104,47 @@ const Page = () => {
       </Box>
 
       {filteredSightseeing.length > 0 ? (
-        
-      <Box my={"4rem"} maxW={{base:"95%",lg:"90%"}} mx={"auto"}>
-      <CustomSubHeading highlightText="Sightseeing Adventures">
-        Unmissable Views
-      </CustomSubHeading>
-    
-      <Box mt={{base:4,lg:6}}>
-        <CustomCarousel autoplay={true} slidesToShow={noOfSlides} showArrows={showArrows}>
-          {filteredSightseeing.map((place, index) => (
-            <SightseeingCard key={index} place={place} />
-          ))}
-        </CustomCarousel>
-      </Box>
-    </Box>
-      ):(
-<Box my={6}>
-        <Center py={12}></Center>
-        <VStack spacing={4}>
-          <Image
-            src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png"
-            alt="No packages found"
-            boxSize="120px"
-            opacity={0.8}
-          />
-          <Text fontSize="xl" fontWeight="bold" color="gray.600">
-            Oops! No Sightseeings found for {formattedDestination}.
-          </Text>
-          <Text fontSize="md" color="gray.500" textAlign="center" maxW="400px">
-            {`We're always adding new destinations. Try exploring other amazing places!`}
-          </Text>
-         
-        </VStack>
-            </Box>
+        <Box my={"4rem"} maxW={{ base: "95%", lg: "90%" }} mx={"auto"}>
+          <CustomSubHeading highlightText="Sightseeing Adventures">
+            Unmissable Views
+          </CustomSubHeading>
 
+          <Box mt={{ base: 4, lg: 6 }}>
+            <CustomCarousel
+              autoplay={true}
+              slidesToShow={noOfSlides}
+              showArrows={showArrows}
+            >
+              {filteredSightseeing.map((place, index) => (
+                <SightseeingCard key={index} place={place} />
+              ))}
+            </CustomCarousel>
+          </Box>
+        </Box>
+      ) : (
+        <Box my={6}>
+          <Center py={12}></Center>
+          <VStack spacing={4}>
+            <Image
+              src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png"
+              alt="No packages found"
+              boxSize="120px"
+              opacity={0.8}
+            />
+            <Text fontSize="xl" fontWeight="bold" color="gray.600">
+              Oops! No Sightseeings found for {formattedDestination}.
+            </Text>
+            <Text
+              fontSize="md"
+              color="gray.500"
+              textAlign="center"
+              maxW="400px"
+            >
+              {`We're always adding new destinations. Try exploring other amazing places!`}
+            </Text>
+          </VStack>
+        </Box>
       )}
-
-
-
     </Box>
   );
 };

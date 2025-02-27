@@ -1,3 +1,4 @@
+'use client'
 import { Box, Button, Divider, Flex, Heading, HStack, Icon, Image, Stack, Tag, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FiArrowRightCircle, FiClock, FiUser } from 'react-icons/fi';
@@ -15,6 +16,7 @@ const SightSeeingCard2 = ({ tour }) => {
         transition="all 0.2s"
         _hover={{ transform: 'translateY(-4px)', boxShadow: 'xl' }}
         maxH={{lg:"330px"}}
+        p={2}
       >
         {/* Image Gallery Section */}
         <Box flex={{ md: 1 }} position="relative">
@@ -26,7 +28,7 @@ const SightSeeingCard2 = ({ tour }) => {
             height={{ base: '300px', md: '100%' }}
             width="full"
           />
-          
+
           <Flex
                     position="absolute"
                     bottom="2"
@@ -64,13 +66,13 @@ const SightSeeingCard2 = ({ tour }) => {
                     ))}
                 </Flex>
         </Box>
-  
+
         {/* Content Section */}
         <Flex flex={{ md: 2 }} p={6} direction="column" gap={4}>
           <Flex justify="space-between" align="flex-start">
             <Heading as="h3" size="md">{tour.title}</Heading>
           </Flex>
-  
+
           <HStack spacing={4}>
             <Flex align="center">
               <Icon as={FiClock} mr={2} />
@@ -81,18 +83,18 @@ const SightSeeingCard2 = ({ tour }) => {
               <Text fontWeight="500">Max {tour.maxGroupSize} people</Text>
             </Flex>
           </HStack>
-  
+
           <Text color="gray.600" noOfLines={3}>{tour.description}</Text>
-  
+
           <Stack spacing={3}>
             <Flex align="center" fontSize="sm">
               <Icon as={FiArrowRightCircle} mr={2} color="blue.500" />
               {/* <Text fontWeight="500">Includes: {tour.includes.join(', ')}</Text> */}
             </Flex>
           </Stack>
-  
+
           <Divider />
-  
+
           {/* Price and Booking Form */}
           <Flex justify="space-between" align="center">
             <Box>
@@ -102,10 +104,10 @@ const SightSeeingCard2 = ({ tour }) => {
               </Text>
               <Text color="green.600" fontSize="sm">Instant Confirmation</Text>
             </Box>
-  
+
             <Flex gap={3} align="center">
             <Tag colorScheme="green" borderRadius="full"  size={'lg'}>Free Cancellation</Tag>
-             
+
               <Button colorScheme="blue" px={6} >Book Now</Button>
             </Flex>
           </Flex>
