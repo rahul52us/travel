@@ -117,7 +117,7 @@ export default function TravelBentoGrid() {
               p={2}
               textAlign="center"
             >
-              <Text fontSize="md" fontWeight="bold">
+              <Text fontSize={{base:"sm",lg:"md"}} fontWeight="bold">
                 {img.alt}
               </Text>
             </Box>
