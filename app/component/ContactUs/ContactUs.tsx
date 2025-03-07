@@ -30,14 +30,6 @@ const ContactUs = () => {
   };
 
   const handleSubmit = () => {
-    const payload = {
-      name: formData.name,
-      email: formData.email,
-      companyName: formData.companyName,
-      needs: formData.needs,
-    };
-
-    console.log("Payload:", payload);
   };
 
   return (
@@ -52,19 +44,19 @@ const ContactUs = () => {
         >
           Contact us
         </Text>
-        <Text  
-          fontSize={{ base: "1.8rem", md: "2.6rem" }}  
-          fontWeight={400}  
-          lineHeight={{ base: "2.2rem", md: "3.4rem" }}  
-          w="100%"  
-          px={{ base: 2, md:4,lg: 0 }}  
-          textAlign={{ base: "center", lg: "left" }}  
-          mt={{ base: 1, md: 0 }}  
-        >  
-          Ready to explore the world?{" "}  
-          <Text as="span" fontWeight={600}>  
-            Let&apos;s plan your adventure.  
-          </Text>  
+        <Text
+          fontSize={{ base: "1.8rem", md: "2.6rem" }}
+          fontWeight={400}
+          lineHeight={{ base: "2.2rem", md: "3.4rem" }}
+          w="100%"
+          px={{ base: 2, md:4,lg: 0 }}
+          textAlign={{ base: "center", lg: "left" }}
+          mt={{ base: 1, md: 0 }}
+        >
+          Ready to explore the world?{" "}
+          <Text as="span" fontWeight={600}>
+            Let&apos;s plan your adventure.
+          </Text>
         </Text>
       </Box>
       <Grid
@@ -90,19 +82,19 @@ const ContactUs = () => {
             >
               Contact us
             </Text>
-            <Text  
-          fontSize={{ base: "1.8rem", md: "2.4rem" }}  
-          fontWeight={400}  
-          lineHeight={{ base: "2.2rem", md: "3.4rem" }}  
-          w="100%"  
-          px={{ base: 2, md:4,lg: 0 }}  
-          textAlign={{ base: "center", lg: "left" }}  
-          mt={{ base: 1, md: 0 }}  
-        >  
-          Ready to explore the world?{" "}  
-          <Text as="span" fontWeight={600}>  
-            Let&apos;s plan your adventure.  
-          </Text>  
+            <Text
+          fontSize={{ base: "1.8rem", md: "2.4rem" }}
+          fontWeight={400}
+          lineHeight={{ base: "2.2rem", md: "3.4rem" }}
+          w="100%"
+          px={{ base: 2, md:4,lg: 0 }}
+          textAlign={{ base: "center", lg: "left" }}
+          mt={{ base: 1, md: 0 }}
+        >
+          Ready to explore the world?{" "}
+          <Text as="span" fontWeight={600}>
+            Let&apos;s plan your adventure.
+          </Text>
         </Text>
           </Box>
           <Box

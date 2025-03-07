@@ -45,7 +45,7 @@ const Register = () => {
   };
 
   const handleSubmit = (values: typeof initialValues, { resetForm }: { resetForm: () => void }) => {
-    console.log('Form data', values);
+    // console.log('Form data', values);
     alert(`Welcome, ${values.name}! Registration successful.`);
     resetForm();
   };

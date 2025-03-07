@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Box,
   Flex,
@@ -12,109 +11,108 @@ import {
   DrawerCloseButton,
   useDisclosure,
   Center,
-  useBreakpointValue,
+  Text,
 } from "@chakra-ui/react";
-import React, { useEffect, useState, useCallback } from "react";
+import React from "react";
 import NavItemsLayout from "./component/NavItemsLayout";
 import HeroNavButton from "./component/HeroNavButton";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { headerLargeHeight, headerSmallHeight } from "./utils/constant";
-// import AnimatedBox from "../../../../component/common/motion/Animatedbox/AnimatedBox";
-
-const throttle = <T extends (...args: unknown[]) => void>(func: T, delay: number): T => {
-  let lastCall = 0;
-  return ((...args: Parameters<T>) => {
-    const now = new Date().getTime();
-    if (now - lastCall >= delay) {
-      lastCall = now;
-      func(...args);
-    }
-  }) as T;
-};
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const setScrolling = useState(false)[1];
-
-  const handleScroll = useCallback(() => {
-    throttle(() => {
-      // const documentHeight = document.documentElement.scrollHeight;
-      // const windowHeight = window.innerHeight;
-      // const scrollY = window.scrollY;
-      // const scrollPercentage = (scrollY / (documentHeight - windowHeight)) * 100;
-      setScrolling(true);
-    }, 100)();
-  }, [setScrolling]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const router = useRouter();
 
   return (
-    <Box>
-      {isMobile ? (
-        <Flex
-          alignItems="center"
-          justify="space-between"
-          px={4}
-          py={1}
-          color="white"
-          position="fixed"
-          // top="3rem"
-          left={0}
-          right={0}
-          top={0}
-          zIndex={100}
-          height={headerSmallHeight}
-        >
-          <Image src="/images/logo3.png" alt="Logo" h={'40px'} />
-          <IconButton
-            icon={<HamburgerIcon />}
-            onClick={onOpen}
-            aria-label="Open menu"
-            variant="ghost"
-          />
-        </Flex>
-      ) : (
-        // Desktop Header
-        <Flex
-          alignItems="center"
-          justify="space-between"
-          px={8}
-          py={2}
-          bg={'white'}
-          color="white"
-          position="fixed"
-          top={0}
-          left={0}
-          right={0}
-          zIndex={100}
-          height={headerLargeHeight}
-        >
-          <Image src="/images/logo3.png" alt="Logo" h={'60px'} />
-          <NavItemsLayout  />
-          <HeroNavButton />
-        </Flex>
-      )}
+    <Box shadow="sm" position="sticky" top="0" zIndex="1000" bg="white">
+      <Box
+  h={{ lg: "2rem", xl: "2.5rem" }}
+  color="white"
+  textAlign="center"
+  bg="linear-gradient(to right, #00B5E2, #87CEEB)"
+  fontSize={{ base: "xs", lg: "lg" }}
+  p={2}
+>
+  <Text fontWeight="bold">
+    Embark on Your Next Adventure with CosmicTravels!
+  </Text>
+</Box>
 
-      {/* Mobile Drawer Navigation */}
+
+      {/* Header for Mobile */}
+      <Flex
+        alignItems="center"
+        justify="space-between"
+        px={{ base: 2, md: 6 }}
+        py={1} // Reduced padding
+        bg="white"
+        display={{ base: "flex", md: "none" }}
+        h="4rem" // Reduced height
+      >
+        <Image
+          src="/images/logo.png"
+          alt="best child psychologist in noida"
+          h={{ base: "43px", sm: "48px" }}  // Reduced logo size
+          cursor="pointer"
+          onClick={() => router.push("/")}
+          mr="auto"
+        />
+        <Flex gap={2}>
+
+        <IconButton
+          icon={<HamburgerIcon fontSize={"22px"} />} // Reduced icon size
+          onClick={onOpen}
+          aria-label="Open menu"
+          variant="ghost"
+          size={"md"} // Adjusted size
+          />
+          </Flex>
+      </Flex>
+
+      {/* Drawer for Mobile Navigation */}
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerBody>
-            <Center mt={8} mb={6}>
-              <Image src="/images/logo3.png" alt="Logo" h="60px" />
+            {/* Centered Logo */}
+            <Center mt={6} mb={4}>
+              <Image
+                src="/images/logo3.png"
+                alt="Cosmic Travels"
+                h="50px" // Reduced logo size in mobile menu
+                onClick={() => router.push("/")}
+              />
             </Center>
+            {/* Navigation Items */}
             <Box px={4}>
               <NavItemsLayout onClose={onClose} />
             </Box>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+
+      {/* Header for Desktop */}
+      <Flex
+        alignItems="center"
+        justify="space-between"
+        px={{ lg: 5, xl: 8 }}
+        py={2.5} // Reduced padding
+        display={{ base: "none", md: "flex" }}
+      // h="4rem" // Reduced height
+      >
+        <Image
+          src="/images/logo3.png"
+          alt="Cosmic Travals"
+          h={{ base: "35px", lg: "50px", xl: "60px" }} // Reduced logo size
+          cursor={"pointer"}
+          onClick={() => router.push("/")}
+        />
+        <Flex flex={1} justify="center" pr={2}>
+          <NavItemsLayout />
+        </Flex>
+        <HeroNavButton />
+      </Flex>
     </Box>
   );
 };
