@@ -50,7 +50,7 @@ const Header = () => {
         h="4rem" // Reduced height
       >
         <Image
-          src="/images/logo.png"
+          src="/images/logo3.png"
           alt="best child psychologist in noida"
           h={{ base: "43px", sm: "48px" }}  // Reduced logo size
           cursor="pointer"
