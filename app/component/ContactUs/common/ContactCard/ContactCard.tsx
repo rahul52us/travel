@@ -3,8 +3,9 @@ import { Box, Flex, Image, Text } from "@chakra-ui/react";
 const ContactCard = ({ bg, icon, title, content, onClick }) => {
     return (
       <Box
-        py={{base:3,lg:7}}
-        pl={6}
+        py={{base:3,lg:5}}
+        pl={4}
+        h={'fit-content'}
         bg={bg}
         border={"1px solid #DBDBDB"}
         rounded={"16px"}
@@ -20,7 +21,7 @@ const ContactCard = ({ bg, icon, title, content, onClick }) => {
             <Text fontSize={"lg"} fontWeight={700} color={"#434343"}>
               {title}
             </Text>
-            <Text color={"#434343"} fontSize={"sm"}>
+            <Text color={"#434343"} fontSize={"sm"} pr={2}>
               {content}
             </Text>
           </Box>
