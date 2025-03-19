@@ -29,7 +29,7 @@ import { FaEdit, FaEye } from "react-icons/fa";
 import { IoMdAdd, IoMdInformationCircle } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import { FcClearFilters } from "react-icons/fc";
-import { formatDate } from "../../../../config/utils/dateUtils";
+import { formatDate } from "../../utils/dateUtils";
 const CustomDateRange = dynamic(() => import('../CustomDateRange/CustomDateRange'), { ssr: false });
 
 interface Column {

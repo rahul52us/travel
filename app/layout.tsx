@@ -10,12 +10,10 @@ import { useEffect } from "react";
 import stores from "./store/stores";
 import Notification from "./component/common/Notification/Notification";
 import Script from 'next/script';
+import { observer } from "mobx-react-lite";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const RootLayout = observer(({ children }: { children: React.ReactNode }) => {
+
   const { companyStore: { getCompanyDetails } } = stores;
   const pathname = usePathname();
 
@@ -85,4 +83,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+})
+
+export default RootLayout

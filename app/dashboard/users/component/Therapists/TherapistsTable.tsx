@@ -6,8 +6,8 @@ import { GiPsychicWaves } from "react-icons/gi";
 import Link from "next/link";
 import stores from "../../../../store/stores";
 import useDebounce from "../../../../component/config/component/customHooks/useDebounce";
-import { tablePageLimit } from "../../../../config/utils/variable";
 import CustomTable from "../../../../component/config/component/CustomTable/CustomTable";
+import { tablePageLimit } from "../../../../component/config/utils/variable";
 
 const TherapistsTable = observer(({onAdd, onEdit} : any) => {
   const {

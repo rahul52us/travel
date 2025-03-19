@@ -4,8 +4,8 @@ import { useEffect, useState, useCallback } from "react";
 import { Tooltip } from "@chakra-ui/react";
 import stores from "../../store/stores";
 import useDebounce from "../../component/config/component/customHooks/useDebounce";
-import { tablePageLimit } from "../../config/utils/variable";
 import CustomTable from "../../component/config/component/CustomTable/CustomTable";
+import { tablePageLimit } from "../../component/config/utils/variable";
 
 const Contactlist = observer(({ onAdd, onEdit }: any) => {
   const {

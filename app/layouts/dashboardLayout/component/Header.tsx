@@ -40,7 +40,7 @@ const Header: React.FC = observer(() => {
       <Flex justify="space-between" align="center" px={6}>
         {/* Brand Name */}
         <Heading size="md" color="white" fontWeight="bold">
-        {WEBSITE_TITLE}
+          {WEBSITE_TITLE}
         </Heading>
 
         <Flex align="center" gap={4}>

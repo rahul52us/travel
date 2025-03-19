@@ -1,7 +1,9 @@
 // stores/authStore.ts
 import { makeAutoObservable } from "mobx";
 import axios from "axios";
-import { AUTH_TOKEN, BACKEND_URL } from "../../config/utils/variables";
+import { AUTH_TOKEN, BACKEND_URL, ENCRYPT_SECRET_KEY, USER_SESSION_DATA } from "../../config/utils/variables";
+import stores from "../stores";
+import CryptoJS from "crypto-js";
 
 interface Notification {
   title?: any;
@@ -94,8 +96,8 @@ class AuthStore {
       const response = await axios.post("/auth/register", { email, password });
       this.token = response.data.token;
 
-      if (typeof window !== "undefined") {  // ✅ Prevent SSR issues
-        localStorage.setItem("META", this.token);
+      if (typeof window !== "undefined") {
+        localStorage.setItem(AUTH_TOKEN, this.token);
       }
 
       await this.fetchUser();
@@ -106,6 +108,40 @@ class AuthStore {
     }
   };
 
+  restoreUser = () => {
+    try {
+      const authorization_token = AUTH_TOKEN;
+      if (authorization_token) {
+        const storedData = sessionStorage.getItem(
+          USER_SESSION_DATA!
+        );
+        if (storedData) {
+          return this.getUserFromSessionStorage()
+        } else {
+          this.doLogout();
+          return false;
+        }
+      } else {
+        this.doLogout();
+        return false;
+      }
+    } catch ({}) {
+      this.user = null;
+      this.doLogout();
+    }
+  };
+
+  doLogout = () => {
+    this.user = null;
+    this.clearLocalStorage();
+  };
+
+  clearLocalStorage = () => {
+    localStorage.removeItem(
+      AUTH_TOKEN as string
+    );
+    sessionStorage.removeItem(USER_SESSION_DATA!);
+  };
   // Login user
   login = async (payload: any) => {
     this.isLoading = true;
@@ -126,23 +162,65 @@ class AuthStore {
     }
   };
 
+
+  uploadFile = async (sendData: any) => {
+    try {
+      const { data } = await axios.post("/file/upload", {...sendData,company : stores.auth.company});
+      return data;
+    } catch (err: any) {
+      return Promise.reject(err?.response?.data || err);
+    }
+  };
+
+  saveUserToSessionStorage(user: any) {
+    if (typeof window !== "undefined" && user) {
+      const encryptedData = CryptoJS.AES.encrypt(
+        JSON.stringify(user),
+        ENCRYPT_SECRET_KEY
+      ).toString();
+      sessionStorage.setItem(USER_SESSION_DATA, encryptedData);
+    }
+  }
+
   // Fetch User Info
   fetchUser = async () => {
     if (!this.token) return;
 
     try {
-      const response = await axios.post("/auth/me", {
-        headers: {
-          Authorization: `Bearer ${this.token}`,
-        },
-      });
+      const response = await axios.post(
+        "/auth/me",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        }
+      );
 
       this.user = response.data?.data;
-      this.company = this.user?.company
+      this.saveUserToSessionStorage(this.user);
+
+      // If there's a company field
+      // this.company = this.user?.company;
     } catch (err: any) {
       this.error = err?.response?.data?.message || "Failed to fetch user info.";
     }
   };
+
+  getUserFromSessionStorage() {
+    if (typeof window === "undefined") return false;
+
+    const storedData = sessionStorage.getItem(USER_SESSION_DATA);
+    if (!storedData) return false;
+
+    try {
+      const decryptedBytes = CryptoJS.AES.decrypt(storedData, ENCRYPT_SECRET_KEY);
+      const decryptedData = decryptedBytes.toString(CryptoJS.enc.Utf8);
+      return decryptedData ? JSON.parse(decryptedData) : false;
+    } catch ({}) {
+      return false;
+    }
+  }
 
   // Logout user
   logout = () => {
