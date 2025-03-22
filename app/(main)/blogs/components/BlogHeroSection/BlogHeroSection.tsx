@@ -84,12 +84,12 @@ const BlogFeatureCard = () => {
             fontWeight={400}
             noOfLines={{ base: 2, md: 3 }}
           >
-            Traveling is all about discovering new places, cultures, and
+            {`Traveling is all about discovering new places, cultures, and
             experiences. Whether you're planning a weekend getaway or a long
             vacation, choosing the right destination, setting a budget, and
             preparing in advance can make your trip hassle-free. Don't forget to
             embrace spontaneity—sometimes the best memories come from unplanned
-            adventures!
+            adventures!`}
           </Text>
         </Box>
       ) : (
@@ -103,23 +103,28 @@ const BlogFeatureCard = () => {
             FEATURED
           </CustomSmallTitle>
           <Heading
+            color={themeConfig.colors.brand[300]}
             fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
             mt={1}
             fontWeight={600}
           >
-            The Power of Mindfulness: A Guide to Reducing Stress
+            Top Tips for Planning Your Next Adventure
           </Heading>
+
           <Text
+            color={themeConfig.colors.brand[100]}
             fontSize={{ base: "sm", lg: "lg" }}
             mt={2}
             w={{ base: "100%", lg: "80%" }}
             fontWeight={400}
             noOfLines={{ base: 2, md: 3 }}
           >
-            Mindfulness is a simple yet powerful practice that helps you focus
-            on the here and now, reducing anxiety and improving emotional
-            well-being. In this blog, we’ll explore easy mindfulness exercises
-            you can incorporate into your daily routine.
+            {`Traveling is all about discovering new places, cultures, and
+            experiences. Whether you're planning a weekend getaway or a long
+            vacation, choosing the right destination, setting a budget, and
+            preparing in advance can make your trip hassle-free. Don't forget to
+            embrace spontaneity—sometimes the best memories come from unplanned
+            adventures!`}
           </Text>
         </Box>
       )}
