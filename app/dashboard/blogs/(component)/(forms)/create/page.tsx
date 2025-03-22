@@ -1,8 +1,9 @@
 'use client'
 import { Box } from "@chakra-ui/react";
-import BlogForm from "../../(component)/(forms)/BlogForm";
 import { useState } from "react";
-import stores from "../../../../store/stores";
+import stores from "../../../../../store/stores";
+import BlogForm from "../BlogForm";
+import { blogInitialValues } from "../../utils/constant";
 
 const AddBlogForm = () => {
   const {
@@ -11,23 +12,7 @@ const AddBlogForm = () => {
   } = stores;
   const [loading, setLoading] = useState(false);
 
-  const [initialValues, setInitialValues] = useState<any>({
-    isPreviewMode: false,
-    title: "",
-    subTitle: "",
-    content: "",
-    tags: [] as string[],
-    tagInput: "",
-    isLoading: false,
-    isPrivate: false,
-    coverImage: {
-      filename: null,
-      type: null,
-      buffer: null,
-      isAdd : 0,
-      isDeleted : 0
-    },
-  });
+  const [initialValues, setInitialValues] = useState<any>(blogInitialValues);
 
   const submitForm = (submitData: any) => {
     setLoading(true);
@@ -37,22 +22,7 @@ const AddBlogForm = () => {
           title: "CREATED SUCCESSFULLY",
           message: data.message,
         });
-        setInitialValues({
-          isPreviewMode: false,
-          title: "",
-          subTitle: "",
-          content: "",
-          tags: [],
-          tagInput: "",
-          isLoading: false,
-          coverImage: {
-            filename: null,
-            buffer: null,
-            type: null,
-            isAdd : 0,
-            isDeleted:0
-          },
-        });
+        setInitialValues(blogInitialValues);
       })
       .catch((err: any) => {
         openNotification({

@@ -21,13 +21,13 @@ const PageLoader = observer(
         {loading ? (
           <Center height="100%">
             <Flex alignItems="center" justifyContent="center">
-              <Box p={4} mt={height || "40vh"}>
+              <Box p={4} mt={height || "40vh"} mb={'20vh'}>
                 <SpinnerLoader />
               </Box>
             </Flex>
           </Center>
         ) : noRecordFoundText ? (
-          <Center height="100%">
+          <Center height="100%" mb={'20vh'}>
             <Flex
               direction="column"
               alignItems="center"

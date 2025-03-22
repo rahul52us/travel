@@ -15,10 +15,12 @@ import { FiArrowRight } from "react-icons/fi";
 import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSection";
 import ServicesSection from "./ServicesSection/ServicesSection";
 import SetsApart from "./SetsApart/SetsApart";
+import { useRouter } from "next/navigation";
+import { main } from "../../../config/utils/routes";
 
 
 export default function AboutUsPage() {
-
+const router = useRouter()
 //   const coreValues = [
 //     { icon: FiHeart, title: "Passion", color: "red.400" },
 //     { icon: FiGlobe, title: "Sustainability", color: "green.400" },
@@ -32,20 +34,20 @@ export default function AboutUsPage() {
       <PageHero
         title="About Us"
         lineColor="cyan.300"
-        subtitle={  
-            <>  
-              Crafting unforgettable journeys across diverse landscapes, rich cultures, and 
-              <Text as="span" color="cyan.200" fontWeight="semibold" mx={1.5}>  
-                24/7 storied histories 
-              </Text>  
-              
-            </>  
+        subtitle={
+            <>
+              Crafting unforgettable journeys across diverse landscapes, rich cultures, and
+              <Text as="span" color="cyan.200" fontWeight="semibold" mx={1.5}>
+                24/7 storied histories
+              </Text>
+
+            </>
           }
         bgImage="url('https://images.unsplash.com/photo-1593693411515-c20261bcad6e?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
       />
 
 
-  
+
 
       {/* Mission Section */}
       <Box  py={{base:4,lg:16}} my={{base:4,lg:8}}>
@@ -64,7 +66,7 @@ export default function AboutUsPage() {
               />
             </Box>
             <VStack align="start" spacing={6}>
-              
+
               <Heading size={{base:"lg",lg:"xl"}} color="teal.600" display={{base:"none",lg:"block"}}>
                 Our Mission
               </Heading>
@@ -76,6 +78,7 @@ export default function AboutUsPage() {
                 size={{base:"md",lg:"lg"}}
                 rightIcon={<FiArrowRight />}
                 variant="outline"
+                display="none"
               >
                 Learn More
               </Button>
@@ -87,7 +90,7 @@ export default function AboutUsPage() {
       {/* What Sets Us Apart Section */}
 
       <SetsApart/>
-     
+
 
       {/* Services Section */}
     <ServicesSection/>
@@ -133,6 +136,7 @@ Let us guide you to serene destinations and create relaxing memories worldwide
           size={{ base: "md", lg: "lg" }}
           rightIcon={<FiArrowRight />}
           _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
+          onClick={() => router.push(main.contact)}
         >
           Contact Us Today
         </Button>

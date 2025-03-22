@@ -13,13 +13,13 @@ const CustomSmallTitle = ({
   children,
   textAlign = { base: "center", lg: "center" }, // Default props
   fontSize = { base: "14px", md: "16px" },
-  color = "#DF837C",
+  // color = "#DF837C",
   ...props
 }: Props) => {
   return (
     <Text
       textTransform="uppercase"
-      color={color}
+      // color={color}
       textAlign={textAlign}
       fontSize={fontSize}
       {...props} // Spread to allow additional props

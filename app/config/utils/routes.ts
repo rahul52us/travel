@@ -118,7 +118,7 @@ export const main = {
   about: "/about",
   project: "/project",
   changePassword: "/profile?&profileTab=change-password",
-  contact: "/contact",
+  contact: "/contact-us",
   courses: "/courses",
   testimonial: "/testimonial",
   product: "/product",

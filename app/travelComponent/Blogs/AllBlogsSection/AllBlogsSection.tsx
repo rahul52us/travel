@@ -51,7 +51,7 @@ const storyData = [
 
   const AllBlogsSection = () => {
       const showArrows = useBreakpointValue({base:false,lg:true})
-  
+
     return (
       <Box>
         <Box display={{base:"none",lg:"block"}}>

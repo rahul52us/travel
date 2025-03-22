@@ -1,12 +1,11 @@
-"use client";
+"use client"
 import { Box } from '@chakra-ui/react'
-import React from 'react'
-import BlogPage from '../../travelComponent/Blogs/BlogPage'
+import BlogsPage from './components/BlogsPage'
 
 const page = () => {
   return (
     <Box>
-        <BlogPage/>
+        <BlogsPage/>
     </Box>
   )
 }
