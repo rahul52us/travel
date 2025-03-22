@@ -8,7 +8,7 @@ class TestimonialStore {
   testimonials = {
     data: [],
     totalPages: 1,
-    loading : false
+    loading: false,
   };
 
   openTestimonialDrawer = {
@@ -21,27 +21,33 @@ class TestimonialStore {
 
   // Fetch Testimonials
 
-  getTestimonials = async (sendData: { limit?: number; page: number; search?: string }) => {
-    this.testimonials.loading = true;
-    try {
-      const { limit = 10 , page, search } = sendData;
-      const searchQuery = search ? `&search=${encodeURIComponent(search)}` : '';
+  getTestimonials = async (sendData: {
+    limit?: number;
+    page: number;
+    search?: string;
+  }) => {
+    if (this.testimonials.data?.length === 0) {
+      this.testimonials.loading = true;
+      try {
+        const { limit = 10, page, search } = sendData;
+        const searchQuery = search
+          ? `&search=${encodeURIComponent(search)}`
+          : "";
 
-      const { data } = await axios.get(
-        `/testimonial/get?page=${page}&limit=${limit}${searchQuery}`
-      );
+        const { data } = await axios.get(
+          `/testimonial/get?page=${page}&limit=${limit}${searchQuery}`
+        );
 
-      this.testimonials.data = data?.data || [];
-      this.testimonials.totalPages = data?.totalPages || 0;
-      return data.data;
-    } catch (err: any) {
-      return Promise.reject(err?.response?.data || err);
-    } finally {
-      this.testimonials.loading = false;
+        this.testimonials.data = data?.data || [];
+        this.testimonials.totalPages = data?.totalPages || 0;
+        return data.data;
+      } catch (err: any) {
+        return Promise.reject(err?.response?.data || err);
+      } finally {
+        this.testimonials.loading = false;
+      }
     }
-};
-
-
+  };
 
   // Delete Testimonial
   deleteTestimonial = async (sendData: any) => {
@@ -68,14 +74,14 @@ class TestimonialStore {
   };
 
   // Edit Testimonial
-  updateTestimonial = async (id : any,sendData : any) => {
+  updateTestimonial = async (id: any, sendData: any) => {
     try {
       const { data } = await axios.put(`testimonial/${id}`, sendData);
       return data;
     } catch (err: any) {
       return Promise.reject(err?.response || err);
     }
-  }
+  };
 
   // Download Testimonial List
   downloadTestimonialList = async (sendData: any) => {

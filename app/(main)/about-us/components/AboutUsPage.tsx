@@ -9,7 +9,7 @@ import {
   Heading,
   Image,
   Text,
-  VStack
+  VStack,
 } from "@chakra-ui/react";
 import { FiArrowRight } from "react-icons/fi";
 import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSection";
@@ -18,16 +18,8 @@ import SetsApart from "./SetsApart/SetsApart";
 import { useRouter } from "next/navigation";
 import { main } from "../../../config/utils/routes";
 
-
 export default function AboutUsPage() {
-const router = useRouter()
-//   const coreValues = [
-//     { icon: FiHeart, title: "Passion", color: "red.400" },
-//     { icon: FiGlobe, title: "Sustainability", color: "green.400" },
-//     { icon: FiUsers, title: "Community", color: "blue.400" },
-//     { icon: FiStar, title: "Excellence", color: "yellow.400" },
-//   ];
-
+  const router = useRouter();
   return (
     <Box>
       {/* Hero Section */}
@@ -35,47 +27,62 @@ const router = useRouter()
         title="About Us"
         lineColor="cyan.300"
         subtitle={
-            <>
-              Crafting unforgettable journeys across diverse landscapes, rich cultures, and
-              <Text as="span" color="cyan.200" fontWeight="semibold" mx={1.5}>
-                24/7 storied histories
-              </Text>
-
-            </>
-          }
+          <>
+            Crafting unforgettable journeys across diverse landscapes, rich
+            cultures, and
+            <Text as="span" color="cyan.200" fontWeight="semibold" mx={1.5}>
+              24/7 storied histories
+            </Text>
+          </>
+        }
         bgImage="url('https://images.unsplash.com/photo-1593693411515-c20261bcad6e?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
       />
 
-
-
-
       {/* Mission Section */}
-      <Box  py={{base:4,lg:16}} my={{base:4,lg:8}}>
-        <Container maxW={{base:"95%",lg:"80%"}} mx={'auto'}>
-        <Heading size={{base:"lg",lg:"xl"}} color="teal.600" textAlign={'center'} display={{base:"block",lg:"none"}}>
-                Our Mission
-              </Heading>
-          <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={{lg:8}}>
-
-            <Box w={{lg:'95%'}} mt={2}>
+      <Box py={{ base: 4, lg: 16 }} my={{ base: 4, lg: 8 }}>
+        <Container maxW={{ base: "95%", lg: "80%" }} mx={"auto"}>
+          <Heading
+            size={{ base: "lg", lg: "xl" }}
+            color="teal.600"
+            textAlign={"center"}
+            display={{ base: "block", lg: "none" }}
+          >
+            Our Mission
+          </Heading>
+          <Grid
+            templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+            gap={{ lg: 8 }}
+          >
+            <Box w={{ lg: "95%" }} mt={2}>
               <Image
                 src="/images/travel/about-1.jpg"
                 alt="Our Mission"
-                objectFit={'cover'}
+                objectFit={"cover"}
                 borderRadius="xl"
               />
             </Box>
             <VStack align="start" spacing={6}>
-
-              <Heading size={{base:"lg",lg:"xl"}} color="teal.600" display={{base:"none",lg:"block"}}>
+              <Heading
+                size={{ base: "lg", lg: "xl" }}
+                color="teal.600"
+                display={{ base: "none", lg: "block" }}
+              >
                 Our Mission
               </Heading>
-              <Text fontSize={{lg:"lg"}} mt={4} color="gray.600">
-                At Cosmic Travel, our mission is to provide unparalleled travel experiences that inspire, educate, and enchant our clients. We are dedicated to showcasing the beauty, diversity, and cultural heritage of Europe while ensuring the highest standards of service, authenticity, and sustainability.
+              <Text fontSize={{ lg: "lg" }} mt={4} color="gray.600">
+                {`Our mission is to create unforgettable travel experiences with
+                Cosmic Travels, aiming beyond mere vacations. Such journeys
+                should transform one's travel into an experience intertwined
+                with adventure and personal growth, relaxation and discovery,
+                where every traveler gleefully gains inspiration. Our goal is to
+                design highly personalized itinerates illustrating your
+                distinctive interests with culturally enriching interactions,
+                unforgettable sights, and memorable experiences. Instead of
+                trips, focus on life-changing experiences`}
               </Text>
               <Button
                 colorScheme="teal"
-                size={{base:"md",lg:"lg"}}
+                size={{ base: "md", lg: "lg" }}
                 rightIcon={<FiArrowRight />}
                 variant="outline"
                 display="none"
@@ -89,62 +96,65 @@ const router = useRouter()
 
       {/* What Sets Us Apart Section */}
 
-      <SetsApart/>
-
+      <SetsApart />
 
       {/* Services Section */}
-    <ServicesSection/>
+      <ServicesSection />
 
       {/* CTA Section */}
       <Box py={{ base: 6, lg: 12 }} position="relative" overflow="hidden">
-  <Container maxW={{lg:"85%"}}>
-    <Flex
-      bg="teal.600"
-      borderRadius="3xl"
-      p={{ base: 4, lg: 0 }}
-      position="relative"
-      overflow="hidden"
-      align="center"
-      direction={{ base: "column", md: "row" }}
-      backgroundImage="url('https://images.unsplash.com/photo-1609601540898-52ca92508901?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
-      backgroundSize="cover"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      h={{lg:'20rem'}}
-      _before={{
-        content: '""',
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        bg: "black",
-        opacity: 0.3, // Adjust for readability
-        borderRadius: "3xl",
-      }}
-    >
-      <Box flex={1} color="white" zIndex={1} p={{ base: 2, lg: 8 }}>
-      <Heading size={{ base: "md", lg: "xl" }} mb={4} textShadow={'md'}>
-Ready for Your Perfect Escape?
-</Heading>
-<Text fontSize={{ lg: "xl" }} mb={{base:4,lg:8}} textShadow={'md'}>
-Let us guide you to serene destinations and create relaxing memories worldwide
-</Text>
-        <Button
-          colorScheme="white"
-          variant="outline"
-          size={{ base: "md", lg: "lg" }}
-          rightIcon={<FiArrowRight />}
-          _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
-          onClick={() => router.push(main.contact)}
-        >
-          Contact Us Today
-        </Button>
+        <Container maxW={{ lg: "85%" }}>
+          <Flex
+            bg="teal.600"
+            borderRadius="3xl"
+            p={{ base: 4, lg: 0 }}
+            position="relative"
+            overflow="hidden"
+            align="center"
+            direction={{ base: "column", md: "row" }}
+            backgroundImage="url('https://images.unsplash.com/photo-1609601540898-52ca92508901?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
+            backgroundSize="cover"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            h={{ lg: "20rem" }}
+            _before={{
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              bg: "black",
+              opacity: 0.3, // Adjust for readability
+              borderRadius: "3xl",
+            }}
+          >
+            <Box flex={1} color="white" zIndex={1} p={{ base: 2, lg: 8 }}>
+              <Heading size={{ base: "md", lg: "xl" }} mb={4} textShadow={"md"}>
+                Ready for Your Perfect Escape?
+              </Heading>
+              <Text
+                fontSize={{ lg: "xl" }}
+                mb={{ base: 4, lg: 8 }}
+                textShadow={"md"}
+              >
+                Let us guide you to serene destinations and create relaxing
+                memories worldwide
+              </Text>
+              <Button
+                colorScheme="white"
+                variant="outline"
+                size={{ base: "md", lg: "lg" }}
+                rightIcon={<FiArrowRight />}
+                _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
+                onClick={() => router.push(main.contact)}
+              >
+                Contact Us Today
+              </Button>
+            </Box>
+          </Flex>
+        </Container>
       </Box>
-    </Flex>
-  </Container>
-</Box>
-
     </Box>
   );
 }
