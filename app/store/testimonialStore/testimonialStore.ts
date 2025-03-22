@@ -21,13 +21,16 @@ class TestimonialStore {
 
   // Fetch Testimonials
 
-  getTestimonials = async (sendData: { page: number, search: string }) => {
+  getTestimonials = async (sendData: { limit?: number; page: number; search?: string }) => {
     this.testimonials.loading = true;
     try {
-      const searchQuery = sendData.search ? `&search=${encodeURIComponent(sendData.search)}` : '';
+      const { limit = 10 , page, search } = sendData;
+      const searchQuery = search ? `&search=${encodeURIComponent(search)}` : '';
+
       const { data } = await axios.get(
-        `/testimonial/get?page=${sendData.page}&limit=10${searchQuery}`
+        `/testimonial/get?page=${page}&limit=${limit}${searchQuery}`
       );
+
       this.testimonials.data = data?.data || [];
       this.testimonials.totalPages = data?.totalPages || 0;
       return data.data;
@@ -36,19 +39,17 @@ class TestimonialStore {
     } finally {
       this.testimonials.loading = false;
     }
-  };
+};
+
 
 
   // Delete Testimonial
-  deleteTestimonial = async (sendData: { id: string }) => {
+  deleteTestimonial = async (sendData: any) => {
     try {
-      const { data } = await axios.delete(`/testimonial/delete/${sendData.id}`);
-      this.testimonials.data = this.testimonials.data.filter(
-        (item) => item.id !== sendData.id
-      );
+      const { data } = await axios.delete(`/testimonial/${sendData._id}`);
       return data;
     } catch (err: any) {
-      return Promise.reject(err?.response?.data);
+      return Promise.reject(err?.response?.data || err);
     }
   };
 

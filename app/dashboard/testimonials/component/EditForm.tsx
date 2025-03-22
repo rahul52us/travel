@@ -6,7 +6,7 @@ import { generateTestimonailsInitialValues } from "../utils/functions";
 import { readFileAsBase64 } from "../../../config/utils/utils";
 import { getStatusType } from "../../../config/utils/function";
 
-const EditTestimonial = observer(({ testimonial, close }: any) => {
+const EditTestimonial = observer(({ getData, testimonial, close }: any) => {
   const {
     auth: { openNotification },
     testimonialStore: { updateTestimonial },
@@ -49,7 +49,7 @@ const EditTestimonial = observer(({ testimonial, close }: any) => {
         message: `${data.message}`,
         type: "success",
       });
-
+      getData()
       close();
       resetForm();
     })

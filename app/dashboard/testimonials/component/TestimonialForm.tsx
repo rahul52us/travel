@@ -1,5 +1,5 @@
 'use client';
-import {  Button, Flex, VStack, Stack, Card, SimpleGrid, Box } from "@chakra-ui/react";
+import {  Button, Flex, VStack, Card, SimpleGrid, Box } from "@chakra-ui/react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { Form, Formik } from "formik";
 import { useState } from "react";
@@ -29,10 +29,9 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ initialValues, onSubm
       >
         {({ handleChange, values, errors, isSubmitting, setFieldValue } : any) => (
           <Form>
-            <VStack spacing={6} align="center">
+            <VStack spacing={4} align="center">
               {/* Image Upload Section */}
-              <Stack direction="column" align="center">
-              <Flex>
+              <Box width="100%">
                   {values?.image?.file?.length === 0 ? (
                     <CustomInput
                       type="file-drag"
@@ -65,8 +64,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ initialValues, onSubm
                       />
                     </Box>
                   )}
-                </Flex>
-              </Stack>
+                </Box>
 
               {/* Form Fields */}
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} w="full">
@@ -86,6 +84,16 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({ initialValues, onSubm
                   onChange={handleChange}
                   value={values.profession}
                   error={errors.profession}
+                  showError={showError}
+                />
+                <CustomInput
+                  name="rating"
+                  placeholder="Enter the Rating"
+                  label="Rating"
+                  type="number"
+                  onChange={handleChange}
+                  value={values.rating}
+                  error={errors.rating}
                   showError={showError}
                 />
               </SimpleGrid>

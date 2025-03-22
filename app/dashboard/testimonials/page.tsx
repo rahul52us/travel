@@ -12,8 +12,9 @@ import EditTestimonial from "./component/EditForm";
 
 const Testimonial = observer(() => {
   const {
-    testimonialStore: { setOpenTestimonialDrawer },
+    testimonialStore: { setOpenTestimonialDrawer, getTestimonials },
   } = stores;
+  const [currentPage, setCurrentPage] = useState(1);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
   const [openTestimonial, setOpenTestimonial] = useState(false);
@@ -37,6 +38,9 @@ const Testimonial = observer(() => {
             setSelectedTestimonial(testimonial);
             setIsEditing(true);
           }}
+          getData={() => getTestimonials({page : currentPage})}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
         />
       </Box>
       {/* CREATE THE NEW tESTIMONIAL */}
@@ -59,6 +63,7 @@ const Testimonial = observer(() => {
           <EditTestimonial
             testimonial={selectedTestimonial}
             close={() => setIsEditing(false)}
+            getData={() => getTestimonials({page : currentPage})}
           />
         </FormModel>
       )}
