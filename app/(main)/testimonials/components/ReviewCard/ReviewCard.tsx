@@ -13,6 +13,7 @@ import CustomCarousel from "../../../../component/common/CustomCarousal/CustomCa
 import { observer } from "mobx-react-lite";
 import stores from "../../../../store/stores";
 import { useEffect } from "react";
+import ReviewCardSkeleton from "./ReviewCardSkeletan";
 
 const ReviewCard = (data: any) => {
   return (
@@ -68,11 +69,18 @@ const ReviewsList = observer(() => {
   }, [getTestimonials]);
   return (
     <Box>
+      {testimonials.loading ?
       <CustomCarousel showDots={true} autoplay={true} showArrows={showArrows}>
-        {testimonials?.data?.map((testimonial, index) => (
-          <ReviewCard key={index} {...testimonial} />
+        {[...Array(5)].map((_, index) => (
+          <ReviewCardSkeleton key={index} />
         ))}
-      </CustomCarousel>
+      </CustomCarousel> :
+      <CustomCarousel showDots={true} autoplay={true} showArrows={showArrows}>
+      {testimonials?.data?.map((testimonial, index) => (
+        <ReviewCard key={testimonial._id || index} {...testimonial} />
+      ))}
+    </CustomCarousel>
+    }
     </Box>
   );
 });

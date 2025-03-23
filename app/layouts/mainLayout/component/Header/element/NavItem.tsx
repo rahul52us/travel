@@ -76,7 +76,9 @@ const NavItem: React.FC<NavItemProps> = ({ item ,onClose}) => {
       }}
       onClick={() => {
         if (item.link) router.push(item.link);
-        onClose();
+        if(onClose){
+          onClose();
+        }
       }}
     >
       {item.title}

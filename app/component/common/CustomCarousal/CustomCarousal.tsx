@@ -19,7 +19,7 @@ const PrevArrow = ({
   position = -10,
   icon,
   hoverIconColor = "white",
-  initialIconColor = "#2C7A7B" // Teal shade
+  initialIconColor = "#2C7A7B", // Teal shade
 }: ArrowProps) => {
   return (
     <IconButton
@@ -30,7 +30,7 @@ const PrevArrow = ({
       left={position}
       top="50%"
       transform="translateY(-50%)"
-      border={'1px solid #3182CE'} // Blue shade
+      border={"1px solid #3182CE"} // Blue shade
       zIndex={2}
       rounded="full"
       bg="#E6FFFA" // Light teal background
@@ -40,12 +40,12 @@ const PrevArrow = ({
         // borderColor: hoverBgColor, // Match border color with hover background
       }}
       sx={{
-        '& svg': {
-          color: initialIconColor
+        "& svg": {
+          color: initialIconColor,
         },
-        '&:hover svg': {
-          color: hoverIconColor // White icon on hover
-        }
+        "&:hover svg": {
+          color: hoverIconColor, // White icon on hover
+        },
       }}
       className="opacity-70 hover:opacity-100"
     />
@@ -57,7 +57,7 @@ const NextArrow = ({
   position = -10,
   icon,
   hoverIconColor = "white",
-  initialIconColor = "#2C7A7B" // Teal shade
+  initialIconColor = "#2C7A7B", // Teal shade
 }: ArrowProps) => {
   return (
     <IconButton
@@ -71,19 +71,19 @@ const NextArrow = ({
       zIndex={2}
       rounded="full"
       bg="#E6FFFA" // Light teal background
-      border={'1px solid #3182CE'} // Blue shade
+      border={"1px solid #3182CE"} // Blue shade
       shadow="base"
       _hover={{
         bg: "blue.300", // Blue shade on hover
         // borderColor: hoverBgColor, // Match border color with hover background
       }}
       sx={{
-        '& svg': {
-          color: initialIconColor
+        "& svg": {
+          color: initialIconColor,
         },
-        '&:hover svg': {
-          color: hoverIconColor // White icon on hover
-        }
+        "&:hover svg": {
+          color: hoverIconColor, // White icon on hover
+        },
       }}
       className="opacity-70 hover:opacity-100"
     />
@@ -181,12 +181,17 @@ const CustomCarousel: React.FC<CustomCarouselProps> = ({
 
   return (
     <Box position="relative" width="full" p={{ base: 4, md: 4 }} maxWidth={maxWidth}>
-      <Slider {...settings}>
-        {React.Children.map(children, (child) => (
-          <Box py={2} px={2} >{child}</Box>
-        ))}
-      </Slider>
-    </Box>
+  <Slider {...settings}>
+    {React.Children.map(children, (child : any, index) => {
+      return child ? (
+        <Box key={child.key || index} py={2} px={2}>
+          {React.cloneElement(child, { key: child.key || index })}
+        </Box>
+      ) : null;
+    })}
+  </Slider>
+</Box>
+
   );
 };
 

@@ -69,8 +69,8 @@ const DashboardLayout = observer(({ children }: { children: React.ReactNode }) =
             mediumScreenMode={mediumScreenMode}
             fullScreenMode={fullScreenMode}
             backgroundColor={useColorModeValue(
-              themeConfig.colors.custom.light.primary,
-              themeConfig.colors.custom.dark.primary
+              themeConfig.colors.custom.light.primary || "black",
+              themeConfig.colors.custom.dark.primary || "white"
             )}
           >
             <HeaderLayout />

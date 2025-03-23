@@ -8,6 +8,7 @@ import { themeStore } from "./themeStore/themeStore";
 import { userStore } from "./userStore/userStore";
 import {layoutStore} from './layoutStore/LayoutStore'
 import { orderStore } from "./orderStore/orderStore";
+import { locationStore } from "./locations/locationStore";
 
 const stores = {
   auth : authStore,
@@ -18,7 +19,8 @@ const stores = {
   BlogStore : blogStore,
   companyStore : CompanyStore,
   orderStore : orderStore,
-  testimonialStore : testimonialStore
+  testimonialStore : testimonialStore,
+  locationStore:locationStore
 };
 
 export default stores;

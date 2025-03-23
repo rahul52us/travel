@@ -1,11 +1,11 @@
 import { makeAutoObservable } from "mobx";
 import axios from "axios";
 import { authStore } from "../authStore/authStore";
+import stores from "../stores";
 
-class TestimonialStore {
-  testimonialLayout = "table";
+class LocationStore {
 
-  testimonials = {
+  location = {
     data: [],
     totalPages: 1,
     loading: false,
@@ -21,12 +21,13 @@ class TestimonialStore {
 
   // Fetch Testimonials
 
-  getTestimonials = async (sendData: {
+  getLocations = async (sendData: {
     limit?: number;
     page: number;
     search?: string;
+    reset?:boolean
   }) => {
-      this.testimonials.loading = true;
+      this.location.loading = true;
       try {
         const { limit = 10, page, search } = sendData;
         const searchQuery = search
@@ -34,23 +35,23 @@ class TestimonialStore {
           : "";
 
         const { data } = await axios.get(
-          `/testimonial/get?page=${page}&limit=${limit}${searchQuery}`
+          `/location/get?page=${page}&limit=${limit}${searchQuery}&company=${stores.auth.company}`
         );
 
-        this.testimonials.data = data?.data || [];
-        this.testimonials.totalPages = data?.totalPages || 0;
+        this.location.data = data?.data?.data || [];
+        this.location.totalPages = data?.data?.totalPages || 0;
         return data.data;
       } catch (err: any) {
         return Promise.reject(err?.response?.data || err);
       } finally {
-        this.testimonials.loading = false;
+        this.location.loading = false;
       }
   };
 
   // Delete Testimonial
-  deleteTestimonial = async (sendData: any) => {
+  deleteLocation = async (sendData: any) => {
     try {
-      const { data } = await axios.delete(`/testimonial/${sendData._id}`);
+      const { data } = await axios.delete(`/location/${sendData._id}`);
       return data;
     } catch (err: any) {
       return Promise.reject(err?.response?.data || err);
@@ -58,13 +59,13 @@ class TestimonialStore {
   };
 
   // Create Testimonial
-  createTestimonial = async (sendData: any) => {
+  createLocation = async (sendData: any) => {
     try {
-      const { data } = await axios.post(`/testimonial/create`, {
+      const { data } = await axios.post(`/location/create`, {
         ...sendData,
         company: authStore.company,
       });
-      this.testimonials.data.unshift(data.data);
+      this.location.data.unshift(data.data);
       return data;
     } catch (err: any) {
       return Promise.reject(err?.response?.data);
@@ -72,9 +73,9 @@ class TestimonialStore {
   };
 
   // Edit Testimonial
-  updateTestimonial = async (id: any, sendData: any) => {
+  updateLocation = async (id: any, sendData: any) => {
     try {
-      const { data } = await axios.put(`testimonial/${id}`, sendData);
+      const { data } = await axios.put(`location/${id}`, sendData);
       return data;
     } catch (err: any) {
       return Promise.reject(err?.response || err);
@@ -82,10 +83,10 @@ class TestimonialStore {
   };
 
   // Download Testimonial List
-  downloadTestimonialList = async (sendData: any) => {
+  downloadLocation = async (sendData: any) => {
     try {
       const response = await axios.post(
-        "/testimonial/download/list",
+        "/location/download/list",
         sendData,
         {
           responseType: "blob",
@@ -94,7 +95,7 @@ class TestimonialStore {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "testimonials.xlsx");
+      link.setAttribute("download", "location.xlsx");
       document.body.appendChild(link);
       link.click();
       return {
@@ -105,16 +106,6 @@ class TestimonialStore {
     }
   };
 
-  // Toggle Testimonial Drawer
-  setOpenTestimonialDrawer = () => {
-    this.openTestimonialDrawer.open = !this.openTestimonialDrawer.open;
-  };
-
-  // Toggle Layout (Table/Grid)
-  setTestimonialLayout = () => {
-    this.testimonialLayout =
-      this.testimonialLayout === "table" ? "grid" : "table";
-  };
 }
 
-export const testimonialStore = new TestimonialStore();
+export const locationStore = new LocationStore();
