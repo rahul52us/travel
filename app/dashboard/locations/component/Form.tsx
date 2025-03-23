@@ -1,5 +1,5 @@
 'use client';
-import {  Button, Flex, VStack, Card, SimpleGrid, Box } from "@chakra-ui/react";
+import {  Button, Flex, VStack, Card, SimpleGrid } from "@chakra-ui/react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { Form, Formik } from "formik";
 import { useState } from "react";
@@ -9,11 +9,11 @@ import locationValidation from "../utils/validation";
 interface LocationFormProps {
   initialValues: { name: string; description: string; };
   onSubmit: any;
-  close: () => void;
+  close:any;
   isEdit?:boolean
 }
 
-const FormControl: React.FC<LocationFormProps> = ({ initialValues, onSubmit, close, isEdit }) => {
+const FormControl: React.FC<LocationFormProps> = ({ initialValues, onSubmit, close }) => {
   const [showError, setShowError] = useState(false);
 
   return (
@@ -25,7 +25,7 @@ const FormControl: React.FC<LocationFormProps> = ({ initialValues, onSubmit, clo
           onSubmit({ ...values }, actions);
         }}
       >
-        {({ handleChange, values, errors, isSubmitting, setFieldValue } : any) => (
+        {({ handleChange, values, errors, isSubmitting } : any) => (
           <Form>
             <VStack spacing={4} align="center">
               {/* Form Fields */}

@@ -3,7 +3,6 @@ import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 import { observer } from "mobx-react-lite";
 import TestimonialTableList from "./TestimonialTableList";
-import DashPageHeader from "../../component/common/DashPageHeader/DashPageHeader";
 import DashPageTitle from "../../component/common/DashPageTitle/DashPageTitle";
 import FormModel from "../../component/common/FormModel/FormModel";
 import stores from "../../store/stores";
