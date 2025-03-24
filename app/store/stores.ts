@@ -9,9 +9,11 @@ import { userStore } from "./userStore/userStore";
 import {layoutStore} from './layoutStore/LayoutStore'
 import { orderStore } from "./orderStore/orderStore";
 import { locationStore } from "./locations/locationStore";
+import { dashboardStore } from "./dashboardStore/dashboardStore";
 
 const stores = {
   auth : authStore,
+  dashboardStore : dashboardStore,
   userStore : userStore,
   themeStore : themeStore,
   layout : layoutStore,

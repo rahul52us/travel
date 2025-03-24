@@ -1,33 +1,41 @@
+"use client";
 import {
-    Box,
-    ChakraProvider,
-    extendTheme,
-    Grid,
-    GridItem,
-    Heading,
-    SimpleGrid,
-    Table,
-    Tbody,
-    Td,
-    Text,
-    Th,
-    Thead,
-    Tr,
+  Box,
+  ChakraProvider,
+  extendTheme,
+  Grid,
+  GridItem,
+  Heading,
+  SimpleGrid,
+  Skeleton,
+  Text,
 } from "@chakra-ui/react";
 import {
-    BarElement,
-    CategoryScale,
-    Chart as ChartJS,
-    Legend,
-    LinearScale,
-    LineElement,
-    PointElement,
-    Title,
-    Tooltip,
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
 } from "chart.js";
 import { Bar, Line } from "react-chartjs-2";
-import { FaCalendarAlt, FaEye, FaUserMd, FaUsers } from 'react-icons/fa';
+import {
+  FaAddressBook,
+  FaCalendarAlt,
+  FaComments,
+  FaEye,
+  FaNewspaper,
+  FaUserMd,
+  FaUsers,
+} from "react-icons/fa";
 import DashboardCard from "../common/DashboardCard/DashboardCard";
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
+import stores from "../../../store/stores";
+import { toJS } from "mobx";
 
 // Register Chart.js components
 ChartJS.register(
@@ -51,13 +59,6 @@ const theme = extendTheme({
     },
   },
 });
-
-const data = [
-    { id: 1, label: 'Total Website Visits', value: 12456, icon: FaEye, color: 'teal' },
-    { id: 2, label: 'Total Patients Registered', value: 3456, icon: FaUsers, color: 'blue' },
-    { id: 3, label: 'Total Therapists', value: 123, icon: FaUserMd, color: 'purple' },
-    { id: 4, label: 'Total Appointments', value: 789, icon: FaCalendarAlt, color: 'orange' },
-  ];
 
 // Dummy data
 const dummyData = {
@@ -98,24 +99,72 @@ const lineChartData = {
 };
 
 // Dashboard component
-const Dashboard = () => {
+const Dashboard = observer(() => {
+  const {
+    dashboardStore: { getDashboardCount, count },
+  } = stores;
+  useEffect(() => {
+    getDashboardCount();
+  }, [getDashboardCount]);
+
+  console.log(toJS(count));
+
+  const dashboardData = [
+    {
+      label: "Blogs",
+      value: count?.data?.blogs || 0,
+      icon: FaNewspaper,
+      color: "blue",
+      href: "/dashboard/blogs",
+    },
+    {
+      label: "Users",
+      value: count?.data?.users || 0,
+      icon: FaUsers,
+      color: "green",
+      href: "/dashboard/users",
+    },
+    {
+      label: "Testimonials",
+      value: count?.data?.testimonials || 0,
+      icon: FaComments,
+      color: "purple",
+      href: "/dashboard/testimonials",
+    },
+    {
+      label: "Contacts",
+      value: count?.data?.contacts || 0,
+      icon: FaAddressBook,
+      color: "orange",
+      href: "/dashboard/contacts",
+    },
+  ];
+
   return (
     <ChakraProvider theme={theme}>
       <Box p={5}>
-        <Heading mb={5} size={'lg'} color={'teal.600'}>Dashboard</Heading>
+        <Heading mb={5} size={"lg"} color={"teal.600"}>
+          Dashboard
+        </Heading>
         <Box mb={4}>
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={4}>
-        {data.map((item) => (
-          <DashboardCard
-            key={item.id}
-            label={item.label}
-            value={item.value}
-            icon={item.icon}
-            color={item.color}
-          />
-        ))}
-      </SimpleGrid>
-    </Box>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={4}>
+            {dashboardData.map((item, index) => (
+              <Skeleton
+                isLoaded={!count?.loading}
+                key={index}
+                borderRadius="lg"
+              >
+                <DashboardCard
+                  label={item.label}
+                  href={item.href}
+                  value={item.value}
+                  icon={item.icon}
+                  color={item.color}
+                />
+              </Skeleton>
+            ))}
+          </SimpleGrid>
+        </Box>
 
         <Grid templateColumns="repeat(2, 1fr)" gap={6} mb={10}>
           <GridItem>
@@ -135,45 +184,9 @@ const Dashboard = () => {
             </Box>
           </GridItem>
         </Grid>
-
-        <Box bg="white" p={5} borderRadius="lg" boxShadow="md">
-          <Text fontSize="lg" fontWeight="bold" mb={5}>
-            Recent Appointments
-          </Text>
-          <Table variant="simple">
-            <Thead>
-              <Tr>
-                <Th>Patient Name</Th>
-                <Th>Therapist</Th>
-                <Th>Date</Th>
-                <Th>Status</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>John Doe</Td>
-                <Td>Dr. Smith</Td>
-                <Td>2023-10-01</Td>
-                <Td>Completed</Td>
-              </Tr>
-              <Tr>
-                <Td>Jane Doe</Td>
-                <Td>Dr. Brown</Td>
-                <Td>2023-10-02</Td>
-                <Td>Scheduled</Td>
-              </Tr>
-              <Tr>
-                <Td>Alice Johnson</Td>
-                <Td>Dr. Lee</Td>
-                <Td>2023-10-03</Td>
-                <Td>Pending</Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </Box>
       </Box>
     </ChakraProvider>
   );
-};
+});
 
 export default Dashboard;
