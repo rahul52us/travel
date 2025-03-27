@@ -45,7 +45,7 @@ const CustomDrawer: React.FC<CustomDrawerProps> = ({
   //   themeConfig.colors.custom.light.primary,
   //   themeConfig.colors.custom.dark.primary
   // );
-  const headerTextColor = colorMode === "dark" ? "white" : "white";
+  const headerTextColor = colorMode === "dark" ? "white" : "black";
   const handleCloseDrawer = () => {
     close();
   };

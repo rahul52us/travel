@@ -24,18 +24,14 @@ import {
 import { Bar, Line } from "react-chartjs-2";
 import {
   FaAddressBook,
-  FaCalendarAlt,
   FaComments,
-  FaEye,
   FaNewspaper,
-  FaUserMd,
   FaUsers,
 } from "react-icons/fa";
 import DashboardCard from "../common/DashboardCard/DashboardCard";
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import stores from "../../../store/stores";
-import { toJS } from "mobx";
 
 // Register Chart.js components
 ChartJS.register(
@@ -106,8 +102,6 @@ const Dashboard = observer(() => {
   useEffect(() => {
     getDashboardCount();
   }, [getDashboardCount]);
-
-  console.log(toJS(count));
 
   const dashboardData = [
     {

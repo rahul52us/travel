@@ -1,7 +1,5 @@
 import { makeAutoObservable } from "mobx";
 import axios from "axios";
-import { authStore } from "../authStore/authStore";
-import stores from "../stores";
 
 class DashboardStore {
   count : any = {

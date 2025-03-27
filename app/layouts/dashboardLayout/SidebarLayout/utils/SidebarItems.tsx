@@ -42,6 +42,20 @@ const sidebarDatas: SidebarItem[] = [
     role: ["user"],
   },
   {
+    id: 6,
+    name: "locations",
+    icon: <FaHandHoldingUsd />,
+    url: "/dashboard/locations",
+    role: ["user"],
+  },
+  {
+    id: 7,
+    name: "destinations",
+    icon: <FaHandHoldingUsd />,
+    url: "/dashboard/destinations",
+    role: ["user"],
+  },
+  {
     id: 4,
     name: "Testimonials",
     icon: <FaBuilding />,

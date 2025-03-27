@@ -10,10 +10,12 @@ import {layoutStore} from './layoutStore/LayoutStore'
 import { orderStore } from "./orderStore/orderStore";
 import { locationStore } from "./locations/locationStore";
 import { dashboardStore } from "./dashboardStore/dashboardStore";
+import { destinationStore } from "./destinationStore/destination";
 
 const stores = {
   auth : authStore,
   dashboardStore : dashboardStore,
+  destinationStore: destinationStore,
   userStore : userStore,
   themeStore : themeStore,
   layout : layoutStore,
