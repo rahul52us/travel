@@ -175,7 +175,7 @@ const TherapistsTable = observer(({onAdd, onEdit} : any) => {
   return (
     <Box p={4}>
       <CustomTable
-        title="Therapists"
+        title="Users"
         data={therapist.data?.map((t: any, index: number) => ({
           ...t,
           sno: index + 1,
@@ -186,7 +186,7 @@ const TherapistsTable = observer(({onAdd, onEdit} : any) => {
             addKey: {
               showAddButton: true,
               function: () => {
-                onAdd();
+                if(false)onAdd()
               },
             },
             editKey: {

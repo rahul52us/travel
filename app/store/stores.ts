@@ -11,11 +11,13 @@ import { orderStore } from "./orderStore/orderStore";
 import { locationStore } from "./locations/locationStore";
 import { dashboardStore } from "./dashboardStore/dashboardStore";
 import { destinationStore } from "./destinationStore/destination";
+import { sightSeeingStore } from "./sightseeingStore/sightseeingStore";
 
 const stores = {
   auth : authStore,
   dashboardStore : dashboardStore,
   destinationStore: destinationStore,
+  sightSeeingStore:sightSeeingStore,
   userStore : userStore,
   themeStore : themeStore,
   layout : layoutStore,

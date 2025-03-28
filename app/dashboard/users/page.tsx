@@ -57,7 +57,7 @@ const TherapistPage = () => {
           getAllUsers({ page: 1, limit: 30 });
           setIsDrawerOpen({isOpen : false, type : 'add', data : null});
           toast({
-            title: "Therapist Added.",
+            title: "Users Added.",
             description: `${formData.name} has been successfully added.`,
             status: "success",
             duration: 5000,
@@ -92,7 +92,7 @@ const TherapistPage = () => {
     );
     setIsDrawerOpen({isOpen : false, type : 'add', data : null});
     toast({
-      title: "Therapist Updated.",
+      title: "Users Updated.",
       description: `${formData.name} has been updated successfully.`,
       status: "success",
       duration: 5000,
@@ -127,7 +127,7 @@ const TherapistPage = () => {
               textAlign="center"
               bgGradient="linear(to-r, blue.400, purple.400)"
             >
-              {currentEntry.username ? "Edit Therapist" : "Add Therapist"}
+              {currentEntry.username ? "Edit Users" : "Add Users"}
             </DrawerHeader>
             <DrawerBody p={6} bg="gray.50">
               <Form

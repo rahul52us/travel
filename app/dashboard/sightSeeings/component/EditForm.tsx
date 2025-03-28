@@ -71,7 +71,7 @@ const EditForm = observer(({ open, getData, data, onClose }: any) => {
   return (
     <CustomDrawer
       width="80vw"
-      title={`Edit ${data?.destination}`}
+      title={`Edit :- ${data?.title}`}
       open={open}
       close={() => {
         onClose();
@@ -84,7 +84,8 @@ const EditForm = observer(({ open, getData, data, onClose }: any) => {
         onSubmit={handleSubmit}
         close={() => {
           onClose()
-        }}      />
+        }}
+      />
     </CustomDrawer>
   );
 });

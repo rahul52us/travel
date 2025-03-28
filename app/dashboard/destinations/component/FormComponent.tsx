@@ -276,7 +276,7 @@ const FormComponent = ({ loading, initialValues, onSubmit, close, isEdit }: any)
                   bg="teal.500"
                   _hover={{ bg: "teal.600" }}
                 >
-                  Save Package
+                  Save
                 </Button>
               </Flex>
             </VStack>
