@@ -13,11 +13,12 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = observer(({ children }) => {
-  const {destinationStore : {getDestinations}} = stores
+  const {destinationStore : {getDestinations}, locationStore : {getLocations}} = stores
 
   useEffect(() => {
+    getLocations({page : 1, limit : 15})
     getDestinations({page : 1, limit : 15})
-  },[getDestinations])
+  },[getDestinations, getLocations])
 
 
   return (

@@ -1,16 +1,16 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import TravelPackageCard from "../../../component/common/TravelPackageCard/element/TravelPackageCard";
+import TravelPackageCard from "../../../../component/common/TravelPackageCard/element/TravelPackageCard";
 import { Box, Text, Center, VStack, Image, Button, SimpleGrid, Skeleton, SkeletonText } from "@chakra-ui/react";
-import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSection";
+import PageHero from "../../../../component/common/CommonHeroSection/CommonHeroSection";
 import { useRouter } from "next/navigation";
-import CustomSubHeading from "../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
+import CustomSubHeading from "../../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 import { observer } from "mobx-react-lite";
-import stores from "../../../store/stores";
+import stores from "../../../../store/stores";
 import { useEffect } from "react";
-import { formatTitle } from "../../../config/utils/function";
-import SightSeeingCard2 from "../../sightseeing/component/SightseeingCard2";
+import { formatTitle } from "../../../../config/utils/function";
+import SightSeeingCard2 from "../../../sightseeing/component/SightseeingCard2";
 
 const Page = observer(() => {
   const {
@@ -21,13 +21,15 @@ const Page = observer(() => {
   const params = useParams();
   const router = useRouter();
 
-  useEffect(() => {
-    getDestinations({ page: 1 });
-    getSightSeeing({ page: 1 });
-  }, [getDestinations, getSightSeeing]);
-
   const destinationTitle =
     typeof params?.destination === "string" ? params.destination.toLowerCase() : "";
+
+  useEffect(() => {
+    getDestinations({ page: 1, limit : 15, destination : destinationTitle });
+    getSightSeeing({ page: 1, limit : 15 });
+  }, [getDestinations, getSightSeeing]);
+
+
 
   if (!destinationTitle) {
     return (
@@ -40,11 +42,11 @@ const Page = observer(() => {
   const formattedDestination = formatTitle(destinationTitle)
 
   const filteredPackages = destination?.data?.filter(
-    (pkg) => pkg.destination.toLowerCase() === destinationTitle
+    (pkg) => pkg.destination.toLowerCase() === destinationTitle?.split('-').join(' ')
   );
 
   const filteredSightseeing = sightSeeing?.data?.filter(
-    (pkg) => pkg.destination?.destination?.toLowerCase() === destinationTitle
+    (pkg) => pkg.destination?.destination?.toLowerCase() === destinationTitle?.split('-').join(' ')
   );
 
   return (
@@ -52,7 +54,11 @@ const Page = observer(() => {
       <PageHero
         title={`Explore the Beauty of ${formattedDestination}`}
         lineColor="cyan.300"
-        subtitle={`Discover breathtaking landscapes, vibrant cultures, and unforgettable experiences in ${formattedDestination}.`}
+        subtitle={filteredPackages?.length > 0
+          ? filteredPackages[0]?.description
+            ? filteredPackages[0]?.description
+            : `Discover breathtaking landscapes, vibrant cultures, and unforgettable experiences in ${formattedDestination}.`
+          : `Discover breathtaking landscapes, vibrant cultures, and unforgettable experiences in ${formattedDestination}.`}
         bgImage={filteredPackages?.length > 0 ? filteredPackages[0]?.image?.url ? `url(${filteredPackages[0]?.image?.url})` : "url('https://images.unsplash.com/photo-1519229642444-2c6c164c3aa5?q=80&w=1933&auto=format&fit=crop')" : "url('https://images.unsplash.com/photo-1519229642444-2c6c164c3aa5?q=80&w=1933&auto=format&fit=crop')"}
       />
 

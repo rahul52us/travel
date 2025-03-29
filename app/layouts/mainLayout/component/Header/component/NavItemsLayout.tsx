@@ -16,15 +16,15 @@ interface NavItemsLayoutProps {
 }
 
 const NavItemsLayout: React.FC<NavItemsLayoutProps> = observer(({ onClose }) => {
-  const { destinationStore: { destination } } = stores;
+  const { locationStore: { location } } = stores;
 
   // Construct nav items dynamically with unique destinations
   const dynamicNavItems: NavItemType[] = useMemo(() => {
     const uniqueDestinations = Array.from(
-      new Set(destination.data?.map((dest: { destination: string }) => dest.destination))
+      new Set(location.data?.map((dest: { name: string }) => dest.name))
     ).map((uniqueDest : any) => ({
       title: formatTitle(uniqueDest),
-      link: `/destinations/${uniqueDest}`,
+      link: `/destinations/${uniqueDest?.split(' ').join('-')}`,
     }));
 
     return [
@@ -39,7 +39,7 @@ const NavItemsLayout: React.FC<NavItemsLayoutProps> = observer(({ onClose }) => 
       { title: "Testimonials", link: "/testimonials" },
       { title: "Contact Us", link: "/contact-us" },
     ];
-  }, [destination.data]);
+  }, [location.data]);
 
   return (
     <Flex

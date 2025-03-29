@@ -14,7 +14,6 @@ const HeroNavButton = () => {
 >
   Book Trip
 </Button>
-
   );
 };
 

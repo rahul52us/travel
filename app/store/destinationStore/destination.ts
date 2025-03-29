@@ -21,20 +21,21 @@ class DestinationStore {
 
   // Fetch Testimonials
 
-  getDestinations = async (sendData: {
-    limit?: number;
-    page: number;
-    search?: string;
-  }) => {
+  getDestinations = async (sendData: any) => {
       this.destination.loading = true;
       try {
-        const { limit = 10, page, search } = sendData;
+        const { limit = 10, page, search, location, destination } = sendData;
         const searchQuery = search
           ? `&search=${encodeURIComponent(search)}`
           : "";
-
+          const locationQuery = location
+          ? `&location=${encodeURIComponent(location)}`
+          : "";
+          const destinationTitle = destination
+          ? `&destination=${encodeURIComponent(destination)}`
+          : "";
         const { data } = await axios.get(
-          `/destination/get?page=${page}&limit=${limit}${searchQuery}`
+          `/destination/get?page=${page}&limit=${limit}${searchQuery}${locationQuery}${destinationTitle}`
         );
 
         this.destination.data = data?.data?.data || [];

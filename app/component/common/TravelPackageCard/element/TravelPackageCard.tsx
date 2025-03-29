@@ -18,6 +18,7 @@ import { useState } from "react";
 import { IconType } from "react-icons";
 import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, FaShip, FaStar, FaTrain, FaUtensils } from "react-icons/fa";
 import { formatTitle } from "../../../../config/utils/function";
+import { useParams, useRouter } from "next/navigation";
 
   // Bounce animation for the button
   const bounce = keyframes`
@@ -26,18 +27,6 @@ import { formatTitle } from "../../../../config/utils/function";
     100% { transform: translateY(0); }
   `;
 
-  // Component for displaying icons based on perk type
-  // const PerkIcon = ({ type }: { type: string }) => {
-  //   const icons: Record<string, IconType> = {
-  //     "5-star hotels": FaBed,
-  //     "Daily breakfast": FaUtensils,
-  //     "Guided tours": FaBinoculars,
-  //     "Airport transfer": FaBus,
-  //     "Ryokan stay": FaBed,
-  //     "Kaiseki dinner": FaUtensils,
-  //     "Tea ceremony": FaBinoculars,
-  //     "Bullet train pass": FaBus,
-  //   };
 
   const PerkIcon = ({ type }: { type: string }) => {
     const icons: Record<string, IconType> = {
@@ -70,7 +59,8 @@ import { formatTitle } from "../../../../config/utils/function";
   // Main Card Component
   const TravelPackageCard = ({ pkg }: { pkg: any }) => {
     const [isOpen] = useState(false);
-
+    const router = useRouter()
+    const params = useParams()
     // Toggle function to show/hide details
 
     return (
@@ -118,7 +108,12 @@ import { formatTitle } from "../../../../config/utils/function";
           >
             <Flex position="absolute" bottom={4} left={4} color="white" zIndex={1} align="center">
               <FaMapMarkerAlt size={20} />
-              <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)">
+              <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)" cursor="pointer" onClick={() => {
+                if(params?.location)
+                {
+                  router.push(`/destinations/${params?.location}/${pkg?.destination?.split(' ')?.join('-')}`)
+                }
+              }}>
                 {formatTitle(pkg.destination)}
               </Heading>
             </Flex>
@@ -237,6 +232,6 @@ import { formatTitle } from "../../../../config/utils/function";
         </CardFooter>
       </Card>
     );
-  };
+};
 
   export default TravelPackageCard;

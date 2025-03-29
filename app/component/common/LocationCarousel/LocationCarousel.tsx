@@ -143,7 +143,7 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
               _hover={{ transform: "scale(1.05)" }}
               transition="all 0.5s ease"
               fontSize={{ base: "sm", md: "md" }}
-              onClick={() => router.push(`/destinations/${randomLocations[activeIndex].destination}`)}
+              onClick={() => router.push(`/destinations/${randomLocations[activeIndex].location?.name?.split(' ').join('-')}/${randomLocations[activeIndex].destination}`)}
             >
               EXPLORE ALL
             </Box>
