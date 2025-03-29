@@ -8,12 +8,31 @@ import {
   Button,
   Text,
   VStack,
+  Spinner,
+  Flex,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { modules } from "./faqdata";
+import { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
+import stores from "../../../store/stores";
 
-const FAQAccordion = () => {
+const FAQAccordion = observer(() => {
+  const {
+    companyStore: { companyDetails, getPageContent },
+  } = stores;
+
   const [expandedPanels, setExpandedPanels] = useState({});
+  const [content, setContent] = useState<any>({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    const pageContent = getPageContent("home");
+    setContent(pageContent);
+
+    if (pageContent?.homeFaq) {
+      setLoading(false);
+    }
+  }, [companyDetails]);
 
   const togglePanel = (index) => {
     setExpandedPanels((prev) => ({
@@ -22,11 +41,20 @@ const FAQAccordion = () => {
     }));
   };
 
+  // Show loader while data is loading
+  if (loading || !content?.homeFaq) {
+    return (
+      <Flex justify="center" align="center" h="200px">
+        <Spinner size="xl" color="teal.500" />
+      </Flex>
+    );
+  }
+
   return (
     <Box>
       <Accordion allowToggle>
         <VStack spacing={{ base: 3, md: 5 }} align="stretch">
-          {modules.map((module, index) => (
+          {content?.homeFaq?.map((module, index) => (
             <Box
               key={index}
               position="relative"
@@ -41,9 +69,7 @@ const FAQAccordion = () => {
               >
                 {({ isExpanded }) => (
                   <Box
-                    shadow={
-                      isExpanded ? "0 4px 16px rgba(0, 0, 0, 0.1)" : "none"
-                    }
+                    shadow={isExpanded ? "0 4px 16px rgba(0, 0, 0, 0.1)" : "none"}
                     p={{ base: 1.5, md: 3 }}
                     rounded={"14px"}
                     transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
@@ -84,8 +110,8 @@ const FAQAccordion = () => {
                       w={{ base: "100%", md: "85%" }}
                     >
                       <Text
-                        lineHeight={{base:"24px",md:"28px"}}
-                        fontSize={{base:"14px",md:"16px"}}
+                        lineHeight={{ base: "24px", md: "28px" }}
+                        fontSize={{ base: "14px", md: "16px" }}
                         noOfLines={expandedPanels[index] ? undefined : 3}
                       >
                         {module.description}
@@ -109,6 +135,6 @@ const FAQAccordion = () => {
       </Accordion>
     </Box>
   );
-};
+});
 
 export default FAQAccordion;

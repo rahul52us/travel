@@ -1,8 +1,9 @@
 import { Box, Text } from "@chakra-ui/react";
 import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSection";
 import TourPackageSection from "../../../travelComponent/TourPackageSection/TourPackageSection";
+import { observer } from "mobx-react-lite";
 
-const DestinationsPage = () => {
+const DestinationsPage = observer(() => {
   return (
     <Box>
       <PageHero
@@ -23,6 +24,6 @@ const DestinationsPage = () => {
       <TourPackageSection />
     </Box>
   );
-};
+});
 
 export default DestinationsPage;

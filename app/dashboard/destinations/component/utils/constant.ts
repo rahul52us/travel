@@ -2,6 +2,7 @@ export const initialValues = {
     location: "Dutch and French Jewels",
     image: {file: []},
     price: 79000,
+    description : "",
     days: 6,
     rating: 4.7,
     destination:"western-europe",

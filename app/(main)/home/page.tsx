@@ -14,30 +14,31 @@ import WhyChoose from "./component/WhyChoose/WhyChoose";
 import BudgetWrapper from "./component/BudgetWrapper/BudgetWrapper";
 import FAQ from "../../component/FAQ/FAQ";
 import FloatingSocialIcons from "../../travelComponent/common/FloatingIcons/FloatingIcons";
+import { observer } from "mobx-react-lite";
+import stores from "../../store/stores";
 
-export default function Home() {
+const Home = observer(() => {
+  const {destinationStore : {destination}} = stores
   return (
     <Box>
       <HeroSection />
-
       <TourPackageSection />
-
       <TravelBentoGrid />
-      <LocationCarousel />
+      <LocationCarousel locations={destination?.data || []}/>
       <BudgetWrapper />
-
       <ExploreEuropeCarousel />
-
       <SightseeingList />
       <TestimonialSection />
       <WhyChoose />
       <FeaturedDestination />
       <TransfersEurailSection />
-      <FAQ/>
+      <FAQ />
       <Box>
         <ContactUs />
       </Box>
       <FloatingSocialIcons/>
     </Box>
   );
-}
+})
+
+export default Home

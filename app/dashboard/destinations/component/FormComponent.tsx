@@ -242,6 +242,18 @@ const FormComponent = ({ loading, initialValues, onSubmit, close, isEdit }: any)
                     </VStack>
                   )}
                 </FieldArray>
+                <Divider mt={4} mb={2} />
+                <CustomInput
+                  name="description"
+                  type="textarea"
+                  placeholder="Description"
+                  label="Description"
+                  onChange={handleChange}
+                  value={values.description}
+                  error={errors.description}
+                  showError={showError}
+                  required={true}
+                />
               </Box>
 
               {/* Action Buttons */}

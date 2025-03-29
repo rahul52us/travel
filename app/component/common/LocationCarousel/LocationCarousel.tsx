@@ -3,44 +3,9 @@ import { keyframes } from "@emotion/react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import CustomSubHeading from "../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
-
-const locations = [
-  {
-    image:
-      "https://images.unsplash.com/photo-1491557345352-5929e343eb89?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZXVyb3BlfGVufDB8fDB8fHwy",
-    title: "Europe",
-    trips: "5+ Trips Available",
-    text:"Discover the rich history, stunning architecture, and diverse cultures of Europe. From the romantic streets of Paris to the ancient ruins of Rome, Europe offers something for every traveler."
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1496939376851-89342e90adcd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2luZ2Fwb3JlfGVufDB8fDB8fHwy",
-    title: "Singapore",
-    trips: "7+ Trips Available",
-    text:"Immerse yourself in the futuristic cityscape, lush gardens, and vibrant street food scene of Singapore. A melting pot of cultures and a hub of innovation."
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1626308888778-2b77082d53b6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG1hbGF5c2lhJTIwYmVhY2hlc3xlbnwwfDB8MHx8fDI%3D",
-    title: "Malaysia",
-    trips: "10+ Trips Available",
-    text:"Explore the tropical rainforests, pristine beaches, and bustling cities of Malaysia. A perfect blend of natural beauty and cultural diversity."
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1596879857570-7b6b9018bcb6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRoYWlsYW5kfGVufDB8MHwwfHx8Mg%3D%3D",
-    title: "Thailand",
-    trips: "8+ Trips Available",
-    text:"Experience the vibrant nightlife, serene temples, and stunning islands of Thailand. A destination that offers both adventure and relaxation."
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1489516408517-0c0a15662682?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8RHViYWl8ZW58MHwwfDB8fHwy",
-    title: "Dubai",
-    trips: "8+ Trips Available",
-    text:"Indulge in the luxury, modern marvels, and desert adventures of Dubai. From towering skyscrapers to golden sand dunes, Dubai is a city of contrasts."
-  },
-];
+import { observer } from "mobx-react-lite";
+import { useRouter } from "next/navigation";
+import { formatTitle } from "../../../config/utils/function";
 
 const progress = keyframes`
   from { width: 0; }
@@ -53,30 +18,57 @@ const fadeInOut = {
   exit: { opacity: 0, y: -20, transition: { duration: 0.6 } },
 };
 
-const LocationCarousel = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const getRandomLocations = (locations: any[], count: number) => {
+  if (!locations || locations.length === 0) return [];
+  const shuffled = [...locations];
 
-  // Automatically change the active index every 5 seconds
+  // Fisher-Yates shuffle to pick random locations
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled.slice(0, Math.min(count, shuffled.length));
+};
+
+const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
+  const router = useRouter();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [randomLocations, setRandomLocations] = useState<any[]>([]);
+
   useEffect(() => {
+    if (locations?.length > 0) {
+      setRandomLocations(getRandomLocations(locations, 5));
+    }
+  }, [locations]);
+
+  useEffect(() => {
+    if (randomLocations.length === 0) return;
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % locations.length);
+      setActiveIndex((prev) => (prev + 1) % randomLocations.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [randomLocations.length]);
+
+  if (randomLocations.length === 0) {
+    return <Text textAlign="center">No locations available</Text>;
+  }
 
   return (
     <Box py={6} my={{ base: "2rem", md: "6rem" }} px={{ base: 4, md: 2 }} maxW="95%" mx="auto">
-      <CustomSubHeading highlightText="Boundaries !!">Travel Beyond </CustomSubHeading>
-      <Text textAlign={'center'} maxW={'80%'} color={'gray.500'} mx={'auto'}>From hidden gems to iconic wonders, find the perfect destination to fuel your wanderlust and create unforgettable memories.</Text>
+      <CustomSubHeading highlightText="Boundaries !!">Travel Beyond</CustomSubHeading>
+      <Text textAlign={"center"} maxW={"80%"} color={"gray.500"} mx={"auto"}>
+        From hidden gems to iconic wonders, find the perfect destination to fuel your wanderlust and create unforgettable memories.
+      </Text>
       <Flex gap={8} direction={{ base: "column", md: "row" }} mt={12}>
         {/* Image Gallery */}
         <Flex flex={2} gap={{ base: 4, md: 4 }} direction={{ base: "column", md: "row" }}>
-          {locations.map((location, index) => (
+          {randomLocations.map((location, index) => (
             <Box
-              key={index}
+              key={location._id}
               w={{ base: "100%", md: activeIndex === index ? "50%" : "120px" }}
               h={{ base: "250px", md: "320px" }}
-              bgImage={location.image}
+              bgImage={`url(${location.image?.url})`}
               bgSize="cover"
               bgPosition="center"
               borderRadius="lg"
@@ -86,9 +78,9 @@ const LocationCarousel = () => {
               position="relative"
               filter={activeIndex === index ? "brightness(1)" : "brightness(0.8)"}
               onMouseEnter={() => setActiveIndex(index)}
-              display={{ base: activeIndex === index ? "block" : "none", md: "block" }} // Only show active image on mobile
+              display={{ base: activeIndex === index ? "block" : "none", md: "block" }}
             >
-               {activeIndex !== index && (
+              {activeIndex !== index && (
                 <Flex
                   position="absolute"
                   top={0}
@@ -102,7 +94,7 @@ const LocationCarousel = () => {
                   borderRadius="lg"
                 >
                   <Text fontWeight="bold" fontSize="lg">
-                    {location.title}
+                    {formatTitle(location.destination)}
                   </Text>
                 </Flex>
               )}
@@ -131,15 +123,15 @@ const LocationCarousel = () => {
             variants={fadeInOut}
           >
             <Heading fontSize={{ base: "xl", md: "2xl" }} mb={2} color="gray.700">
-              {locations[activeIndex].title}
+              {formatTitle(randomLocations[activeIndex].destination)}
             </Heading>
             <Text fontSize={{ base: "sm", md: "md" }} mb={4} color={"gray.600"}>
-              {locations[activeIndex].text}
+              {randomLocations[activeIndex].description}
             </Text>
           </motion.div>
           <Flex align="center" gap={4}>
             <Text fontWeight="bold" fontSize={{ base: "md", md: "lg" }} color="gray.800">
-              {locations[activeIndex].trips}
+              {randomLocations[activeIndex].days} Days | {randomLocations[activeIndex].trips || "Multiple Trips Available"}
             </Text>
             <Box
               as="button"
@@ -151,6 +143,7 @@ const LocationCarousel = () => {
               _hover={{ transform: "scale(1.05)" }}
               transition="all 0.5s ease"
               fontSize={{ base: "sm", md: "md" }}
+              onClick={() => router.push(`/destinations/${randomLocations[activeIndex].destination}`)}
             >
               EXPLORE ALL
             </Box>
@@ -159,6 +152,6 @@ const LocationCarousel = () => {
       </Flex>
     </Box>
   );
-};
+});
 
 export default LocationCarousel;

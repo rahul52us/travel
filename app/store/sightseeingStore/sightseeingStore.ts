@@ -8,7 +8,7 @@ class SightSeeingStore {
   sightSeeing : any = {
     data: [],
     totalPages: 1,
-    loading: false,
+    loading: true,
   };
 
   openTestimonialDrawer = {

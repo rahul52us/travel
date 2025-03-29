@@ -2,8 +2,9 @@ import { Box, Flex, Image } from "@chakra-ui/react";
 import CustomSubHeading from "../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 import FAQAccordion from "./FAQAccordion/FAQAccordion";
 import "./FAQAccordion/scroll.css";
+import { observer } from "mobx-react-lite";
 
-const FAQ = () => {
+const FAQ = observer(() => {
   return (
     <Box
       mt={{ md: 10 }}
@@ -13,26 +14,6 @@ const FAQ = () => {
       bgGradient={"linear(to-r, teal.50 ,blue.100)"}
       position={"relative"}
     >
-      {/* <Text
-        textAlign={"center"}
-        color={"#DF837C"}
-        textTransform={"uppercase"}
-        fontSize={{ base: "14px", md: "16px" }}
-      >
-        FAQS
-      </Text> */}
-      {/* <Heading
-        textAlign={"center"}
-        as={"h2"}
-        fontWeight={400}
-        fontSize={{ base: "24px", md: "52px" }}
-        my={2}
-      >
-        Everything You{" "}
-        <Text as={"span"} fontWeight={600}>
-          Need to Know
-        </Text>
-      </Heading> */}
       <CustomSubHeading highlightText=" Need to Know ">
       Everything You{" "}
       </CustomSubHeading>
@@ -61,6 +42,6 @@ const FAQ = () => {
       />
     </Box>
   );
-};
+});
 
 export default FAQ;

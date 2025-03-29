@@ -7,7 +7,7 @@ import CustomSubHeading from "../../../../travelComponent/common/CustomSubHeadin
 const badgeData = [
   {
     price: "50,000",
-    label: "Below",
+    label: "Standard",
     icon: "★",
     gradientStart: "green.50",
     gradientEnd: "green.100",
@@ -18,7 +18,7 @@ const badgeData = [
   },
   {
     price: "60,000",
-    label: "Average",
+    label: "Superior",
     icon: "★",
     gradientStart: "blue.50",
     gradientEnd: "blue.100",
@@ -29,7 +29,7 @@ const badgeData = [
   },
   {
     price: "70,000",
-    label: "Good",
+    label: "Premium",
     icon: "★",
     gradientStart: "red.50",
     gradientEnd: "red.100",
@@ -40,7 +40,7 @@ const badgeData = [
   },
   {
     price: "75,000",
-    label: "Top",
+    label: "Luxury",
     icon: "★",
     gradientStart: "purple.50",
     gradientEnd: "purple.100",
@@ -51,7 +51,7 @@ const badgeData = [
   },
   {
     price: "100,000",
-    label: "Limited",
+    label: " Group",
     icon: "★",
     gradientStart: "orange.50",
     gradientEnd: "orange.100",
@@ -61,7 +61,6 @@ const badgeData = [
     bgColor: "orange.200",
   },
 ];
-
 const BudgetWrapper = () => {
   return (
     <Box  bgGradient={'linear(to-r, teal.50,cyan.100)'}>

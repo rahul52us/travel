@@ -7,6 +7,7 @@ const validations = Yup.object().shape({
   image:Yup.mixed(),
   // Basic fields
   location: Yup.mixed().required('location is required'),
+  description: Yup.string(),
   destination: Yup.string()
     .required('Destination is required')
     .min(2, 'Destination must be at least 2 characters')

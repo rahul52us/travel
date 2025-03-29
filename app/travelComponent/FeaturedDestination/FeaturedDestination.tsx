@@ -1,24 +1,42 @@
+import { useState, useEffect } from "react";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { FiArrowRight } from "react-icons/fi";
+import { observer } from "mobx-react-lite";
+import stores from "../../store/stores";
+import { useRouter } from "next/navigation";
+import { formatTitle } from "../../config/utils/function";
 
-const FeaturedDestination = () => {
+const FeaturedDestination = observer(() => {
+  const router = useRouter()
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const {destinationStore : {destination}} = stores
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % destination?.data?.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [destination?.data]);
+
+  const dest : any = destination.data[currentIndex];
+
   return (
-    <Box position="relative" borderRadius="lg" overflow="hidden" marginBottom="0px" h={'400px'}>
-      {/* Background Image with Fixed Position */}
+    <Box position="relative" borderRadius="lg" overflow="hidden" h={"400px"}>
+      {/* Background Image */}
       <Box
         position="absolute"
         top="0"
-        left="0"
+        left="2"
         right="0"
         bottom="0"
-        bgImage="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80"
+        bgImage={dest?.image?.url}
         bgPosition="center"
         bgSize="cover"
-        bgAttachment="fixed"
         zIndex={-1}
-        h={'400px'}
+        h="100%"
+        borderRadius={5}
       >
-        {/* Overlay with Dark Gradient */}
+        {/* Dark Overlay */}
         <Box
           position="absolute"
           top="0"
@@ -39,28 +57,28 @@ const FeaturedDestination = () => {
         color="white"
         flexDirection="column"
         alignItems="center"
-        width={{lg:"90%"}}
-        maxWidth={{base:"95%",lg:"600px"}}
+        px={4}
+        w={{ base: "90%", md: "80%", lg: "600px" }}
       >
-        <Heading as="h2" size={{base:"xl",lg:"2xl"}} mb="4" textShadow="0 2px 4px rgba(0, 0, 0, 0.2)">
-          Explore the Beauty of Switzerland
+        <Heading as="h2" size={{ base: "xl", lg: "2xl" }} mb="4">
+          {formatTitle(dest?.destination)}
         </Heading>
-        <Text fontSize={{lg:"lg"}} mb="6">
-          Discover breathtaking landscapes, charming villages, and thrilling adventures in the heart of Europe.
+        <Text fontSize={{ lg: "lg" }} mb="6">
+          {`Discover breathtaking landscapes, charming villages, and thrilling adventures in the heart of ${formatTitle(dest?.destination)}`}
         </Text>
         <Button
-          // colorScheme="teal"
-                  colorScheme="white"
-                  variant="outline"
-                  size={{ base: "md", lg: "lg" }}
-                  rightIcon={<FiArrowRight />}
-                  _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
+          colorScheme="white"
+          variant="outline"
+          size={{ base: "md", lg: "lg" }}
+          rightIcon={<FiArrowRight />}
+          _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
+          onClick={() => router.push(`/destinations/${dest?.destination}`)}
         >
           Explore More
         </Button>
       </Flex>
     </Box>
   );
-};
+});
 
 export default FeaturedDestination;

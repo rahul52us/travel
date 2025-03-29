@@ -8,7 +8,7 @@ class TestimonialStore {
   testimonials = {
     data: [],
     totalPages: 1,
-    loading: false,
+    loading: true,
   };
 
   openTestimonialDrawer = {

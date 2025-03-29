@@ -10,3 +10,13 @@ export const getStatusType = (code : string) => {
         return 'error'
     }
 }
+
+export const formatTitle = (destination?: string): string => {
+    if (!destination || typeof destination !== "string") {
+      return "Unknown Destination";
+    }
+    return destination
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }

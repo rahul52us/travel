@@ -8,7 +8,7 @@ class DestinationStore {
   destination : any = {
     data: [],
     totalPages: 1,
-    loading: false,
+    loading: true,
   };
 
   openTestimonialDrawer = {

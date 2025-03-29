@@ -26,18 +26,17 @@ const Header = () => {
   return (
     <Box shadow="sm" position="sticky" top="0" zIndex="1000" bg="white">
       <Box
-  h={{ lg: "2rem", xl: "2.5rem" }}
-  color="white"
-  textAlign="center"
-  bg="linear-gradient(to right, #00B5E2, #87CEEB)"
-  fontSize={{ base: "xs", lg: "lg" }}
-  p={2}
->
-  <Text fontWeight="bold">
-    Embark on Your Next Adventure with CosmicTravels!
-  </Text>
-</Box>
-
+        h={{ lg: "2rem", xl: "2.5rem" }}
+        color="white"
+        textAlign="center"
+        bg="linear-gradient(to right, #00B5E2, #87CEEB)"
+        fontSize={{ base: "xs", lg: "lg" }}
+        p={2}
+      >
+        <Text fontWeight="bold">
+          Embark on Your Next Adventure with CosmicTravels!
+        </Text>
+      </Box>
 
       {/* Header for Mobile */}
       <Flex
@@ -52,21 +51,20 @@ const Header = () => {
         <Image
           src="/images/logo3.png"
           alt="best child psychologist in noida"
-          h={{ base: "43px", sm: "48px" }}  // Reduced logo size
+          h={{ base: "43px", sm: "48px" }} // Reduced logo size
           cursor="pointer"
           onClick={() => router.push("/")}
           mr="auto"
         />
         <Flex gap={2}>
-
-        <IconButton
-          icon={<HamburgerIcon fontSize={"22px"} />} // Reduced icon size
-          onClick={onOpen}
-          aria-label="Open menu"
-          variant="ghost"
-          size={"md"} // Adjusted size
+          <IconButton
+            icon={<HamburgerIcon fontSize={"22px"} />} // Reduced icon size
+            onClick={onOpen}
+            aria-label="Open menu"
+            variant="ghost"
+            size={"md"} // Adjusted size
           />
-          </Flex>
+        </Flex>
       </Flex>
 
       {/* Drawer for Mobile Navigation */}
@@ -99,7 +97,7 @@ const Header = () => {
         px={{ lg: 5, xl: 8 }}
         py={2.5} // Reduced padding
         display={{ base: "none", md: "flex" }}
-      // h="4rem" // Reduced height
+        // h="4rem" // Reduced height
       >
         <Image
           src="/images/logo3.png"

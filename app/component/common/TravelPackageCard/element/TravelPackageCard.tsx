@@ -17,6 +17,7 @@ import { keyframes } from "@emotion/react";
 import { useState } from "react";
 import { IconType } from "react-icons";
 import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, FaShip, FaStar, FaTrain, FaUtensils } from "react-icons/fa";
+import { formatTitle } from "../../../../config/utils/function";
 
   // Bounce animation for the button
   const bounce = keyframes`
@@ -65,22 +66,9 @@ import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, Fa
     return SelectedIcon ? <Icon as={SelectedIcon} color="blue.500" boxSize={4} /> : null;
   };
 
-  // Interface for travel package details
-  interface TravelPackage {
-    id: number;
-    location: string;
-    image: string;
-    price: number;
-    days: number;
-    rating: number;
-    perks: string[];
-    highlights: string[];
-    discount?: number;
-    itinerary: { place: string; nights: number }[];
-  }
 
   // Main Card Component
-  const TravelPackageCard = ({ pkg }: { pkg: TravelPackage }) => {
+  const TravelPackageCard = ({ pkg }: { pkg: any }) => {
     const [isOpen] = useState(false);
 
     // Toggle function to show/hide details
@@ -117,7 +105,7 @@ import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, Fa
         {/* Image Section */}
         <AspectRatio ratio={16 / 9}>
           <Box
-            bgImage={`url(${pkg.image})`}
+            bgImage={pkg?.image?.url}
             bgSize="cover"
             bgPosition="center"
             position="relative"
@@ -131,7 +119,7 @@ import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, Fa
             <Flex position="absolute" bottom={4} left={4} color="white" zIndex={1} align="center">
               <FaMapMarkerAlt size={20} />
               <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)">
-                {pkg.location}
+                {formatTitle(pkg.destination)}
               </Heading>
             </Flex>
           </Box>

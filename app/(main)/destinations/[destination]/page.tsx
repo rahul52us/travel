@@ -2,37 +2,34 @@
 
 import { useParams } from "next/navigation";
 import TravelPackageCard from "../../../component/common/TravelPackageCard/element/TravelPackageCard";
-import { travelPackages } from "../../../component/common/TravelPackageCard/utils/constant";
-import {
-  Box,
-  Text,
-  Center,
-  VStack,
-  Image,
-  Button,
-  useBreakpointValue,
-} from "@chakra-ui/react";
-import CustomCarousel from "../../../component/common/CustomCarousal/CustomCarousal";
+import { Box, Text, Center, VStack, Image, Button, SimpleGrid, Skeleton, SkeletonText } from "@chakra-ui/react";
 import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSection";
 import { useRouter } from "next/navigation";
 import CustomSubHeading from "../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
-import SightseeingCard from "../../../travelComponent/common/SightseeingCard/element/SightseeingCard";
-import { sightseeingData } from "../../sightseeing/utils/sightseeingData";
+import { observer } from "mobx-react-lite";
+import stores from "../../../store/stores";
+import { useEffect } from "react";
+import SightseeingCard from "./SightSeeingCard";
+import { formatTitle } from "../../../config/utils/function";
 
-const Page = () => {
+const Page = observer(() => {
+  const {
+    destinationStore: { getDestinations, destination },
+    sightSeeingStore: { getSightSeeing, sightSeeing },
+  } = stores;
+
   const params = useParams();
-  const router = useRouter(); // Call useRouter here
+  const router = useRouter();
 
-  const noOfSlides = useBreakpointValue({ base: 1, md: 2, lg: 4 });
-  const showArrows = useBreakpointValue({ base: false, lg: true });
+  useEffect(() => {
+    getDestinations({ page: 1 });
+    getSightSeeing({ page: 1 });
+  }, [getDestinations, getSightSeeing]);
 
-  // Ensure it's a string and handle cases where params.destination is a string array
-  const destination =
-    typeof params?.destination === "string"
-      ? params.destination.toLowerCase()
-      : ""; // default to empty string if it's an array
+  const destinationTitle =
+    typeof params?.destination === "string" ? params.destination.toLowerCase() : "";
 
-  if (!destination) {
+  if (!destinationTitle) {
     return (
       <Center h="50vh">
         <Text fontSize="xl">Loading...</Text>
@@ -40,18 +37,14 @@ const Page = () => {
     );
   }
 
-  const formattedDestination = destination
-    ?.split("-")
-    ?.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    ?.join(" ");
+  const formattedDestination = formatTitle(destinationTitle)
 
-  // Filter travel packages by matching destination
-  const filteredPackages = travelPackages.filter(
-    (pkg) => pkg.destination.toLowerCase() === destination
+  const filteredPackages = destination?.data?.filter(
+    (pkg) => pkg.destination.toLowerCase() === destinationTitle
   );
 
-  const filteredSightseeing = sightseeingData.filter(
-    (pkg) => pkg.destination.toLowerCase() === destination
+  const filteredSightseeing = sightSeeing?.data?.filter(
+    (pkg) => pkg.destination?.destination?.toLowerCase() === destinationTitle
   );
 
   return (
@@ -59,43 +52,35 @@ const Page = () => {
       <PageHero
         title={`Explore the Beauty of ${formattedDestination}`}
         lineColor="cyan.300"
-        subtitle={`Discover breathtaking landscapes, vibrant cultures, and unforgettable experiences in ${formattedDestination}. From historic landmarks to stunning natural wonders, there's something for every traveler.`}
+        subtitle={`Discover breathtaking landscapes, vibrant cultures, and unforgettable experiences in ${formattedDestination}.`}
         bgImage="url('https://images.unsplash.com/photo-1519229642444-2c6c164c3aa5?q=80&w=1933&auto=format&fit=crop')"
       />
 
       <Box maxW={{ base: "95%", xl: "90%" }} mx="auto" py={6}>
-        {filteredPackages.length > 0 ? (
-          <CustomCarousel autoplay={true} showArrows={showArrows}>
-            {filteredPackages.map((pkg) => (
-              <TravelPackageCard key={pkg.id} pkg={pkg} />
+        {destination.loading ? (
+          <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={6}>
+            {[...Array(4)].map((_, index) => (
+              <Box key={index} p={4} boxShadow="md" borderRadius="md" bg="gray.100">
+                <Skeleton height="200px" borderRadius="md" />
+                <SkeletonText mt="4" noOfLines={2} spacing="4" />
+                <Skeleton height="30px" mt="4" />
+              </Box>
             ))}
-          </CustomCarousel>
+          </SimpleGrid>
+        ) : filteredPackages.length > 0 ? (
+          <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={6}>
+            {filteredPackages.map((pkg) => (
+              <TravelPackageCard key={pkg._id} pkg={pkg} />
+            ))}
+          </SimpleGrid>
         ) : (
           <Center py={12}>
             <VStack spacing={4}>
-              <Image
-                src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png"
-                alt="No packages found"
-                boxSize="120px"
-                opacity={0.8}
-              />
+              <Image src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" alt="No packages found" boxSize="120px" opacity={0.8} />
               <Text fontSize="xl" fontWeight="bold" color="gray.600">
                 Oops! No travel packages found for {formattedDestination}.
               </Text>
-              <Text
-                fontSize="md"
-                color="gray.500"
-                textAlign="center"
-                maxW="400px"
-              >
-                {`We're always adding new destinations. Try exploring other amazing places!`}
-              </Text>
-              <Button
-                colorScheme="cyan"
-                variant="solid"
-                size="md"
-                onClick={() => router.push("/destinations")} // Use router object here
-              >
+              <Button colorScheme="cyan" variant="solid" size="md" onClick={() => router.push("/destinations")}>
                 Explore Other Destinations
               </Button>
             </VStack>
@@ -103,50 +88,37 @@ const Page = () => {
         )}
       </Box>
 
-      {filteredSightseeing.length > 0 ? (
-        <Box my={"4rem"} maxW={{ base: "95%", lg: "90%" }} mx={"auto"}>
-          <CustomSubHeading highlightText="Sightseeing Adventures">
-            Unmissable Views
-          </CustomSubHeading>
-
-          <Box mt={{ base: 4, lg: 6 }}>
-            <CustomCarousel
-              autoplay={true}
-              slidesToShow={noOfSlides}
-              showArrows={showArrows}
-            >
+      <Box my="4rem" maxW={{ base: "95%", lg: "90%" }} mx="auto">
+        <CustomSubHeading highlightText="Sightseeing Adventures">Unmissable Views</CustomSubHeading>
+        <Box mt={{ base: 4, lg: 6 }}>
+          {sightSeeing.loading ? (
+            <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={6}>
+              {[...Array(4)].map((_, index) => (
+                <Box key={index} p={4} boxShadow="md" borderRadius="md" bg="gray.100">
+                  <Skeleton height="200px" borderRadius="md" />
+                  <SkeletonText mt="4" noOfLines={2} spacing="4" />
+                  <Skeleton height="30px" mt="4" />
+                </Box>
+              ))}
+            </SimpleGrid>
+          ) : filteredSightseeing.length > 0 ? (
+            <SimpleGrid columns={{ base: 1, sm: 1, md: 1, lg: 1 }} spacing={6}>
               {filteredSightseeing.map((place, index) => (
                 <SightseeingCard key={index} place={place} />
               ))}
-            </CustomCarousel>
-          </Box>
+            </SimpleGrid>
+          ) : (
+            <VStack spacing={4} py={12}>
+              <Image src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" alt="No sightseeing found" boxSize="120px" opacity={0.8} />
+              <Text fontSize="xl" fontWeight="bold" color="gray.600">
+                Oops! No Sightseeing found for {formattedDestination}.
+              </Text>
+            </VStack>
+          )}
         </Box>
-      ) : (
-        <Box my={6}>
-          <Center py={12}></Center>
-          <VStack spacing={4}>
-            <Image
-              src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png"
-              alt="No packages found"
-              boxSize="120px"
-              opacity={0.8}
-            />
-            <Text fontSize="xl" fontWeight="bold" color="gray.600">
-              Oops! No Sightseeings found for {formattedDestination}.
-            </Text>
-            <Text
-              fontSize="md"
-              color="gray.500"
-              textAlign="center"
-              maxW="400px"
-            >
-              {`We're always adding new destinations. Try exploring other amazing places!`}
-            </Text>
-          </VStack>
-        </Box>
-      )}
+      </Box>
     </Box>
   );
-};
+});
 
 export default Page;
