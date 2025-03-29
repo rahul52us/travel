@@ -7,38 +7,33 @@ import {
   Heading,
   Image,
   Divider,
+  Skeleton,
+  SkeletonText,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import PageHero from "../../../component/common/CommonHeroSection/CommonHeroSection";
 import SightSeeingCard2 from "../component/SightseeingCard2";
-import { sightseeingData } from "../utils/sightseeingData";
 import { useParams } from "next/navigation";
+import { observer } from "mobx-react-lite";
+import stores from "../../../store/stores";
+import { formatTitle } from "../../../config/utils/function";
 
-const Page = () => {
-  const params = useParams();
-  const destination =
-    typeof params?.destination === "string"
-      ? params.destination.toLowerCase()
-      : "";
+const Page = observer(() => {
+  const { destination }: any = useParams();
 
-  if (!destination) {
-    return (
-      <Center h="50vh">
-        <Text fontSize="2xl" fontWeight="bold" color="teal.500">
-          Loading, please wait...
-        </Text>
-      </Center>
-    );
-  }
+  const {
+    sightSeeingStore: { getSightSeeing, sightSeeing },
+  } = stores;
 
-  const filteredSightseeing = sightseeingData.filter(
-    (pkg) => pkg.destination.toLowerCase() === destination
-  );
+  useEffect(() => {
+    getSightSeeing({ page: 1, limit: 15 });
+  }, [getSightSeeing]);
 
-  const formattedDestination = destination
-    ?.split("-")
-    ?.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    ?.join(" ");
+  const formattedDestination = formatTitle(destination || "");
+
+  const filteredSightseeing = sightSeeing?.data?.filter((pkg: any) => {
+    return pkg.destination?.destination === destination;
+  });
 
   return (
     <Box>
@@ -57,6 +52,7 @@ const Page = () => {
         }
         bgImage="url('https://images.unsplash.com/photo-1473452784071-a5f531af184f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
       />
+
       <VStack
         spacing={8}
         align="stretch"
@@ -69,7 +65,17 @@ const Page = () => {
           Sightseeing in {formattedDestination}
         </Heading>
         <Divider borderColor="teal.300" />
-        {filteredSightseeing.length > 0 ? (
+
+        {sightSeeing.loading ? (
+          <>
+            {Array.from({ length: 3 }).map((_, index) => (
+              <Box key={index} p={4} boxShadow="md" borderRadius="md">
+                <Skeleton height="200px" mb={4} borderRadius="md" />
+                <SkeletonText noOfLines={2} spacing={3} />
+              </Box>
+            ))}
+          </>
+        ) : filteredSightseeing.length > 0 ? (
           filteredSightseeing.map((tour, index) => (
             <SightSeeingCard2 key={index} tour={tour} />
           ))
@@ -86,21 +92,20 @@ const Page = () => {
               fontWeight="medium"
               color="gray.600"
               textAlign="center"
-              maxW={'75%'}
+              maxW={"75%"}
               mt={5}
             >
-              `{` Oops! We couldn't find any sightseeing tours for`}
+              {`Oops! We couldn't find any sightseeing tours for `}
               <Text as="span" fontWeight="bold" color="teal.500">
-                {" "}
-                {formattedDestination}.
+                {formattedDestination}
               </Text>
-              Please check back later or explore other destinations!
+              . Please check back later or explore other destinations!
             </Text>
           </Center>
         )}
       </VStack>
     </Box>
   );
-};
+});
 
 export default Page;

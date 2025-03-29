@@ -9,8 +9,8 @@ import CustomSubHeading from "../../../travelComponent/common/CustomSubHeading/C
 import { observer } from "mobx-react-lite";
 import stores from "../../../store/stores";
 import { useEffect } from "react";
-import SightseeingCard from "./SightSeeingCard";
 import { formatTitle } from "../../../config/utils/function";
+import SightSeeingCard2 from "../../sightseeing/component/SightseeingCard2";
 
 const Page = observer(() => {
   const {
@@ -53,7 +53,7 @@ const Page = observer(() => {
         title={`Explore the Beauty of ${formattedDestination}`}
         lineColor="cyan.300"
         subtitle={`Discover breathtaking landscapes, vibrant cultures, and unforgettable experiences in ${formattedDestination}.`}
-        bgImage="url('https://images.unsplash.com/photo-1519229642444-2c6c164c3aa5?q=80&w=1933&auto=format&fit=crop')"
+        bgImage={filteredPackages?.length > 0 ? filteredPackages[0]?.image?.url ? `url(${filteredPackages[0]?.image?.url})` : "url('https://images.unsplash.com/photo-1519229642444-2c6c164c3aa5?q=80&w=1933&auto=format&fit=crop')" : "url('https://images.unsplash.com/photo-1519229642444-2c6c164c3aa5?q=80&w=1933&auto=format&fit=crop')"}
       />
 
       <Box maxW={{ base: "95%", xl: "90%" }} mx="auto" py={6}>
@@ -104,7 +104,7 @@ const Page = observer(() => {
           ) : filteredSightseeing.length > 0 ? (
             <SimpleGrid columns={{ base: 1, sm: 1, md: 1, lg: 1 }} spacing={6}>
               {filteredSightseeing.map((place, index) => (
-                <SightseeingCard key={index} place={place} />
+                <SightSeeingCard2 key={index} tour={place} />
               ))}
             </SimpleGrid>
           ) : (

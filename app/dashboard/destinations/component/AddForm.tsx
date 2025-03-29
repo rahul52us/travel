@@ -9,20 +9,17 @@ import { readFileAsBase64 } from "../../../config/utils/utils";
 import stores from "../../../store/stores";
 
 const AddForm = observer(({ open, onClose, getData }: any) => {
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const {
     auth: { openNotification },
     destinationStore: { createDestination },
   } = stores;
 
-  const handleSubmit = async (
-    values: any,
-    { resetForm }: any
-  ) => {
-    setLoading(true)
+  const handleSubmit = async (values: any, { resetForm }: any) => {
+    setLoading(true);
     const formData = {
       ...values,
-      location : values?.location?._id
+      location: values?.location?._id,
     };
 
     if (values.image?.file && values.image?.file?.length !== 0) {
@@ -38,7 +35,7 @@ const AddForm = observer(({ open, onClose, getData }: any) => {
 
     createDestination(formData)
       .then((data: any) => {
-        getData()
+        getData();
         openNotification({
           title: "Created Successfully",
           message: data?.message,
@@ -63,7 +60,7 @@ const AddForm = observer(({ open, onClose, getData }: any) => {
     <Box>
       <CustomDrawer
         width="80vw"
-        title="Add Destinations"
+        title="Add SightSeeing"
         open={open}
         close={() => {
           onClose();

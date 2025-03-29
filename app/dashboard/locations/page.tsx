@@ -1,66 +1,82 @@
 "use client";
-import { Box } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Button, Heading, Flex, Spacer } from "@chakra-ui/react";
 import { observer } from "mobx-react-lite";
-import TestimonialTableList from "./TestimonialTableList";
-import DashPageTitle from "../../component/common/DashPageTitle/DashPageTitle";
-import FormModel from "../../component/common/FormModel/FormModel";
+import React, { useEffect, useState, useCallback } from "react";
+import AddForm from "./component/AddForm";
+import EditForm from "./component/EditForm";
 import stores from "../../store/stores";
-import AddTestimonial from "./component/AddForm";
-import EditTestimonial from "./component/EditForm";
+import Layout from "./layout/Layout";
+import DeleteData from "./DeleteData";
 
 const Location = observer(() => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [formModal, setFormModal] = useState({
+    type: "add",
+    open: false,
+    data: null,
+  });
+
   const {
     locationStore: { getLocations },
   } = stores;
-  const [currentPage, setCurrentPage] = useState(1);
-  const [isEditing, setIsEditing] = useState(false);
-  const [selectedTestimonial, setSelectedTestimonial] = useState(null);
-  const [openTestimonial, setOpenTestimonial] = useState(false);
+
+  const getData = useCallback(
+    ({ page } = { page: currentPage }) => {
+      getLocations({ page, limit: 15 });
+    },
+    [currentPage, getLocations]
+  );
+
+  useEffect(() => {
+    getData({ page: currentPage });
+  }, [getData, currentPage]);
 
   return (
-    <Box>
-      <Box display="none">
-      </Box>
-      <DashPageTitle
-        title="Our Location"
-        subTitle="What Other peoples thinks about your Organisations"
-      />
-      <Box>
-        <TestimonialTableList
-          onAdd={() => setOpenTestimonial(true)}
-          onEdit={(testimonial: any) => {
-            setSelectedTestimonial(testimonial);
-            setIsEditing(true);
-          }}
-          getData={() => getLocations({page : currentPage})}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        />
-      </Box>
-      {/* CREATE THE NEW tESTIMONIAL */}
-      <FormModel
-        open={openTestimonial}
-        close={() => setOpenTestimonial(false)}
-        loading={false}
-        title="Add Location"
-        isCentered={true}
-      >
-        <AddTestimonial close={() => setOpenTestimonial(false)} />
-      </FormModel>
-      {isEditing && selectedTestimonial && (
-        <FormModel
-          open={isEditing}
-          close={() => setIsEditing(false)}
-          title="Edit Location"
-          isCentered={true}
+    <Box p={8}>
+      {/* Header Section with Button */}
+      <Flex align="center" mb={6}>
+        <Heading as="h1" size="lg" color="blue.600">
+          Locations
+        </Heading>
+        <Spacer />
+        <Button
+          colorScheme="blue"
+          onClick={() => setFormModal({ open: true, type: "add", data: null })}
         >
-          <EditTestimonial
-            location={selectedTestimonial}
-            close={() => setIsEditing(false)}
-            getData={() => getLocations({page : currentPage})}
-          />
-        </FormModel>
+          + Add Location
+        </Button>
+      </Flex>
+
+      {/* Main Content */}
+      <Layout setFormModal={setFormModal} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+
+      {/* Modals */}
+      {formModal.open && (
+        <>
+          {formModal.type === "add" && (
+            <AddForm
+              getData={getData}
+              open={formModal.open}
+              onClose={() => setFormModal({ open: false, type: "add", data: null })}
+            />
+          )}
+          {formModal.type === "edit" && formModal.data && (
+            <EditForm
+              open={formModal.open}
+              data={formModal.data}
+              getData={getData}
+              onClose={() => setFormModal({ open: false, type: "add", data: null })}
+            />
+          )}
+          {formModal.type === "delete" && formModal.data && (
+            <DeleteData
+              isOpen={formModal.open}
+              data={formModal.data}
+              getData={getData}
+              onClose={() => setFormModal({ open: false, type: "add", data: null })}
+            />
+          )}
+        </>
       )}
     </Box>
   );

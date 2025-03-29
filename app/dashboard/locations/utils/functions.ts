@@ -1,5 +1,8 @@
-export const generateLocationsInitialValues = (data: any = {}) => {
+export const generateInitialValues = (data: any = {}) => {
     return {
-        ...data
+        ...data,
+      image: data?.image?.url
+        ? { file: data.image }
+        : { file: [] },
     };
-  };
+};

@@ -1,4 +1,5 @@
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { INSTRAGRAM_LINK } from '../../../../../config/utils/variables';
 // import { FooterProps } from '../components/footer/types';
 
 export const footerData = {
@@ -19,12 +20,12 @@ export const footerData = {
       // },
       {
         name: "Instagram",
-        url: "https://instagram.com",
+        url: INSTRAGRAM_LINK,
         icon: FaInstagram
       },
       {
         name: "Whatsapp",
-        url: "https://www.instagram.com/cosmic_travels_official/",
+        url: "https://wa.me/919958805754",
         icon: FaWhatsapp
       },
       // {
@@ -62,7 +63,7 @@ export const footerData = {
         { name: "Central Europe", href: "/destinations/central-europe" },
         { name: "Malaysia", href: "/destinations/malaysia" },
         { name: "Thailand", href: "/destinations/thailand" },
-      
+
       ]
     }
   ],

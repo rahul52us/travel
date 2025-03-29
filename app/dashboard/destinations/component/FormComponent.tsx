@@ -47,43 +47,47 @@ const FormComponent = ({ loading, initialValues, onSubmit, close, isEdit }: any)
             <VStack spacing={8} align="stretch" w="full">
               {/* Image Upload Section */}
               <Box
-                w="full"
-                p={4}
-                borderWidth={1}
-                borderRadius="md"
-                borderColor="gray.200"
-                bg="gray.50"
-              >
-                {values?.image?.file?.length === 0 ? (
-                  <CustomInput
-                    type="file-drag"
-                    name="image"
-                    value={values.image}
-                    isMulti={true}
-                    accept="image/*"
-                    onChange={(e: any) => {
-                      setFieldValue("image", {
-                        ...values.image,
-                        file: e.target.files[0],
-                        isAdd: 1,
-                      });
-                    }}
-                    showError={showError}
-                  />
-                ) : (
-                  <ShowFileUploadFile
-                    files={values.image?.file}
-                    removeFile={() => {
-                      setFieldValue("image", {
-                        ...values.image,
-                        file: removeDataByIndex(values.image, 0),
-                        isDeleted: 1,
-                      });
-                    }}
-                    edit={isEdit}
-                  />
-                )}
-              </Box>
+  p={4}
+  borderWidth={1}
+  borderRadius="lg"
+  borderColor="gray.200"
+  bg="gray.50"
+  transition="all 0.2s"
+  _hover={{ borderColor: "gray.300" }}
+>
+  <Heading size="sm" mb={3} color="gray.700">
+    Image
+  </Heading>
+  {values?.image?.file?.length === 0 ? (
+    <CustomInput
+      type="file-drag"
+      name="image"
+      value={values.image}
+      isMulti={true}
+      accept="image/*"
+      onChange={(e: any) => {
+        setFieldValue("image", {
+          ...values.image,
+          file: e.target.files[0],
+          isAdd: 1,
+        });
+      }}
+      showError={showError}
+    />
+  ) : (
+    <ShowFileUploadFile
+      files={values.image?.file}
+      removeFile={() => {
+        setFieldValue("image", {
+          ...values.image,
+          file: removeDataByIndex(values.image, 0),
+          isDeleted: 1,
+        });
+      }}
+      edit={isEdit}
+    />
+  )}
+</Box>
 
               {/* Form Fields */}
               <SimpleGrid

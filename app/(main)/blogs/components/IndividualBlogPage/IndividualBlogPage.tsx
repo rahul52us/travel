@@ -1,27 +1,27 @@
 import { Box, Button, Center, Flex, Grid, Heading, Icon, Image, Link, Text, VStack } from '@chakra-ui/react';
-import { FaFacebook, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import { IoShareSocialOutline } from 'react-icons/io5';
+import { FACEBOOK_LINK, INSTRAGRAM_LINK } from '../../../../config/utils/variables';
 
 const socialLinks = [
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/company/metamind-healthcare/",
-    icon: FaLinkedinIn
-  },
-  {
-    name: "FaXTwitter",
-    url: "https://x.com/metamindhealth",
-    icon: FaXTwitter
-  },
+  // {
+  //   name: "LinkedIn",
+  //   url: "https://www.linkedin.com/company/metamind-healthcare/",
+  //   icon: FaLinkedinIn
+  // },
+  // {
+  //   name: "FaXTwitter",
+  //   url: "https://x.com/metamindhealth",
+  //   icon: FaXTwitter
+  // },
   {
     name: "Instagram",
-    url: "https://www.instagram.com/metamindhealth/",
+    url: INSTRAGRAM_LINK,
     icon: FaInstagram
   },
   {
     name: "Facebook",
-    url: "https://www.facebook.com/profile.php?id=61562244046160",
+    url: FACEBOOK_LINK,
     icon: FaFacebook
   },
 ];

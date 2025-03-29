@@ -32,9 +32,9 @@ const FAQAccordion = observer(() => {
     if (pageContent?.homeFaq) {
       setLoading(false);
     }
-  }, [companyDetails]);
+  }, [companyDetails, getPageContent]);
 
-  const togglePanel = (index) => {
+  const togglePanel = (index : number) => {
     setExpandedPanels((prev) => ({
       ...prev,
       [index]: !prev[index],

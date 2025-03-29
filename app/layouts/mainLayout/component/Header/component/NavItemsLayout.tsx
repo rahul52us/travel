@@ -18,17 +18,21 @@ interface NavItemsLayoutProps {
 const NavItemsLayout: React.FC<NavItemsLayoutProps> = observer(({ onClose }) => {
   const { destinationStore: { destination } } = stores;
 
-  // Construct nav items dynamically
+  // Construct nav items dynamically with unique destinations
   const dynamicNavItems: NavItemType[] = useMemo(() => {
+    const uniqueDestinations = Array.from(
+      new Set(destination.data?.map((dest: { destination: string }) => dest.destination))
+    ).map((uniqueDest : any) => ({
+      title: formatTitle(uniqueDest),
+      link: `/destinations/${uniqueDest}`,
+    }));
+
     return [
       { title: "Home", link: "/" },
       { title: "About Us", link: "/about-us" },
       {
         title: "Destinations",
-        subItems: destination.data?.map((dest: { destination: string }) => ({
-          title: formatTitle(dest.destination),
-          link: `/destinations/${dest.destination}`,
-        })) || [],
+        subItems: uniqueDestinations,
       },
       { title: "Sightseeing", link: "/sightseeing" },
       { title: "Blogs", link: "/blogs" },

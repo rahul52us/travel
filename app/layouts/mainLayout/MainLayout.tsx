@@ -1,24 +1,35 @@
 "use client";
 
 import { Box } from "@chakra-ui/react";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import Header from "./component/Header/Header";
 import { Footer } from "./component/Footer/Footer";
+import { observer } from "mobx-react-lite";
+import stores from "../../store/stores";
+import DelayedModal from "../../component/common/Modal/DelayModal.tsx/DelayedModal";
 
 interface MainLayoutProps {
   children: ReactNode;
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+const MainLayout: React.FC<MainLayoutProps> = observer(({ children }) => {
+  const {destinationStore : {getDestinations}} = stores
+
+  useEffect(() => {
+    getDestinations({page : 1, limit : 15})
+  },[getDestinations])
+
+
   return (
     <Box>
       <Header />
       <Box>
         {children}
       </Box>
+      <DelayedModal />
       <Footer />
     </Box>
   );
-};
+});
 
 export default MainLayout;

@@ -70,24 +70,27 @@ const CustomDrawer: React.FC<CustomDrawerProps> = ({
           ...props,
         }}
       >
-        {title && (
-          <Flex
-            justify="space-between"
-            alignItems="center"
-            p={4}
-            // bg={headerBgColor}
-            color={headerTextColor}
-          >
-            <Text fontSize="xl">{title}</Text>
-            <DrawerCloseButton
-              color={headerTextColor}
-              bg="red.500"
-              _hover={{ color: "#00000" }}
-              size="lg"
-              mt={1}
-            />
-          </Flex>
-        )}
+       {title && (
+  <Flex
+    justify="space-between"
+    align="center"
+    p={4}
+    color={headerTextColor}
+    borderBottom="1px solid"
+    borderColor="gray.200"
+  >
+    <Text fontSize="xl" fontWeight="bold">{title}</Text>
+    <DrawerCloseButton
+      color="white"
+      bg="red.500"
+      size="lg"
+      borderRadius="full"
+      _hover={{ bg: "red.600" }}
+      _active={{ bg: "red.700" }}
+    />
+  </Flex>
+)}
+
         <Divider />
         <DrawerBody
           style={{ overflowY: "auto", padding: isDesktop ? "15px" : "6px" }}

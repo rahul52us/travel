@@ -57,8 +57,8 @@ const Layout = observer(({ setFormModal, currentPage, setCurrentPage }: any) => 
             >
               {/* Image */}
               <Image
-                src={dest.image.url}
-                alt={dest.image.name}
+                src={dest.image?.url}
+                alt={dest.image?.name}
                 borderRadius="lg"
                 h={{ base: "150px", md: "200px" }}
                 w="full"
@@ -94,12 +94,12 @@ const Layout = observer(({ setFormModal, currentPage, setCurrentPage }: any) => 
               </Flex>
 
               <Text fontSize="sm" color={textColor} noOfLines={1}>
-                {dest.location.name}
+                {dest.location?.name}
               </Text>
 
               <Flex justify="space-between" align="center">
                 <Text fontSize="lg" fontWeight="bold" color="green.500">
-                  ${dest.price.toLocaleString()}
+                  ${dest.price?.toLocaleString()}
                 </Text>
                 <Text fontSize="sm" color="yellow.500">
                   ★ {dest.rating}

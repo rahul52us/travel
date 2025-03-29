@@ -18,7 +18,13 @@ const Page = observer(() => {
 
   const {
     destinationStore: { getDestinations },
+    locationStore: { getLocations },
   } = stores;
+
+  useEffect(() => {
+    getLocations({ page: 1 , limit : 15});
+  }, [getLocations]);
+
 
   const getData = useCallback(
     ({ page } = { page: currentPage }) => {
@@ -57,16 +63,6 @@ const Page = observer(() => {
             <AddForm
               getData={getData}
               open={formModal.open}
-              onClose={() =>
-                setFormModal({ open: false, type: "add", data: null })
-              }
-            />
-          )}
-          {formModal.type === "edit" && formModal.data && (
-            <EditForm
-              open={formModal.open}
-              data={formModal.data}
-              getData={getData}
               onClose={() =>
                 setFormModal({ open: false, type: "add", data: null })
               }

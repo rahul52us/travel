@@ -6,3 +6,5 @@ export const USER_SESSION_DATA = process.env.NEXT_PUBLIC_USER_SESSION_DATA
 export const ENCRYPT_SECRET_KEY = process.env.NEXT_PUBLIC_ENCRYPT_SECRET_KEY
 export const SITE_URL =  process.env.NEXT_PUBLIC_SITE_URL
 export const KEYWORDS = process.env.NEXT_PUBLIC_DEFAULT_KEYWORDS
+export const INSTRAGRAM_LINK=process.env.NEXT_PUBLIC_INSTAGRAM_LINK
+export const FACEBOOK_LINK=process.env.NEXT_PUBLIC_FACEBOOK_LINK

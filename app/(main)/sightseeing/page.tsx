@@ -11,8 +11,8 @@ const page = () => {
         lineColor="teal.300"
         subtitle={
           <>
-            Uncover the world’s most iconic landmarks, hidden gems, and cultural
-            treasures. From ancient ruins to
+            {`Uncover the world’s most iconic landmarks, hidden gems, and cultural
+            treasures. From ancient ruins to`}
             <Text as="span" color="teal.200" fontWeight="semibold" mx={1.5}>
               modern marvels
             </Text>

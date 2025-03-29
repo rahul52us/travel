@@ -1,19 +1,28 @@
-'use client';
-import {  Button, Flex, VStack, Card, SimpleGrid } from "@chakra-ui/react";
+"use client";
+import {
+  Button,
+  Flex,
+  VStack,
+  Card,
+  SimpleGrid,
+  Heading,
+  Box,
+} from "@chakra-ui/react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { Form, Formik } from "formik";
 import { useState } from "react";
 import CustomInput from "../../../component/config/component/customInput/CustomInput";
 import locationValidation from "../utils/validation";
+import ShowFileUploadFile from "../../../component/common/ShowFileUploadFile/ShowFileUploadFile";
+import { removeDataByIndex } from "../../../config/utils/utils";
 
-interface LocationFormProps {
-  initialValues: { name: string; description: string; };
-  onSubmit: any;
-  close:any;
-  isEdit?:boolean
-}
-
-const FormControl: React.FC<LocationFormProps> = ({ initialValues, onSubmit, close }) => {
+const FormComponent: React.FC<any> = ({
+  initialValues,
+  onSubmit,
+  close,
+  isEdit,
+  loading,
+}) => {
   const [showError, setShowError] = useState(false);
 
   return (
@@ -25,11 +34,56 @@ const FormControl: React.FC<LocationFormProps> = ({ initialValues, onSubmit, clo
           onSubmit({ ...values }, actions);
         }}
       >
-        {({ handleChange, values, errors, isSubmitting } : any) => (
+        {({ handleChange, values, errors, setFieldValue }: any) => (
           <Form>
             <VStack spacing={4} align="center">
               {/* Form Fields */}
               <SimpleGrid columns={{ base: 1, md: 1 }} spacing={6} w="full">
+                {/* Image Upload */}
+                <Box
+                  p={4}
+                  borderWidth={1}
+                  borderRadius="lg"
+                  borderColor="gray.200"
+                  bg="gray.50"
+                  transition="all 0.2s"
+                  _hover={{ borderColor: "gray.300" }}
+                >
+                  <Heading size="sm" mb={3} color="gray.700">
+                    Image
+                  </Heading>
+                  {values?.image?.file?.length === 0 ? (
+                    <CustomInput
+                      type="file-drag"
+                      name="image"
+                      value={values.image}
+                      isMulti={true}
+                      accept="image/*"
+                      onChange={(e: any) => {
+                        setFieldValue("image", {
+                          ...values.image,
+                          file: e.target.files[0],
+                          isAdd: 1,
+                        });
+                      }}
+                      showError={showError}
+                    />
+                  ) : (
+                    <ShowFileUploadFile
+                      files={values.image?.file}
+                      removeFile={() => {
+                        setFieldValue("image", {
+                          ...values.image,
+                          file: removeDataByIndex(values.image, 0),
+                          isDeleted: 1,
+                        });
+                      }}
+                      edit={isEdit}
+                    />
+                  )}
+                </Box>
+
+                {/* Name Field */}
                 <CustomInput
                   name="name"
                   placeholder="Enter the Name"
@@ -37,6 +91,17 @@ const FormControl: React.FC<LocationFormProps> = ({ initialValues, onSubmit, clo
                   onChange={handleChange}
                   value={values.name}
                   error={errors.name}
+                  showError={showError}
+                />
+
+                {/* Country Field */}
+                <CustomInput
+                  name="country"
+                  placeholder="Enter Country"
+                  label="Country"
+                  onChange={handleChange}
+                  value={values.country}
+                  error={errors.country}
                   showError={showError}
                 />
               </SimpleGrid>
@@ -56,14 +121,20 @@ const FormControl: React.FC<LocationFormProps> = ({ initialValues, onSubmit, clo
 
               {/* Action Buttons */}
               <Flex justifyContent="end" w="full" mt={4}>
-                <Button leftIcon={<FaTimes />} mr={3} onClick={close} variant="outline" colorScheme="red">
+                <Button
+                  leftIcon={<FaTimes />}
+                  mr={3}
+                  onClick={close}
+                  variant="outline"
+                  colorScheme="red"
+                >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
                   leftIcon={<FaCheck />}
                   colorScheme="blue"
-                  isLoading={isSubmitting}
+                  isLoading={loading}
                   onClick={() => setShowError(true)}
                 >
                   Save
@@ -77,4 +148,4 @@ const FormControl: React.FC<LocationFormProps> = ({ initialValues, onSubmit, clo
   );
 };
 
-export default FormControl;
+export default FormComponent;

@@ -30,32 +30,32 @@ export const Footer: React.FC = () => {
       // borderTopRadius={{ base: "24px", md: "40px" }}
       py={{ base: "8", md: 6 }}
     >
-   <Flex  
-  align={"center"}  
-  justify={"space-between"}  
-  maxW={{ base: "90%", md: "75%" }} // Adjust max width for mobile and tablet  
-  mx={"auto"}  
-  mb={4}  
-  pt={2}  
-  direction={{ base: "column", md: "row" }} // Stack vertically on mobile, row on tablet and above  
-  gap={{ base: 4, md: 0 }} // Add gap between items on mobile  
->  
-  <Flex align={"center"} gap={2}>  
-    <Box>  
-      <Image src="/icons/support.png" alt="Support" boxSize={{ base: "50px", md: "70px" }} objectFit={'contain'} />  
-    </Box>  
-    <Text ml={4} fontSize={{ base: "lg", md: "2xl" }} fontWeight={700}>  
-      Need Any Support For Tour & Travels ?  
-    </Text>  
-  </Flex>  
-  <Flex align={"center"} gap={2}>  
-    <Box>  
-      <Image src="/icons/vacation.png" alt="Support" boxSize={{ base: "50px", md: "70px" }} objectFit={'contain'} />   
-    </Box>  
-    <Text ml={4} fontSize={{ base: "xl", md: "2xl" }} fontWeight={700}>  
-      Ready to Get Started With Vacations!  
-    </Text>  
-  </Flex>  
+   <Flex
+  align={"center"}
+  justify={"space-between"}
+  maxW={{ base: "90%", md: "75%" }} // Adjust max width for mobile and tablet
+  mx={"auto"}
+  mb={4}
+  pt={2}
+  direction={{ base: "column", md: "row" }} // Stack vertically on mobile, row on tablet and above
+  gap={{ base: 4, md: 0 }} // Add gap between items on mobile
+>
+  <Flex align={"center"} gap={2}>
+    <Box>
+      <Image src="/icons/support.png" alt="Support" boxSize={{ base: "50px", md: "70px" }} objectFit={'contain'} />
+    </Box>
+    <Text ml={4} fontSize={{ base: "lg", md: "2xl" }} fontWeight={700}>
+      Need Any Support For Tour & Travels ?
+    </Text>
+  </Flex>
+  <Flex align={"center"} gap={2}>
+    <Box>
+      <Image src="/icons/vacation.png" alt="Support" boxSize={{ base: "50px", md: "70px" }} objectFit={'contain'} />
+    </Box>
+    <Text ml={4} fontSize={{ base: "xl", md: "2xl" }} fontWeight={700}>
+      Ready to Get Started With Vacations!
+    </Text>
+  </Flex>
 </Flex>
       <Divider mb={6} maxW={"80%"} mx={"auto"} />
       <Box>
@@ -75,7 +75,7 @@ export const Footer: React.FC = () => {
               align={{ base: "center", md: "flex-start" }}
             >
               <Box textAlign={{ base: "center", md: "left" }}>
-                <Center bg={"blackAlpha.200"} rounded={"xl"}>
+                <Center rounded={"xl"}>
                   <Image
                     src="/images/logo3.png"
                     alt="logo"
@@ -158,10 +158,11 @@ export const Footer: React.FC = () => {
                 src="/images/footerImage.png"
                 alt="footer"
                 mixBlendMode={"multiply"}
+                display="none"
               />
             </Box>
             <Text fontSize={{ base: "xs", sm: "sm" }} textAlign={"center"}>
-              ©{new Date().getFullYear()}{" "}
+              Copyright © {new Date().getFullYear()}{" "}
               <Text as={"span"} color={"teal.400"}>
                 {footerData.companyInfo.name}
               </Text>{" "}
