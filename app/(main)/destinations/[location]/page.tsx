@@ -54,8 +54,6 @@ const Page = observer(() => {
     (it: any) => it.name === params?.location?.split("-").join(" ")
   );
 
-  console.log(filterLocation);
-
   return (
     <Box>
       <PageHero

@@ -72,7 +72,7 @@ const FeaturedDestination = observer(() => {
           size={{ base: "md", lg: "lg" }}
           rightIcon={<FiArrowRight />}
           _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
-          onClick={() => router.push(`/destinations/${dest?.destination}`)}
+          onClick={() => router.push(`/destinations/${dest?.location?.name?.split(' ').join('-')}/${dest?.destination?.split(' ').join('-')}`)}
         >
           Explore More
         </Button>

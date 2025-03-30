@@ -19,6 +19,7 @@ import { IconType } from "react-icons";
 import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, FaShip, FaStar, FaTrain, FaUtensils } from "react-icons/fa";
 import { formatTitle } from "../../../../config/utils/function";
 import { useParams, useRouter } from "next/navigation";
+import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
 
   // Bounce animation for the button
   const bounce = keyframes`
@@ -58,6 +59,7 @@ import { useParams, useRouter } from "next/navigation";
 
   // Main Card Component
   const TravelPackageCard = ({ pkg }: { pkg: any }) => {
+    const [openBookingModal, setOpenBookingModal] = useState({open : false, data : pkg})
     const [isOpen] = useState(false);
     const router = useRouter()
     const params = useParams()
@@ -216,20 +218,12 @@ import { useParams, useRouter } from "next/navigation";
             borderRadius="full"
             size={{base:"xs",lg:"sm"}}
             animation={`${bounce} 2s infinite`}
-
+            onClick={() => setOpenBookingModal({open : true, data : pkg})}
           >
             Book Now
           </Button>
-          {/* <Button
-            colorScheme="red"
-            borderRadius="full"
-            size={{base:"xs",lg:"sm"}}
-            onClick={toggleDetails}
-            animation={`${bounce} 2s infinite`}
-          >
-            {isOpen ? "Hide Details" : "View Details"}
-          </Button> */}
         </CardFooter>
+        <BookingInfoModal isOpen={openBookingModal.open} onClose={() => setOpenBookingModal({data : null, open : false})} data={{id : openBookingModal?.data?._id, type : 'destination', title : openBookingModal.data?.destination}}/>
       </Card>
     );
 };
