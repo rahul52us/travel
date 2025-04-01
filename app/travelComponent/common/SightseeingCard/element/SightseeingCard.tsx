@@ -9,27 +9,30 @@ import {
   Text,
   Tooltip,
   useColorModeValue,
-  Flex
+  Flex,
 } from "@chakra-ui/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useState } from "react";
+import { getDestinationArray } from "../../../../config/utils/function";
+import { useRouter } from "next/navigation";
 
 const SightseeingCard = ({ place }) => {
+  const router = useRouter();
   const cardBg = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("blue.700", "gray.100");
   const priceColor = useColorModeValue("blue.500", "blue.300");
 
-  // Initialize state: cover image + remaining images
   const [coverImage, setCoverImage] = useState(place.coverImage);
   const [galleryImages, setGalleryImages] = useState(place.images || []);
 
-  // Handle Image Click (Switch cover image with selected image)
   const handleImageClick = (selectedImage) => {
     setCoverImage(selectedImage);
 
-    // Swap images: replace selected image with previous cover image
     setGalleryImages((prevImages) => {
-      return [coverImage, ...prevImages.filter((img) => img._id !== selectedImage._id)];
+      return [
+        coverImage,
+        ...prevImages.filter((img) => img._id !== selectedImage._id),
+      ];
     });
   };
 
@@ -46,7 +49,6 @@ const SightseeingCard = ({ place }) => {
         />
       </Box>
 
-      {/* Image Gallery (Click to swap with Cover Image) */}
       {galleryImages.length > 0 && (
         <Flex overflowX="auto" gap={2} p={2} mt={2}>
           {galleryImages.map((img) => (
@@ -72,15 +74,39 @@ const SightseeingCard = ({ place }) => {
         <HStack justify="space-between" align="center" mb={2}>
           <HStack spacing={2} align="center">
             <Icon as={FaMapMarkerAlt} color="red.400" />
-            <Text fontSize="sm" color="gray.500" textTransform="capitalize">
-              {place.destination?.destination || "Unknown Destination"}
+            <Text
+              fontSize="sm"
+              color="gray.500"
+              textTransform="capitalize"
+              cursor="pointer"
+              onClick={() =>
+                router.push(
+                  `/destinations/${place?.destination?.location?.name}`
+                )
+              }
+            >
+              {place?.destination?.location?.name || "Unknown Location"}
             </Text>
           </HStack>
         </HStack>
 
         {/* Title */}
-        <Text fontSize="md" fontWeight="bold" color={textColor} mb={2} noOfLines={2}>
-          {place.title || "Untitled"}
+        <Text
+          fontSize="md"
+          cursor="pointer"
+          fontWeight="bold"
+          color={textColor}
+          mb={2}
+          noOfLines={2}
+          onClick={() =>
+            router.push(
+              `/destinations/${
+                place?.destination?.location?.name
+              }/${getDestinationArray(place.destination)}`
+            )
+          }
+        >
+          {place.destination?.destination?.join(" , ") || "Unknown Destination"}
         </Text>
 
         {/* Description */}
@@ -95,12 +121,18 @@ const SightseeingCard = ({ place }) => {
           </Text>
           <Tag colorScheme="purple" variant="outline">
             <TagLeftIcon boxSize="12px" as={TimeIcon} />
-            {place.duration ? place.duration.replace(/"/g, '') : "No Duration Info"}
+            {place.duration
+              ? place.duration.replace(/"/g, "")
+              : "No Duration Info"}
           </Tag>
         </HStack>
 
         {/* Free Cancellation Tooltip */}
-        <Tooltip label="Free cancellation available" aria-label="Free cancellation tooltip" mt={2}>
+        <Tooltip
+          label="Free cancellation available"
+          aria-label="Free cancellation tooltip"
+          mt={2}
+        >
           <Text fontSize="sm" color="green.500" fontWeight="400">
             Free Cancellation
           </Text>

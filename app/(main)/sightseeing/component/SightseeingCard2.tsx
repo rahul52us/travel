@@ -1,5 +1,5 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -12,12 +12,23 @@ import {
   Stack,
   Tag,
   Text,
-} from '@chakra-ui/react';
-import { FiArrowRightCircle, FiClock, FiUser } from 'react-icons/fi';
+} from "@chakra-ui/react";
+import { FiArrowRightCircle, FiClock, FiUser } from "react-icons/fi";
+import { useRouter } from "next/navigation";
+import { FaMapMarkedAlt, FaMapPin } from "react-icons/fa";
+import { getDestinationArray } from "../../../config/utils/function";
+import BookingInfoModal from "../../../component/BookingInfoModal/BookingInfoModal";
 
 const SightSeeingCard2 = ({ tour }) => {
-  const coverImage = tour.coverImage?.url || '';
-  const tourImages = tour.images?.length ? tour.images.map(img => img.url) : [];
+  const [openBookingModal, setOpenBookingModal] = useState({
+    open: false,
+    data: tour,
+  });
+  const router = useRouter();
+  const coverImage = tour.coverImage?.url || "";
+  const tourImages = tour.images?.length
+    ? tour.images.map((img) => img.url)
+    : [];
 
   const [activeImage, setActiveImage] = useState(coverImage);
   const [thumbnails, setThumbnails] = useState(tourImages);
@@ -25,7 +36,9 @@ const SightSeeingCard2 = ({ tour }) => {
   const handleImageSelect = (selectedImg) => {
     if (selectedImg !== activeImage) {
       setThumbnails((prevThumbnails) => {
-        const updatedThumbnails = prevThumbnails.filter((img) => img !== selectedImg);
+        const updatedThumbnails = prevThumbnails.filter(
+          (img) => img !== selectedImg
+        );
         return [activeImage, ...updatedThumbnails];
       });
       setActiveImage(selectedImg);
@@ -34,14 +47,14 @@ const SightSeeingCard2 = ({ tour }) => {
 
   return (
     <Flex
-      direction={{ base: 'column', md: 'row' }}
+      direction={{ base: "column", md: "row" }}
       bg="white"
       borderRadius="xl"
       boxShadow="md"
       overflow="hidden"
       width="full"
       transition="all 0.2s"
-      _hover={{ transform: 'translateY(-4px)', boxShadow: 'xl' }}
+      _hover={{ transform: "translateY(-4px)", boxShadow: "xl" }}
       maxH={{ lg: "330px" }}
       p={{ base: 2, md: 4 }}
     >
@@ -50,8 +63,8 @@ const SightSeeingCard2 = ({ tour }) => {
           src={activeImage}
           alt={tour.title}
           objectFit="cover"
-          rounded={{ base: 'lg', md: 'xl' }}
-          height={{ base: '250px', md: '100%' }}
+          rounded={{ base: "lg", md: "xl" }}
+          height={{ base: "250px", md: "100%" }}
           width="full"
         />
 
@@ -75,19 +88,19 @@ const SightSeeingCard2 = ({ tour }) => {
                 key={index}
                 cursor="pointer"
                 onClick={() => handleImageSelect(img)}
-                border={img === activeImage ? '2px solid' : 'none'}
+                border={img === activeImage ? "2px solid" : "none"}
                 borderColor="blue.400"
                 borderRadius="md"
                 overflow="hidden"
                 transition="all 0.3s ease-in-out"
-                _hover={{ transform: 'scale(1.15)' }}
+                _hover={{ transform: "scale(1.15)" }}
               >
                 <Image
                   src={img}
                   alt={`Thumbnail ${index + 1}`}
                   objectFit="cover"
-                  height={{ base: '40px', md: '50px' }}
-                  width={{ base: '40px', md: '50px' }}
+                  height={{ base: "40px", md: "50px" }}
+                  width={{ base: "40px", md: "50px" }}
                   borderRadius="md"
                 />
               </Box>
@@ -97,23 +110,72 @@ const SightSeeingCard2 = ({ tour }) => {
       </Box>
 
       {/* Content Section */}
-      <Flex flex={{ md: 2 }} p={{ base: 3, md: 6 }} direction="column" gap={{ base: 3, md: 4 }}>
-        <Flex justify="space-between" align="flex-start">
-          <Heading as="h3" size={{ base: "sm", md: "md" }}>{tour.title}</Heading>
+      <Flex
+        flex={{ md: 2 }}
+        p={{ base: 3, md: 6 }}
+        direction="column"
+        gap={{ base: 3, md: 4 }}
+      >
+        <Flex direction="column" justify="space-between" align="flex-start">
+          {/* Destination */}
+          <Flex
+            onClick={() =>
+              router.push(
+                `/destinations/${
+                  tour?.destination?.location?.name
+                }/${getDestinationArray(tour.destination)}`
+              )
+            }
+            align="center"
+            gap={2}
+            cursor="pointer"
+          >
+            <Icon as={FaMapMarkedAlt} boxSize={4} color="blue.500" />
+            <Heading as="h3" size={{ base: "sm", md: "md" }}>
+              {tour?.destination?.destination?.join(" , ") ||
+                "Unknown Destination"}
+            </Heading>
+          </Flex>
+
+          {/* Location */}
+          <Flex
+            mt={3}
+            align="center"
+            gap={2}
+            onClick={() =>
+              router.push(`/destinations/${tour?.destination?.location?.name}`)
+            }
+            cursor="pointer"
+          >
+            <Icon as={FaMapPin} boxSize={4} color="red.500" />
+            <Heading as="h5" size={{ base: "xs", md: "xs" }}>
+              {tour?.destination?.location?.name || "Unknown Location"}
+            </Heading>
+          </Flex>
         </Flex>
 
         <HStack spacing={4} flexWrap="wrap">
           <Flex align="center">
             <Icon as={FiClock} mr={2} />
-            <Text fontWeight="500" fontSize={{ base: "xs", md: "md" }}>{tour.duration}</Text>
+            <Text fontWeight="500" fontSize={{ base: "xs", md: "md" }}>
+              {tour.duration}
+            </Text>
           </Flex>
           <Flex align="center">
             <Icon as={FiUser} mr={2} />
-            <Text fontWeight="500" fontSize={{ base: "xs", md: "md" }}>Max {tour.maxGroupSize} people</Text>
+            <Text fontWeight="500" fontSize={{ base: "xs", md: "md" }}>
+              Max {tour.maxGroupSize} people
+            </Text>
           </Flex>
         </HStack>
 
-        <Text color="gray.600" fontSize={{ base: "xs", md: "md" }} noOfLines={3}>{tour.description}</Text>
+        <Text
+          color="gray.600"
+          fontSize={{ base: "xs", md: "md" }}
+          noOfLines={3}
+        >
+          {tour.description}
+        </Text>
 
         <Stack spacing={3}>
           <Flex align="center" fontSize="sm">
@@ -126,19 +188,55 @@ const SightSeeingCard2 = ({ tour }) => {
         {/* Price and Booking Form */}
         <Flex justify="space-between" align="center" flexWrap="wrap" gap={3}>
           <Box>
-            <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="800" color="blue.600">
+            <Text
+              fontSize={{ base: "xl", md: "2xl" }}
+              fontWeight="800"
+              color="blue.600"
+            >
               {tour.price}
-              <Text as="span" fontSize={{ base: "sm", md: "md" }} color="gray.500" fontWeight="normal">/person</Text>
+              <Text
+                as="span"
+                fontSize={{ base: "sm", md: "md" }}
+                color="gray.500"
+                fontWeight="normal"
+              >
+                /person
+              </Text>
             </Text>
-            <Text color="green.600" fontSize="sm">Instant Confirmation</Text>
+            <Text color="green.600" fontSize="sm">
+              Instant Confirmation
+            </Text>
           </Box>
 
           <Flex gap={3} align="center" flexWrap="wrap">
-            <Tag colorScheme="green" borderRadius="full" size={{ base: 'md', md: 'lg' }}>Free Cancellation</Tag>
-            <Button colorScheme="blue" px={6} size={{ base: 'sm', md: 'md' }}>Book Now</Button>
+            <Tag
+              colorScheme="green"
+              borderRadius="full"
+              size={{ base: "md", md: "lg" }}
+            >
+              Free Cancellation
+            </Tag>
+            <Button
+              colorScheme="blue"
+              px={6}
+              size={{ base: "sm", md: "md" }}
+              onClick={() => setOpenBookingModal({ data: tour, open: true })}
+            >
+              Book Now
+            </Button>
           </Flex>
         </Flex>
       </Flex>
+
+      <BookingInfoModal
+        isOpen={openBookingModal.open}
+        onClose={() => setOpenBookingModal({ data: null, open: false })}
+        data={{
+          id: openBookingModal?.data?._id,
+          type: "sightSeeing",
+          title: openBookingModal.data?.destination?.destination,
+        }}
+      />
     </Flex>
   );
 };

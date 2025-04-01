@@ -5,7 +5,7 @@ import stores from "../../store/stores";
 import useDebounce from "../../component/config/component/customHooks/useDebounce";
 import { tablePageLimit } from "../../component/config/utils/variable";
 import CustomTable from "../../component/config/component/CustomTable/CustomTable";
-import { Tooltip } from "@chakra-ui/react";
+import { Box, Text, Tooltip } from "@chakra-ui/react";
 
 const BookingList = observer(({ onAdd, onEdit }: any) => {
   const {
@@ -61,7 +61,24 @@ const BookingList = observer(({ onAdd, onEdit }: any) => {
 
   // Define table columns
   const ContactTableColumn = [
-    { headerName: "Title", key: "title", props: { row: { textAlign: "center" } } },
+{
+        headerName: "Title",
+        key: "title",
+        type: "component",
+        metaData: {
+          component: (dt: any) => {
+            console.log(dt)
+            return(
+            <Box m={1}>
+              <Text>{Array.isArray(dt?.title) ?  dt?.title?.join(' , ') : dt?.title}</Text>
+            </Box>
+          )},
+        },
+        props: {
+          row: { minW: 120, textAlign: "center" },
+          column: { textAlign: "center" },
+        },
+      },    { headerName: "Type", key: "type", props: { row: { textAlign: "center" } } },
     { headerName: "Name", key: "name", props: { row: { textAlign: "center" } } },
     { headerName: "Phone", key: "phone", props: { row: { textAlign: "center" } } },
     { headerName: "Email", key: "email", props: { row: { textAlign: "center" } } },
@@ -84,7 +101,7 @@ const BookingList = observer(({ onAdd, onEdit }: any) => {
   return (
     <CustomTable
       title="Booking"
-      data={booking?.data?.map((it : any) => ({...it, title : it?.details?.title})) || []}
+      data={booking?.data?.map((it : any) => ({...it, title : it?.details?.title, type : it?.details?.type})) || []}
       columns={ContactTableColumn}
       actions={{
         actionBtn: {

@@ -18,7 +18,7 @@ const SightseeingList = observer(() => {
   } = stores;
 
   useEffect(() => {
-    getSightSeeing({ page: 1 });
+    getSightSeeing({ page: 1, limit : 15 });
   }, [getSightSeeing]);
 
   return (
