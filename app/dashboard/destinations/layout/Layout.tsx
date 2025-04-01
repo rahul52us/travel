@@ -77,7 +77,7 @@ const Layout = observer(({ setFormModal, currentPage, setCurrentPage }: any) => 
                     setFormModal({ open: true, type: "edit", data: dest })
                   }
                 >
-                  {dest.destination}
+                  {dest.destination?.join(',')}
                 </Heading>
 
                 {/* Delete Button */}

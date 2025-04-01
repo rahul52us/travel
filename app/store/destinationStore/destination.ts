@@ -22,31 +22,35 @@ class DestinationStore {
   // Fetch Testimonials
 
   getDestinations = async (sendData: any) => {
-      this.destination.loading = true;
-      try {
-        const { limit = 10, page, search, location, destination } = sendData;
-        const searchQuery = search
-          ? `&search=${encodeURIComponent(search)}`
-          : "";
-          const locationQuery = location
-          ? `&location=${encodeURIComponent(location)}`
-          : "";
-          const destinationTitle = destination
+    this.destination.loading = true;
+    try {
+      const { limit = 10, page, search, location, destination } = sendData;
+
+      const searchQuery = search ? `&search=${encodeURIComponent(search)}` : "";
+      const locationQuery = location ? `&location=${encodeURIComponent(location)}` : "";
+
+      // Handle `destination` correctly (if it's an array, join it; if not, encode normally)
+      const destinationTitle =
+        Array.isArray(destination) && destination.length > 0
+          ? `&destination=${destination.map(encodeURIComponent).join(",")}`
+          : destination
           ? `&destination=${encodeURIComponent(destination)}`
           : "";
-        const { data } = await axios.get(
-          `/destination/get?page=${page}&limit=${limit}${searchQuery}${locationQuery}${destinationTitle}`
-        );
 
-        this.destination.data = data?.data?.data || [];
-        this.destination.totalPages = data?.data?.totalPages || 0;
-        return data.data;
-      } catch (err: any) {
-        return Promise.reject(err?.response?.data || err);
-      } finally {
-        this.destination.loading = false;
-      }
+      const { data } = await axios.get(
+        `/destination/get?page=${page}&limit=${limit}${searchQuery}${locationQuery}${destinationTitle}`
+      );
+
+      this.destination.data = data?.data?.data || [];
+      this.destination.totalPages = data?.data?.totalPages || 0;
+      return data.data;
+    } catch (err: any) {
+      return Promise.reject(err?.response?.data || err);
+    } finally {
+      this.destination.loading = false;
+    }
   };
+
 
   // Delete Destination
   deleteDestination = async (sendData: any) => {

@@ -18,8 +18,10 @@ import {
 import { keyframes } from "@emotion/react";
 import { IconType } from "react-icons";
 import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, FaShip, FaStar, FaTrain, FaUtensils } from "react-icons/fa";
-import { formatTitle } from "../../../../config/utils/function";
+import { formatTitle, getDestinationArray } from "../../../../config/utils/function";
 import { useParams, useRouter } from "next/navigation";
+import BookingInfoModal from "../../../../component/BookingInfoModal/BookingInfoModal";
+import { useState } from "react";
 
 const bounce = keyframes`
   0%, 100% { transform: translateY(0); }
@@ -45,6 +47,7 @@ const PerkIcon = ({ type }: { type: string }) => {
 };
 
 const TravelPackageCard = ({ pkg }: { pkg: any }) => {
+      const [openBookingModal, setOpenBookingModal] = useState({open : false, data : pkg})
   const router = useRouter();
   const params = useParams();
 
@@ -93,7 +96,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
                 _hover={{ textDecoration: "underline" }}
                 onClick={() => {
                   if (params?.location) {
-                    router.push(`/destinations/${params?.location}/${pkg?.destination?.split(' ').join('-')}`);
+                    router.push(`/destinations/${params?.location}/${getDestinationArray(pkg)}`);
                   }
                 }}
               >
@@ -162,10 +165,13 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
           color="white"
           _hover={{ bgGradient: "linear(to-r, blue.500, blue.700)", transform: "scale(1.05)" }}
           animation={`${bounce} 2s infinite`}
+          onClick={() => setOpenBookingModal({open : true, data : pkg})}
         >
           Book Now
         </Button>
       </CardFooter>
+      <BookingInfoModal isOpen={openBookingModal.open} onClose={() => setOpenBookingModal({data : null, open : false})} data={{id : openBookingModal?.data?._id, type : 'destination', title : openBookingModal.data?.destination}}/>
+
     </Card>
   );
 };

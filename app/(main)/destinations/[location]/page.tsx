@@ -36,7 +36,7 @@ const Page = observer(() => {
 
   useEffect(() => {
     getDestinations({ page: 1, location: params?.location });
-  }, [getDestinations]);
+  }, [getDestinations,params?.location]);
 
   if (!destinationTitle) {
     return (

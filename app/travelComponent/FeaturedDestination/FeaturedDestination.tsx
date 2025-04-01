@@ -4,7 +4,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { observer } from "mobx-react-lite";
 import stores from "../../store/stores";
 import { useRouter } from "next/navigation";
-import { formatTitle } from "../../config/utils/function";
+import { formatTitle, getDestinationArray } from "../../config/utils/function";
 
 const FeaturedDestination = observer(() => {
   const router = useRouter()
@@ -72,7 +72,7 @@ const FeaturedDestination = observer(() => {
           size={{ base: "md", lg: "lg" }}
           rightIcon={<FiArrowRight />}
           _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
-          onClick={() => router.push(`/destinations/${dest?.location?.name?.split(' ').join('-')}/${dest?.destination?.split(' ').join('-')}`)}
+          onClick={() => router.push(`/destinations/${dest?.location?.name?.split(' ').join('-')}/${getDestinationArray(dest)}`)}
         >
           Explore More
         </Button>

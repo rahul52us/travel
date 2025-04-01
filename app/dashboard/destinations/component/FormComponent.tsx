@@ -118,7 +118,8 @@ const FormComponent = ({ loading, initialValues, onSubmit, close, isEdit }: any)
                   name="destination"
                   placeholder="Enter the Destination"
                   label="Destination"
-                  onChange={handleChange}
+                  type="tags"
+                  onChange={(dt : any) => setFieldValue('destination', dt)}
                   value={values.destination}
                   error={errors.destination}
                   showError={showError}
@@ -160,17 +161,18 @@ const FormComponent = ({ loading, initialValues, onSubmit, close, isEdit }: any)
                   name="perks"
                   placeholder="Add Perks (press Enter)"
                   label="Perks"
-                  onChange={handleChange}
+                  onChange={(dt) => setFieldValue('perks',dt)}
                   value={values.perks}
                   error={errors.perks}
                   showError={showError}
                   required={true}
                 />
                 <CustomInput
-                  name="tags"
+                  type="tags"
+                  name="highlights"
                   placeholder="Add Highlights (press Enter)"
                   label="Highlights"
-                  onChange={handleChange}
+                  onChange={(dt) => setFieldValue('highlights',dt)}
                   value={values.highlights}
                   error={errors.highlights}
                   showError={showError}

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import CustomSubHeading from "../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/navigation";
-import { formatTitle } from "../../../config/utils/function";
+import { formatTitle, getDestinationArray } from "../../../config/utils/function";
 
 const progress = keyframes`
   from { width: 0; }
@@ -143,7 +143,7 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
               _hover={{ transform: "scale(1.05)" }}
               transition="all 0.5s ease"
               fontSize={{ base: "sm", md: "md" }}
-              onClick={() => router.push(`/destinations/${randomLocations[activeIndex].location?.name?.split(' ').join('-')}/${randomLocations[activeIndex].destination}`)}
+              onClick={() => router.push(`/destinations/${randomLocations[activeIndex].location?.name?.split(' ').join('-')}/${getDestinationArray(randomLocations[activeIndex].destination)}`)}
             >
               EXPLORE ALL
             </Box>

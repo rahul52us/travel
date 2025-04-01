@@ -6,5 +6,5 @@ export const initialValues = {
     duration : "",
     maxGroupSize: 6,
     description : "",
-    destination:{name : "western-europe", _id : "dsfsdfsdffsd46fsd45f"},
+    destination:{name : ["western-europe"], _id : "dsfsdfsdffsd46fsd45f"},
 }

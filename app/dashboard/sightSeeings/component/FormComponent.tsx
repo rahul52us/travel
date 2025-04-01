@@ -178,7 +178,7 @@ const FormComponent = ({
                   showError={showError}
                   required={true}
                   options={destination.data}
-                  getOptionLabel={(options: any) => options.destination}
+                  getOptionLabel={(options: any) => options.destination?.join(", ")}
                   getOptionValue={(options: any) => options._id}
                 />
                 <CustomInput

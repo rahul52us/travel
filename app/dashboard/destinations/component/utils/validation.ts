@@ -8,11 +8,7 @@ const validations = Yup.object().shape({
   // Basic fields
   location: Yup.mixed().required('location is required'),
   description: Yup.string(),
-  destination: Yup.string()
-    .required('Destination is required')
-    .min(2, 'Destination must be at least 2 characters')
-    .max(100, 'Destination must be less than 100 characters'),
-
+  destination: Yup.array(),
   price: Yup.number()
     .required('Price is required')
     .positive('Price must be a positive number')
@@ -38,7 +34,7 @@ const validations = Yup.object().shape({
     .of(
         Yup.string()
             .required('Each highlight is required')
-            .min(3, 'Each highlight must be at least 3 characters')
+            .min(2, 'Each highlight must be at least 1 characters')
             .max(500, 'Each highlight must be less than 500 characters')
     )
     .min(1, 'At least one highlight is required')

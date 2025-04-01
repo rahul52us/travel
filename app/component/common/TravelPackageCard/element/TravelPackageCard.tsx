@@ -17,8 +17,8 @@ import { keyframes } from "@emotion/react";
 import { useState } from "react";
 import { IconType } from "react-icons";
 import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, FaShip, FaStar, FaTrain, FaUtensils } from "react-icons/fa";
-import { formatTitle } from "../../../../config/utils/function";
-import { useParams, useRouter } from "next/navigation";
+import { formatTitle, getDestinationArray } from "../../../../config/utils/function";
+import { useRouter } from "next/navigation";
 import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
 
   // Bounce animation for the button
@@ -62,8 +62,6 @@ import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
     const [openBookingModal, setOpenBookingModal] = useState({open : false, data : pkg})
     const [isOpen] = useState(false);
     const router = useRouter()
-    const params = useParams()
-    // Toggle function to show/hide details
 
     return (
       <Card
@@ -111,9 +109,9 @@ import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
             <Flex position="absolute" bottom={4} left={4} color="white" zIndex={1} align="center">
               <FaMapMarkerAlt size={20} />
               <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)" cursor="pointer" onClick={() => {
-                if(params?.location)
+                if(pkg?.location?.name)
                 {
-                  router.push(`/destinations/${params?.location}/${pkg?.destination?.split(' ')?.join('-')}`)
+                  router.push(`/destinations/${pkg?.location?.name}/${getDestinationArray(pkg)}`)
                 }
               }}>
                 {formatTitle(pkg.destination)}

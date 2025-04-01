@@ -21,6 +21,7 @@ import {
   TagCloseButton,
   Checkbox,
   Button,
+  HStack,
 } from "@chakra-ui/react";
 import Select from "react-select";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
@@ -121,15 +122,18 @@ const CustomInput: React.FC<CustomInputProps> = ({
     [name, onChange]
   );
 
-  const handleTagAdd = (e?: React.KeyboardEvent<HTMLInputElement>) => {
-    if ((!e || e.key === "Enter") && inputValue) {
-        const newTags = [...(value || []), inputValue];
-        if (onChange) {
-            onChange(newTags);
-        }
-        setInputValue("");
+  const handleTagAdd = (e?: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>) => {
+    if ((e && "key" in e && e.key !== "Enter") || !inputValue.trim()) {
+      return;
     }
-};
+
+    const newTags = [...(value || []), inputValue.trim()];
+    if (onChange) {
+      onChange(newTags);
+    }
+    setInputValue(""); // Clear input
+  };
+
 
 const handleTagRemove = (tagToRemove: string) => {
   const newTags = (value || []).filter((tag: string) => tag !== tagToRemove);
@@ -234,29 +238,35 @@ const handleTagRemove = (tagToRemove: string) => {
             {...rest}
           />
         );
-      case "tags":
-        return (
-          <Box>
-            <Input
-              placeholder={placeholder}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              name={name}
-              disabled={disabled}
-              onKeyDown={handleTagAdd}
-            />
-            <Wrap mt={2}>
-              {value?.map((tag: string, index: number) => (
-                <WrapItem key={index}>
-                  <Tag size="md" borderRadius="full" colorScheme="blue">
-                    <TagLabel>{tag}</TagLabel>
-                    <TagCloseButton onClick={() => handleTagRemove(tag)} />
-                  </Tag>
-                </WrapItem>
-              ))}
-            </Wrap>
-          </Box>
-        );
+        case "tags":
+          return (
+            <Box>
+              <HStack>
+                <Input
+                  placeholder={placeholder}
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  name={name}
+                  disabled={disabled}
+                  onKeyDown={handleTagAdd}
+                />
+                <Button onClick={handleTagAdd} colorScheme="blue">
+                  Add
+                </Button>
+              </HStack>
+              <Wrap mt={2}>
+                {value?.map((tag: string, index: number) => (
+                  <WrapItem key={index}>
+                    <Tag size="md" borderRadius="full" colorScheme="blue">
+                      <TagLabel>{tag}</TagLabel>
+                      <TagCloseButton onClick={() => handleTagRemove(tag)} />
+                    </Tag>
+                  </WrapItem>
+                ))}
+              </Wrap>
+            </Box>
+          );
+
       case "file-drag":
         return (
           <div
