@@ -98,12 +98,13 @@ const SightseeingCard = ({ place }) => {
           color={textColor}
           mb={2}
           noOfLines={2}
-          onClick={() =>
+          onClick={() => {
             router.push(
               `/destinations/${
-                place?.destination?.location?.name
+                place?.destination?.location?.name?.split(' ')?.join('-')
               }/${getDestinationArray(place.destination)}`
             )
+          }
           }
         >
           {place.destination?.destination?.join(" , ") || "Unknown Destination"}

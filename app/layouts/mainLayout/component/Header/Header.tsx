@@ -18,8 +18,9 @@ import NavItemsLayout from "./component/NavItemsLayout";
 import HeroNavButton from "./component/HeroNavButton";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/navigation";
+import { observer } from "mobx-react-lite";
 
-const Header = () => {
+const Header = observer(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
 
@@ -109,10 +110,10 @@ const Header = () => {
         <Flex flex={1} justify="center" pr={2}>
           <NavItemsLayout />
         </Flex>
-        <HeroNavButton />
+        <HeroNavButton onClick={() => router.push("/contact-us")} />
       </Flex>
     </Box>
   );
-};
+});
 
 export default Header;

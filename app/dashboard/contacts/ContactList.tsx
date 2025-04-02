@@ -62,7 +62,7 @@ const Contactlist = observer(({ onAdd, onEdit }: any) => {
   // Define table columns
   const ContactTableColumn = [
     { headerName: "Name", key: "name", props: { row: { textAlign: "center" } } },
-    { headerName: "InQuiry", key: "inquiryType", props: { row: { textAlign: "center" } } },
+    { headerName: "Location", key: "location", props: { row: { textAlign: "center" } } },
     { headerName: "Email", key: "email", props: { row: { textAlign: "center" } } },
     { headerName: "Phone", key: "phone", props: { row: { textAlign: "center" } } },
     {
@@ -78,8 +78,7 @@ const Contactlist = observer(({ onAdd, onEdit }: any) => {
           "-"
         ),
       props: { row: { textAlign: "center" } },
-    },
-    { headerName: "Hear From", key: "hearFrom", props: { row: { textAlign: "center" } } },
+    }
   ];
 
   return (

@@ -62,6 +62,15 @@ class ContactStore {
     }
   };
 
+  sendResume = async (sendData: any) => {
+    try {
+      const { data } = await axios.post("/contact/send-resume", {...sendData,company : authStore.company});
+      return data;
+    } catch (err: any) {
+      return Promise.reject(err?.response?.data || err);
+    }
+  };
+
   // Edit Testimonial
   updateContact = async (id : any,sendData : any) => {
     try {

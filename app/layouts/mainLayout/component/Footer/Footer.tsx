@@ -13,14 +13,50 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ContactSection from "./components/ContactSection";
 import FooterSection from "./components/FooterSection";
 import { footerData } from "./components/footerData";
+import { observer } from "mobx-react-lite";
+import stores from "../../../../store/stores";
+import { getDestinationArray } from "../../../../config/utils/function";
 
 // Removed empty interface
-export const Footer: React.FC = () => {
+export const Footer: React.FC = observer(() => {
+  const {destinationStore : {destination}} = stores
   const textColor = useColorModeValue("gray.100", "white");
+
+  const [destinationData, setDestinationsData] = useState([])
+
+  useEffect(() => {
+    if (destinationData.length === 0 && destination?.data?.length > 0) {
+      setDestinationsData(destination.data.slice(0, 7));
+    }
+  }, [destination?.data])
+
+  const sections : any = [
+    {
+      title: "Quick Links",
+      links: [
+        { name: "Home", href: "/" },
+        { name: "About Us", href: "/about-us" },
+        { name: "Sightseeing", href: "/sightseeing" },
+        { name: "Blogs", href: "/blogs" },
+        { name: "Testimonials", href: "/testimonials" },
+        { name: "Contact Us", href: "/contact-us" }
+      ]
+    },
+    {
+      title: "Destinations",
+      links: destinationData?.map((dt: any) => ({
+        name: dt?.destination?.join(", "),
+        href: `/destinations/${dt?.location?.name?.split(" ").join("-")}/${getDestinationArray(dt)}`,
+      })) || []
+    }
+
+
+  ]
+
 
   return (
     <Box
@@ -116,7 +152,7 @@ export const Footer: React.FC = () => {
             </Stack>
 
             {/* Sections */}
-            {footerData.sections.map((section) => (
+            {sections.map((section) => (
               <FooterSection key={section.title} section={section} />
             ))}
 
@@ -200,4 +236,4 @@ export const Footer: React.FC = () => {
       </Box>
     </Box>
   );
-};
+})

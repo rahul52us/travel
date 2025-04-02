@@ -16,7 +16,6 @@ interface FooterSectionProps {
 
 const FooterSection: React.FC<FooterSectionProps> = ({ section }) => {
   const router = useRouter()
-
   return (
     <Stack align="flex-start" mt={4}>
       <Text fontWeight="400" fontSize="lg" mb={1} color={'teal.400'}>

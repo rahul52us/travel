@@ -6,9 +6,7 @@ import ContactUsPage from '../../component/ContactUs/ContactUsPage/ContactUsPage
 const page = () => {
   return (
     <Box>
-
         <ContactUsPage/>
-      
     </Box>
   )
 }

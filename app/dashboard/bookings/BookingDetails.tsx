@@ -67,7 +67,6 @@ const BookingList = observer(({ onAdd, onEdit }: any) => {
         type: "component",
         metaData: {
           component: (dt: any) => {
-            console.log(dt)
             return(
             <Box m={1}>
               <Text>{Array.isArray(dt?.title) ?  dt?.title?.join(' , ') : dt?.title}</Text>

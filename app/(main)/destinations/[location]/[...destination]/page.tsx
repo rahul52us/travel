@@ -43,7 +43,7 @@ const Page = observer(() => {
     );
   }
 
-  const formattedDestination = destinations.map(formatTitle).join(", ");
+  const formattedDestination = destinations.map(formatTitle).join(" , ");
 
   const filteredPackages = destination?.data?.filter((pkg) =>
     pkg.destination?.some(dest => destinations?.includes(dest?.toLowerCase().replace(/\s+/g, "-")))

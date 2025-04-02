@@ -31,7 +31,7 @@ const NavItemsLayout: React.FC<NavItemsLayoutProps> = observer(({ onClose }) => 
       new Set(location.data?.map((dest: { name: string }) => dest.name))
     ).map((uniqueDest : any) => ({
       title: formatTitle(uniqueDest),
-      link: `/sightseeing`,
+      link: `/sightseeing/${uniqueDest?.split(' ').join('-')}`,
     }));
 
     return [

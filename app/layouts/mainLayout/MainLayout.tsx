@@ -16,7 +16,7 @@ const MainLayout: React.FC<MainLayoutProps> = observer(({ children }) => {
   const {destinationStore : {getDestinations}, locationStore : {getLocations}} = stores
 
   useEffect(() => {
-    getLocations({page : 1, limit : 15})
+    getLocations({page : 1, limit : 20})
     getDestinations({page : 1, limit : 15})
   },[getDestinations, getLocations])
 

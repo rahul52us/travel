@@ -111,7 +111,7 @@ import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
               <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)" cursor="pointer" onClick={() => {
                 if(pkg?.location?.name)
                 {
-                  router.push(`/destinations/${pkg?.location?.name}/${getDestinationArray(pkg)}`)
+                  router.push(`/destinations/${pkg?.location?.name?.split(' ')?.join(',')}/${getDestinationArray(pkg)}`)
                 }
               }}>
                 {formatTitle(pkg.destination)}
