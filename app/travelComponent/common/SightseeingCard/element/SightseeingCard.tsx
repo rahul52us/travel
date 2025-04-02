@@ -81,7 +81,7 @@ const SightseeingCard = ({ place }) => {
               cursor="pointer"
               onClick={() =>
                 router.push(
-                  `/destinations/${place?.destination?.location?.name}`
+                  `/destinations/${place?.destination?.location?.name?.split(' ')?.join('-')}`
                 )
               }
             >
