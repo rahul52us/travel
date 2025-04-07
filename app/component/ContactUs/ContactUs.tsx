@@ -37,7 +37,6 @@ const ContactUs = observer(() => {
 
   const headingSize = useBreakpointValue({ base: "2xl", md: "3xl", lg: "4xl" });
   const formPadding = useBreakpointValue({ base: 5, md: 7, lg: 8 });
-  const buttonWidth = useBreakpointValue({ base: "100%", md: "240px" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -287,7 +286,7 @@ const ContactUs = observer(() => {
                 <GridItem colSpan={{ base: 1, md: 2 }}>
                   <FormControl isRequired>
                     <FormLabel fontSize="sm" color="#1A3C52" fontWeight={600} letterSpacing="wide">
-                      Preferred Destination
+                      Preferred Location
                     </FormLabel>
                     <Select
                       name="location"
@@ -338,10 +337,10 @@ const ContactUs = observer(() => {
               </Grid>
 
               {/* Button */}
-              <Box textAlign={{ base: "center", md: "right" }}>
+              <Box width="100%">
                 <CustomButton
                   size="lg"
-                  width={buttonWidth}
+                  width={'100%'}
                   icon={LuArrowUpRight}
                   onClick={handleSubmit}
                   isLoading={isSubmitting}

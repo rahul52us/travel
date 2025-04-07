@@ -187,7 +187,7 @@ import {
                 </FormControl>
 
                 <FormControl isRequired>
-                  <FormLabel fontSize="sm">Preferred Destination</FormLabel>
+                  <FormLabel fontSize="sm">Preferred Location</FormLabel>
                   <Input
                     name="destination"
                     placeholder="Enter your destination"

@@ -257,7 +257,7 @@ const DelayedModal = () => {
                 <GridItem colSpan={{ base: 1, md: 2 }}>
                   <FormControl isRequired>
                     <FormLabel fontSize="sm" color="#1A3C52" fontWeight={600} letterSpacing="wide">
-                      Preferred Destination
+                      Preferred Location
                     </FormLabel>
                     <Select
                       name="location"
