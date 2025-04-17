@@ -78,7 +78,7 @@ const AddForm = observer(({ open, onClose, getData }: any) => {
     <Box>
       <CustomDrawer
         width="80vw"
-        title="Add Destinations"
+        title="Add SightSeeing"
         open={open}
         close={() => {
           onClose();

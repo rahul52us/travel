@@ -58,29 +58,30 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
             src={coverImage?.url}
             h={{ base: "210px", lg: "260px" }}
             objectFit={"cover"}
-            alt="best counseling psychologist in Noida"
+            alt={"Image not found"}
             rounded={"12px"}
             w={"100%"}
             filter={"brightness(0.7)"}
           />
           {!otherBlog && (
-            <Flex position={"absolute"} top={4} left={4} gap={2}>
-              {tags &&
-                tags.map((tag, index) => (
-                  <Text
-                    key={index}
-                    color={"white"}
-                    py={1}
-                    px={2}
-                    rounded={"6px"}
-                    fontSize={"sm"}
-                    backdropBlur={"lg"}
-                    bg={"whiteAlpha.300"}
-                    backdropFilter={"blur(10px)"}
-                  >
-                    {tag}
-                  </Text>
-                ))}
+            <Flex position={"absolute"} top={4} left={4} gap={1} wrap="wrap">
+              {tags?.map((tag, index) => (
+                <Text
+                  key={index}
+                  color={"white"}
+                  py={1}
+                  px={2}
+                  rounded={"6px"}
+                  fontSize={"sm"}
+                  backdropBlur={"lg"}
+                  bg={"whiteAlpha.300"}
+                  backdropFilter={"blur(10px)"}
+                  m={1}
+                  _hover={{ bg: "whiteAlpha.500", cursor: "pointer" }} // Hover effect
+                >
+                  {tag}
+                </Text>
+              ))}
             </Flex>
           )}
           {otherBlog ? (

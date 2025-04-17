@@ -12,11 +12,9 @@ const BlogsPage = observer(() => {
   return (
     <Box>
       <BlogFeatureCard />
-
       <Box mt={12}>
         <VideoCarousel />
       </Box>
-
       <Box mt={{ base: "50px", lg: "80px" }} maxW={{ md: "90%", xl: '85%' }} mx={'auto'} px={{ base: 3, md: 0 }}>
         <BlogCardSection />
         <Box mt={{ base: "40px", lg: "80px" }}>

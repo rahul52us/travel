@@ -1,4 +1,4 @@
-import { Box, Center, FormControl, FormLabel, Grid, Heading, Input, Select, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react";
+import { Box, Center, Divider, FormControl, FormLabel, Grid, Heading, Input, Select, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react";
 import CustomSmallTitle from "../../../../component/common/CustomSmallTitle/CustomSmallTitle";
 import BlogsCard from "./BlogsCard";
 import { useCallback, useEffect, useState } from "react";
@@ -6,7 +6,7 @@ import { observer } from "mobx-react-lite";
 import stores from "../../../../store/stores";
 import { getStatusType } from "../../../../config/utils/function";
 
-const BlogCardSection = observer(() => {
+const BlogCardSection = observer(({fromIndividualBlog} : any) => {
   const {
     auth: { openNotification },
     BlogStore: { getBlogs, blogs },
@@ -51,8 +51,8 @@ const BlogCardSection = observer(() => {
 
   return (
     <Box>
+      {fromIndividualBlog && <Divider mt={5} mb={5}/> }
       <CustomSmallTitle>Resources & Insights</CustomSmallTitle>
-
       <Heading
         mt={2}
         as={"h2"}
@@ -61,7 +61,11 @@ const BlogCardSection = observer(() => {
         fontWeight={400}
         px={{ base: 2, md: 0 }}
       >
-        <strong style={{ fontWeight: 600 }}>Explore Blogs, Events & More </strong>
+<strong style={{ fontWeight: 600 }}>
+  {fromIndividualBlog
+    ? 'Discover More Related Blogs You Might Love'
+    : 'Explore Our Latest Blogs, Events, and More'}
+</strong>
       </Heading>
 
       <Tabs

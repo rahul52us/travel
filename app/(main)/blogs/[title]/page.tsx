@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import SeoHead from "../../../component/config/component/SeoHead/SeoHead";
 import PageLoader from "../../../component/common/Loader/PageLoader";
 import { FACEBOOK_LINK, INSTRAGRAM_LINK } from "../../../config/utils/variables";
+import BlogCardSection from "../components/BlogsCard/BlogCardSection";
 
 const socialLinks = [
   // {
@@ -182,6 +183,7 @@ const IndividualBlogPage = observer(() => {
             </Button>
           </Box>
         </Grid>
+        <BlogCardSection fromIndividualBlog={true}/>
       </Box>
     </PageLoader>
   );

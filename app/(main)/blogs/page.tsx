@@ -5,7 +5,7 @@ import BlogsPage from './components/BlogsPage'
 const page = () => {
   return (
     <Box>
-        <BlogsPage/>
+        <BlogsPage />
     </Box>
   )
 }
