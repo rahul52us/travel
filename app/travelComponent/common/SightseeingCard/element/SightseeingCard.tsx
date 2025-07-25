@@ -56,8 +56,8 @@ const SightseeingCard = ({ place }) => {
               key={img._id}
               src={img.url}
               alt={img.name}
-              h="80px"
-              w="120px"
+              h="60px"
+              w="80px"
               objectFit="cover"
               borderRadius="md"
               boxShadow="sm"

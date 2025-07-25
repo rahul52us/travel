@@ -70,6 +70,7 @@ const Layout = observer(({ setFormModal, currentPage, setCurrentPage }: any) => 
                 <Heading
                   cursor="pointer"
                   as="h2"
+                  textTransform={"capitalize"}
                   size="md"
                   color="blue.600"
                   noOfLines={1}
@@ -93,13 +94,13 @@ const Layout = observer(({ setFormModal, currentPage, setCurrentPage }: any) => 
                 />
               </Flex>
 
-              <Text fontSize="sm" color={textColor} noOfLines={1}>
+              <Text fontSize="sm" color={textColor} noOfLines={1} textTransform={"capitalize"}>
                 {dest.location?.name}
               </Text>
 
               <Flex justify="space-between" align="center">
                 <Text fontSize="lg" fontWeight="bold" color="green.500">
-                  ${dest.price?.toLocaleString()}
+                ₹{dest.price?.toLocaleString()}
                 </Text>
                 <Text fontSize="sm" color="yellow.500">
                   ★ {dest.rating}
