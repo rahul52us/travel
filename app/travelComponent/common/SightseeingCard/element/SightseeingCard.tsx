@@ -107,7 +107,8 @@ const SightseeingCard = ({ place }) => {
           }
           }
         >
-          {place.destination?.destination?.join(" , ") || "Unknown Destination"}
+          {/* {place.destination?.destination?.join(" , ") || "Unknown Destination"} */}
+          {place?.name || place?.destination?.destination}
         </Text>
 
         {/* Description */}
@@ -118,7 +119,7 @@ const SightseeingCard = ({ place }) => {
         {/* Price & Duration */}
         <HStack justify="space-between" align="center">
           <Text fontSize="lg" fontWeight="600" color={priceColor}>
-            {place.price ? `$ ${place.price}` : "Price Not Available"}
+            {place.price ? `₹ ${place.price}` : "Price Not Available"}
           </Text>
           <Tag colorScheme="purple" variant="outline">
             <TagLeftIcon boxSize="12px" as={TimeIcon} />

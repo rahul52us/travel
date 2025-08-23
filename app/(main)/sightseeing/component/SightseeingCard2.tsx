@@ -130,10 +130,11 @@ const SightSeeingCard2 = ({ tour }) => {
             gap={2}
             cursor="pointer"
           >
-            <Icon as={FaMapMarkedAlt} boxSize={4} color="blue.500" />
-            <Heading as="h3" size={{ base: "sm", md: "md" }}>
-              {tour?.destination?.destination?.join(" , ") ||
-                "Unknown Destination"}
+            <Icon as={FaMapMarkedAlt} boxSize={6} color="blue.500" />
+            <Heading as="h2" fontSize={{ base: "sm", md: "26px" }}>
+              {/* {tour?.destination?.destination?.join(" , ") ||
+                "Unknown Destination"} */}
+                {tour?.name || tour?.title }
             </Heading>
           </Flex>
 
@@ -148,8 +149,8 @@ const SightSeeingCard2 = ({ tour }) => {
             cursor="pointer"
           >
             <Icon as={FaMapPin} boxSize={4} color="red.500" />
-            <Heading as="h5" size={{ base: "xs", md: "xs" }}>
-              {tour?.destination?.location?.name || "Unknown Location"}
+            <Heading as="h4" size={{ base: "xs", md: "sm" }} fontWeight={600} color={"blue.500"}>
+              {tour?.title || tour?.destination?.destination || "Unknown Location"}
             </Heading>
           </Flex>
         </Flex>
@@ -158,13 +159,13 @@ const SightSeeingCard2 = ({ tour }) => {
           <Flex align="center">
             <Icon as={FiClock} mr={2} />
             <Text fontWeight="500" fontSize={{ base: "xs", md: "md" }}>
-              {tour.duration}
+              {tour?.duration}
             </Text>
           </Flex>
           <Flex align="center">
             <Icon as={FiUser} mr={2} />
             <Text fontWeight="500" fontSize={{ base: "xs", md: "md" }}>
-              Max {tour.maxGroupSize} people
+              Max {tour?.maxGroupSize} people
             </Text>
           </Flex>
         </HStack>
@@ -172,9 +173,10 @@ const SightSeeingCard2 = ({ tour }) => {
         <Text
           color="gray.600"
           fontSize={{ base: "xs", md: "md" }}
+          minH={'fit-content'}
           noOfLines={3}
         >
-          {tour.description}
+          {tour?.description}
         </Text>
 
         <Stack spacing={3}>
@@ -193,7 +195,7 @@ const SightSeeingCard2 = ({ tour }) => {
               fontWeight="800"
               color="blue.600"
             >
-              {tour.price}
+              ₹{tour?.price}
               <Text
                 as="span"
                 fontSize={{ base: "sm", md: "md" }}

@@ -59,7 +59,7 @@ const Login = observer(() => {
 
   return (
     <Flex justify={"center"}>
-      <Box w={"100%"} maxW="400px" p={6} textAlign={"center"}>
+      <Box w={"100%"} maxW="400px" p={4} textAlign={"center"}>
         <Heading mb={2} size="lg" color="#0F0F0F">
           Log in to your account
         </Heading>
@@ -102,6 +102,7 @@ const Login = observer(() => {
 
           <CustomButton
             size="md"
+            h={"44px"}
             width="100%"
             type="submit"
             mt={2}

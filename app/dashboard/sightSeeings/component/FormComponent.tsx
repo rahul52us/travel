@@ -167,6 +167,17 @@ const FormComponent = ({
                 borderColor="gray.200"
                 bg="white"
               >
+
+                 <CustomInput
+                  name="name"
+                  placeholder="SightSeeing Name"
+                  label="Name"
+                  onChange={handleChange}
+                  value={values.name}
+                  error={errors.name}
+                  showError={showError}
+                  required={true}
+                />
                 <CustomInput
                   name="destination"
                   placeholder="Select the Destination"

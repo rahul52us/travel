@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import stores from "./store/stores";
 import Notification from "./component/common/Notification/Notification";
 import { Montserrat } from 'next/font/google';
-import WhatsAppButton from "./component/common/whatsApp/whatsAppButton";
+// import WhatsAppButton from "./component/common/whatsApp/whatsAppButton";
 
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 
@@ -46,7 +46,7 @@ export default function RootLayout({
         <ChakraProvider theme={theme}>
           <Notification />
           <LayoutComponent>{children}</LayoutComponent>
-          <WhatsAppButton />
+          {/* <WhatsAppButton /> */}
         </ChakraProvider>
       </body>
     </html>

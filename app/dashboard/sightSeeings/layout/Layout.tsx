@@ -94,7 +94,7 @@ const Layout = observer(({ setFormModal, currentPage, setCurrentPage }: any) => 
                     setFormModal({ open: true, type: "edit", data: dest })
                   }
                 >
-                  {dest.title}
+                  {dest?.name || dest?.title}
                 </Heading>
 
                 {/* Delete Button */}
@@ -116,7 +116,7 @@ const Layout = observer(({ setFormModal, currentPage, setCurrentPage }: any) => 
 
               <Flex justify="space-between" align="center">
                 <Text fontSize="lg" fontWeight="bold" color="green.500">
-                  ${dest.price.toLocaleString()}
+                  ₹{dest.price.toLocaleString()}
                 </Text>
                 <Text fontSize="sm" color="yellow.500">
                   ★ {dest.rating || "N/A"}

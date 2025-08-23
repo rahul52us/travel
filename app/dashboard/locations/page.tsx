@@ -36,7 +36,7 @@ const Location = observer(() => {
       {/* Header Section with Button */}
       <Flex align="center" mb={6}>
         <Heading as="h1" size="lg" color="blue.600">
-          Locations
+          Country
         </Heading>
         <Spacer />
         <Button
