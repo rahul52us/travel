@@ -134,16 +134,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
               </Text>
             )}
 
-            {/* Perks */}
-            <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={3} mb={3}>
-              {pkg.perks.map((perk: string, index: number) => (
-                <Flex key={index} align="center">
-                  <PerkIcon type={perk} />
-                  <Text ml={2} fontSize={{ base: "xs", lg: "sm" }} fontWeight="medium">{perk}</Text>
-                </Flex>
-              ))}
-
-               <Flex
+             <Flex
                   mt={4}
                   overflowX="auto"
                   minW={"100%"}
@@ -154,7 +145,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
                   }}
                 >
                   <Text fontSize="sm" fontWeight="bold" mr={4}>
-                    Itinerary:
+                    Cities:
                   </Text>
                   {pkg?.itinerary.map((stop, index) => (
                     <Flex key={index} align="center" mr={3} whiteSpace="nowrap">
@@ -172,6 +163,17 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
                     </Flex>
                   ))}
                 </Flex>
+
+            {/* Perks */}
+            <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={3} mb={3} mt={4}>
+              {pkg.perks.map((perk: string, index: number) => (
+                <Flex key={index} align="center">
+                  <PerkIcon type={perk} />
+                  <Text ml={2} fontSize={{ base: "xs", lg: "sm" }} fontWeight="medium">{perk}</Text>
+                </Flex>
+              ))}
+
+              
             </SimpleGrid>
           </CardBody>
         </GridItem>
