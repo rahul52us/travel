@@ -55,6 +55,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
     <Card
       borderRadius="xl"
       overflow="hidden"
+      
       boxShadow="md"
       transition="all 0.3s ease"
       _hover={{ transform: "translateY(-5px)", boxShadow: "xl" }}
@@ -102,7 +103,8 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
               >
                 <FaMapMarkerAlt size={18} />
                 <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)">
-                  {formatTitle(pkg.destination)}
+                  {/* {formatTitle(pkg.destination)} */}
+                  {formatTitle(pkg?.name)}
                 </Heading>
               </Flex>
             </Box>
@@ -112,6 +114,9 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
         {/* Content Section */}
         <GridItem>
           <CardBody>
+            <Heading as="h3" size="sm" fontWeight={500} color={"blue.500"} textAlign={'end'} mb={2}>
+             {formatTitle(pkg.destination)}
+            </Heading>
             <Flex justify="space-between" align="center" mb={2}>
               <Tag colorScheme="blue" borderRadius="full" px={4} size="sm">
                 {pkg.days} Days / {pkg.days - 1} Nights
@@ -123,9 +128,9 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
             </Flex>
 
             {/* Description */}
-            {pkg.description && (
+            {pkg?.description && (
               <Text fontSize="sm" color="gray.600" mb={3} noOfLines={{ base: 2, md: 3 }}>
-                {pkg.description}
+                {pkg?.description}
               </Text>
             )}
 
@@ -137,6 +142,36 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
                   <Text ml={2} fontSize={{ base: "xs", lg: "sm" }} fontWeight="medium">{perk}</Text>
                 </Flex>
               ))}
+
+               <Flex
+                  mt={4}
+                  overflowX="auto"
+                  minW={"100%"}
+                  align="center"
+                  sx={{
+                    "::-webkit-scrollbar": { display: "none" },
+                    scrollbarWidth: "none",
+                  }}
+                >
+                  <Text fontSize="sm" fontWeight="bold" mr={4}>
+                    Itinerary:
+                  </Text>
+                  {pkg?.itinerary.map((stop, index) => (
+                    <Flex key={index} align="center" mr={3} whiteSpace="nowrap">
+                      <Box textAlign="center">
+                        <Text fontSize="sm" fontWeight="600" color="blue.500" noOfLines={1}>
+                          {stop?.place}
+                        </Text>
+                        <Text fontSize="sm" color="gray.500" noOfLines={1}>
+                          {stop?.nights} nights
+                        </Text>
+                      </Box>
+                      {index < pkg.itinerary.length - 1 && (
+                        <Box flex="1" height="2px" bg="gray.300" mx={2} />
+                      )}
+                    </Flex>
+                  ))}
+                </Flex>
             </SimpleGrid>
           </CardBody>
         </GridItem>

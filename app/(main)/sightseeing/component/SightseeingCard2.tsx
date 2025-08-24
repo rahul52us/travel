@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import {
   Box,
   Button,
@@ -13,11 +12,12 @@ import {
   Tag,
   Text,
 } from "@chakra-ui/react";
-import { FiArrowRightCircle, FiClock, FiUser } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { FaMapMarkedAlt, FaMapPin } from "react-icons/fa";
-import { getDestinationArray } from "../../../config/utils/function";
+import { FiArrowRightCircle, FiClock, FiUser } from "react-icons/fi";
 import BookingInfoModal from "../../../component/BookingInfoModal/BookingInfoModal";
+import { getDestinationArray } from "../../../config/utils/function";
 
 const SightSeeingCard2 = ({ tour }) => {
   const [openBookingModal, setOpenBookingModal] = useState({
@@ -55,10 +55,15 @@ const SightSeeingCard2 = ({ tour }) => {
       width="full"
       transition="all 0.2s"
       _hover={{ transform: "translateY(-4px)", boxShadow: "xl" }}
-      maxH={{ lg: "330px" }}
+      maxH={{ lg: "380px" }} // Increased height to accommodate better spacing
       p={{ base: 2, md: 4 }}
     >
-      <Box flex={{ md: 1 }} position="relative">
+      {/* Image Section */}
+      <Box 
+        flex={{ md: 1 }} 
+        position="relative"
+        minW={{ md: "300px" }} // Set minimum width for image section
+      >
         <Image
           src={activeImage}
           alt={tour.title}
@@ -112,9 +117,10 @@ const SightSeeingCard2 = ({ tour }) => {
       {/* Content Section */}
       <Flex
         flex={{ md: 2 }}
-        p={{ base: 3, md: 6 }}
+        p={{ base: 4, md: 6 }}
         direction="column"
         gap={{ base: 3, md: 4 }}
+        overflow="hidden"
       >
         <Flex direction="column" justify="space-between" align="flex-start">
           {/* Destination */}
@@ -129,18 +135,16 @@ const SightSeeingCard2 = ({ tour }) => {
             align="center"
             gap={2}
             cursor="pointer"
+            mb={1}
           >
             <Icon as={FaMapMarkedAlt} boxSize={6} color="blue.500" />
-            <Heading as="h2" fontSize={{ base: "sm", md: "26px" }}>
-              {/* {tour?.destination?.destination?.join(" , ") ||
-                "Unknown Destination"} */}
-                {tour?.name || tour?.title }
+            <Heading as="h2" fontSize={{ base: "lg", md: "26px" }} lineHeight="1.2">
+              {tour?.name || tour?.title}
             </Heading>
           </Flex>
-
+          
           {/* Location */}
           <Flex
-            mt={3}
             align="center"
             gap={2}
             onClick={() =>
@@ -149,13 +153,13 @@ const SightSeeingCard2 = ({ tour }) => {
             cursor="pointer"
           >
             <Icon as={FaMapPin} boxSize={4} color="red.500" />
-            <Heading as="h4" size={{ base: "xs", md: "sm" }} fontWeight={600} color={"blue.500"}>
+            <Heading as="h4" size={{ base: "xs", md: "sm" }} fontWeight={600} color="blue.500">
               {tour?.title || tour?.destination?.destination || "Unknown Location"}
             </Heading>
           </Flex>
         </Flex>
-
-        <HStack spacing={4} flexWrap="wrap">
+        
+        <HStack spacing={4} flexWrap="wrap" mt={2}>
           <Flex align="center">
             <Icon as={FiClock} mr={2} />
             <Text fontWeight="500" fontSize={{ base: "xs", md: "md" }}>
@@ -170,25 +174,28 @@ const SightSeeingCard2 = ({ tour }) => {
           </Flex>
         </HStack>
 
-        <Text
-          color="gray.600"
-          fontSize={{ base: "xs", md: "md" }}
-          minH={'fit-content'}
-          noOfLines={3}
-        >
-          {tour?.description}
-        </Text>
+        {/* Description with improved visibility */}
+        <Box flex="1" overflow="hidden" py={2}>
+          <Text
+            color="gray.700"
+            fontSize={{ base: "sm", md: "md" }}
+            lineHeight="1.5"
+            noOfLines={3}
+          >
+            {tour?.description}
+          </Text>
+        </Box>
 
         <Stack spacing={3}>
           <Flex align="center" fontSize="sm">
             <Icon as={FiArrowRightCircle} mr={2} color="blue.500" />
           </Flex>
         </Stack>
-
+        
         <Divider />
-
+        
         {/* Price and Booking Form */}
-        <Flex justify="space-between" align="center" flexWrap="wrap" gap={3}>
+        <Flex justify="space-between" align="center" flexWrap="wrap" gap={3} mt={2}>
           <Box>
             <Text
               fontSize={{ base: "xl", md: "2xl" }}
@@ -229,7 +236,7 @@ const SightSeeingCard2 = ({ tour }) => {
           </Flex>
         </Flex>
       </Flex>
-
+      
       <BookingInfoModal
         isOpen={openBookingModal.open}
         onClose={() => setOpenBookingModal({ data: null, open: false })}

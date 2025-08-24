@@ -88,7 +88,7 @@ const HeroSection = () => {
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
               mb={6}
-              bgGradient="linear(to-r, teal.400, blue.500)"
+              bgGradient="linear(to-r, teal.300, blue.400)"
               bgClip="text"
               lineHeight="1.2"
               textShadow={'2px 2px 4px rgba(0, 0, 0, 0.2)'}

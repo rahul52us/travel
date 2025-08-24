@@ -13,17 +13,16 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { observer } from "mobx-react-lite";
 import React, { useEffect, useState } from "react";
+import stores from "../../../../store/stores";
 import ContactSection from "./components/ContactSection";
 import FooterSection from "./components/FooterSection";
 import { footerData } from "./components/footerData";
-import { observer } from "mobx-react-lite";
-import stores from "../../../../store/stores";
-import { getDestinationArray } from "../../../../config/utils/function";
 
 // Removed empty interface
 export const Footer: React.FC = observer(() => {
-  const {destinationStore : {destination}} = stores
+  const {destinationStore : {destination}, locationStore : {location} } = stores
   const textColor = useColorModeValue("gray.100", "white");
 
   const [destinationData, setDestinationsData] = useState([])
@@ -46,15 +45,20 @@ export const Footer: React.FC = observer(() => {
         { name: "Contact Us", href: "/contact-us" }
       ]
     },
+    // {
+    //   title: "Destinations",
+    //   links: destinationData?.map((dt: any) => ({
+    //     name: dt?.destination?.join(", "),
+    //     href: `/destinations/${dt?.location?.name?.split(" ").join("-")}/${getDestinationArray(dt)}`,
+    //   })) || []
+    // }
     {
       title: "Destinations",
-      links: destinationData?.map((dt: any) => ({
-        name: dt?.destination?.join(", "),
-        href: `/destinations/${dt?.location?.name?.split(" ").join("-")}/${getDestinationArray(dt)}`,
+      links: location?.data?.map((dt: any) => ({
+        name: dt?.name,
+        href: `/destinations/${dt?.name?.split(" ").join("-")}`,
       })) || []
     }
-
-
   ]
 
 
@@ -136,7 +140,7 @@ export const Footer: React.FC = observer(() => {
                 {footerData.companyInfo.socialLinks.map((social) => (
                   <Link key={social.name} href={social.url}>
                     <Box
-                      boxSize={7}
+                      boxSize={10}
                       display="flex"
                       alignItems="center"
                       justifyContent="center"

@@ -101,6 +101,17 @@ const FormComponent = ({ loading, initialValues, onSubmit, close, isEdit }: any)
                 borderColor="gray.200"
               >
                 <CustomInput
+                  name="name"
+                  placeholder="Enter the Name"
+                  label="Name"
+                  // type="text"
+                  onChange={handleChange}
+                  value={values.name}
+                  error={errors.name}
+                  showError={showError}
+                  required={true}
+                />
+                <CustomInput
                   name="location"
                   placeholder="Enter the Location"
                   label="Location"
@@ -159,15 +170,15 @@ const FormComponent = ({ loading, initialValues, onSubmit, close, isEdit }: any)
                 <CustomInput
                   type="tags"
                   name="perks"
-                  placeholder="Add Perks (press Enter)"
-                  label="Perks"
+                  placeholder="Add highlight (press Enter)"
+                  label="Highlights"
                   onChange={(dt) => setFieldValue('perks',dt)}
                   value={values.perks}
                   error={errors.perks}
                   showError={showError}
                   required={true}
                 />
-                <CustomInput
+                {/* <CustomInput
                   type="tags"
                   name="highlights"
                   placeholder="Add Highlights (press Enter)"
@@ -177,7 +188,7 @@ const FormComponent = ({ loading, initialValues, onSubmit, close, isEdit }: any)
                   error={errors.highlights}
                   showError={showError}
                   required={true}
-                />
+                /> */}
               </SimpleGrid>
 
               {/* Itinerary Section */}

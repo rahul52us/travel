@@ -54,10 +54,13 @@ const Page = observer(() => {
     (it: any) => it.name === params?.location?.split("-").join(" ")
   );
 
+  // console.log('location--',filterLocation[0]?.tagline)
+
   return (
     <Box>
       <PageHero
-        title={`Explore the Beauty of ${formattedDestination}`}
+      title={filterLocation[0]?.tagline ? filterLocation[0]?.tagline : `Explore the Beauty of ${formattedDestination}`}
+        // title={`Explore the Beauty of ${formattedDestination}`}
         lineColor="cyan.300"
         subtitle={
           filterLocation?.length > 0

@@ -93,6 +93,15 @@ const FormComponent: React.FC<any> = ({
                   error={errors.name}
                   showError={showError}
                 />
+                <CustomInput
+                  name="tagline"
+                  placeholder="Enter the Tagline"
+                  label="Tagline"
+                  onChange={handleChange}
+                  value={values.tagline}
+                  error={errors.tagline}
+                  showError={showError}
+                />
 
                 {/* Country Field */}
                 <CustomInput

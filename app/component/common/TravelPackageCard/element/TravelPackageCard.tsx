@@ -14,11 +14,11 @@ import {
   Text
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IconType } from "react-icons";
-import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, FaShip, FaStar, FaTrain, FaUtensils } from "react-icons/fa";
+import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, FaQuestionCircle, FaShip, FaStar, FaTrain, FaUtensils } from "react-icons/fa";
 import { formatTitle, getDestinationArray } from "../../../../config/utils/function";
-import { useRouter } from "next/navigation";
 import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
 
   // Bounce animation for the button
@@ -29,32 +29,33 @@ import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
   `;
 
 
-  const PerkIcon = ({ type }: { type: string }) => {
-    const icons: Record<string, IconType> = {
-      // Existing icons
-      "5-star hotels": FaBed,
-      "Daily breakfast": FaUtensils,
-      "Guided tours": FaBinoculars,
-      "Airport transfer": FaBus,
-      "Ryokan stay": FaBed,
-      "Kaiseki dinner": FaUtensils,
-      "Tea ceremony": FaBinoculars,
-      "Bullet train pass": FaBus,
+ const PerkIcon = ({ type }: { type: string }) => {
+  const icons: Record<string, IconType> = {
+    // Existing icons
+    "5-star hotels": FaBed,
+    "Daily breakfast": FaUtensils,
+    "Guided tours": FaBinoculars,
+    "Airport transfer": FaBus,
+    "Ryokan stay": FaBed,
+    "Kaiseki dinner": FaUtensils,
+    "Tea ceremony": FaBinoculars,
+    "Bullet train pass": FaBus,
 
-      // New icons for the provided perks
-      "4 Star Hotels": FaHotel,
-      "3 Star Hotels": FaHotel,
-      "Breakfast": FaUtensils,
-      "Lunch": FaUtensils,
-      "Dinner": FaUtensils,
-      "Sightseeing and Tours": FaMapMarkedAlt,
-      "Transfers and Boat": FaShip,
-      "Transfers and EURAIL": FaTrain,
-    };
-
-    const SelectedIcon = icons[type];
-    return SelectedIcon ? <Icon as={SelectedIcon} color="blue.500" boxSize={4} /> : null;
+    // New icons
+    "4 Star Hotels": FaHotel,
+    "3 Star Hotels": FaHotel,
+    "Breakfast": FaUtensils,
+    "Lunch": FaUtensils,
+    "Dinner": FaUtensils,
+    "Sightseeing and Tours": FaMapMarkedAlt,
+    "Transfers and Boat": FaShip,
+    "Transfers and EURAIL": FaTrain,
   };
+
+  const SelectedIcon = icons[type] || FaQuestionCircle; // 👈 fallback default icon
+
+  return <Icon as={SelectedIcon} color="blue.500" boxSize={4} />;
+};
 
 
   // Main Card Component
@@ -114,7 +115,7 @@ import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
                   router.push(`/destinations/${pkg?.location?.name?.split(' ')?.join(',')}/${getDestinationArray(pkg)}`)
                 }
               }}>
-                {formatTitle(pkg.destination)}
+                {pkg?.name || formatTitle(pkg?.destination)}
               </Heading>
             </Flex>
           </Box>

@@ -14,8 +14,11 @@ const page = observer(({ location }: any) => {
     (loc) => loc?.name.toLowerCase() === formattedLocation
   );
 
+  const matchedTagline = matchedLocation?.tagline;
+
   const title = matchedLocation
-    ? `Discover Sightseeing Wonders in ${matchedLocation.name}`
+    ? matchedTagline || "Discover Sightseeing Wonders"
+    // ? `Discover Sightseeing Wonders in ${matchedLocation.name} ${locationData?.data[0]?.tagline}`
     : "Discover Sightseeing Wonders";
 
   const description = matchedLocation?.description || `Uncover the world’s most iconic landmarks, hidden gems, and cultural treasures. From ancient ruins to modern marvels, embark on unforgettable journeys.`;

@@ -5,7 +5,7 @@ import { INSTRAGRAM_LINK } from '../../../../../config/utils/variables';
 export const footerData = {
   companyInfo: {
     name: "Cosmic Travels",
-    tagline: "Explore. Dream. Discover",
+    tagline: "",
     crisisNumber: "888-888-88",
     socialLinks: [
       // {
