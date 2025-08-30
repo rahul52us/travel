@@ -154,7 +154,7 @@ const SightSeeingCard2 = ({ tour }) => {
           >
             <Icon as={FaMapPin} boxSize={4} color="red.500" />
             <Heading as="h4" size={{ base: "xs", md: "sm" }} fontWeight={600} color="blue.500">
-              {tour?.title || tour?.destination?.destination || "Unknown Location"}
+              {tour?.destination?.destination || "Unknown Location"}
             </Heading>
           </Flex>
         </Flex>

@@ -9,7 +9,7 @@ import { formatTitle, getDestinationArray } from "../../config/utils/function";
 const FeaturedDestination = observer(() => {
   const router = useRouter()
   const [currentIndex, setCurrentIndex] = useState(0);
-  const {destinationStore : {destination}} = stores
+  const {destinationStore : {destination}, locationStore : {location} } = stores
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % destination?.data?.length);
@@ -18,7 +18,16 @@ const FeaturedDestination = observer(() => {
     return () => clearInterval(interval);
   }, [destination?.data]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % location?.data?.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [destination?.data]);
+
   const dest : any = destination.data[currentIndex];
+  const loc : any = location.data[currentIndex];
 
   return (
     <Box position="relative" borderRadius="lg" overflow="hidden" h={"400px"}>
@@ -29,7 +38,8 @@ const FeaturedDestination = observer(() => {
         left="2"
         right="0"
         bottom="0"
-        bgImage={dest?.image?.url}
+        bgImage={loc?.image?.url}
+        // bgImage={dest?.image?.url}
         bgPosition="center"
         bgSize="cover"
         zIndex={-1}
@@ -58,13 +68,15 @@ const FeaturedDestination = observer(() => {
         flexDirection="column"
         alignItems="center"
         px={4}
-        w={{ base: "90%", md: "80%", lg: "600px" }}
+        w={{ base: "90%", md: "80%", lg: "800px" }}
       >
         <Heading as="h2" size={{ base: "xl", lg: "2xl" }} mb="4">
-          {formatTitle(dest?.destination)}
+          {/* {formatTitle(dest?.destination)} */}
+          {formatTitle(loc?.name)}
         </Heading>
         <Text fontSize={{ lg: "lg" }} mb="6">
-          {`Discover breathtaking landscapes, charming villages, and thrilling adventures in the heart of ${formatTitle(dest?.destination)}`}
+          {loc?.description}
+          {/* {`Discover breathtaking landscapes, charming villages, and thrilling adventures in the heart of ${formatTitle(dest?.destination)}`} */}
         </Text>
         <Button
           colorScheme="white"
@@ -72,7 +84,8 @@ const FeaturedDestination = observer(() => {
           size={{ base: "md", lg: "lg" }}
           rightIcon={<FiArrowRight />}
           _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
-          onClick={() => router.push(`/destinations/${dest?.location?.name?.split(' ').join('-')}/${getDestinationArray(dest)}`)}
+          onClick={() => router.push(`/destinations/${loc?.name?.split(' ').join('-')}/${getDestinationArray(loc)}`)}
+          // onClick={() => router.push(`/destinations/${dest?.location?.name?.split(' ').join('-')}/${getDestinationArray(dest)}`)}
         >
           Explore More
         </Button>

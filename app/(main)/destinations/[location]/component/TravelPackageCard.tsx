@@ -7,58 +7,54 @@ import {
   CardBody,
   CardFooter,
   Flex,
+  Grid,
+  GridItem,
   Heading,
-  Icon,
   SimpleGrid,
   Tag,
   Text,
-  Grid,
-  GridItem
+  Collapse,
+  IconButton
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
-import { IconType } from "react-icons";
-import { FaBed, FaBinoculars, FaBus, FaHotel, FaMapMarkedAlt, FaMapMarkerAlt, FaShip, FaStar, FaTrain, FaUtensils } from "react-icons/fa";
-import { formatTitle, getDestinationArray } from "../../../../config/utils/function";
 import { useParams, useRouter } from "next/navigation";
-import BookingInfoModal from "../../../../component/BookingInfoModal/BookingInfoModal";
 import { useState } from "react";
+import { FaMapMarkerAlt, FaStar, FaStarHalfAlt, FaRegStar, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import BookingInfoModal from "../../../../component/BookingInfoModal/BookingInfoModal";
+import { formatTitle, getDestinationArray } from "../../../../config/utils/function";
+import PerkIcon from "./PerkIcon";
 
 const bounce = keyframes`
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-3px); }
 `;
 
-const PerkIcon = ({ type }: { type: string }) => {
-  const icons: Record<string, IconType> = {
-    "5-star hotels": FaBed,
-    "Daily breakfast": FaUtensils,
-    "Guided tours": FaBinoculars,
-    "Airport transfer": FaBus,
-    "4 Star Hotels": FaHotel,
-    "3 Star Hotels": FaHotel,
-    "Breakfast": FaUtensils,
-    "Lunch": FaUtensils,
-    "Dinner": FaUtensils,
-    "Sightseeing and Tours": FaMapMarkedAlt,
-    "Transfers and Boat": FaShip,
-    "Transfers and EURAIL": FaTrain,
-  };
-  return icons[type] ? <Icon as={icons[type]} color="blue.500" boxSize={5} /> : null;
-};
-
 const TravelPackageCard = ({ pkg }: { pkg: any }) => {
-      const [openBookingModal, setOpenBookingModal] = useState({open : false, data : pkg})
+  const [openBookingModal, setOpenBookingModal] = useState({ open: false, data: pkg });
+  const [showMoreDesc, setShowMoreDesc] = useState(false);
   const router = useRouter();
   const params = useParams();
+
+  const sentences = pkg?.description
+    ?.split('.')
+    .filter((sentence: string) => sentence.trim().length > 0)
+    .map((sentence: string) => sentence.trim()) || [];
+
+  if (sentences.length === 0) return null;
+
+  const originalPrice = pkg.discount ? Math.round(pkg.price / (1 - pkg.discount / 100)) : null;
+  const fullStars = Math.floor(pkg.rating);
+  const hasHalfStar = pkg.rating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
   return (
     <Card
       borderRadius="xl"
       overflow="hidden"
-      
       boxShadow="md"
       transition="all 0.3s ease"
       _hover={{ transform: "translateY(-5px)", boxShadow: "xl" }}
+      bg="white"
     >
       {pkg.discount && (
         <Tag
@@ -70,110 +66,150 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
           size="sm"
           borderRadius="full"
           px={3}
+          zIndex={2}
         >
           {pkg.discount}% OFF
         </Tag>
       )}
-      <Grid templateColumns={{ base: "1fr", md: "1fr 1.5fr" }} gap={5} alignItems="center">
-        {/* Image Section */}
-        <GridItem>
-          <AspectRatio ratio={16 / 9}>
-            <Box
-              bgImage={pkg?.image?.url}
-              bgSize="cover"
-              bgPosition="center"
-              position="relative"
-              borderRadius="lg"
-              _after={{ content: '""', position: "absolute", inset: 0, bgGradient: "linear(to-t, blackAlpha.700, transparent)" }}
-            >
-              <Flex
-                position="absolute"
-                bottom={3}
-                left={3}
-                color="white"
-                zIndex={1}
-                align="center"
-                cursor="pointer"
-                _hover={{ textDecoration: "underline" }}
-                onClick={() => {
-                  if (params?.location) {
-                    router.push(`/destinations/${params?.location}/${getDestinationArray(pkg)}`);
-                  }
-                }}
-              >
-                <FaMapMarkerAlt size={18} />
-                <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)">
-                  {/* {formatTitle(pkg.destination)} */}
-                  {formatTitle(pkg?.name)}
-                </Heading>
-              </Flex>
-            </Box>
-          </AspectRatio>
+      <Grid templateColumns={{ base: "1fr", md: "1fr 1.5fr" }} gap={5} alignItems="stretch">
+        <GridItem
+          position="relative"
+          _before={{
+            content: '""',
+            display: "block",
+            pb: "56.25%", // Maintains 16:9 aspect ratio as minimum
+          }}
+        >
+          <Box
+            position="absolute"
+            inset={0}
+            bgImage={`url(${pkg?.image?.url})`}
+            bgSize="cover"
+            bgPosition="center"
+            _after={{
+              content: '""',
+              position: "absolute",
+              inset: 0,
+              bgGradient: "linear(to-t, blackAlpha.700, transparent)",
+            }}
+          />
+          <Flex
+            position="absolute"
+            bottom={3}
+            left={3}
+            color="white"
+            zIndex={1}
+            align="center"
+            cursor="pointer"
+            _hover={{ textDecoration: "underline" }}
+            onClick={() => {
+              if (params?.location) {
+                router.push(`/destinations/${params?.location}/${getDestinationArray(pkg)}`);
+              }
+            }}
+          >
+            <FaMapMarkerAlt size={18} />
+            <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)">
+              {formatTitle(pkg?.name)}
+            </Heading>
+          </Flex>
         </GridItem>
 
         {/* Content Section */}
         <GridItem>
           <CardBody>
             <Heading as="h3" size="sm" fontWeight={500} color={"blue.500"} textAlign={'end'} mb={2}>
-             {formatTitle(pkg.destination)}
+              {formatTitle(pkg.destination)}
             </Heading>
-            <Flex justify="space-between" align="center" mb={2}>
+            <Flex justify="space-between" align="center" mb={3}>
               <Tag colorScheme="blue" borderRadius="full" px={4} size="sm">
                 {pkg.days} Days / {pkg.days - 1} Nights
               </Tag>
               <Flex align="center">
-                <FaStar color="gold" />
-                <Text ml={1.5} fontWeight="bold">{pkg.rating}</Text>
+                {[...Array(fullStars)].map((_, i) => (
+                  <FaStar key={`full-${i}`} color="gold" />
+                ))}
+                {hasHalfStar && <FaStarHalfAlt color="gold" />}
+                {[...Array(emptyStars)].map((_, i) => (
+                  <FaRegStar key={`empty-${i}`} color="gold" />
+                ))}
+                <Text ml={2} fontWeight="bold">{pkg.rating}</Text>
               </Flex>
             </Flex>
 
-            {/* Description */}
+            {/* Description with Read More */}
             {pkg?.description && (
-              <Text fontSize="sm" color="gray.600" mb={3} noOfLines={{ base: 2, md: 3 }}>
-                {pkg?.description}
-              </Text>
+              <Box mb={3}>
+                <Text fontSize="sm" color="gray.600" lineHeight="1.6">
+                  {sentences.slice(0, showMoreDesc ? sentences.length : 3).map((sentence, index) => (
+                    <p key={index} className="mb-2 last:mb-0">
+                      {sentence}.
+                    </p>
+                  ))}
+                </Text>
+                {sentences.length > 3 && (
+                  <Button
+                    variant="link"
+                    color="blue.500"
+                    size="sm"
+                    onClick={() => setShowMoreDesc(!showMoreDesc)}
+                    rightIcon={showMoreDesc ? <FaChevronUp /> : <FaChevronDown />}
+                  >
+                    {showMoreDesc ? "Show Less" : "Read More"}
+                  </Button>
+                )}
+              </Box>
             )}
 
-             <Flex
-                  mt={4}
-                  overflowX="auto"
-                  minW={"100%"}
-                  align="center"
-                  sx={{
-                    "::-webkit-scrollbar": { display: "none" },
-                    scrollbarWidth: "none",
-                  }}
-                >
-                  <Text fontSize="sm" fontWeight="bold" mr={4}>
-                    Cities:
-                  </Text>
-                  {pkg?.itinerary.map((stop, index) => (
-                    <Flex key={index} align="center" mr={3} whiteSpace="nowrap">
-                      <Box textAlign="center">
-                        <Text fontSize="sm" fontWeight="600" color="blue.500" noOfLines={1}>
-                          {stop?.place}
-                        </Text>
-                        <Text fontSize="sm" color="gray.500" noOfLines={1}>
-                          {stop?.nights} nights
-                        </Text>
-                      </Box>
-                      {index < pkg.itinerary.length - 1 && (
-                        <Box flex="1" height="2px" bg="gray.300" mx={2} />
-                      )}
-                    </Flex>
-                  ))}
-                </Flex>
-
-            {/* Perks */}
-            <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={3} mb={3} mt={4}>
-              {pkg.perks.map((perk: string, index: number) => (
-                <Flex key={index} align="center">
-                  <PerkIcon type={perk} />
-                  <Text ml={2} fontSize={{ base: "xs", lg: "sm" }} fontWeight="medium">{perk}</Text>
+            {/* Itinerary Timeline */}
+            <Flex
+              mt={4}
+              overflowX="auto"
+              minW={"100%"}
+              align="center"
+              sx={{
+                "::-webkit-scrollbar": { display: "none" },
+                scrollbarWidth: "none",
+              }}
+            >
+              <Text fontSize="sm" fontWeight="bold" mr={4} flexShrink={0}>
+                Cities:
+              </Text>
+              {pkg?.itinerary.map((stop: any, index: number) => (
+                <Flex key={index} align="center" mr={3} whiteSpace="nowrap" _hover={{ color: "blue.500", transition: "color 0.2s" }}>
+                  <Box textAlign="center">
+                    <Text fontSize="sm" fontWeight="600" color="blue.500" noOfLines={1}>
+                      {stop?.place}
+                    </Text>
+                    <Text fontSize="sm" color="gray.500" noOfLines={1}>
+                      {stop?.nights} nights
+                    </Text>
+                  </Box>
+                  {index < pkg.itinerary.length - 1 && (
+                    <Text mx={2} color="gray.300" fontWeight="bold">
+                      →
+                    </Text>
+                  )}
                 </Flex>
               ))}
+            </Flex>
 
-              
+            {/* Perks */}
+            <Text fontSize="sm" fontWeight="bold" mt={4} mb={2}>Highlights:</Text>
+            <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacing={3} mb={3}>
+              {pkg.perks.map((perk: string, index: number) => (
+                <Flex
+                  key={index}
+                  align="center"
+                  transition="transform 0.2s"
+                  _hover={{ transform: "scale(1.05)" }}
+                >
+                  <PerkIcon type={perk} />
+                  <Text ml={2} fontSize={{ base: "xs", lg: "sm" }} fontWeight="medium">
+                    {perk}
+                  </Text>
+                </Flex>
+              ))}
             </SimpleGrid>
           </CardBody>
         </GridItem>
@@ -185,14 +221,25 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
         borderTopWidth="1px"
         borderColor="gray.200"
         py={3}
+        px={5}
         justifyContent="space-between"
+        alignItems="center"
       >
         <Box>
           <Text fontSize="xs" color="gray.500">Starting from</Text>
-          <Heading fontSize="2xl" color="blue.600">
-            ₹{pkg.price.toLocaleString()}
-            <Text as="span" fontSize="sm" color="gray.500"> /person</Text>
-          </Heading>
+          <Flex align="baseline">
+            {originalPrice && (
+              <Text fontSize="lg" color="gray.500" textDecoration="line-through" mr={2}>
+                ₹{originalPrice.toLocaleString()}
+              </Text>
+            )}
+            <Heading fontSize="2xl" color="blue.600">
+              ₹{pkg.price.toLocaleString()}
+            </Heading>
+            <Text as="span" fontSize="sm" color="gray.500" ml={1}>
+              /person
+            </Text>
+          </Flex>
         </Box>
         <Button
           borderRadius="full"
@@ -202,13 +249,16 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
           color="white"
           _hover={{ bgGradient: "linear(to-r, blue.500, blue.700)", transform: "scale(1.05)" }}
           animation={`${bounce} 2s infinite`}
-          onClick={() => setOpenBookingModal({open : true, data : pkg})}
+          onClick={() => setOpenBookingModal({ open: true, data: pkg })}
         >
           Book Now
         </Button>
       </CardFooter>
-      <BookingInfoModal isOpen={openBookingModal.open} onClose={() => setOpenBookingModal({data : null, open : false})} data={{id : openBookingModal?.data?._id, type : 'destination', title : openBookingModal.data?.destination}}/>
-
+      <BookingInfoModal
+        isOpen={openBookingModal.open}
+        onClose={() => setOpenBookingModal({ data: null, open: false })}
+        data={{ id: openBookingModal?.data?._id, type: 'destination', title: openBookingModal.data?.destination }}
+      />
     </Card>
   );
 };

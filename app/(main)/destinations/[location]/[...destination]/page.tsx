@@ -75,7 +75,7 @@ const Page = observer(() => {
             ))}
           </SimpleGrid>
         ) : filteredPackages.length > 0 ? (
-          <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={6}>
+          <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 3 }} spacing={6}>
             {filteredPackages.map((pkg) => <TravelPackageCard key={pkg._id} pkg={pkg} />)}
           </SimpleGrid>
         ) : (
