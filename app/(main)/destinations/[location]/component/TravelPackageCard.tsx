@@ -1,6 +1,5 @@
 'use client'
 import {
-  AspectRatio,
   Box,
   Button,
   Card,
@@ -12,9 +11,7 @@ import {
   Heading,
   SimpleGrid,
   Tag,
-  Text,
-  Collapse,
-  IconButton
+  Text
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { useParams, useRouter } from "next/navigation";

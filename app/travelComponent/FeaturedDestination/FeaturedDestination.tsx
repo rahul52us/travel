@@ -7,12 +7,22 @@ import { useRouter } from "next/navigation";
 import { formatTitle, getDestinationArray } from "../../config/utils/function";
 
 const FeaturedDestination = observer(() => {
-  const router = useRouter()
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const {destinationStore : {destination}, locationStore : {location} } = stores
+  const {
+    destinationStore: { destination, getDestinations },
+    locationStore: { location },
+  } = stores;
+
+  useEffect(() => {
+    getDestinations({ page: 1 });
+  }, [getDestinations]);
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % destination?.data?.length);
+      setCurrentIndex(
+        (prevIndex) => (prevIndex + 1) % destination?.data?.length
+      );
     }, 5000); // Change every 5 seconds
 
     return () => clearInterval(interval);
@@ -26,8 +36,7 @@ const FeaturedDestination = observer(() => {
     return () => clearInterval(interval);
   }, [destination?.data]);
 
-  const dest : any = destination.data[currentIndex];
-  const loc : any = location.data[currentIndex];
+  const loc: any = location.data[currentIndex];
 
   return (
     <Box position="relative" borderRadius="lg" overflow="hidden" h={"400px"}>
@@ -84,7 +93,13 @@ const FeaturedDestination = observer(() => {
           size={{ base: "md", lg: "lg" }}
           rightIcon={<FiArrowRight />}
           _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
-          onClick={() => router.push(`/destinations/${loc?.name?.split(' ').join('-')}/${getDestinationArray(loc)}`)}
+          onClick={() =>
+            router.push(
+              `/destinations/${loc?.name
+                ?.split(" ")
+                .join("-")}/${getDestinationArray(loc)}`
+            )
+          }
           // onClick={() => router.push(`/destinations/${dest?.location?.name?.split(' ').join('-')}/${getDestinationArray(dest)}`)}
         >
           Explore More
