@@ -111,7 +111,7 @@ const Layout = observer(({ setFormModal, currentPage, setCurrentPage }: any) => 
               </Flex>
 
               <Text fontSize="md" color={textColor} noOfLines={1}>
-                {dest.destination?.destination?.join(' , ')}
+                {dest.destinationName}
               </Text>
 
               <Flex justify="space-between" align="center">

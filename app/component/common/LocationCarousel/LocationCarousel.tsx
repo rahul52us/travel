@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import CustomSubHeading from "../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 import { observer } from "mobx-react-lite";
+import { formatTitle } from "../../../config/utils/function";
 import { useRouter } from "next/navigation";
-import { formatTitle, getDestinationArray } from "../../../config/utils/function";
 
 const progress = keyframes`
   from { width: 0; }
@@ -32,7 +32,7 @@ const getRandomLocations = (locations: any[], count: number) => {
 };
 
 const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
-  const router = useRouter();
+  const router = useRouter()
   const [activeIndex, setActiveIndex] = useState(0);
   const [randomLocations, setRandomLocations] = useState<any[]>([]);
 
@@ -94,7 +94,7 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
                   borderRadius="lg"
                 >
                   <Text fontWeight="bold" fontSize="lg">
-                    {formatTitle(location.destination)}
+                    {formatTitle(location.name)}
                   </Text>
                 </Flex>
               )}
@@ -123,7 +123,7 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
             variants={fadeInOut}
           >
             <Heading fontSize={{ base: "xl", md: "2xl" }} mb={2} color="gray.700">
-              {formatTitle(randomLocations[activeIndex].destination)}
+              {formatTitle(randomLocations[activeIndex].name)}
             </Heading>
             <Text fontSize={{ base: "sm", md: "md" }} mb={4} color={"gray.600"}>
               {randomLocations[activeIndex].description}
@@ -143,7 +143,7 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
               _hover={{ transform: "scale(1.05)" }}
               transition="all 0.5s ease"
               fontSize={{ base: "sm", md: "md" }}
-              onClick={() => router.push(`/destinations/${randomLocations[activeIndex].location?.name?.split(' ').join('-')}/${getDestinationArray(randomLocations[activeIndex].destination)}`)}
+              onClick={() => router.push(`/destinations/${randomLocations[activeIndex]?.name}`)}
             >
               EXPLORE ALL
             </Box>

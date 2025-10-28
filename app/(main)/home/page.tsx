@@ -18,13 +18,13 @@ import { observer } from "mobx-react-lite";
 import stores from "../../store/stores";
 
 const Home = observer(() => {
-  const {destinationStore : {destination}} = stores
+  const {locationStore : {location}} = stores
   return (
     <Box>
       <HeroSection />
       <TourPackageSection />
       <TravelBentoGrid />
-      <LocationCarousel locations={destination?.data || []}/>
+      <LocationCarousel locations={location?.data || []}/>
       <BudgetWrapper />
       <ExploreEuropeCarousel />
       <SightseeingList />

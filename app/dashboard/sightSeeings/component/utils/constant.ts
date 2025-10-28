@@ -2,9 +2,9 @@ export const initialValues = {
     title: "Dutch and French Jewels",
     images: [],
     coverImage: {file: []},
-    price: 79000,
+    price: 0,
     duration : "",
-    maxGroupSize: 6,
-    description : "",
-    destination:{name : ["western-europe"], _id : "dsfsdfsdffsd46fsd45f"},
+    maxGroupSize: 1,
+    destinationName:"",
+    description : ""
 }

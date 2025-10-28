@@ -12,19 +12,16 @@ import {
   Tag,
   Text,
 } from "@chakra-ui/react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaMapMarkedAlt, FaMapPin } from "react-icons/fa";
 import { FiArrowRightCircle, FiClock, FiUser } from "react-icons/fi";
 import BookingInfoModal from "../../../component/BookingInfoModal/BookingInfoModal";
-import { getDestinationArray } from "../../../config/utils/function";
 
 const SightSeeingCard2 = ({ tour }) => {
   const [openBookingModal, setOpenBookingModal] = useState({
     open: false,
     data: tour,
   });
-  const router = useRouter();
   const coverImage = tour.coverImage?.url || "";
   const tourImages = tour.images?.length
     ? tour.images.map((img) => img.url)
@@ -59,8 +56,8 @@ const SightSeeingCard2 = ({ tour }) => {
       p={{ base: 2, md: 4 }}
     >
       {/* Image Section */}
-      <Box 
-        flex={{ md: 1 }} 
+      <Box
+        flex={{ md: 1 }}
         position="relative"
         minW={{ md: "300px" }} // Set minimum width for image section
       >
@@ -125,13 +122,6 @@ const SightSeeingCard2 = ({ tour }) => {
         <Flex direction="column" justify="space-between" align="flex-start">
           {/* Destination */}
           <Flex
-            onClick={() =>
-              router.push(
-                `/destinations/${
-                  tour?.destination?.location?.name
-                }/${getDestinationArray(tour.destination)}`
-              )
-            }
             align="center"
             gap={2}
             cursor="pointer"
@@ -142,23 +132,23 @@ const SightSeeingCard2 = ({ tour }) => {
               {tour?.name || tour?.title}
             </Heading>
           </Flex>
-          
+
           {/* Location */}
           <Flex
             align="center"
             gap={2}
-            onClick={() =>
-              router.push(`/destinations/${tour?.destination?.location?.name}`)
-            }
+            // onClick={() =>
+            //   router.push(`/destinations/${tour?.destination?.location?.name}`)
+            // }
             cursor="pointer"
           >
             <Icon as={FaMapPin} boxSize={4} color="red.500" />
             <Heading as="h4" size={{ base: "xs", md: "sm" }} fontWeight={600} color="blue.500">
-              {tour?.destination?.destination || "Unknown Location"}
+              {tour?.destinationName || "Unknown Location"}
             </Heading>
           </Flex>
         </Flex>
-        
+
         <HStack spacing={4} flexWrap="wrap" mt={2}>
           <Flex align="center">
             <Icon as={FiClock} mr={2} />
@@ -191,9 +181,9 @@ const SightSeeingCard2 = ({ tour }) => {
             <Icon as={FiArrowRightCircle} mr={2} color="blue.500" />
           </Flex>
         </Stack>
-        
+
         <Divider />
-        
+
         {/* Price and Booking Form */}
         <Flex justify="space-between" align="center" flexWrap="wrap" gap={3} mt={2}>
           <Box>
@@ -236,7 +226,7 @@ const SightSeeingCard2 = ({ tour }) => {
           </Flex>
         </Flex>
       </Flex>
-      
+
       <BookingInfoModal
         isOpen={openBookingModal.open}
         onClose={() => setOpenBookingModal({ data: null, open: false })}

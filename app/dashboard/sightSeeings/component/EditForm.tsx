@@ -8,11 +8,11 @@ import FormComponent from "./FormComponent";
 import CustomDrawer from "../../../component/common/Drawer/CustomDrawer";
 
 const EditForm = observer(({ open, getData, data, onClose }: any) => {
-    const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const {
     auth: { openNotification },
-    destinationStore: { updateDestination },
+    sightSeeingStore: { updateSightSeeing },
   } = stores;
 
   const handleSubmit = async (values, { resetForm }: any) => {
@@ -20,7 +20,7 @@ const EditForm = observer(({ open, getData, data, onClose }: any) => {
       ...values,
     };
 
-    setLoading(true)
+    setLoading(true);
     if (
       formData?.image?.file &&
       formData?.image?.file?.length !== 0 &&
@@ -45,7 +45,15 @@ const EditForm = observer(({ open, getData, data, onClose }: any) => {
       }
     }
 
-    updateDestination(data._id, formData)
+    delete formData.coverImage;
+    delete formData.images;
+
+    updateSightSeeing(data._id, {
+      ...formData,
+      destination: values?.destination?._id
+        ? values.destination._id.split("-")[0] || null
+        : values?.destination ? values.destination.split("-")[0] : null,
+    })
       .then((data) => {
         openNotification({
           title: "Successfully Updated",
@@ -83,7 +91,7 @@ const EditForm = observer(({ open, getData, data, onClose }: any) => {
         initialValues={generateInitialValues(data)}
         onSubmit={handleSubmit}
         close={() => {
-          onClose()
+          onClose();
         }}
       />
     </CustomDrawer>

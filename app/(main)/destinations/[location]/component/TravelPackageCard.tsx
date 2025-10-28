@@ -14,11 +14,10 @@ import {
   Text
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
-import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaMapMarkerAlt, FaStar, FaStarHalfAlt, FaRegStar, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import BookingInfoModal from "../../../../component/BookingInfoModal/BookingInfoModal";
-import { formatTitle, getDestinationArray } from "../../../../config/utils/function";
+import { formatTitle } from "../../../../config/utils/function";
 import PerkIcon from "./PerkIcon";
 
 const bounce = keyframes`
@@ -29,8 +28,6 @@ const bounce = keyframes`
 const TravelPackageCard = ({ pkg }: { pkg: any }) => {
   const [openBookingModal, setOpenBookingModal] = useState({ open: false, data: pkg });
   const [showMoreDesc, setShowMoreDesc] = useState(false);
-  const router = useRouter();
-  const params = useParams();
 
   const sentences = pkg?.description
     ?.split('.')
@@ -99,11 +96,6 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
             align="center"
             cursor="pointer"
             _hover={{ textDecoration: "underline" }}
-            onClick={() => {
-              if (params?.location) {
-                router.push(`/destinations/${params?.location}/${getDestinationArray(pkg)}`);
-              }
-            }}
           >
             <FaMapMarkerAlt size={18} />
             <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)">

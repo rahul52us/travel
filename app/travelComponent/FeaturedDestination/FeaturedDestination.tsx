@@ -3,11 +3,11 @@ import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { FiArrowRight } from "react-icons/fi";
 import { observer } from "mobx-react-lite";
 import stores from "../../store/stores";
+import { formatTitle } from "../../config/utils/function";
 import { useRouter } from "next/navigation";
-import { formatTitle, getDestinationArray } from "../../config/utils/function";
 
 const FeaturedDestination = observer(() => {
-  const router = useRouter();
+  const router = useRouter()
   const [currentIndex, setCurrentIndex] = useState(0);
   const {
     destinationStore: { destination, getDestinations },
@@ -95,9 +95,7 @@ const FeaturedDestination = observer(() => {
           _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
           onClick={() =>
             router.push(
-              `/destinations/${loc?.name
-                ?.split(" ")
-                .join("-")}/${getDestinationArray(loc)}`
+              `/destinations/${loc?.name}`
             )
           }
           // onClick={() => router.push(`/destinations/${dest?.location?.name?.split(' ').join('-')}/${getDestinationArray(dest)}`)}

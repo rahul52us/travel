@@ -74,7 +74,7 @@ class SightSeeingStore {
   // Edit Destination
   updateSightSeeing = async (id: any, sendData: any) => {
     try {
-      const { data } = await axios.put(`sightSeeing/${id}`, sendData);
+      const { data } = await axios.put(`/sightseeing/${id}`, sendData);
       return data;
     } catch (err: any) {
       return Promise.reject(err?.response || err);
