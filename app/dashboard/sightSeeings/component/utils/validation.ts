@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 const validations = Yup.object().shape({
   // Image validation
   image:Yup.mixed(),
-  destinationName:Yup.mixed(),
   coverImage : Yup.mixed(),
   // Basic fields
   duration: Yup.mixed().required('location is required'),

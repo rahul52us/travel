@@ -32,7 +32,6 @@ const FormComponent = ({
     getDestinations({ page: 1 });
   }, [getDestinations]);
 
-
   return (
     <Box
       p={{ base: 4, md: 4 }}
@@ -55,8 +54,7 @@ const FormComponent = ({
           onSubmit({ ...values }, actions);
         }}
       >
-        {({ handleChange, values, errors, setFieldValue }: any) => {
-          return(
+        {({ handleChange, values, errors, setFieldValue }: any) => (
           <Form>
             <VStack spacing={6} align="stretch">
               {/* Cover Image Section */}
@@ -181,40 +179,19 @@ const FormComponent = ({
                   required={true}
                 />
                 <CustomInput
-  name="destination"
-  placeholder="Select the Destination"
-  label="Destination"
-  type="select"
-  onChange={(e: any) => {console.log(e?._id?.split('-')[1]);setFieldValue('destinationName',e?._id?.split('-')[1]);console.log(e); setFieldValue("destination", e)}}
-  value={values.destination}
-  error={errors.destination}
-  showError={showError}
-  required={true}
-  options = {
-  destination.data
-    ? destination.data.reduce(
-        (
-          all: { _id: string; destination: string }[],
-          pkg: any
-        ) => {
-          pkg.destination.forEach((d: string) => {
-            if (!all.some(item => item.destination === d)) {
-              all.push({
-                _id: `${pkg._id}-${d}`,
-                destination: d,
-              });
-            }
-          });
-          return all;
-        },
-        []
-      )
-    : []
-}
-  getOptionLabel={(option: any) => option.destination}
-  getOptionValue={(option: any) => option._id}
-/>
-
+                  name="destination"
+                  placeholder="Select the Destination"
+                  label="Destination"
+                  type="select"
+                  onChange={(e: any) => setFieldValue("destination", e)}
+                  value={values.destination}
+                  error={errors.destination}
+                  showError={showError}
+                  required={true}
+                  options={destination.data}
+                  getOptionLabel={(options: any) => options.destination?.join(", ")}
+                  getOptionValue={(options: any) => options._id}
+                />
                 <CustomInput
                   type="number"
                   name="maxGroupSize"
@@ -296,13 +273,14 @@ const FormComponent = ({
                   bgGradient="linear(to-r, teal.500, teal.600)"
                   _hover={{ bgGradient: "linear(to-r, teal.600, teal.700)" }}
                   transition="all 0.2s"
+                  isDisabled={isEdit}
                 >
                   Save
                 </Button>
               </Flex>
             </VStack>
           </Form>
-        )}}
+        )}
       </Formik>
     </Box>
   );

@@ -14,10 +14,11 @@ import {
   Text
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
-import { FaMapMarkerAlt, FaStar, FaStarHalfAlt, FaRegStar, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaMapMarkerAlt, FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import BookingInfoModal from "../../../../component/BookingInfoModal/BookingInfoModal";
-import { formatTitle } from "../../../../config/utils/function";
+import { formatTitle, getDestinationArray } from "../../../../config/utils/function";
 import PerkIcon from "./PerkIcon";
 
 const bounce = keyframes`
@@ -28,6 +29,8 @@ const bounce = keyframes`
 const TravelPackageCard = ({ pkg }: { pkg: any }) => {
   const [openBookingModal, setOpenBookingModal] = useState({ open: false, data: pkg });
   const [showMoreDesc, setShowMoreDesc] = useState(false);
+  const router = useRouter();
+  const params = useParams();
 
   const sentences = pkg?.description
     ?.split('.')
@@ -96,9 +99,16 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
             align="center"
             cursor="pointer"
             _hover={{ textDecoration: "underline" }}
+            onClick={() => {
+              if (params?.location) {
+                router.push(`/destinations/${params?.location}/${getDestinationArray(pkg)}`);
+              }
+            }}
+            maxW={'90%'}
+            // wrap={'wrap'}
           >
             <FaMapMarkerAlt size={18} />
-            <Heading fontSize="lg" ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)">
+            <Heading fontSize={{md:"lg"}} ml={2} textShadow="1px 1px 3px rgba(0, 0, 0, 0.4)" noOfLines={2} lineHeight={{base:"1.1",md:"1.2"}}>
               {formatTitle(pkg?.name)}
             </Heading>
           </Flex>
@@ -150,38 +160,57 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
               </Box>
             )}
 
-            {/* Itinerary Timeline */}
-            <Flex
-              mt={4}
-              overflowX="auto"
-              minW={"100%"}
-              align="center"
-              sx={{
-                "::-webkit-scrollbar": { display: "none" },
-                scrollbarWidth: "none",
-              }}
-            >
-              <Text fontSize="sm" fontWeight="bold" mr={4} flexShrink={0}>
-                Cities:
-              </Text>
-              {pkg?.itinerary.map((stop: any, index: number) => (
-                <Flex key={index} align="center" mr={3} whiteSpace="nowrap" _hover={{ color: "blue.500", transition: "color 0.2s" }}>
-                  <Box textAlign="center">
-                    <Text fontSize="sm" fontWeight="600" color="blue.500" noOfLines={1}>
-                      {stop?.place}
-                    </Text>
-                    <Text fontSize="sm" color="gray.500" noOfLines={1}>
-                      {stop?.nights} nights
-                    </Text>
-                  </Box>
-                  {index < pkg.itinerary.length - 1 && (
-                    <Text mx={2} color="gray.300" fontWeight="bold">
-                      →
-                    </Text>
-                  )}
-                </Flex>
-              ))}
-            </Flex>
+      {/* Itinerary Timeline */}
+<Box mt={4} w="100%">
+  <Text fontSize="sm" fontWeight="bold" mb={2} flexShrink={0}>
+    Cities:
+  </Text>
+
+  <Box
+    maxW={{base:"300px",md:"100%"}}            // ✅ always stay inside card
+    overflowX="auto"    // ✅ enable horizontal scroll
+    overflowY="hidden"
+    sx={{
+      "::-webkit-scrollbar": { display: "none" },
+      scrollbarWidth: "none",
+    }}
+  >
+    <Flex
+      as="ul"
+      minW="max-content" // ✅ make row fit its children, trigger scroll
+      gap={4}
+      align="center"
+      px={1}
+    >
+      {pkg?.itinerary.map((stop: any, index: number) => (
+        <Flex
+          key={index}
+          align="center"
+          flex="0 0 auto"   // ✅ prevents shrinking, avoids layout break
+          as="li"
+          whiteSpace="nowrap"
+        >
+          <Box textAlign="center">
+            <Text fontSize="sm" fontWeight="600" color="blue.500" noOfLines={1}>
+              {stop?.place}
+            </Text>
+            <Text fontSize="sm" color="gray.500" noOfLines={1}>
+              {stop?.nights} nights
+            </Text>
+          </Box>
+          {index < pkg.itinerary.length - 1 && (
+            <Text mx={2} color="gray.300" fontWeight="bold">
+              →
+            </Text>
+          )}
+        </Flex>
+      ))}
+    </Flex>
+  </Box>
+</Box>
+
+
+
 
             {/* Perks */}
             <Text fontSize="sm" fontWeight="bold" mt={4} mb={2}>Highlights:</Text>

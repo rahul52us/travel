@@ -1,11 +1,11 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import CustomSubHeading from "../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 import { observer } from "mobx-react-lite";
-import { formatTitle } from "../../../config/utils/function";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { formatTitle, getDestinationArray } from "../../../config/utils/function";
+import CustomSubHeading from "../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 
 const progress = keyframes`
   from { width: 0; }
@@ -27,12 +27,11 @@ const getRandomLocations = (locations: any[], count: number) => {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-
   return shuffled.slice(0, Math.min(count, shuffled.length));
 };
 
 const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
-  const router = useRouter()
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
   const [randomLocations, setRandomLocations] = useState<any[]>([]);
 
@@ -53,6 +52,13 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
   if (randomLocations.length === 0) {
     return <Text textAlign="center">No locations available</Text>;
   }
+
+  const sentences = randomLocations[activeIndex]?.description
+    ?.split('.')
+    .filter((sentence: string) => sentence.trim().length > 0)
+    .map((sentence: string) => sentence.trim()) || [];
+
+  if (sentences.length === 0) return null;
 
   return (
     <Box py={6} my={{ base: "2rem", md: "6rem" }} px={{ base: 4, md: 2 }} maxW="95%" mx="auto">
@@ -87,14 +93,15 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
                   left={0}
                   right={0}
                   bottom={0}
+                  zIndex={1}
                   bg="rgba(0, 0, 0, 0.4)"
                   color="white"
                   justify="center"
                   align="center"
                   borderRadius="lg"
                 >
-                  <Text fontWeight="bold" fontSize="lg">
-                    {formatTitle(location.name)}
+                  <Text fontWeight="600" fontSize="lg" textAlign={'center'} zIndex={99}>
+                    {formatTitle(location.destination)}
                   </Text>
                 </Flex>
               )}
@@ -112,7 +119,6 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
             </Box>
           ))}
         </Flex>
-
         {/* Content */}
         <Flex flex={1} direction="column" justify="center" mt={{ base: 6, md: 0 }}>
           <motion.div
@@ -123,19 +129,26 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
             variants={fadeInOut}
           >
             <Heading fontSize={{ base: "xl", md: "2xl" }} mb={2} color="gray.700">
-              {formatTitle(randomLocations[activeIndex].name)}
+              {formatTitle(randomLocations[activeIndex].destination)}
             </Heading>
-            <Text fontSize={{ base: "sm", md: "md" }} mb={4} color={"gray.600"}>
-              {randomLocations[activeIndex].description}
-            </Text>
+            {/* <Text fontSize={{ base: "sm", md: "md" }} mb={4} color={"gray.600"}>
+              {randomLocations[activeIndex]?.description}
+            </Text> */}
+                          <Text fontSize="sm" color="gray.600" lineHeight="1.6">
+                            {sentences.map((sentence, index) => (
+                              <p key={index} className="mb-2 last:mb-0">
+                                {sentence}.
+                              </p>
+                            ))}
+                          </Text>
           </motion.div>
-          <Flex align="center" gap={4}>
+          <Flex align="center" gap={4} mt={2}>
             <Text fontWeight="bold" fontSize={{ base: "md", md: "lg" }} color="gray.800">
               {randomLocations[activeIndex].days} Days | {randomLocations[activeIndex].trips || "Multiple Trips Available"}
             </Text>
             <Box
               as="button"
-              px={{ base: 4, md: 6 }}
+              px={{ base: 4, md: 4 }}
               py={{ base: 1, md: 2 }}
               bg="black"
               color="white"
@@ -143,7 +156,7 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
               _hover={{ transform: "scale(1.05)" }}
               transition="all 0.5s ease"
               fontSize={{ base: "sm", md: "md" }}
-              onClick={() => router.push(`/destinations/${randomLocations[activeIndex]?.name}`)}
+              onClick={() => router.push(`/destinations/${randomLocations[activeIndex].location?.name?.split(' ').join('-')}/${getDestinationArray(randomLocations[activeIndex].destination)}`)}
             >
               EXPLORE ALL
             </Box>
@@ -153,5 +166,4 @@ const LocationCarousel = observer(({ locations }: { locations: any[] }) => {
     </Box>
   );
 });
-
 export default LocationCarousel;

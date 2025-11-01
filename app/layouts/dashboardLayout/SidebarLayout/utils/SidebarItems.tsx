@@ -6,10 +6,7 @@ import {
   FaGlobeAsia,
   FaLandmark,
   FaCommentAlt,
-  FaLayerGroup,
   FaCogs,
-  FaBlog,
-  FaPlusCircle,
 } from "react-icons/fa";
 import { CalendarIcon } from "@chakra-ui/icons";
 import { dashboard } from "../../../../config/utils/routes";
@@ -47,70 +44,70 @@ const sidebarDatas: SidebarItem[] = [
   },
   {
     id: 6,
-    name: "Locations",
+    name: "Active Leads",
     icon: <FaMapMarkedAlt />,
-    url: "/dashboard/locations",
+    url: "/dashboard/active",
     role: ["user"],
   },
   {
     id: 7,
-    name: "Destinations",
+    name: "Hot Leads",
     icon: <FaGlobeAsia />,
-    url: "/dashboard/destinations",
+    url: "/dashboard/hotleads",
     role: ["user"],
   },
   {
     id: 8,
-    name: "Sightseeing",
+    name: "Booked",
     icon: <FaLandmark />,
-    url: "/dashboard/sightSeeings",
+    url: "/dashboard/booked",
     role: ["user"],
   },
   {
     id: 4,
-    name: "Testimonials",
+    name: "Lost",
     icon: <FaCommentAlt />,
-    url: "/dashboard/testimonials",
+    url: "/dashboard/lost",
     role: ["user"],
   },
-  {
-    id: 9,
-    name: "Booking",
-    icon: <FaCommentAlt />,
-    url: "/dashboard/bookings",
-    role: ["user"],
-  },
-  {
-    id: 5,
-    name: "Page Sections",
-    icon: <FaLayerGroup />,
-    url: "/dashboard/content-section",
-    role: ["user"],
-  },
+  // {
+  //   id: 9,
+  //   name: "Booking",
+  //   icon: <FaCommentAlt />,
+  //   url: "/dashboard/bookings",
+  //   role: ["user"],
+  // },
+  // {
+  //   id: 5,
+  //   name: "Page Sections",
+  //   icon: <FaLayerGroup />,
+  //   url: "/dashboard/content-section",
+  //   role: ["user"],
+  // },
   // Blogs
-  {
-    id: 501,
-    name: "Blogs",
-    icon: <FaBlog />,
-    url: dashboard.blog.index,
-    role: ["user", "superadmin", "manager", "admin"],
-    children: [
-      {
-        id: 502,
-        name: "Index",
-        icon: <CalendarIcon />,
-        url: `${dashboard.blog.index}`,
-        role: ["user", "superadmin", "manager", "admin"],
-      },
-      {
-        id: 503,
-        name: "Create",
-        icon: <FaPlusCircle />,
-        url: `${dashboard.blog.create}`,
-        role: ["superadmin", "manager", "admin"],
-      },
-    ],
-  },
+  // {
+  //   id: 501,
+  //   name: "Blogs",
+  //   icon: <FaBlog />,
+  //   url: dashboard.blog.index,
+  //   role: ["user", "superadmin", "manager", "admin"],
+  //   children: [
+  //     {
+  //       id: 502,
+  //       name: "Index",
+  //       icon: <CalendarIcon />,
+  //       url: `${dashboard.blog.index}`,
+  //       role: ["user", "superadmin", "manager", "admin"],
+  //     },
+  //     {
+  //       id: 503,
+  //       name: "Create",
+  //       icon: <FaPlusCircle />,
+  //       url: `${dashboard.blog.create}`,
+  //       role: ["superadmin", "manager", "admin"],
+  //     },
+  //   ],
+  // },
 ];
 
 export const sidebarFooterData: SidebarItem[] = [

@@ -30,7 +30,7 @@ const TableLoader: React.FC<TableLoaderProps> = ({
     return (
       <Tbody>
         <Tr>
-          <Td colSpan={10} p={5}>
+          <Td colSpan={20} p={5}>
             <Flex justifyContent="center">
               <Heading fontSize="sm" color="red.400" cursor="pointer">
                 No Related Data are Found

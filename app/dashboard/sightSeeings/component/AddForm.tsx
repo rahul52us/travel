@@ -9,19 +9,20 @@ import { readFileAsBase64 } from "../../../config/utils/utils";
 import stores from "../../../store/stores";
 
 const AddForm = observer(({ open, onClose, getData }: any) => {
-  const [loading, setLoading] = useState(false);
+  const [loading,setLoading] = useState(false)
   const {
     auth: { openNotification },
     sightSeeingStore: { createSightSeeing },
   } = stores;
 
-  const handleSubmit = async (values: any, { resetForm }: any) => {
-    setLoading(true);
+  const handleSubmit = async (
+    values: any,
+    { resetForm }: any
+  ) => {
+    setLoading(true)
     const formData = {
       ...values,
-      destination: values?.destination?._id
-        ? values.destination._id.split("-")[0] || null
-        : null,
+      destination : values?.destination?._id
     };
 
     if (values.coverImage?.file && values.coverImage?.file?.length !== 0) {
@@ -49,9 +50,10 @@ const AddForm = observer(({ open, onClose, getData }: any) => {
       );
     }
 
+
     createSightSeeing(formData)
       .then((data: any) => {
-        getData();
+        getData()
         openNotification({
           title: "Created Successfully",
           message: data?.message,

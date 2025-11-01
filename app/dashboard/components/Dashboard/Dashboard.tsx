@@ -56,40 +56,42 @@ const theme = extendTheme({
   },
 });
 
-// Dummy data
+// Dummy travel data
 const dummyData = {
-  visits: 1200,
-  patients: 350,
-  therapists: 25,
-  appointments: 180,
-  patientGrowth: [50, 230, 180, 210, 230, 370, 350],
-  monthlyVisits: [100, 200, 150, 300, 250, 400, 500],
+  monthlyBookings: [120, 180, 250, 300, 500, 450, 600, 700, 550, 400, 300, 200], // Jan–Dec
+  destinations: ["Paris", "Dubai", "New York", "Bali", "Tokyo"],
+  topBookings: [320, 280, 250, 200, 150],
+  cancellations: [20, 40, 25, 15, 10],
 };
 
-// Bar chart data
-const barChartData = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+// Bookings by Month (Line chart)
+const bookingsLineChart = {
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   datasets: [
     {
-      label: "Monthly Visits",
-      data: dummyData.monthlyVisits,
-      backgroundColor: "rgba(75, 192, 192, 0.6)",
-      borderColor: "rgba(75, 192, 192, 1)",
-      borderWidth: 1,
+      label: "Bookings",
+      data: dummyData.monthlyBookings,
+      borderColor: "rgba(54, 162, 235, 1)",
+      backgroundColor: "rgba(54, 162, 235, 0.2)",
+      borderWidth: 2,
+      fill: true,
     },
   ],
 };
 
-// Line chart data
-const lineChartData = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+// Top Destinations vs. Cancellations (Bar chart)
+const destinationsBarChart = {
+  labels: dummyData.destinations,
   datasets: [
     {
-      label: "Patient Growth",
-      data: dummyData.patientGrowth,
-      borderColor: "rgba(153, 102, 255, 1)",
-      backgroundColor: "rgba(153, 102, 255, 0.2)",
-      borderWidth: 2,
+      label: "Bookings",
+      data: dummyData.topBookings,
+      backgroundColor: "rgba(75, 192, 192, 0.6)",
+    },
+    {
+      label: "Cancellations",
+      data: dummyData.cancellations,
+      backgroundColor: "rgba(255, 99, 132, 0.6)",
     },
   ],
 };
@@ -99,38 +101,39 @@ const Dashboard = observer(() => {
   const {
     dashboardStore: { getDashboardCount, count },
   } = stores;
+
   useEffect(() => {
     getDashboardCount();
   }, [getDashboardCount]);
 
   const dashboardData = [
     {
-      label: "Blogs",
-      value: count?.data?.blogs || 0,
+      label: "Active Leads",
+      value: count?.data?.leads || 0,
       icon: FaNewspaper,
       color: "blue",
-      href: "/dashboard/blogs",
+      href: "/dashboard/active",
     },
     {
-      label: "Users",
-      value: count?.data?.users || 0,
+      label: "Hot Leads",
+      value: count?.data?.hotleads || 0,
       icon: FaUsers,
       color: "green",
-      href: "/dashboard/users",
+      href: "/dashboard/hotleads",
     },
     {
-      label: "Testimonials",
-      value: count?.data?.testimonials || 0,
+      label: "Booked",
+      value: count?.data?.booked || 0,
       icon: FaComments,
       color: "purple",
-      href: "/dashboard/testimonials",
+      href: "/dashboard/booked",
     },
     {
-      label: "Contacts",
-      value: count?.data?.contacts || 0,
+      label: "Lost",
+      value: count?.data?.lost || 0,
       icon: FaAddressBook,
       color: "orange",
-      href: "/dashboard/contacts",
+      href: "/dashboard/lost",
     },
   ];
 
@@ -164,17 +167,17 @@ const Dashboard = observer(() => {
           <GridItem>
             <Box bg="white" p={5} borderRadius="lg" boxShadow="md">
               <Text fontSize="lg" fontWeight="bold" mb={5}>
-                Monthly Visits
+                Bookings by Month
               </Text>
-              <Bar data={barChartData} />
+              <Line data={bookingsLineChart} />
             </Box>
           </GridItem>
           <GridItem>
             <Box bg="white" p={5} borderRadius="lg" boxShadow="md">
               <Text fontSize="lg" fontWeight="bold" mb={5}>
-                Patient Growth
+                Top Destinations & Cancellations
               </Text>
-              <Line data={lineChartData} />
+              <Bar data={destinationsBarChart} />
             </Box>
           </GridItem>
         </Grid>

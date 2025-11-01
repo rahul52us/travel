@@ -10,61 +10,71 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  useDisclosure,
   useBreakpointValue,
+  useDisclosure,
+  IconButton,
+  Flex,
+  // keyframes,
+  usePrefersReducedMotion,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import CustomSubHeading from "../CustomSubHeading/CustomSubHeading";
-
-const travelImages = [
-  {
-    src: "https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmVhdXRpZnVsJTIwYmVhY2h8ZW58MHwwfDB8fHwy",
-    alt: "Tropical Paradise Beach",
-    span: [1, 2],
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnRhaW58ZW58MHwwfDB8fHwy",
-    alt: "Majestic Mountain Peaks",
-    span: [1, 1],
-  },
-  {
-    src: "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW9zY293fGVufDB8MHwwfHx8Mg%3D%3D",
-    alt: "Historic Urban Exploration",
-    span: [1, 1],
-  },
-  {
-    src: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8amFwYW4lMjB0cmFkaXRpb258ZW58MHx8MHx8fDI%3D",
-    alt: "Timeless Cultural Traditions",
-    span: [1, 2],
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRva3lvJTIwbmlnaHR8ZW58MHwwfDB8fHwy",
-    alt: "City Lights and Nightlife",
-    span: [1, 1],
-  },
-  {
-    src: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9reW8lMjBzdW5zZXR8ZW58MHwwfDB8fHwy",
-    alt: "Golden Sunset Serenity",
-    span: [1, 1],
-  },
-  {
-    src: "https://images.unsplash.com/photo-1520276862420-fafc37770ce4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YWR2ZW50dXJlJTIwc3BvcnRzfGVufDB8MHwwfHx8Mg%3D%3D",
-    alt: "Adrenaline-Pumping Adventures",
-    span: [1, 1],
-  },
-];
+import { travelImages } from "./constant";
+import { keyframes } from "@emotion/react";
 
 export default function TravelBentoGrid() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const prefersReducedMotion = usePrefersReducedMotion();
 
-  const handleImageClick = (image) => {
+  const handleImageClick = (image, index) => {
     setSelectedImage(image);
+    setCurrentIndex(index);
     onOpen();
   };
 
+  const goToNext = () => {
+    const nextIndex = (currentIndex + 1) % travelImages.length;
+    setCurrentIndex(nextIndex);
+    setSelectedImage(travelImages[nextIndex]);
+  };
+
+  const goToPrevious = () => {
+    const prevIndex = (currentIndex - 1 + travelImages.length) % travelImages.length;
+    setCurrentIndex(prevIndex);
+    setSelectedImage(travelImages[prevIndex]);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!isOpen) return;
+      
+      if (e.key === 'ArrowRight') {
+        goToNext();
+      } else if (e.key === 'ArrowLeft') {
+        goToPrevious();
+      } else if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, currentIndex]);
+
   const gridColumns = useBreakpointValue({ base: 2, md: 3, lg: 3 });
   const gridRows = useBreakpointValue({ base: "auto", md: "520px" });
+
+  // Animation for modal entrance
+  const scaleUp = keyframes`
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  `;
+
+  const animation = prefersReducedMotion ? undefined : `${scaleUp} 0.3s ease-out`;
 
   return (
     <Box
@@ -78,8 +88,9 @@ export default function TravelBentoGrid() {
       </CustomSubHeading>
 
       <Text fontSize={'md'} maxW={'90%'} mx={'auto'} color={'gray.500'} mb={4} textAlign={'center'}>
-      Explore diverse destinations for every traveler. From serene beaches to vibrant cities and thrilling adventures, find your next unforgettable journey here.
+        Explore diverse destinations for every traveler. From serene beaches to vibrant cities and thrilling adventures, find your next unforgettable journey here.
       </Text>
+      
       <Grid
         templateColumns={`repeat(${gridColumns}, 1fr)`}
         gap={{ base: 2, lg: 3 }}
@@ -95,9 +106,12 @@ export default function TravelBentoGrid() {
             rounded="10px"
             overflow="hidden"
             cursor="pointer"
-            transition="transform 0.3s"
-            _hover={{ transform: "scale(1.03)" }}
-            onClick={() => handleImageClick(img)}
+            transition="transform 0.3s, filter 0.3s"
+            _hover={{ 
+              transform: "scale(1.03)",
+              filter: "brightness(1.1)"
+            }}
+            onClick={() => handleImageClick(img, index)}
           >
             <Image
               src={img.src}
@@ -125,28 +139,144 @@ export default function TravelBentoGrid() {
         ))}
       </Grid>
 
-      {selectedImage && (
-        <Modal
-          isOpen={isOpen}
-          onClose={onClose}
-          size={{ base: "md", md: "xl" }}
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        size="full"
+        motionPreset="scale"
+        isCentered
+      >
+        <ModalOverlay 
+          bg="blackAlpha.800" 
+          backdropFilter="blur(10px)"
+        />
+        <ModalContent 
+          bg="transparent" 
+          boxShadow="none" 
+          maxW="100vw"
+          maxH="100vh"
+          animation={animation}
         >
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader pb={0}>{selectedImage.alt}</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                objectFit="contain"
-                w="100%"
-                maxH={{ base: "300px", md: "500px" }}
-              />
-            </ModalBody>
-          </ModalContent>
-        </Modal>
-      )}
+          <ModalCloseButton 
+            zIndex="10" 
+            color="white" 
+            bg="blackAlpha.600"
+            _hover={{ bg: "blackAlpha.800" }}
+            position="fixed"
+            top="4"
+            right="4"
+            size="lg"
+          />
+          
+          <ModalBody 
+            p={0} 
+            display="flex" 
+            alignItems="center" 
+            justifyContent="center"
+            onClick={onClose}
+          >
+            {selectedImage && (
+              <Box 
+                position="relative" 
+                w="100%" 
+                h="100%" 
+                display="flex" 
+                alignItems="center" 
+                justifyContent="center"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Image
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  objectFit="contain"
+                  maxW="100%"
+                  maxH="100%"
+                  rounded="md"
+                  fallbackSrc="https://via.placeholder.com/800x600?text=Image+Loading"
+                />
+                
+                {/* Navigation Arrows */}
+                <IconButton
+                  aria-label="Previous image"
+                  icon={<ChevronLeftIcon boxSize={8} />}
+                  position="fixed"
+                  left={{ base: 2, md: 10 }}
+                  top="50%"
+                  transform="translateY(-50%)"
+                  onClick={goToPrevious}
+                  bg="blackAlpha.600"
+                  color="white"
+                  _hover={{ bg: "blackAlpha.800" }}
+                  size="lg"
+                  display={{ base: 'none', md: 'flex' }}
+                />
+                
+                <IconButton
+                  aria-label="Next image"
+                  icon={<ChevronRightIcon boxSize={8} />}
+                  position="fixed"
+                  right={{ base: 2, md: 10 }}
+                  top="50%"
+                  transform="translateY(-50%)"
+                  onClick={goToNext}
+                  bg="blackAlpha.600"
+                  color="white"
+                  _hover={{ bg: "blackAlpha.800" }}
+                  size="lg"
+                  display={{ base: 'none', md: 'flex' }}
+                />
+                
+                {/* Image Info */}
+                <Box
+                  position="fixed"
+                  bottom="0"
+                  left="0"
+                  right="0"
+                  bgGradient="linear(to-t, blackAlpha.800, transparent)"
+                  color="white"
+                  p={4}
+                  textAlign="center"
+                >
+                  <Text fontSize="xl" fontWeight="bold">
+                    {selectedImage.alt}
+                  </Text>
+                  {selectedImage.description && (
+                    <Text fontSize="md" mt={2} maxW="2xl" mx="auto">
+                      {selectedImage.description}
+                    </Text>
+                  )}
+                </Box>
+                
+                {/* Mobile navigation dots */}
+                <Flex
+                  position="fixed"
+                  bottom="20px"
+                  left="0"
+                  right="0"
+                  justify="center"
+                  gap={2}
+                  display={{ base: 'flex', md: 'none' }}
+                >
+                  {travelImages.map((_, idx) => (
+                    <Box
+                      key={idx}
+                      w="10px"
+                      h="10px"
+                      rounded="full"
+                      bg={currentIndex === idx ? "white" : "whiteAlpha.500"}
+                      onClick={() => {
+                        setCurrentIndex(idx);
+                        setSelectedImage(travelImages[idx]);
+                      }}
+                      cursor="pointer"
+                    />
+                  ))}
+                </Flex>
+              </Box>
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 }

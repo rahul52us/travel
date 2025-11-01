@@ -13,8 +13,11 @@ import {
 } from "@chakra-ui/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useState } from "react";
+import { getDestinationArray } from "../../../../config/utils/function";
+import { useRouter } from "next/navigation";
 
 const SightseeingCard = ({ place }) => {
+  const router = useRouter();
   const cardBg = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("blue.700", "gray.100");
   const priceColor = useColorModeValue("blue.500", "blue.300");
@@ -76,11 +79,11 @@ const SightseeingCard = ({ place }) => {
               color="gray.500"
               textTransform="capitalize"
               cursor="pointer"
-              // onClick={() =>
-              //   router.push(
-              //     `/destinations/${place?.destination?.location?.name?.split(' ')?.join('-')}`
-              //   )
-              // }
+              onClick={() =>
+                router.push(
+                  `/destinations/${place?.destination?.location?.name?.split(' ')?.join('-')}`
+                )
+              }
             >
               {place?.destination?.location?.name || "Unknown Location"}
             </Text>
@@ -95,14 +98,14 @@ const SightseeingCard = ({ place }) => {
           color={textColor}
           mb={2}
           noOfLines={2}
-          // onClick={() => {
-          //   router.push(
-          //     `/destinations/${
-          //       place?.destination?.location?.name?.split(' ')?.join('-')
-          //     }/${getDestinationArray(place.destination)}`
-          //   )
-          // }
-          // }
+          onClick={() => {
+            router.push(
+              `/destinations/${
+                place?.destination?.location?.name?.split(' ')?.join('-')
+              }/${getDestinationArray(place.destination)}`
+            )
+          }
+          }
         >
           {/* {place.destination?.destination?.join(" , ") || "Unknown Destination"} */}
           {place?.name || place?.destination?.destination}
