@@ -14,6 +14,7 @@ import { sightSeeingStore } from "./sightseeingStore/sightseeingStore";
 import { bookingStore } from "./bookingStore/bookingStore";
 import { leadStore } from "./leadStore/leadStore";
 import { itineraryStore } from "./itineraryStore/itineraryStore"; // ✅ Added this
+import { hotelStore } from "./hotelStore/hotelStore";
 
 const stores = {
   auth: authStore,
@@ -32,6 +33,7 @@ const stores = {
   bookingStore: bookingStore,
   leadStore: leadStore,
   itineraryStore: itineraryStore,
+  hotelStore: hotelStore
 };
 
 export default stores;
