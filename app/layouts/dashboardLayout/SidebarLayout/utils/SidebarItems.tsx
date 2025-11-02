@@ -7,6 +7,7 @@ import {
   FaLandmark,
   FaCommentAlt,
   FaCogs,
+  FaRoute,
 } from "react-icons/fa";
 import { CalendarIcon } from "@chakra-ui/icons";
 import { dashboard } from "../../../../config/utils/routes";
@@ -70,6 +71,20 @@ const sidebarDatas: SidebarItem[] = [
     url: "/dashboard/lost",
     role: ["user"],
   },
+  {
+    id: 9,
+    name: "Itinerary",
+    icon: <FaRoute />,
+    url: "/dashboard/itinerary",
+    role: ["user"],
+  },
+  {
+    id: 10,
+    name: "Testimonials",
+    icon: <FaCommentAlt />,
+    url: "/dashboard/testimonials",
+    role: ["user"],
+  }
   // {
   //   id: 9,
   //   name: "Booking",

@@ -30,7 +30,7 @@
     "next-env.d.ts",
     "src",
     ".next/types/**/*.ts"
-  ],
+, "app/store/itineraryStore"  ],
   "exclude": [
     "node_modules"
   ]
