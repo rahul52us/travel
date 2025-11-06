@@ -32,8 +32,8 @@ const NavItem: React.FC<NavItemProps> = ({ item ,onClose}) => {
           rightIcon={<ChevronDownIcon />}
           variant="ghost"
           fontSize={{ lg: "16px", xl: "18px" }}
-          color="#1C2B47"
-          fontWeight={500}
+          color="brand.100"
+          fontWeight={600}
           p={0}
         >
           {item.title}
@@ -59,8 +59,9 @@ const NavItem: React.FC<NavItemProps> = ({ item ,onClose}) => {
   return (
     <Box
       as="span"
+      fontWeight={600}
       fontSize={{ lg: "16px", xl: "18px" }}
-      color="#1C2B47"
+      color="brand.100"
       position="relative"
       cursor="pointer"
       _hover={{

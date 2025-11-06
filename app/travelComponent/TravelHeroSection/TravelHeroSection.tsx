@@ -72,7 +72,7 @@ const HeroSection = () => {
         justify="center"
         px={{ base: 4, md: 12 }}
         py={16}
-        color="white"
+        color="brand.200"
       >
         <AnimatePresence mode="wait" initial={false}>
           <MotionFlex
@@ -88,10 +88,10 @@ const HeroSection = () => {
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
               mb={6}
-              bgGradient="linear(to-r, teal.300, blue.400)"
+              bgGradient="linear(to-r, brand.100, blue.400)"
               bgClip="text"
               lineHeight="1.2"
-              textShadow={'2px 2px 4px rgba(0, 0, 0, 0.2)'}
+              textShadow={'2px 2px 4px rgba(56, 102, 129, 0.2)'}
             >
               {slides[activeIndex].title}
             </Heading>

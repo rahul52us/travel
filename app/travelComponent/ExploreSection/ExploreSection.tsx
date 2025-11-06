@@ -39,7 +39,7 @@ const ExploreEuropeCarousel = () => {
   const showArrows = useBreakpointValue({base:false,lg:true})
 
   return (
-    <Box py="10" bg="gray.50" position="relative" maxW={'90%'} mx={'auto'} mt={{base:6,md:12}}>
+    <Box py="10" bg="brand.200" position="relative" maxW={'90%'} mx={'auto'} mt={{base:6,md:12}}>
       {/* <Heading as="h2" size="xl" textAlign="center" mb="8" color="teal.600">
         Explore Europe
       </Heading> */}
@@ -73,7 +73,7 @@ const ExploreEuropeCarousel = () => {
                 right="0"
                 bg="linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)"
                 p="4"
-                color="white"
+                color="brand.200"
               >
                 <Heading as="h3" size="md" mb="1">
                   {place.country}

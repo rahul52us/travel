@@ -2,19 +2,20 @@
 import { Button } from "@chakra-ui/react";
 import React from "react";
 
-const HeroNavButton = ({onClick} : any) => {
+const HeroNavButton = ({ onClick }: any) => {
   return (
     <Button
-  // bgGradient="linear(to-r, #6DD5FA, #2980B9)"
-  bgGradient={"linear(to-r, #6DD5FA, #2980B9)"}
-  size="lg"
-  fontWeight={500}
-  fontSize="sm"
-  _hover={{ bgGradient: "linear(to-r,rgb(75, 194, 237),rgb(34, 112, 164))"}}
-  onClick={onClick}
->
-  Book Trip
-</Button>
+      bg={"brand.100"}
+      _hover={{ bg: "brand.100",transform: "translateY(-2px)" }}
+      color={"brand.200"}
+      size="lg"
+      fontWeight={600}
+      fontSize="sm"
+      // _hover={{ bgGradient: "linear(to-r,brand.100,rgb(34, 112, 164))"}}
+      onClick={onClick}
+    >
+      Book Trip
+    </Button>
   );
 };
 

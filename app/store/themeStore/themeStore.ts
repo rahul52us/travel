@@ -22,10 +22,10 @@ class ThemeStore {
     colors: {
       brand: {
         50: "#ebf8ff",
-        100: "#bee3f8",
-        200: "#90cdf4",
+        100: "#097899",
+        200: "#f5f5f5",
         300: "#63b3ed",
-        400: "#4299e1",  // Vibrant Blue
+        400: "#4299e1", // Vibrant Blue
         500: "#3182ce",
         600: "#2b6cb0",
         700: "#2c5282",
@@ -121,7 +121,9 @@ class ThemeStore {
 
   resetTheme = () => {
     if (typeof window !== "undefined") {
-      localStorage.removeItem(process.env.NEXT_PUBLIC_THEME_STORE || "theme_config");
+      localStorage.removeItem(
+        process.env.NEXT_PUBLIC_THEME_STORE || "theme_config"
+      );
     }
     this.themeConfig = { ...this.backthemeConfig };
   };

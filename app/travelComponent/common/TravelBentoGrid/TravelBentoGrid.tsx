@@ -113,7 +113,7 @@ export default function TravelBentoGrid() {
               left={0}
               right={0}
               bgGradient="linear(to-t, rgba(0, 0, 0, 0.7), transparent)"
-              color="white"
+              color="brand.200"
               p={2}
               textAlign="center"
             >
@@ -128,12 +128,13 @@ export default function TravelBentoGrid() {
       {selectedImage && (
         <Modal
           isOpen={isOpen}
+          isCentered
           onClose={onClose}
           size={{ base: "md", md: "xl" }}
         >
           <ModalOverlay />
-          <ModalContent>
-            <ModalHeader pb={0}>{selectedImage.alt}</ModalHeader>
+          <ModalContent rounded={'2xl'}>
+            <ModalHeader color={'brand.100'} pb={0}>{selectedImage.alt}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <Image

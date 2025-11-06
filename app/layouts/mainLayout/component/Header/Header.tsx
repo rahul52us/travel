@@ -25,12 +25,13 @@ const Header = observer(() => {
   const router = useRouter();
 
   return (
-    <Box shadow="sm" position="sticky" top="0" zIndex="1000" bg="white">
+    <Box shadow="sm" position="sticky" top="0" zIndex="1000" bg="brand.200">
       <Box
         h={{ lg: "2rem", xl: "2.5rem" }}
-        color="white"
+        color="brand.200"
         textAlign="center"
-        bg="linear-gradient(to right, #00B5E2, #87CEEB)"
+        bg={'brand.100'}
+          // bg="linear-gradient(to right, #097899, #87CEEB)"
         fontSize={{ base: "xs", lg: "lg" }}
         p={2}
       >
@@ -45,7 +46,7 @@ const Header = observer(() => {
         justify="space-between"
         px={{ base: 2, md: 6 }}
         py={1} // Reduced padding
-        bg="white"
+        bg="brand.200"
         display={{ base: "flex", md: "none" }}
         h="4rem" // Reduced height
       >
@@ -103,7 +104,7 @@ const Header = observer(() => {
         <Image
           src="/images/logo3.png"
           alt="Cosmic Travals"
-          h={{ base: "35px", lg: "50px", xl: "60px" }} // Reduced logo size
+          h={{ base: "35px", lg: "40px", xl: "45px" }} // Reduced logo size
           cursor={"pointer"}
           onClick={() => router.push("/")}
         />

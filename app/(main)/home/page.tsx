@@ -20,7 +20,7 @@ import stores from "../../store/stores";
 const Home = observer(() => {
   const {locationStore : {location}} = stores
   return (
-    <Box>
+    <Box bg="red.100">
       <HeroSection />
       <TourPackageSection />
       <TravelBentoGrid />

@@ -20,7 +20,9 @@ export default function RootLayout({
 }>) {
   const { companyStore: { getCompanyDetails } } = stores;
   const pathname = usePathname();
-  const theme = extendTheme(stores.themeStore);
+  // const theme = extendTheme(stores.themeStore);
+  const theme = extendTheme(stores.themeStore.themeConfig);
+
 
   useEffect(() => {
     getCompanyDetails();

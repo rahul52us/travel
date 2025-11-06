@@ -63,7 +63,10 @@ const badgeData = [
 ];
 const BudgetWrapper = () => {
   return (
-    <Box  bgGradient={'linear(to-r, teal.50,cyan.100)'}>
+    <Box
+    // bg={'linear-gradient(135deg, #097899 0%, #2aa6c6 100%)'} 
+     bgGradient={'linear(to-r, teal.50,blue.100)'}
+    >
 
     <Box
       padding={{ base: "12px", md: "48px" }}
