@@ -52,7 +52,7 @@ const HeroSection = () => {
           position="absolute"
           w="100%"
           h="100%"
-          filter="brightness(0.4)"
+          filter="brightness(0.5)"
           bg={`url('${slides[activeIndex].image}')`}
           bgSize="cover"
           bgPosition="center"
@@ -85,13 +85,14 @@ const HeroSection = () => {
             exit={{ opacity: 0, y: -50 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <Heading
-              fontSize={{ base: '4xl', md: '6xl' }}
-              mb={6}
-              bgGradient="linear(to-r, brand.100, blue.400)"
-              bgClip="text"
-              lineHeight="1.2"
-              textShadow={'2px 2px 4px rgba(56, 102, 129, 0.2)'}
+           <Heading
+  fontSize={{ base: '4xl', md: '6xl' }}
+  mb={6}
+  bgGradient="linear(to-r, #42c4d0ff, #A3E5ED, #E0FFFF)"
+  bgClip="text"
+  lineHeight="1.2"
+  textShadow="0 2px 8px rgba(0, 0, 0, 0.25)"
+
             >
               {slides[activeIndex].title}
             </Heading>

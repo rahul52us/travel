@@ -33,7 +33,10 @@ const CustomButton: FC<CustomButtonProps> = ({
       alignItems="center"
       justifyContent="center"
       borderRadius="8px"
-      bgGradient={"linear(to-r,rgb(57, 193, 243),rgb(33, 106, 155))"}
+      bgGradient="linear(to-r, #097899, #06677F)"
+// _hover={{ bgGradient: "linear(to-r, #0A85A8, #076E89)" }}
+
+      // bgGradient={"linear(to-r,rgb(57, 193, 243),rgb(33, 106, 155))"}
       // _hover={{bgGradient:"linear(to-r, #6DD5FA, #2980B9)"}}
 _active={{bgGradient:"linear(to-r, #6DD5FA, #2980B9)"}}
       color="#FFFFFF"
@@ -46,6 +49,7 @@ _active={{bgGradient:"linear(to-r, #6DD5FA, #2980B9)"}}
       overflow="hidden"
       _hover={{
         borderColor: "#fff9",
+        bgGradient: "linear(to-r, #0A85A8, #076E89)",
         transform: "scale(1.015)",
         "&::before": {
           animation: "shine 1.5s ease-out infinite",

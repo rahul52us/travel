@@ -19,7 +19,7 @@ import { FaCoffee, FaHeart } from "react-icons/fa"
 import { FaLocationPin, FaSun } from "react-icons/fa6"
 
 const categories = [
-  { name: "Service", icon: FaCoffee, color: "blue.400", rating: 4.7 },
+  { name: "Service", icon: FaCoffee, color: "brand.100", rating: 4.7 },
   { name: "Location", icon: FaLocationPin, color: "green.400", rating: 4.9 },
   { name: "Comfort", icon: FaHeart, color: "pink.400", rating: 4.5 },
   { name: "Cleanliness", icon: FaSun, color: "yellow.400", rating: 4.8 },

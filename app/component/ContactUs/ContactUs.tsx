@@ -103,7 +103,11 @@ const ContactUs = observer(() => {
 
   return (
     <Box
-      bgGradient="linear(to-br, #86C6F4, #B9E0FF 50%, #F0F9FF)"
+    // bgGradient="linear(to-b, #E8F9F9, #C9EFF1, #A7DEE4)"
+    bgGradient="linear(to-b, #E6FAF8, #CFF1F3, #B1E4EA, #8FD3DD)"
+
+
+      // bgGradient="linear(to-br, #86C6F4, #B9E0FF 50%, #F0F9FF)"
       py={{ base: 8, md: 12, lg: 16 }}
       px={{ base: 4, md: 6, lg: 8 }}
       position="relative"
@@ -345,8 +349,11 @@ const ContactUs = observer(() => {
                   onClick={handleSubmit}
                   isLoading={isSubmitting}
                   isDisabled={isSubmitting}
-                  bgGradient="linear(to-r, #DF837C, #F4A261)"
-                  _hover={{ bgGradient: "linear(to-r, #C76B5C, #E08F3E)" }}
+                  bgGradient="linear(to-r, #097899, #06677F)"
+_hover={{ bgGradient: "linear(to-r, #0A85A8, #076E89)" }}
+
+                  // bgGradient="linear(to-r, #DF837C, #F4A261)"
+                  // _hover={{ bgGradient: "linear(to-r, #C76B5C, #E08F3E)" }}
                   color="white"
                   fontWeight={700}
                   borderRadius="lg"

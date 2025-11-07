@@ -102,7 +102,7 @@ const Page = observer(() => {
               fontWeight="bold"
               mb={8}
               textAlign="center"
-              color="blue.700"
+              color="brand.100"
             >
               Explore Our Best Travel Packages
             </Heading>

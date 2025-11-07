@@ -65,7 +65,8 @@ const BudgetWrapper = () => {
   return (
     <Box
     // bg={'linear-gradient(135deg, #097899 0%, #2aa6c6 100%)'} 
-     bgGradient={'linear(to-r, teal.50,blue.100)'}
+    //  bgGradient={'linear(to-r, teal.50,blue.100)'}
+     bgGradient="linear(to-r, #d9f4f8ff, #D7F1F3, #B3E2E8, #89D1DB)"
     >
 
     <Box

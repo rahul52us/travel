@@ -79,8 +79,8 @@ const VideoCarousel = observer(() => {
                 <PopoverTrigger>
                   <Box position="relative" zIndex="popover" mx={2}>
                     <Image src={getYouTubeThumbnail(item.videoId)} alt={item.title} h={{ base: "300px", lg: '380px' }} rounded={'xl'} objectFit={'cover'}  width={"100%"} />
-                    <Box position="absolute" top="50%" zIndex={1} left="50%" transform="translate(-50%, -50%)" fontSize="4xl" color="white">
-                      <Icon bg={"white"} as={IoIosPlay} color={themeConfig.colors.brand[600]} p={1} pl={1.5} rounded={"full"} fontSize={"40px"} onClick={() => handleImageClick(item.videoId)} />
+                    <Box position="absolute" top="50%" zIndex={1} left="50%" transform="translate(-50%, -50%)" fontSize="4xl" color="brand.200">
+                      <Icon bg={"brand.200"} as={IoIosPlay} color={themeConfig.colors.brand[600]} p={1} pl={1.5} rounded={"full"} fontSize={"40px"} onClick={() => handleImageClick(item.videoId)} />
                     </Box>
                     <Center px={2}>
                       <Text textAlign="center" color={themeConfig.colors.brand[100]} fontWeight={600} position={'absolute'} bottom={10}>
@@ -88,7 +88,7 @@ const VideoCarousel = observer(() => {
                       </Text>
                     </Center>
                     <Center>
-                      <Text textAlign="center" fontSize={'sm'} color={'white'} position={'absolute'} bottom={6}>
+                      <Text textAlign="center" fontSize={'sm'} color={'brand.200'} position={'absolute'} bottom={6}>
                         {item.name}
                       </Text>
                     </Center>
@@ -98,7 +98,7 @@ const VideoCarousel = observer(() => {
                 {/* Popover Content with High Z-Index */}
                 <Portal>
 
-                  <PopoverContent bg={themeConfig.colors.brand[600]} color="white" borderRadius="md" p={3} zIndex="popover" pointerEvents="auto">
+                  <PopoverContent bg={themeConfig.colors.brand[600]} color="brand.200" borderRadius="md" p={3} zIndex="popover" pointerEvents="auto">
                     <PopoverArrow bg={themeConfig.colors.brand[600]} />
                     <PopoverBody fontSize="sm" fontWeight="medium">
                       {item.description}

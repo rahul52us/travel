@@ -8,13 +8,13 @@ const TransferCard = ({ image, title, description, price, buttonText, category }
   const getIconForCategory = (category) => {
     switch (category) {
       case 'Airport Transfer':
-        return <Icon as={FaPlane} color="blue.500" boxSize={5} />;
+        return <Icon as={FaPlane} color="brand.100" boxSize={5} />;
       case 'Eurail Ticket':
-        return <Icon as={FaTrain} color="blue.500" boxSize={5} />;
+        return <Icon as={FaTrain} color="brand.100" boxSize={5} />;
       case 'Hop on Hop Off Tour':
-        return <Icon as={FaBus} color="blue.500" boxSize={5} />;
+        return <Icon as={FaBus} color="brand.100" boxSize={5} />;
       default:
-        return <Icon as={FaInfoCircle} color="blue.500" boxSize={5} />;
+        return <Icon as={FaInfoCircle} color="brand.100" boxSize={5} />;
     }
   };
 
@@ -55,11 +55,14 @@ const TransferCard = ({ image, title, description, price, buttonText, category }
             <Text fontSize="xs" color="gray.500">Starting from</Text>
             <Flex align="center">
               <Icon as={FaRupeeSign} color="blue.500" mr={1} />
-              <Text fontSize="xl" fontWeight="bold" color="blue.500">{price}</Text>
+              <Text fontSize="xl" fontWeight="bold" color="brand.100">{price}</Text>
             </Flex>
           </Box>
           <Button 
-            colorScheme={isHovered ? "teal" : "blue"} 
+          bg={'brand.100'}
+          color={'white'}
+          _hover={{bg:"brand.100",transform:"scale(1.1)"}}
+            // colorScheme={isHovered ? "teal" : "blue"} 
             size="sm" 
             borderRadius="lg"
           >

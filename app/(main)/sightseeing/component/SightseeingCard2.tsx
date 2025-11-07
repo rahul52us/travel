@@ -45,7 +45,7 @@ const SightSeeingCard2 = ({ tour }) => {
   return (
     <Flex
       direction={{ base: "column", md: "row" }}
-      bg="white"
+      bg="brand.200"
       borderRadius="xl"
       boxShadow="md"
       overflow="hidden"
@@ -91,7 +91,7 @@ const SightSeeingCard2 = ({ tour }) => {
                 cursor="pointer"
                 onClick={() => handleImageSelect(img)}
                 border={img === activeImage ? "2px solid" : "none"}
-                borderColor="blue.400"
+                borderColor="brand.100"
                 borderRadius="md"
                 overflow="hidden"
                 transition="all 0.3s ease-in-out"
@@ -127,7 +127,7 @@ const SightSeeingCard2 = ({ tour }) => {
             cursor="pointer"
             mb={1}
           >
-            <Icon as={FaMapMarkedAlt} boxSize={6} color="blue.500" />
+            <Icon as={FaMapMarkedAlt} boxSize={6} color="brand.100" />
             <Heading as="h2" fontSize={{ base: "lg", md: "26px" }} lineHeight="1.2">
               {tour?.name || tour?.title}
             </Heading>
@@ -143,7 +143,7 @@ const SightSeeingCard2 = ({ tour }) => {
             cursor="pointer"
           >
             <Icon as={FaMapPin} boxSize={4} color="red.500" />
-            <Heading as="h4" size={{ base: "xs", md: "sm" }} fontWeight={600} color="blue.500">
+            <Heading as="h4" size={{ base: "xs", md: "sm" }} fontWeight={600} color="brand.100">
               {tour?.destinationName || "Unknown Location"}
             </Heading>
           </Flex>
@@ -178,7 +178,7 @@ const SightSeeingCard2 = ({ tour }) => {
 
         <Stack spacing={3}>
           <Flex align="center" fontSize="sm">
-            <Icon as={FiArrowRightCircle} mr={2} color="blue.500" />
+            <Icon as={FiArrowRightCircle} mr={2} color="brand.100" />
           </Flex>
         </Stack>
 
@@ -190,7 +190,7 @@ const SightSeeingCard2 = ({ tour }) => {
             <Text
               fontSize={{ base: "xl", md: "2xl" }}
               fontWeight="800"
-              color="blue.600"
+              color="brand.100"
             >
               ₹{tour?.price}
               <Text
@@ -216,7 +216,7 @@ const SightSeeingCard2 = ({ tour }) => {
               Free Cancellation
             </Tag>
             <Button
-              colorScheme="blue"
+              colorScheme="brand.100"
               px={6}
               size={{ base: "sm", md: "md" }}
               onClick={() => setOpenBookingModal({ data: tour, open: true })}

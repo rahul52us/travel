@@ -81,10 +81,10 @@ const BlogCardSection = observer(({fromIndividualBlog} : any) => {
       >
         <Center>
           <TabList gap={2} justifyContent={'center'} p={1} rounded={'full'} w={'fit-content'} display="none">
-            <Tab fontWeight={400} _selected={{ color: 'white', bg: themeConfig.colors.custom.light.primary }} color={'brand.100'} py={1} fontSize={'lg'} w={'100px'}>
+            <Tab fontWeight={400} _selected={{ color: 'brand.200', bg: themeConfig.colors.custom.light.primary }} color={'brand.100'} py={1} fontSize={'lg'} w={'100px'}>
               Blogs
             </Tab>
-            <Tab fontWeight={400} _selected={{ color: 'white', bg: "brand.100" }} color={'brand.100'} py={1} w={'100px'} fontSize={'lg'}>
+            <Tab fontWeight={400} _selected={{ color: 'brand.200', bg: "brand.100" }} color={'brand.100'} py={1} w={'100px'} fontSize={'lg'}>
               Events
             </Tab>
           </TabList>

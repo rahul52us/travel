@@ -402,7 +402,7 @@ const DelayedModal = () => {
                     onClick={handleSubmit}
                     isLoading={isSubmitting}
                     isDisabled={isSubmitting}
-                    bgGradient="linear(to-r, #DF837C, #F4A261)"
+                    // bgGradient="linear(to-r, #DF837C, #F4A261)"
                     _hover={{ bgGradient: "linear(to-r, #C76B5C, #E08F3E)" }}
                     color="white"
                     fontWeight={700}

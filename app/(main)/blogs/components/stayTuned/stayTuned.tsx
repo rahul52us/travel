@@ -37,7 +37,7 @@ const StayTune = () => {
                     <HStack spacing={2} w="100%" mt={6}>
                         <Input
                             placeholder="Enter Your Email"
-                            bg="white"
+                            bg="brand.200"
                             border="1px solid #ccc"
                             _focus={{ borderColor: "#065F68" }}
                             h={{ base: "40px", md: "50px" }}

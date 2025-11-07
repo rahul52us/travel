@@ -21,7 +21,7 @@ const BookCallComponentBlog = ({ }) => {
                 color={"#FFFFFF"}
             >
                 <Text textAlign={"center"} fontSize={["14px", "16px", "18px"]}></Text>
-                <CustomSmallTitle textAlign={{ base: "center" }} color={"#065F68"}>
+                <CustomSmallTitle textAlign={{ base: "center" }} color={""}>
                     Have Questions?
                 </CustomSmallTitle>
                 <Text

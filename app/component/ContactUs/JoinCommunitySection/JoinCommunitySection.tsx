@@ -21,7 +21,7 @@ const JoinCommunitySection = () => {
         <Flex direction="column" align="center" p={4}>
           {/* Heading and Text */}
           <Box textAlign="center">
-            <CustomSmallTitle>Join Our Community</CustomSmallTitle>
+            <CustomSmallTitle >Join Our Community</CustomSmallTitle>
             <Heading
               mt={1}
               as={"h2"}

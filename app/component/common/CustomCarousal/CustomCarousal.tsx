@@ -36,7 +36,7 @@ const PrevArrow = ({
       bg="#E6FFFA" // Light teal background
       shadow="base"
       _hover={{
-        bg: "blue.300", // Blue shade on hover
+        bg: "brand.100", // Blue shade on hover
         // borderColor: hoverBgColor, // Match border color with hover background
       }}
       sx={{
@@ -74,7 +74,7 @@ const NextArrow = ({
       border={"1px solid #3182CE"} // Blue shade
       shadow="base"
       _hover={{
-        bg: "blue.300", // Blue shade on hover
+        bg: "brand.100", // Blue shade on hover
         // borderColor: hoverBgColor, // Match border color with hover background
       }}
       sx={{

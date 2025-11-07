@@ -98,7 +98,7 @@ const IndividualBlogPage = () => {
                     mb={{ base: 0, md: 3 }} // Add margin bottom for vertical layout
                     mr={{ base: 3, md: 0 }} // Add margin right for horizontal layout
                   >
-                    <Icon as={social.icon} boxSize="60%" color="white" />
+                    <Icon as={social.icon} boxSize="60%" color="brand.200" />
                   </Box>
                 </Link>
               ))}

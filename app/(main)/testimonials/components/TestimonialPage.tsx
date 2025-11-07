@@ -22,12 +22,12 @@ const TestimonialsPage = () => {
 		<Box bg={useColorModeValue("gray.50", "gray.800")}>
 			<PageHero
 				title="Hear from Our Travelers"
-				lineColor="teal.300"
+				lineColor="brand.100"
 				subtitle={
 					<>
 						Discover the experiences of our happy travelers and get inspired for
 						your next adventure!
-						<Text as="span" color="teal.200" fontWeight="semibold" mx={1.5}>
+						<Text as="span" color="brand.300" fontWeight="semibold" mx={1.5}>
 							Real Stories. Real Journeys.
 						</Text>
 					</>

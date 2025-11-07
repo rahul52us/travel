@@ -17,9 +17,9 @@ import { useState } from "react";
 import { formatTitle } from "../../../config/utils/function";
 
 const SightseeingCard = ({ place }) => {
-  const cardBg = useColorModeValue("white", "gray.800");
+  const cardBg = useColorModeValue("brand.200", "gray.800");
   const textColor = useColorModeValue("gray.900", "gray.100");
-  const priceColor = useColorModeValue("blue.600", "blue.300");
+  
 
   // Initialize state: cover image + remaining images
   const [coverImage, setCoverImage] = useState(place.coverImage);
@@ -101,7 +101,7 @@ const SightseeingCard = ({ place }) => {
 
           {/* Price & Duration */}
           <HStack justify="space-between">
-            <Text fontSize="lg" fontWeight="bold" color={priceColor}>
+            <Text fontSize="lg" fontWeight="bold" color="brand.100">
               {place.price ? `$ ${place.price}` : "Price Not Available"}
             </Text>
             <Tag colorScheme="purple" variant="solid" fontSize="sm">

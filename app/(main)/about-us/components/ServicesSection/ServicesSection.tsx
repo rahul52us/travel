@@ -39,7 +39,7 @@ const ServicesSection = () => {
                 "Family-friendly itineraries",
               ].map((service, i) => (
                 <Flex key={i} align="center">
-                  <Icon as={FiArrowRight} color="blue.500" mr={3} />
+                  <Icon as={FiArrowRight} color="brand.100" mr={3} />
                   <Text fontSize={{lg:"lg"}} color="gray.600">
                     {service}
                   </Text>

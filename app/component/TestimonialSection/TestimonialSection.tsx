@@ -5,7 +5,12 @@ import { observer } from "mobx-react-lite";
 
 const TestimonialSection = observer(() => {
   return (
-    <Box my={12} bgGradient={"linear(to-b, cyan.50 , blue.100)"}>
+    <Box my={12} 
+ bgGradient="linear(to-b, #F2FAFB, #D7F1F3, #B3E2E8, #89D1DB)"
+// bgGradient="linear(to-b, #E8F9F9, #C9EFF1, #A7DEE4)"
+
+
+>
       <Box
         maxW={{ md: "90%" }}
         py={{ base: "3rem", md: "5rem" }}

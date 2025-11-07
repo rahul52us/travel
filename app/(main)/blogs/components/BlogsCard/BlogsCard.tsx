@@ -51,7 +51,7 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
         rounded={"16px"}
         borderWidth={1}
         overflow="hidden"
-        bg={otherBlog ? "white" : "transparent"}
+        bg={otherBlog ? "brand.200" : "transparent"}
       >
         <Box position={"relative"}>
           <Image
@@ -68,7 +68,7 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
               {tags?.map((tag, index) => (
                 <Text
                   key={index}
-                  color={"white"}
+                  color={"brand.200"}
                   py={1}
                   px={2}
                   rounded={"6px"}
@@ -86,7 +86,7 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
           )}
           {otherBlog ? (
             <Box
-              bg={"white"}
+              bg={"brand.200"}
               position={"absolute"}
               top={4}
               left={4}
@@ -177,7 +177,7 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
                 onClick={() => router.push("#")} // Event booking page ka URL
                 size={{ base: "sm", md: "md" }}
                 bg={themeConfig.colors.custom.light.primary}
-                color={"white"}
+                color={"brand.200"}
                 _hover={{ bg: themeConfig.colors.custom.light.primary }}
               >
                 BOOK NOW

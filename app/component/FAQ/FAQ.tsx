@@ -11,7 +11,9 @@ const FAQ = observer(() => {
       pt={{ base: "3rem", md: "4rem" }}
       pb={{ base: "4rem", md: "6rem" }}
       // bg={"#E1F0EE"}
-      bgGradient={"linear(to-r, teal.50 ,blue.100)"}
+      bgGradient="linear(to-b, #F4FBFC, #D4F1F4, #A6DDE4, #74C4D4)"
+
+      // bgGradient={"linear(to-r, teal.50 ,blue.100)"}
       position={"relative"}
     >
       <CustomSubHeading highlightText=" Need to Know ">

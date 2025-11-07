@@ -28,7 +28,7 @@ const BlogFeatureCard = () => {
       display="flex"
       alignItems="end"
       p={{ base: 4, md: 6 }}
-      color="white"
+      color="brand.200"
     >
       {/* Tab Navigation */}
       <Tabs
@@ -41,7 +41,7 @@ const BlogFeatureCard = () => {
         <TabList
           borderRadius="full"
           bg="blackAlpha.200"
-          color="white"
+          color="brand.200"
           w={"fit-content"}
           border={"1px solid white"}
         >
@@ -49,9 +49,9 @@ const BlogFeatureCard = () => {
             onClick={() => handleTabChange("blogs")}
             _selected={{
               color: themeConfig.colors.custom.light.primary,
-              bg: "white",
+              bg: "brand.200",
             }}
-            color={"white"}
+            color={"brand.100"}
           >
             Blogs
           </Tab>
@@ -68,7 +68,7 @@ const BlogFeatureCard = () => {
             FEATURED
           </CustomSmallTitle>
           <Heading
-            color={themeConfig.colors.brand[300]}
+            color={themeConfig.colors.brand[100]}
             fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
             mt={1}
             fontWeight={600}
@@ -103,7 +103,7 @@ const BlogFeatureCard = () => {
             FEATURED
           </CustomSmallTitle>
           <Heading
-            color={themeConfig.colors.brand[300]}
+            color={themeConfig.colors.brand[100]}
             fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
             mt={1}
             fontWeight={600}

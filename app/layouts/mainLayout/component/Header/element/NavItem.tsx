@@ -33,7 +33,7 @@ const NavItem: React.FC<NavItemProps> = ({ item ,onClose}) => {
           variant="ghost"
           fontSize={{ lg: "16px", xl: "18px" }}
           color="brand.100"
-          fontWeight={600}
+          fontWeight={500}
           p={0}
         >
           {item.title}
@@ -59,7 +59,7 @@ const NavItem: React.FC<NavItemProps> = ({ item ,onClose}) => {
   return (
     <Box
       as="span"
-      fontWeight={600}
+      fontWeight={500}
       fontSize={{ lg: "16px", xl: "18px" }}
       color="brand.100"
       position="relative"

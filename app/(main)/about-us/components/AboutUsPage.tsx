@@ -25,12 +25,12 @@ export default function AboutUsPage() {
       {/* Hero Section */}
       <PageHero
         title="About Us"
-        lineColor="cyan.300"
+        lineColor="brand.100"
         subtitle={
           <>
             Crafting unforgettable journeys across diverse landscapes, rich
             cultures, and
-            <Text as="span" color="cyan.200" fontWeight="semibold" mx={1.5}>
+            <Text as="span" color="brand.300" fontWeight="semibold" mx={1.5}>
               24/7 storied histories
             </Text>
           </>
@@ -43,7 +43,7 @@ export default function AboutUsPage() {
         <Container maxW={{ base: "95%", lg: "80%" }} mx={"auto"}>
           <Heading
             size={{ base: "lg", lg: "xl" }}
-            color="teal.600"
+            color="brand.100"
             textAlign={"center"}
             display={{ base: "block", lg: "none" }}
           >
@@ -64,7 +64,7 @@ export default function AboutUsPage() {
             <VStack align="start" spacing={6}>
               <Heading
                 size={{ base: "lg", lg: "xl" }}
-                color="teal.600"
+                color="brand.100"
                 display={{ base: "none", lg: "block" }}
               >
                 Our Mission
@@ -81,7 +81,7 @@ export default function AboutUsPage() {
                 trips, focus on life-changing experiences`}
               </Text>
               <Button
-                colorScheme="teal"
+                colorScheme="brand"
                 size={{ base: "md", lg: "lg" }}
                 rightIcon={<FiArrowRight />}
                 variant="outline"
@@ -146,7 +146,7 @@ export default function AboutUsPage() {
                 variant="outline"
                 size={{ base: "md", lg: "lg" }}
                 rightIcon={<FiArrowRight />}
-                _hover={{ bg: "blackAlpha.500", color: "teal.200" }}
+                _hover={{ bg: "blackAlpha.500", color: "brand.100" }}
                 onClick={() => router.push(main.contact)}
               >
                 Contact Us Today

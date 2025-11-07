@@ -44,7 +44,7 @@ const SetsApart = () => {
             transition={{ duration: 0.3 }}
           >
             <GridItem
-              bg="white"
+              bg="brand.200"
               borderRadius="xl"
               p={8}
               boxShadow="md"
@@ -54,7 +54,7 @@ const SetsApart = () => {
                 <Center>
               <Image src={feature.icon} alt={feature.title} w={12} h={12} color="teal.500" mb={4} objectFit={'cover'} />
                 </Center>
-              <Heading size="md" mb={3} color="blue.600">
+              <Heading size="md" mb={3} color="brand.100">
                 {feature.title}
               </Heading>
               <Text color="gray.600">{feature.description}</Text>
