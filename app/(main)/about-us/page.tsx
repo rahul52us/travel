@@ -5,7 +5,7 @@ import AboutUsPage from "./components/AboutUsPage";
 
 export default function AboutPage() {
   return (
-    <Box>
+    <Box bg={'brand.200'}>
       <AboutUsPage />
     </Box>
   );

@@ -188,7 +188,7 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
                 p={"0px"}
                 size={{ base: "sm", md: "md" }}
                 _hover={{ bg: "transparent", textDecoration: "underline" }}
-                color={themeConfig.colors.custom.light.primary}
+                color={'brand.100'}
                 variant={"ghost"}
                 rightIcon={<ArrowForwardIcon />}
               >

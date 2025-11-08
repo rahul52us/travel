@@ -19,7 +19,7 @@ import RevireCard2 from "./ReviewCard/ReviewCard2";
 
 const TestimonialsPage = () => {
 	return (
-		<Box bg={useColorModeValue("gray.50", "gray.800")}>
+		<Box>
 			<PageHero
 				title="Hear from Our Travelers"
 				lineColor="brand.100"
@@ -27,7 +27,7 @@ const TestimonialsPage = () => {
 					<>
 						Discover the experiences of our happy travelers and get inspired for
 						your next adventure!
-						<Text as="span" color="brand.300" fontWeight="semibold" mx={1.5}>
+						<Text as="span" color="brand.100" fontWeight="semibold" mx={1.5}>
 							Real Stories. Real Journeys.
 						</Text>
 					</>
@@ -40,6 +40,7 @@ const TestimonialsPage = () => {
 					<Heading
 						mb={{ base: 2, lg: 8 }}
 						textAlign="center"
+						color={'brand.100'}
 						fontSize={{ base: "2xl", lg: "4xl" }}
 					>
 						What Our Travelers Say

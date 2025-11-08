@@ -10,7 +10,7 @@ import { observer } from "mobx-react-lite";
 
 const BlogsPage = observer(() => {
   return (
-    <Box>
+    <Box bg={'brand.200'}>
       <BlogFeatureCard />
       <Box mt={12}>
         <VideoCarousel />

@@ -203,7 +203,7 @@ export const Footer: React.FC = observer(() => {
             </Box>
             <Text fontSize={{ base: "xs", sm: "sm" }} textAlign={"center"}>
               Copyright © {new Date().getFullYear()}{" "}
-              <Text as={"span"} color={"teal.400"}>
+              <Text as={"span"} color={"brand.100"}>
                 {footerData.companyInfo.name}
               </Text>{" "}
               . All rights reserved.

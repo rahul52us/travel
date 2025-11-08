@@ -39,7 +39,7 @@ const BookCallComponentBlog = ({ }) => {
                     </Text>{" "}
                 </Text>
                 <Center>
-                    <CustomButton onClick={() => router.push('/contact-us')}> Contact Us </CustomButton>
+                    <CustomButton px={8} py={4} onClick={() => router.push('/contact-us')}> Contact Us </CustomButton>
                 </Center>
             </Box>
             <Image

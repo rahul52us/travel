@@ -30,7 +30,7 @@ export default function AboutUsPage() {
           <>
             Crafting unforgettable journeys across diverse landscapes, rich
             cultures, and
-            <Text as="span" color="brand.300" fontWeight="semibold" mx={1.5}>
+            <Text as="span" color="brand.100" fontWeight="semibold" mx={1.5}>
               24/7 storied histories
             </Text>
           </>

@@ -13,20 +13,20 @@ interface ContactInfo {
 const ContactSection: React.FC<{ contactInfo: ContactInfo }> = ({ contactInfo }) => {
   return (
     <Stack align={'flex-start'} mt={4}>
-      <Text fontWeight={'400'} fontSize={'lg'} mb={1} color={'teal.400'}>
+      <Text fontWeight={'400'} fontSize={'lg'} mb={1} color={'brand.100'}>
         Contact Us
       </Text>
       <VStack align="start" spacing={3} fontSize={'15px'}>
         <HStack>
-          <PhoneIcon color={'teal.400'} />
+          <PhoneIcon color={'brand.100'} />
           <Text>{contactInfo.phone}</Text>
         </HStack>
         <HStack>
-          <Icon as={MdEmail} mt={1} color={'teal.400'} />
+          <Icon as={MdEmail} mt={1} color={'brand.100'} />
           <Text>{contactInfo.email}</Text>
         </HStack>
         <HStack align="flex-start">
-          <Icon as={FaLocationDot} mt={1} color={'teal.400'} />
+          <Icon as={FaLocationDot} mt={1} color={'brand.100'} />
           <Text w={'90%'}>{contactInfo.address}</Text>
         </HStack>
       </VStack>

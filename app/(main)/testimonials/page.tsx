@@ -4,7 +4,7 @@ import TestimonialsPage from "./components/TestimonialPage";
 
 const page = () => {
   return (
-    <Box>
+    <Box bg={'brand.200'}>
       <TestimonialsPage />
     </Box>
   );
