@@ -1,20 +1,12 @@
 // Itinerary utility functions
-export const generateItineraryInitialValues = (itinerary: any) => {
-  return {
-    title: itinerary?.title || "",
-    duration: itinerary?.duration || "",
-    destination: itinerary?.destination || "",
-    price: itinerary?.price || "",
-    description: itinerary?.description || "",
-    image: {
-      file: [],
-      url: itinerary?.image?.url || "",
-      name: itinerary?.image?.name || "",
-      isAdd: 0,
-      isDeleted: 0,
-    },
+export const generateItineraryInitialValues = (data: any = {}) => {
+    return {
+        ...data,
+      image: data?.image?.url
+        ? { file: data.image }
+        : { file: [] },
+    };
   };
-};
 
 // Hotel utility functions
 export const generateHotelInitialValues = (hotel: any) => {
