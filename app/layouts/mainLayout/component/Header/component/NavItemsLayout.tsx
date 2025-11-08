@@ -27,12 +27,6 @@ const NavItemsLayout: React.FC<NavItemsLayoutProps> = observer(({ onClose }) => 
       link: `/destinations/${uniqueDest?.split(' ').join('-')}`,
     }));
 
-    const uniquesightSeeing = Array.from(
-      new Set(location.data?.map((dest: { name: string }) => dest.name))
-    ).map((uniqueDest : any) => ({
-      title: formatTitle(uniqueDest),
-      link: `/sightseeing/${uniqueDest?.split(' ').join('-')}`,
-    }));
 
     return [
       { title: "Home", link: "/" },
@@ -41,7 +35,7 @@ const NavItemsLayout: React.FC<NavItemsLayoutProps> = observer(({ onClose }) => 
         title: "Destinations",
         subItems: uniqueDestinations,
       },
-      { title: "Sightseeing", subItems : uniquesightSeeing },
+      { title: "Group Tour", link : '/groupTour' },
       { title: "Blogs", link: "/blogs" },
       { title: "Testimonials", link: "/testimonials" },
       { title: "Contact Us", link: "/contact-us" },

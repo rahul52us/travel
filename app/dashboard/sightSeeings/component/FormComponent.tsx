@@ -185,7 +185,7 @@ const FormComponent = ({
   placeholder="Select the Destination"
   label="Destination"
   type="select"
-  onChange={(e: any) => {console.log(e?._id?.split('-')[1]);setFieldValue('destinationName',e?._id?.split('-')[1]);console.log(e); setFieldValue("destination", e)}}
+  onChange={(e: any) => {setFieldValue('destinationName',e?._id?.split('-')[1]);console.log(e); setFieldValue("destination", e)}}
   value={values.destination}
   error={errors.destination}
   showError={showError}

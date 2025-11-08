@@ -13,6 +13,7 @@ import { dashboardStore } from "./dashboardStore/dashboardStore";
 import { destinationStore } from "./destinationStore/destination";
 import { sightSeeingStore } from "./sightseeingStore/sightseeingStore";
 import { bookingStore } from "./bookingStore/bookingStore";
+import { groupTourStore } from "./groupStore/groupTour";
 const stores = {
   auth : authStore,
   dashboardStore : dashboardStore,
@@ -27,7 +28,8 @@ const stores = {
   orderStore : orderStore,
   testimonialStore : testimonialStore,
   locationStore:locationStore,
-  bookingStore : bookingStore
+  bookingStore : bookingStore,
+  groupTourStore : groupTourStore
 };
 
 export default stores;

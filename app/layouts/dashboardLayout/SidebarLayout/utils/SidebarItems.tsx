@@ -67,6 +67,13 @@ const sidebarDatas: SidebarItem[] = [
     role: ["user"],
   },
   {
+    id: 12,
+    name: "groupTour",
+    icon: <FaLandmark />,
+    url: "/dashboard/groupTour",
+    role: ["user"],
+  },
+  {
     id: 4,
     name: "Testimonials",
     icon: <FaCommentAlt />,
