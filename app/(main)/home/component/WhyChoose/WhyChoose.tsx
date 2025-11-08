@@ -54,11 +54,11 @@ export default function WhyChoose() {
         </Box>
 
         {/* Content */}
-        <VStack align="start" spacing={6} flex={1} maxW="600px">
+        <VStack align="start" spacing={4} flex={1} maxW="600px">
           <Heading
             as="h2"
             size="xl"
-            color="teal.500"
+            color="brand.100"
             fontWeight="extrabold"
             textAlign="left"
             mb={4}
@@ -67,7 +67,7 @@ export default function WhyChoose() {
           </Heading>
           <Stack spacing={6} w="full">
             <Box>
-              <Heading as="h3" size="md" color="teal.500" mb={2}>
+              <Heading as="h3" size="md" color="brand.100" mb={2}>
                 Unparalleled Expertise
               </Heading>
               <Text
@@ -83,7 +83,7 @@ export default function WhyChoose() {
               </Text>
             </Box>
             <Box>
-              <Heading as="h3" size="md" color="teal.500" mb={2}>
+              <Heading as="h3" size="md" color="brand.100" mb={2}>
                 Personalized Service
               </Heading>
               <Text
@@ -99,7 +99,7 @@ export default function WhyChoose() {
               </Text>
             </Box>
             <Box>
-              <Heading as="h3" size="md" color="teal.500" mb={2}>
+              <Heading as="h3" size="md" color="brand.100" mb={2}>
                 Exclusive Access
               </Heading>
               <Text

@@ -48,7 +48,9 @@ const StayTune = () => {
                                 INSTRAGRAM_LINK,
                                 "_blank"
                             )
-                        }>
+                        }
+                        px={8}
+                        >
                             Subscribe Now
                         </CustomButton>
                     </HStack>

@@ -64,7 +64,7 @@ const PerkIcon = ({ type }: { type: string }) => {
 
   const SelectedIcon = icons[type] || FaQuestionCircle; // 👈 fallback default icon
 
-  return <Icon as={SelectedIcon} color="blue.500" boxSize={4} />;
+  return <Icon as={SelectedIcon} color="brand.100" boxSize={4} />;
 };
 
 // Main Card Component
@@ -80,6 +80,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
       key={pkg.id}
       borderRadius="xl"
       overflow="hidden"
+      minH={"30rem"}
       boxShadow="lg"
       transition="all 0.3s ease"
       _hover={{
@@ -143,7 +144,9 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
       <CardBody bg="white">
         <Flex justify="space-between" align="center" mb={3}>
           <Tag
-            colorScheme="blue"
+          bg={'brand.100'}
+          color={'white'}
+            // colorScheme="blue"
             borderRadius="full"
             px={4}
             size={{ base: "sm", md: "md" }}
@@ -242,7 +245,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
           <Text fontSize={{ base: "xs", lg: "sm" }} color="gray.500">
             Starting from
           </Text>
-          <Heading fontSize={{ base: "xl", lg: "2xl" }} color="blue.600">
+          <Heading fontSize={{ base: "xl", lg: "2xl" }} color="brand.100">
             ₹{pkg.price.toLocaleString()}
             <Text as="span" fontSize="sm" color="gray.500">
               /person
@@ -251,6 +254,9 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
         </Box>
         <Button
           // colorScheme="red"
+          bg={'brand.100'}
+          color={'white'}
+          _hover={{bg:"brand.100"}}
           borderRadius="full"
           size={{ base: "xs", lg: "sm" }}
           animation={`${bounce} 2s infinite`}

@@ -38,7 +38,7 @@ const PerkIcon = ({ type }: { type: string }) => {
 
   const IconComponent = icons[type] || FaQuestionCircle;
   
-  return <Icon as={IconComponent} color="blue.500" boxSize={5} />;
+  return <Icon as={IconComponent} color="brand.100" boxSize={5} />;
 };
 
 export default PerkIcon;

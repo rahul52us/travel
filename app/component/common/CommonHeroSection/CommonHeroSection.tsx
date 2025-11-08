@@ -12,7 +12,7 @@ const PageHero = ({
   title,
   subtitle,
   bgImage = "url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')",
-  lineColor = "red.300"
+  lineColor = "brand.100"
 }) => {
   const floating = `${float} 3s ease-in-out infinite`;
 
@@ -77,7 +77,7 @@ const PageHero = ({
           width="80px"
           bg={lineColor}
           borderRadius="full"
-          boxShadow="0 2px 8px rgba(125, 200, 255, 0.3)"
+          // boxShadow="0 2px 8px rgba(125, 200, 255, 0.3)"
           mb={4}
         />
 

@@ -107,11 +107,11 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
         {/* Content Section */}
         <GridItem>
           <CardBody>
-            <Heading as="h3" size="sm" fontWeight={500} color={"blue.500"} textAlign={'end'} mb={2}>
+            <Heading as="h3" size="sm" fontWeight={500} color={"brand.100"} textAlign={'end'} mb={2}>
               {formatTitle(pkg.destination)}
             </Heading>
             <Flex justify="space-between" align="center" mb={3}>
-              <Tag colorScheme="blue" borderRadius="full" px={4} size="sm">
+              <Tag colorScheme="teal" borderRadius="full" px={4} size="sm">
                 {pkg.days} Days / {pkg.days - 1} Nights
               </Tag>
               <Flex align="center">
@@ -139,7 +139,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
                 {sentences.length > 3 && (
                   <Button
                     variant="link"
-                    color="blue.500"
+                    color="brand.100"
                     size="sm"
                     onClick={() => setShowMoreDesc(!showMoreDesc)}
                     rightIcon={showMoreDesc ? <FaChevronUp /> : <FaChevronDown />}
@@ -165,9 +165,9 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
                 Cities:
               </Text>
               {pkg?.itinerary.map((stop: any, index: number) => (
-                <Flex key={index} align="center" mr={3} whiteSpace="nowrap" _hover={{ color: "blue.500", transition: "color 0.2s" }}>
+                <Flex key={index} align="center" mr={3} whiteSpace="nowrap" _hover={{ color: "brand.100", transition: "color 0.2s" }}>
                   <Box textAlign="center">
-                    <Text fontSize="sm" fontWeight="600" color="blue.500" noOfLines={1}>
+                    <Text fontSize="sm" fontWeight="600" color="brand.100" noOfLines={1}>
                       {stop?.place}
                     </Text>
                     <Text fontSize="sm" color="gray.500" noOfLines={1}>
@@ -193,7 +193,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
                   transition="transform 0.2s"
                   _hover={{ transform: "scale(1.05)" }}
                 >
-                  <PerkIcon type={perk} />
+                  <PerkIcon type={perk}  />
                   <Text ml={2} fontSize={{ base: "xs", lg: "sm" }} fontWeight="medium">
                     {perk}
                   </Text>
@@ -222,7 +222,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
                 ₹{originalPrice.toLocaleString()}
               </Text>
             )}
-            <Heading fontSize="2xl" color="blue.600">
+            <Heading fontSize="2xl" color="brand.100">
               ₹{pkg.price.toLocaleString()}
             </Heading>
             <Text as="span" fontSize="sm" color="gray.500" ml={1}>
@@ -234,9 +234,9 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
           borderRadius="full"
           size="sm"
           px={5}
-          bgGradient="linear(to-r, blue.400, blue.600)"
+          bgGradient="linear(to-r, brand.100, blue.600)"
           color="white"
-          _hover={{ bgGradient: "linear(to-r, blue.500, blue.700)", transform: "scale(1.05)" }}
+          _hover={{ bgGradient: "linear(to-r, brand.100, blue.700)", transform: "scale(1.05)" }}
           animation={`${bounce} 2s infinite`}
           onClick={() => setOpenBookingModal({ open: true, data: pkg })}
         >

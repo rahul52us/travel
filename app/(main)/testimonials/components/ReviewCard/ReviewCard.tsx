@@ -23,14 +23,14 @@ const ReviewCard = (data: any) => {
       borderRadius="lg"
       boxShadow="lg"
       w={"100%"}
-      bg={useColorModeValue("white", "gray.700")}
+      bg={"brand.200"}
       height={{ base: "250px", lg: "280px" }}
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
     >
       <VStack align="start" spacing={{ base: 2, lg: 4 }} flexGrow={1}>
-        <Icon as={FaQuoteLeft} w={6} h={6} color="teal.500" />
+        <Icon as={FaQuoteLeft} w={6} h={6} color="brand.100" />
         <Text
           fontSize={{ base: "sm", lg: "md" }}
           color={useColorModeValue("gray.600", "gray.300")}

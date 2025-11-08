@@ -156,7 +156,7 @@ const DelayedModal = () => {
                 left={0}
                 right={0}
                 bottom={0}
-                bgGradient="linear(45deg, rgba(49, 130, 206, 0.8) 0%, rgba(49, 151, 149, 0.7) 100%)"
+                bgGradient="linear(45deg, rgba(7, 161, 196, 0.8) 0%, rgba(49, 151, 149, 0.7) 100%)"
                 p={8}
               >
                 <MotionBox
@@ -203,7 +203,7 @@ const DelayedModal = () => {
                 <Text
                   fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
                   fontWeight={700}
-                  color="#1A3C52"
+                  color="brand.100"
                   mb={6}
                   textAlign={{ base: "center", md: "left" }}
                   bgGradient="linear(to-r, #1A3C52, #294A62)"
@@ -252,7 +252,7 @@ const DelayedModal = () => {
                         border="1px solid #D1DCE5"
                         _hover={{ borderColor: "#86C6F4", bg: "gray.50" }}
                         _focus={{
-                          borderColor: "#DF837C",
+                          borderColor: "brand.100",
                           boxShadow: "0 0 0 2px rgba(223, 131, 124, 0.3)",
                         }}
                         size="md"
@@ -283,7 +283,7 @@ const DelayedModal = () => {
                         border="1px solid #D1DCE5"
                         _hover={{ borderColor: "#86C6F4", bg: "gray.50" }}
                         _focus={{
-                          borderColor: "#DF837C",
+                          borderColor: "brand.100",
                           boxShadow: "0 0 0 2px rgba(223, 131, 124, 0.3)",
                         }}
                         size="md"
@@ -314,7 +314,7 @@ const DelayedModal = () => {
                         border="1px solid #D1DCE5"
                         _hover={{ borderColor: "#86C6F4", bg: "gray.50" }}
                         _focus={{
-                          borderColor: "#DF837C",
+                          borderColor: "brand.100",
                           boxShadow: "0 0 0 2px rgba(223, 131, 124, 0.3)",
                         }}
                         size="md"
@@ -342,9 +342,9 @@ const DelayedModal = () => {
                         variant="outline"
                         bg="white"
                         border="1px solid #D1DCE5"
-                        _hover={{ borderColor: "#86C6F4", bg: "gray.50" }}
+                        _hover={{ borderColor: "brand.100", bg: "gray.50" }}
                         _focus={{
-                          borderColor: "#DF837C",
+                          borderColor: "brand.100",
                           boxShadow: "0 0 0 2px rgba(223, 131, 124, 0.3)",
                         }}
                         size="md"
@@ -381,7 +381,7 @@ const DelayedModal = () => {
                         border="1px solid #D1DCE5"
                         _hover={{ borderColor: "#86C6F4", bg: "gray.50" }}
                         _focus={{
-                          borderColor: "#DF837C",
+                          borderColor: "brand.100",
                           boxShadow: "0 0 0 2px rgba(223, 131, 124, 0.3)",
                         }}
                         size="md"
@@ -402,8 +402,6 @@ const DelayedModal = () => {
                     onClick={handleSubmit}
                     isLoading={isSubmitting}
                     isDisabled={isSubmitting}
-                    // bgGradient="linear(to-r, #DF837C, #F4A261)"
-                    _hover={{ bgGradient: "linear(to-r, #C76B5C, #E08F3E)" }}
                     color="white"
                     fontWeight={700}
                     borderRadius="lg"

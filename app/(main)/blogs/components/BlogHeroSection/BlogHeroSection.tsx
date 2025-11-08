@@ -51,7 +51,7 @@ const BlogFeatureCard = () => {
               color: themeConfig.colors.custom.light.primary,
               bg: "brand.200",
             }}
-            color={"brand.100"}
+            color={"teal.500"}
           >
             Blogs
           </Tab>
@@ -68,7 +68,7 @@ const BlogFeatureCard = () => {
             FEATURED
           </CustomSmallTitle>
           <Heading
-            color={themeConfig.colors.brand[100]}
+            color={themeConfig.colors.brand[200]}
             fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
             mt={1}
             fontWeight={600}
@@ -77,7 +77,7 @@ const BlogFeatureCard = () => {
           </Heading>
 
           <Text
-            color={themeConfig.colors.brand[100]}
+            color={themeConfig.colors.brand[200]}
             fontSize={{ base: "sm", lg: "lg" }}
             mt={2}
             w={{ base: "100%", lg: "80%" }}
