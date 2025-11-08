@@ -92,7 +92,7 @@ const BookingInfoModal = observer(({ isOpen, onClose, data }: any) => {
         bg="white"
       >
         <Box
-          bgGradient="linear(to-r, blue.500, blue.600)"
+          bg="brand.100"
           color="white"
           py={4}
           px={6}
@@ -170,13 +170,16 @@ const BookingInfoModal = observer(({ isOpen, onClose, data }: any) => {
 
         <ModalFooter px={6} pb={6}>
           <Button
-            colorScheme="blue"
+          color={'white'}
+          bg={"brand.100"}
+          
+            // colorScheme="blue"
             size="lg"
             w="full"
             borderRadius="lg"
             onClick={handleSubmit}
             isDisabled={loading}
-            _hover={{ bg: "blue.600" }}
+            _hover={{ bg: "brand.100" }}
           >
             {loading ? <Spinner size="sm" /> : "Confirm Booking"}
           </Button>
