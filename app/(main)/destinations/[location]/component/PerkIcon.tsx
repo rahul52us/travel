@@ -1,16 +1,17 @@
 import { Icon } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import {
-    FaBed,
-    FaBinoculars,
-    FaBus,
-    FaHotel,
-    FaMapMarkedAlt,
-    FaQuestionCircle // Default icon
-    ,
-    FaShip,
-    FaTrain,
-    FaUtensils
+  FaBed,
+  FaBinoculars,
+  FaBus,
+  FaHotel,
+  FaMapMarkedAlt,
+  FaQuestionCircle // Default icon
+  ,
+
+  FaShip,
+  FaTrain,
+  FaUtensils
 } from 'react-icons/fa';
 import { GrVisa } from "react-icons/gr";
 

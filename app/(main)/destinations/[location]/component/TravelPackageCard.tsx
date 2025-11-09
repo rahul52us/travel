@@ -15,10 +15,10 @@ import {
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { useState } from "react";
-import { FaMapMarkerAlt, FaStar, FaStarHalfAlt, FaRegStar, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaMapMarkerAlt, FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import BookingInfoModal from "../../../../component/BookingInfoModal/BookingInfoModal";
-import { formatTitle } from "../../../../config/utils/function";
 import PerkIcon from "../../../../component/common/TravelPackageCard/element/PerkIcon";
+import { formatTitle } from "../../../../config/utils/function";
 
 const bounce = keyframes`
   0%, 100% { transform: translateY(0); }

@@ -1,29 +1,29 @@
 import { Icon } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 import {
-  FaBed,
-  FaBinoculars,
-  FaBus,
-  FaHotel,
-  FaMapMarkedAlt,
-  FaPlane,
-  FaQuestionCircle,
-  FaShip,
-  FaTrain,
-  FaUtensils,
-  FaWater,
-  FaMountain,
-  FaUmbrellaBeach,
-  FaSnowflake,
+    FaBed,
+    FaBinoculars,
+    FaBus,
+    FaHotel,
+    FaMapMarkedAlt,
+    FaMountain,
+    FaPlane,
+    FaQuestionCircle,
+    FaShip,
+    FaSnowflake,
+    FaTrain,
+    FaUmbrellaBeach,
+    FaUtensils,
+    FaWater,
 } from "react-icons/fa";
 import { GrUserManager } from "react-icons/gr";
 import { HiOutlineReceiptTax } from "react-icons/hi";
 import { IoTicketOutline } from "react-icons/io5";
 import {
-  MdEmojiFoodBeverage,
-  MdOutlineHotel,
-  MdPool,
-  MdTempleHindu,
+    MdEmojiFoodBeverage,
+    MdOutlineHotel,
+    MdPool,
+    MdTempleHindu,
 } from "react-icons/md";
 
 const PerkIcon = ({ type }: { type: string }) => {
