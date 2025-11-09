@@ -57,6 +57,16 @@ class AuthStore {
     }
   }
 
+  changePassword = async (sendData: any) => {
+    try {
+      const { data } = await axios.post("/auth/change-password", {...sendData,company : stores.auth.company});
+      return data;
+    } catch (err: any) {
+      return Promise.reject(err?.response?.data || err);
+    }
+  };
+
+
   // Initialize User Session
   initializeUser = async () => {
     if (typeof window !== "undefined") {  // ✅ Prevent SSR errors
@@ -65,6 +75,15 @@ class AuthStore {
         this.token = savedToken;
         await this.fetchUser();
       }
+    }
+  };
+
+   forgotPasswordStore = async (value: any) => {
+    try {
+      const { data } = await axios.post("/auth/forgot-password", value);
+      return data.data;
+    } catch (err: any) {
+      return Promise.reject(err?.response?.data || err?.message);
     }
   };
 
@@ -221,6 +240,15 @@ class AuthStore {
       return false;
     }
   }
+
+  getCompanyUsers = async (sendData : any = {}) => {
+    try {
+      const { data } = await axios.post(`auth/get/users`,{},{params : {...sendData}});
+      return data.data?.map((item : any) => ({user : {...item}})) || [];
+    } catch (err: any) {
+      return Promise.reject(err?.response?.data || err);
+    }
+  };
 
   // Logout user
   logout = () => {
