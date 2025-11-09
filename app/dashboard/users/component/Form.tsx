@@ -6,97 +6,53 @@ import {
   GridItem,
   Text,
   Flex,
+  VStack,
+  IconButton,
+  Divider,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import { Formik, Form as FormikForm } from "formik";
+import { FieldArray, Formik, Form as FormikForm } from "formik";
 import * as Yup from "yup";
 import CustomInput from "../../../component/config/component/customInput/CustomInput";
 import {
-  insertUniqueFile,
   removeDataByIndex,
 } from "../../../config/utils/utils";
 import ShowFileUploadFile from "../../../component/common/ShowFileUploadFile/ShowFileUploadFile";
+import { DeleteIcon } from "@chakra-ui/icons";
+import { titles } from "./utils/constant";
+import { generateIntialValues } from "./utils/function";
+import { FiPlus, FiTrash2 } from "react-icons/fi";
 
-const Form = ({
-  initialData,
-  onSubmit,
-  isOpen,
-  onClose,
-  thumbnail,
-  setThumbnail,
-  existingLeads = [], // Array of existing leads to calculate the next lead number
-}: any) => {
-  // Function to generate reference ID
-  const generateReferenceId = () => {
-    const today = new Date();
-    const day = String(today.getDate()).padStart(2, '0');
-    const month = today.toLocaleString('en-US', { month: 'short' }).toUpperCase();
-    const year = today.getFullYear();
-    
-    // Filter leads created today
-    const todayString = `${day}${month}${year}`;
-    const todayLeads = existingLeads.filter((lead: any) => 
-      lead.referenceId?.startsWith(todayString)
-    );
-    
-    // Get the next lead number for today
-    const leadNumber = todayLeads.length + 1;
-    
-    return `${todayString}L${leadNumber}`;
-  };
-
-  const [formData, setFormData] = useState<any>({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    referenceId: "",
-    numberOfGuests: "",
-    departureDate: undefined,
-    duration: "",
-    departure: "",
-    destination: "",
-    budget: "",
-    budgetType: "",
-  });
+const Form = ({ initialData, onSubmit, isOpen, onClose, isEdit }: any) => {
+  const [formData, setFormData] = useState<any>(initialData);
 
   useEffect(() => {
     if (initialData) {
-      setFormData(initialData);
-    } else {
-      // Generate reference ID for new bookings
-      setFormData((prev: any) => ({
-        ...prev,
-        referenceId: generateReferenceId(),
-      }));
+      setFormData(generateIntialValues(initialData));
     }
-  }, [initialData, existingLeads]);
+  }, [initialData]);
 
   const validationSchema = Yup.object({
+    title: Yup.mixed().required("Title is required"),
+    pic: Yup.mixed(),
     name: Yup.string().required("Name is required"),
-    email: Yup.string()
-      .email("Invalid email format")
-      .required("Email is required"),
+    username: Yup.string().required("Username is required"),
+    address: Yup.string(),
+    languages: Yup.array(),
+    bio: Yup.string().required("Bio is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+    confirmPassword: Yup.string().oneOf(
+      [Yup.ref("password"), null],
+      "Passwords must match"
+    ),
     phoneNumber: Yup.string()
       .matches(
         /^(?:\+?[0-9]{1,3})?[-.\s]?[0-9]{10}$/,
         "Phone number is not valid"
       )
       .required("Phone number is required"),
-    referenceId: Yup.string().required("Reference ID is required"),
-    numberOfGuests: Yup.number()
-      .required("Number of guests is required")
-      .positive("Must be a positive number")
-      .integer("Must be a whole number")
-      .typeError("Must be a valid number"),
-    departureDate: Yup.date().required("Departure date is required"),
-    duration: Yup.string().required("Duration is required"),
-    departure: Yup.string().required("Departure location is required"),
-    destination: Yup.string().required("Destination is required"),
-    budget: Yup.number()
-      .required("Budget is required")
-      .positive("Budget must be a positive number")
-      .typeError("Budget must be a valid number"),
-    budgetType: Yup.string().required("Budget type is required"),
   });
 
   return (
@@ -104,6 +60,7 @@ const Form = ({
       <Formik
         initialValues={formData}
         validationSchema={validationSchema}
+        enableReinitialize={true}
         onSubmit={async (values: any) => {
           onSubmit(values);
         }}
@@ -117,11 +74,12 @@ const Form = ({
           errors,
           touched,
         }: any) => {
+          console.log(errors)
           return (
             <FormikForm onSubmit={handleSubmit}>
               <Box display="flex" justifyContent="space-between" mb={4}>
                 <Text fontSize="lg" fontWeight="semibold">
-                  {initialData?.referenceId ? "Edit Booking" : "Add Leads"}
+                  {initialData?.username ? "Edit Therapist" : "Add Therapist"}
                 </Text>
                 <Button colorScheme="red" size="sm" onClick={onClose}>
                   Close
@@ -137,147 +95,210 @@ const Form = ({
                 {/* Section 1: Personal Info */}
                 <GridItem colSpan={2}>
                   <Text fontSize="lg" fontWeight="semibold" mb={4}>
-                    Contact Information
+                    Personal Information
                   </Text>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                    <CustomInput
-                      label="Name"
-                      name="name"
-                      placeholder="Enter Name"
-                      value={values.name}
-                      onChange={handleChange}
-                      error={errors.name && touched.name}
-                      showError={errors.name && touched.name}
+                  <SimpleGrid columns={{ base: 1, md: 1 }} spacing={4}>
+                    <Box width="100%">
+                      {values?.pic?.file?.length === 0 ? (
+                        <CustomInput
+                          type="file-drag"
+                          name="pic"
+                          value={values.pic}
+                          isMulti={true}
+                          accept="image/*"
+                          onChange={(e: any) => {
+                            setFieldValue("pic", {
+                              ...values.pic,
+                              file: e.target.files[0],
+                              isAdd: 1,
+                            });
+                          }}
+                          error={errors.pic}
+                        />
+                      ) : (
+                        <Box mt={-5} width="100%">
+                          <ShowFileUploadFile
+                            files={values.pic?.file}
+                            removeFile={() => {
+                              setFieldValue("pic", {
+                                ...values.image,
+                                file: removeDataByIndex(values.pic, 0),
+                                isDeleted: 1,
+                              });
+                            }}
+                            edit={isEdit}
+                          />
+                        </Box>
+                      )}
+                    </Box>
+                    <Grid
+                      gridTemplateColumns={{ base: "1fr", md: "1fr 1fr" }}
+                      gap={5}
+                      p={4}
+                      borderWidth={1}
+                      borderRadius="md"
+                      boxShadow="sm"
+                      bg="white"
+                      mt={3}
+                    >
+                      <CustomInput
+                        label="Title"
+                        name="title"
+                        type="select"
+                        options={titles}
+                        value={values.title}
+                        onChange={(e: any) => setFieldValue("title", e)}
+                        error={errors.title && touched.title}
+                        showError={errors.title && touched.title}
+                      />
+                      <CustomInput
+                        label="Name"
+                        name="name"
+                        placeholder="Enter Name"
+                        value={values.name}
+                        onChange={handleChange}
+                        error={errors.name && touched.name}
+                        showError={errors.name && touched.name}
+                      />
+                      <CustomInput
+                        label="Username"
+                        name="username"
+                        placeholder="Enter Username"
+                        value={values.username}
+                        onChange={handleChange}
+                        error={errors.username && touched.username}
+                        showError={errors.username && touched.username}
+                      />
+                      <CustomInput
+                        label="Phone Number"
+                        name="phoneNumber"
+                        type="text"
+                        placeholder="Enter Phone Number"
+                        value={values.phoneNumber}
+                        onChange={handleChange}
+                        error={errors.phoneNumber && touched.phoneNumber}
+                        showError={errors.phoneNumber && touched.phoneNumber}
+                      />
+                      <CustomInput
+                        label="Code"
+                        name="code"
+                        placeholder="Enter Code"
+                        value={values.code}
+                        onChange={handleChange}
+                        error={errors.code && touched.code}
+                        showError={errors.code && touched.code}
+                      />
+                      <CustomInput
+                      label="Languages"
+                      name="languages"
+                      placeholder="Add Language"
+                      value={values.languages}
+                      onChange={(newTags: any) =>
+                        setFieldValue("languages", newTags)
+                      }
+                      type="tags"
+                      error={errors.languages && touched.languages}
+                      showError={errors.languages && touched.languages}
                     />
-                    <CustomInput
-                      label="Email"
-                      name="email"
-                      type="text"
-                      placeholder="Enter Email"
-                      value={values.email}
-                      onChange={handleChange}
-                      error={errors.email && touched.email}
-                      showError={errors.email && touched.email}
-                    />
-                    <CustomInput
-                      label="Contact"
-                      name="phoneNumber"
-                      type="text"
-                      placeholder="Enter Phone Number"
-                      value={values.phoneNumber}
-                      onChange={handleChange}
-                      error={errors.phoneNumber && touched.phoneNumber}
-                      showError={errors.phoneNumber && touched.phoneNumber}
-                    />
-                    <CustomInput
-                      label="Reference ID"
-                      name="referenceId"
-                      placeholder="Auto-generated Reference ID"
-                      value={values.referenceId}
-                      onChange={handleChange}
-                      error={errors.referenceId && touched.referenceId}
-                      showError={errors.referenceId && touched.referenceId}
-                      disabled={true}
-                    />
+                    </Grid>
+                    <Box
+                      borderWidth={1}
+                      borderRadius="md"
+                      boxShadow="sm"
+                      bg="white"
+                      mt={3}
+                      p={3}
+                    >
+                      <CustomInput
+                        label="Bio"
+                        name="bio"
+                        type="textarea"
+                        placeholder="Enter Bio"
+                        value={values.bio}
+                        onChange={handleChange}
+                        error={errors.bio && touched.bio}
+                        showError={errors.bio && touched.bio}
+                        style={{ width: "100%" }}
+                      />
+                    </Box>
+                    <Box
+                      borderWidth={1}
+                      borderRadius="md"
+                      boxShadow="sm"
+                      bg="white"
+                      mt={3}
+                      p={3}
+                    >
+                      <CustomInput
+                        label="Address"
+                        name="address"
+                        type="textarea"
+                        placeholder="Enter Address"
+                        value={values.address}
+                        onChange={handleChange}
+                        error={errors.address && touched.address}
+                        showError={errors.address && touched.address}
+                        style={{ width: "100%" }}
+                      />
+                    </Box>
                   </SimpleGrid>
                 </GridItem>
-
-                {/* Section 2: Travel Details */}
-                <GridItem colSpan={2}>
-                  <Text fontSize="lg" fontWeight="semibold" mb={4}>
-                    Travel Details
-                  </Text>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                    <CustomInput
-                      label="Number of Guests"
-                      name="numberOfGuests"
-                      type="number"
-                      placeholder="Enter Number of Guests"
-                      value={values.numberOfGuests}
-                      onChange={handleChange}
-                      error={errors.numberOfGuests && touched.numberOfGuests}
-                      showError={errors.numberOfGuests && touched.numberOfGuests}
-                    />
-                    <CustomInput
-                      label="Departure Date"
-                      name="departureDate"
-                      type="date"
-                      placeholder="Select Departure Date"
-                      value={values.departureDate}
-                      onChange={handleChange}
-                      error={errors.departureDate && touched.departureDate}
-                      showError={errors.departureDate && touched.departureDate}
-                    />
-                    <CustomInput
-                      label="Duration"
-                      name="duration"
-                      placeholder="Enter Duration (e.g., 5 days)"
-                      value={values.duration}
-                      onChange={handleChange}
-                      error={errors.duration && touched.duration}
-                      showError={errors.duration && touched.duration}
-                    />
-                    <CustomInput
-                      label="Departure"
-                      name="departure"
-                      placeholder="Enter Departure Location"
-                      value={values.departure}
-                      onChange={handleChange}
-                      error={errors.departure && touched.departure}
-                      showError={errors.departure && touched.departure}
-                    />
-                    <CustomInput
-                      label="Destination"
-                      name="destination"
-                      placeholder="Enter Destination"
-                      value={values.destination}
-                      onChange={handleChange}
-                      error={errors.destination && touched.destination}
-                      showError={errors.destination && touched.destination}
-                    />
-                  </SimpleGrid>
-                </GridItem>
-
-                {/* Section 3: Budget Information */}
-                <GridItem colSpan={2}>
-                  <Text fontSize="lg" fontWeight="semibold" mb={4}>
-                    Budget Information
-                  </Text>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                    <CustomInput
-                      label="Budget"
-                      name="budget"
-                      type="number"
-                      placeholder="Enter Budget Amount"
-                      value={values.budget}
-                      onChange={handleChange}
-                      error={errors.budget && touched.budget}
-                      showError={errors.budget && touched.budget}
-                    />
-                    <CustomInput
-                      label="Budget Type"
-                      name="budgetType"
-                      type="select"
-                      options={[
-                        { label: "Luxury (without flights)", value: "luxury_without_flights" },
-                        { label: "Luxury (with flights)", value: "luxury_with_flights" },
-                        { label: "Per Person Onward", value: "per_person_onward" },
-                        { label: "Total Package", value: "total_package" },
-                      ]}
-                      value={values.budgetType}
-                      onChange={(e: any) => setFieldValue("budgetType", e)}
-                      error={errors.budgetType && touched.budgetType}
-                      showError={errors.budgetType && touched.budgetType}
-                    />
-                  </SimpleGrid>
-                </GridItem>
+                {!isEdit && <GridItem colSpan={2}>
+                  <Box
+                    p={4}
+                    borderWidth={1}
+                    borderRadius="md"
+                    boxShadow="sm"
+                    bg="white"
+                    mt={3}
+                  >
+                    <Text
+                      fontSize="lg"
+                      fontWeight="bold"
+                      mb={4}
+                      color="teal.600"
+                    >
+                      Authentication
+                    </Text>
+                    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                      {!isEdit && (
+                        <>
+                          <CustomInput
+                            label="Password"
+                            name="password"
+                            type="password"
+                            placeholder="Enter Password"
+                            value={values.password}
+                            onChange={handleChange}
+                            error={errors.password && touched.password}
+                            showError={errors.password && touched.password}
+                          />
+                          <CustomInput
+                            label="Confirm Password"
+                            name="confirmPassword"
+                            type="password"
+                            placeholder="Confirm Password"
+                            value={values.confirmPassword}
+                            onChange={handleChange}
+                            error={
+                              errors.confirmPassword && touched.confirmPassword
+                            }
+                            showError={
+                              errors.confirmPassword && touched.confirmPassword
+                            }
+                          />
+                        </>
+                      )}{" "}
+                    </SimpleGrid>
+                  </Box>
+                </GridItem>}
               </Grid>
 
               <Flex justifyContent="flex-end" mt={4}>
                 <Flex gap={4}>
                   <Button
                     colorScheme="red"
-                    size="md"
+                    size="lg"
                     onClick={onClose}
                     _hover={{ bg: "red.500" }}
                     width="auto"
@@ -289,11 +310,11 @@ const Form = ({
                     colorScheme="teal"
                     isLoading={isSubmitting}
                     loadingText="Submitting"
-                    size="md"
+                    size="lg"
                     _hover={{ bg: "teal.500" }}
                     width="auto"
                   >
-                    {initialData?.referenceId ? "Update" : "Add"} Booking
+                    {initialData?.username ? "Update" : "Add"} User
                   </Button>
                 </Flex>
               </Flex>

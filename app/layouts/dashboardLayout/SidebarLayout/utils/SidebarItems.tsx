@@ -38,41 +38,6 @@ const sidebarDatas: SidebarItem[] = [
     role: ["user"],
   },
   {
-    id: 3,
-    name: "Contacts",
-    icon: <FaAddressBook />, // More suitable than FaHandHoldingUsd
-    url: "/dashboard/contacts",
-    role: ["user"],
-  },
-  {
-    id: 6,
-    name: "Active Leads",
-    icon: <FaMapMarkedAlt />,
-    url: "/dashboard/active",
-    role: ["user"],
-  },
-  {
-    id: 7,
-    name: "Hot Leads",
-    icon: <FaGlobeAsia />,
-    url: "/dashboard/hotleads",
-    role: ["user"],
-  },
-  {
-    id: 8,
-    name: "Booked",
-    icon: <FaLandmark />,
-    url: "/dashboard/booked",
-    role: ["user"],
-  },
-  {
-    id: 4,
-    name: "Lost",
-    icon: <FaCommentAlt />,
-    url: "/dashboard/lost",
-    role: ["user"],
-  },
-  {
     id: 9,
     name: "Itinerary",
     icon: <FaRoute />,
@@ -86,13 +51,6 @@ const sidebarDatas: SidebarItem[] = [
     url: "/dashboard/hotel",
     role: ["user"],
   },
-  {
-    id: 10,
-    name: "Testimonials",
-    icon: <FaCommentAlt />,
-    url: "/dashboard/testimonials",
-    role: ["user"],
-  }
   // {
   //   id: 9,
   //   name: "Booking",

@@ -45,6 +45,40 @@ class UserStore {
     }
   };
 
+  deleteUser = async (payload: any) => {
+    try {
+      const response = await axios.delete(`/user/profile/${payload?._id}`);
+      return response;
+    } catch (err: any) {
+      return Promise.reject(err?.response?.data || err.message);
+    } finally {
+    }
+  };
+
+  updateUser = async (payload: any) => {
+    this.isLoading = true;
+    try {
+      const response = await axios.put(`/user/profile/${payload._id}`, {
+        ...payload,
+        company: authStore.company,
+      });
+      return response;
+    } catch (err: any) {
+      return Promise.reject(err?.response?.data || err.message);
+    } finally {
+      this.isLoading = false;
+    }
+  };
+
+  getUserByName = async (payload: any) => {
+    try {
+      const response = await axios.get(`/user/${payload.name}`);
+      return response;
+    } catch (err: any) {
+      return Promise.reject(err?.response?.data || err.message);
+    }
+  };
+
   getAllUsers = async (payload: any) => {
     this.therapist.loading = true;
     try {
