@@ -23,12 +23,18 @@ import {
   FaHotel,
   FaMapMarkedAlt,
   FaMapMarkerAlt,
+  FaPlane,
   FaQuestionCircle,
   FaShip,
   FaStar,
   FaTrain,
   FaUtensils,
+  FaWater,
 } from "react-icons/fa";
+import { GrUserManager } from "react-icons/gr";
+import { HiOutlineReceiptTax } from "react-icons/hi";
+import { IoTicketOutline } from "react-icons/io5";
+import { MdEmojiFoodBeverage, MdOutlineHotel } from "react-icons/md";
 import { formatTitle } from "../../../../config/utils/function";
 import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
 
@@ -60,6 +66,13 @@ const PerkIcon = ({ type }: { type: string }) => {
     "Sightseeing and Tours": FaMapMarkedAlt,
     "Transfers and Boat": FaShip,
     "Transfers and EURAIL": FaTrain,
+    "Airport Transfers": FaPlane,
+    "GST":HiOutlineReceiptTax,
+    "Water Sports":FaWater,
+    "Daily Breakfast":MdEmojiFoodBeverage,
+    "Comfortable Hotels":MdOutlineHotel,
+    "Entrance Fees":IoTicketOutline,
+    "Indian Tour Manager":GrUserManager     
   };
 
   const SelectedIcon = icons[type] || FaQuestionCircle; // 👈 fallback default icon
@@ -80,7 +93,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
       key={pkg.id}
       borderRadius="xl"
       overflow="hidden"
-      minH={"30rem"}
+      minH={{lg:"40rem"}}
       boxShadow="lg"
       transition="all 0.3s ease"
       _hover={{

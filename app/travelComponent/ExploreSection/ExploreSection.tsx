@@ -49,7 +49,7 @@ const ExploreEuropeCarousel = () => {
         <Text textAlign={'center'} color={'gray.500'} mb={{base:2,lg:6}}>
             Discover the Magic of Europe: A Journey Through Timeless Beauty and Diverse Cultures
         </Text>
-        <CustomCarousel slidesToShow={5} showArrows={showArrows} showDots={true}>
+        <CustomCarousel slidesToShow={4} showArrows={showArrows} showDots={true}>
         {europeanPlaces.map((place, index) => (
             <Box
               key={index}
@@ -78,7 +78,7 @@ const ExploreEuropeCarousel = () => {
                 <Heading as="h3" size="md" mb="1">
                   {place.country}
                 </Heading>
-                <Text fontSize="sm">{place.description}</Text>
+                <Text fontSize="sm" lineHeight={"20px"}>{place.description}</Text>
               </Box>
             </Box>
           ))}

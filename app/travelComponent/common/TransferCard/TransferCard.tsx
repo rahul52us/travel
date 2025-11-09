@@ -54,7 +54,7 @@ const TransferCard = ({ image, title, description, price, buttonText, category }
           <Box>
             <Text fontSize="xs" color="gray.500">Starting from</Text>
             <Flex align="center">
-              <Icon as={FaRupeeSign} color="blue.500" mr={1} />
+              <Icon as={FaRupeeSign} color="brand.100" mr={1} />
               <Text fontSize="xl" fontWeight="bold" color="brand.100">{price}</Text>
             </Flex>
           </Box>

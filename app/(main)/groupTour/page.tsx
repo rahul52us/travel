@@ -35,20 +35,20 @@ const Page = observer(() => {
   const filteredPackages = groupTour?.data || [];
 
   return (
-    <Box bg="gray.50" minH="100vh">
+    <Box bg="brand.200" minH="100vh">
       {/* 🏞 Hero Section */}
      <PageHero
   title="Discover the World Together"
-  lineColor="cyan.300"
+  lineColor="brand.100"
   subtitle={
     <>
       Join unforgettable group journeys filled with laughter, adventure, and
       discovery. From
-      <Text as="span" color="cyan.200" fontWeight="semibold" mx={1.5}>
+      <Text as="span" color="brand.100" fontWeight="semibold" mx={1.5}>
         turquoise coastlines
       </Text>
       to
-      <Text as="span" color="cyan.200" fontWeight="semibold" mx={1.5}>
+      <Text as="span" color="brand.100" fontWeight="semibold" mx={1.5}>
         snow-capped peaks
       </Text>
       — explore breathtaking destinations with people who share your passion

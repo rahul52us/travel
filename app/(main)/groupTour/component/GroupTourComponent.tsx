@@ -57,7 +57,7 @@ const PerkIcon = ({ type }: { type: string }) => {
   };
 
   const SelectedIcon = icons[type] || FaQuestionCircle;
-  return <Icon as={SelectedIcon} color="blue.400" boxSize={4} />;
+  return <Icon as={SelectedIcon} color="brand.100" boxSize={4} />;
 };
 
 const GroupTourComponent = ({ pkg }: { pkg: any }) => {
@@ -71,7 +71,7 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
       borderRadius="2xl"
       overflow="hidden"
       boxShadow="0 6px 18px rgba(0,0,0,0.1)"
-      bg="white"
+      bg="brand.200"
       transition="all 0.3s ease"
       _hover={{
         transform: "translateY(-6px)",
@@ -146,8 +146,8 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
             {/* Header */}
             <Flex justify="space-between" align="center" mb={3}>
               <Tag
-                bg="blue.100"
-                color="blue.600"
+                bg="brand.100"
+                color="brand.200"
                 borderRadius="full"
                 px={4}
                 py={1}
@@ -168,7 +168,7 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
             <Heading
               fontSize="xl"
               mb={2}
-              color="blue.500"
+              color="brand.100"
               fontWeight="semibold"
             >
               {pkg?.title || `Explore ${pkg?.destination}`}
@@ -215,7 +215,7 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
                     <Text
                       fontSize="xs"
                       fontWeight="medium"
-                      color="blue.600"
+                      color="brand.100"
                       noOfLines={1}
                     >
                       {stop.place}
@@ -239,7 +239,7 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
               <Text fontSize="xs" color="gray.500" mb={1}>
                 Starting from
               </Text>
-              <Heading fontSize="2xl" color="blue.500" fontWeight="bold">
+              <Heading fontSize="2xl" color="brand.100" fontWeight="bold">
                 ₹{pkg.price.toLocaleString()}
                 <Text as="span" fontSize="sm" color="gray.500" ml={1}>
                   /person
@@ -250,7 +250,8 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
             {/* Sky Blue Button */}
             <Button
               borderRadius="full"
-              bgGradient="linear(to-r, blue.400, blue.500)"
+              bg={'brand.100'}
+              // bgGradient="linear(to-r, blue.400, blue.500)"
               color="white"
               _hover={{
                 bgGradient: "linear(to-r, blue.500, blue.600)",
