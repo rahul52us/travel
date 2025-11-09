@@ -30,50 +30,51 @@ import "react-phone-input-2/lib/style.css";
 
 interface CustomInputProps {
   type?:
-    | "editor"
-    | "password"
-    | "number"
-    | "text"
-    | "radio"
-    | "file"
-    | "switch"
-    | "textarea"
-    | "select"
-    | "date"
-    | "time"
-    | "checkbox"
-    | "url"
-    | "phone"
-    | "dateAndTime"
-    | "file-drag"
-    | "tags"
-    | "real-time-user-search";
-  label?: string;
-  placeholder?: string;
-  required?: boolean;
-  error?: string | null;
-  maxDate?: string; // Date string type
-  minDate?: string; // Date string type
-  disabledDates?: string[]; // Array of date strings
-  name: string;
-  isClear?: boolean;
-  onChange?: any;
-  value?: any;
-  w?: string;
-  options?: { label: string; value: string }[]; // Options for select dropdown
-  isSearchable?: boolean;
-  isMulti?: boolean;
-  getOptionLabel?: any;
-  getOptionValue?: any;
-  rows?: number;
-  disabled?: boolean;
-  showError?: boolean;
-  style?: React.CSSProperties;
-  phone?: string;
-  accept?: string; // File accept type (string)
-  readOnly?: boolean;
-  labelcolor?: string;
-  isPortal?: boolean;
+  | "editor"
+  | "password"
+  | "number"
+  | "text"
+  | "radio"
+  | "file"
+  | "switch"
+  | "textarea"
+  | "select"
+  | "date"
+  | "time"
+  | "checkbox"
+  | "url"
+  | "phone"
+  | "dateAndTime"
+  | "file-drag"
+  | "tags"
+  | "real-time-user-search"
+  | "email";
+label ?: string;
+placeholder ?: string;
+required ?: boolean;
+error ?: string | null;
+maxDate ?: string; // Date string type
+minDate ?: string; // Date string type
+disabledDates ?: string[]; // Array of date strings
+name: string;
+isClear ?: boolean;
+onChange ?: any;
+value ?: any;
+w ?: string;
+options ?: { label: string; value: string }[]; // Options for select dropdown
+isSearchable ?: boolean;
+isMulti ?: boolean;
+getOptionLabel ?: any;
+getOptionValue ?: any;
+rows ?: number;
+disabled ?: boolean;
+showError ?: boolean;
+style ?: React.CSSProperties;
+phone ?: string;
+accept ?: string; // File accept type (string)
+readOnly ?: boolean;
+labelcolor ?: string;
+isPortal ?: boolean;
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({
@@ -135,12 +136,12 @@ const CustomInput: React.FC<CustomInputProps> = ({
   };
 
 
-const handleTagRemove = (tagToRemove: string) => {
-  const newTags = (value || []).filter((tag: string) => tag !== tagToRemove);
-  if (onChange) {
-    onChange(newTags);
-  }
-};
+  const handleTagRemove = (tagToRemove: string) => {
+    const newTags = (value || []).filter((tag: string) => tag !== tagToRemove);
+    if (onChange) {
+      onChange(newTags);
+    }
+  };
 
 
   const inputBg = useColorModeValue("transparent", "gray.700");
@@ -238,34 +239,34 @@ const handleTagRemove = (tagToRemove: string) => {
             {...rest}
           />
         );
-        case "tags":
-          return (
-            <Box>
-              <HStack>
-                <Input
-                  placeholder={placeholder}
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  name={name}
-                  disabled={disabled}
-                  onKeyDown={handleTagAdd}
-                />
-                <Button onClick={handleTagAdd} colorScheme="blue">
-                  Add
-                </Button>
-              </HStack>
-              <Wrap mt={2}>
-                {value?.map((tag: string, index: number) => (
-                  <WrapItem key={index}>
-                    <Tag size="md" borderRadius="full" colorScheme="blue">
-                      <TagLabel>{tag}</TagLabel>
-                      <TagCloseButton onClick={() => handleTagRemove(tag)} />
-                    </Tag>
-                  </WrapItem>
-                ))}
-              </Wrap>
-            </Box>
-          );
+      case "tags":
+        return (
+          <Box>
+            <HStack>
+              <Input
+                placeholder={placeholder}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                name={name}
+                disabled={disabled}
+                onKeyDown={handleTagAdd}
+              />
+              <Button onClick={handleTagAdd} colorScheme="blue">
+                Add
+              </Button>
+            </HStack>
+            <Wrap mt={2}>
+              {value?.map((tag: string, index: number) => (
+                <WrapItem key={index}>
+                  <Tag size="md" borderRadius="full" colorScheme="blue">
+                    <TagLabel>{tag}</TagLabel>
+                    <TagCloseButton onClick={() => handleTagRemove(tag)} />
+                  </Tag>
+                </WrapItem>
+              ))}
+            </Wrap>
+          </Box>
+        );
 
       case "file-drag":
         return (
@@ -309,6 +310,22 @@ const handleTagRemove = (tagToRemove: string) => {
             readOnly={readOnly}
             style={style}
             type="url"
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            name={name}
+            disabled={disabled}
+            _placeholder={{ fontSize: "12px" }}
+            {...rest}
+          />
+        );
+
+      case "email":
+        return (
+          <Input
+            readOnly={readOnly}
+            style={style}
+            type="email"
             placeholder={placeholder}
             value={value}
             onChange={onChange}
@@ -363,13 +380,13 @@ const handleTagRemove = (tagToRemove: string) => {
                     ? isSelected
                       ? "#4299e1"
                       : isFocused
-                      ? "gray.100"
-                      : "white"
+                        ? "gray.100"
+                        : "white"
                     : isSelected
-                    ? "#2b6cb0"
-                    : isFocused
-                    ? "gray.700"
-                    : "#2D3748",
+                      ? "#2b6cb0"
+                      : isFocused
+                        ? "gray.700"
+                        : "#2D3748",
                 color: colorMode === "light" ? "black" : "white",
                 padding: "8px 12px",
                 ":hover": {

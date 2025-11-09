@@ -10,54 +10,36 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { readFileAsBase64 } from "../../config/utils/utils";
 import stores from "../../store/stores";
 import Form from "./component/Form";
-import TherapistsTable from "./component/Therapists/TherapistsTable";
+import LeadsTable from "./component/Therapists/TherapistsTable";
+import { initialValues } from "./component/utils/constant";
+import DeleteData from "./component/Therapists/component/DeleteUser";
 
-const TherapistPage = () => {
+const LeadsPage = () => {
   const {
-    userStore: { createUser, getAllUsers },
+    userStore: { createUser, getAllUsers, updateUser },
   } = stores;
-  const [entries, setEntries] = useState<any[]>([]);
-  const [isDrawerOpen, setIsDrawerOpen] = useState<any>({isOpen : false, type : 'add', data : null});
-  const [thumbnail, setThumbnail] = useState([])
-  const [currentEntry] = useState<any>({
-    name: "",
-    username: "",
-    experience: "",
-    expertise: [],
-    link:"",
-    time: "",
-    availability: undefined,
-    charges: "",
-    bio: "",
-    password: "",
-    confirmPassword: "",
+  const [isDrawerOpen, setIsDrawerOpen] = useState<any>({
+    isOpen: false,
+    type: "add",
+    data: null,
   });
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
   const toast = useToast();
 
-  const handleAddSubmit = async(formData: any) => {
+  const handleAddSubmit = async (formData: any) => {
     try {
-
-      const buffer = await readFileAsBase64(thumbnail[0]);
-        const fileData = {
-          buffer: buffer,
-          filename: thumbnail[0].name,
-          type: thumbnail[0].type,
-        };
-
       createUser({
         ...formData,
-        title: formData?.data,
-        pic : fileData,
-        availability: formData?.availability?.map((it: any) => it.value),
+        userType: "lead",
       })
         .then(() => {
-          getAllUsers({ page: 1, limit: 30 });
-          setIsDrawerOpen({isOpen : false, type : 'add', data : null});
+          getAllUsers({ page: 1, limit: 30 }); // Fetch all users
+          setIsDrawerOpen({ isOpen: false, type: "add", data: null });
+          setRefreshTrigger((prev) => prev + 1);
           toast({
-            title: "Users Added.",
+            title: "Lead Added.",
             description: `${formData.name} has been successfully added.`,
             status: "success",
             duration: 5000,
@@ -66,7 +48,7 @@ const TherapistPage = () => {
         })
         .catch((err: any) => {
           toast({
-            title: "failed to create",
+            title: "Failed to create",
             description: `${err?.message}`,
             status: "error",
             duration: 5000,
@@ -75,77 +57,127 @@ const TherapistPage = () => {
         });
     } catch (err: any) {
       toast({
-        title: "failed to create",
+        title: "Failed to create",
         description: `${err?.message}`,
-        status: "success",
+        status: "error",
         duration: 5000,
         isClosable: true,
       });
     }
   };
 
-  const handleEditSubmit = (formData: any) => {
-    setEntries(
-      entries.map((entry) =>
-        entry.username === formData.username ? formData : entry
-      )
-    );
-    setIsDrawerOpen({isOpen : false, type : 'add', data : null});
-    toast({
-      title: "Users Updated.",
-      description: `${formData.name} has been updated successfully.`,
-      status: "success",
-      duration: 5000,
-      isClosable: true,
-    });
+  const handleEditSubmit = async (values: any) => {
+    const formData: any = {
+      ...values,
+      userType: "lead",
+    };
+
+    updateUser(formData)
+      .then(() => {
+        getAllUsers({ page: 1, limit: 30 }); // Fetch all users
+        setIsDrawerOpen({ isOpen: false, type: "add", data: null });
+        setRefreshTrigger((prev) => prev + 1);
+        toast({
+          title: "Lead updated.",
+          description: `${formData.name} has been successfully updated.`,
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      })
+      .catch((err: any) => {
+        toast({
+          title: "Failed to update",
+          description: `${err?.message}`,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      });
   };
 
   return (
     <Box>
-      <TherapistsTable onAdd={() => setIsDrawerOpen({isOpen : true, type : 'add', data : null})} onEdit={setIsDrawerOpen}/>
-      <Drawer
-        size="md"
-        isOpen={isDrawerOpen.isOpen}
-        placement="right"
-        onClose={() => setIsDrawerOpen({isOpen : false, type : 'add', data : null})}
-        autoFocus={false}
-      >
-        <DrawerOverlay>
-          <DrawerContent
-            bg="white"
-            borderRadius="lg"
-            boxShadow="xl"
-            maxW="80%"
-            width="80%"
-          >
-            <DrawerCloseButton />
-            <DrawerHeader
-              bg="teal.500"
-              color="white"
-              fontSize="lg"
-              fontWeight="bold"
-              textAlign="center"
-              bgGradient="linear(to-r, blue.400, purple.400)"
+      <LeadsTable
+        onDelete={(ft: any) => {
+          setIsDrawerOpen({ open: true, type: "delete", data: ft });
+        }}
+        onAdd={() => setIsDrawerOpen({ isOpen: true, type: "add", data: null })}
+        onEdit={(dt: any) => {
+          setIsDrawerOpen({
+            isOpen: true,
+            type: "edit",
+            data: dt,
+          });
+        }}
+        refreshTrigger={refreshTrigger}
+      />
+      
+      {(isDrawerOpen.type === "add" || isDrawerOpen.type === "edit") && (
+        <Drawer
+          size="md"
+          isOpen={isDrawerOpen.isOpen}
+          placement="right"
+          onClose={() =>
+            setIsDrawerOpen({ isOpen: false, type: "add", data: null })
+          }
+          autoFocus={false}
+        >
+          <DrawerOverlay>
+            <DrawerContent
+              bg="white"
+              borderRadius="lg"
+              boxShadow="xl"
+              maxW="80%"
+              width="80%"
             >
-              {currentEntry.username ? "Edit Users" : "Add Users"}
-            </DrawerHeader>
-            <DrawerBody p={6} bg="gray.50">
-              <Form
-                initialData={currentEntry}
-                onSubmit={
-                  currentEntry.username ? handleEditSubmit : handleAddSubmit
-                }
-                isOpen={isDrawerOpen}
-                onClose={() => setIsDrawerOpen({isOpen : false, type : 'add', data : null})}
-                thumbnail={thumbnail}
-                setThumbnail={setThumbnail}
-              />
-            </DrawerBody>
-          </DrawerContent>
-        </DrawerOverlay>
-      </Drawer>
+              <DrawerCloseButton />
+              <DrawerHeader
+                bg="teal.500"
+                color="white"
+                fontSize="lg"
+                fontWeight="bold"
+                textAlign="center"
+                bgGradient="linear(to-r, teal.400, blue.400)"
+              >
+                {isDrawerOpen?.type === "edit" ? "Edit Lead" : "Add Lead"}
+              </DrawerHeader>
+              <DrawerBody p={6} bg="gray.50">
+                <Form
+                  initialData={
+                    isDrawerOpen?.type === "edit"
+                      ? isDrawerOpen?.data
+                      : null
+                  }
+                  onSubmit={
+                    isDrawerOpen?.type === "edit"
+                      ? handleEditSubmit
+                      : handleAddSubmit
+                  }
+                  isOpen={isDrawerOpen.isOpen}
+                  onClose={() =>
+                    setIsDrawerOpen({ isOpen: false, type: "add", data: null })
+                  }
+                  isEdit={isDrawerOpen.type === "edit"}
+                />
+              </DrawerBody>
+            </DrawerContent>
+          </DrawerOverlay>
+        </Drawer>
+      )}
+      
+      {isDrawerOpen.type === "delete" && isDrawerOpen.open && (
+        <DeleteData
+          getData={getAllUsers}
+          data={isDrawerOpen.data}
+          isOpen={isDrawerOpen.open}
+          onClose={() =>
+            setIsDrawerOpen({ open: false, type: "add", data: null })
+          }
+        />
+      )}
     </Box>
   );
 };
 
-export default TherapistPage;
+export default LeadsPage;
