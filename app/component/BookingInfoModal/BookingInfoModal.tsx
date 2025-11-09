@@ -181,7 +181,7 @@ const BookingInfoModal = observer(({ isOpen, onClose, data }: any) => {
             isDisabled={loading}
             _hover={{ bg: "brand.100" }}
           >
-            {loading ? <Spinner size="sm" /> : "Confirm Booking"}
+            {loading ? <Spinner size="sm" /> : "Send Enquiry"}
           </Button>
         </ModalFooter>
       </ModalContent>

@@ -8,35 +8,19 @@ import {
   CardFooter,
   Flex,
   Heading,
-  Icon,
   SimpleGrid,
   Tag,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { useState } from "react";
-import { IconType } from "react-icons";
 import {
-  FaBed,
-  FaBinoculars,
-  FaBus,
-  FaHotel,
-  FaMapMarkedAlt,
   FaMapMarkerAlt,
-  FaPlane,
-  FaQuestionCircle,
-  FaShip,
-  FaStar,
-  FaTrain,
-  FaUtensils,
-  FaWater,
+  FaStar
 } from "react-icons/fa";
-import { GrUserManager } from "react-icons/gr";
-import { HiOutlineReceiptTax } from "react-icons/hi";
-import { IoTicketOutline } from "react-icons/io5";
-import { MdEmojiFoodBeverage, MdOutlineHotel } from "react-icons/md";
 import { formatTitle } from "../../../../config/utils/function";
 import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
+import PerkIcon from "./PerkIcon";
 
 // Bounce animation for the button
 const bounce = keyframes`
@@ -44,41 +28,6 @@ const bounce = keyframes`
     50% { transform: translateY(-5px); }
     100% { transform: translateY(0); }
   `;
-
-const PerkIcon = ({ type }: { type: string }) => {
-  const icons: Record<string, IconType> = {
-    // Existing icons
-    "5-star hotels": FaBed,
-    "Daily breakfast": FaUtensils,
-    "Guided tours": FaBinoculars,
-    "Airport transfer": FaBus,
-    "Ryokan stay": FaBed,
-    "Kaiseki dinner": FaUtensils,
-    "Tea ceremony": FaBinoculars,
-    "Bullet train pass": FaBus,
-
-    // New icons
-    "4 Star Hotels": FaHotel,
-    "3 Star Hotels": FaHotel,
-    Breakfast: FaUtensils,
-    Lunch: FaUtensils,
-    Dinner: FaUtensils,
-    "Sightseeing and Tours": FaMapMarkedAlt,
-    "Transfers and Boat": FaShip,
-    "Transfers and EURAIL": FaTrain,
-    "Airport Transfers": FaPlane,
-    "GST":HiOutlineReceiptTax,
-    "Water Sports":FaWater,
-    "Daily Breakfast":MdEmojiFoodBeverage,
-    "Comfortable Hotels":MdOutlineHotel,
-    "Entrance Fees":IoTicketOutline,
-    "Indian Tour Manager":GrUserManager     
-  };
-
-  const SelectedIcon = icons[type] || FaQuestionCircle; // 👈 fallback default icon
-
-  return <Icon as={SelectedIcon} color="brand.100" boxSize={4} />;
-};
 
 // Main Card Component
 const TravelPackageCard = ({ pkg }: { pkg: any }) => {
@@ -93,7 +42,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
       key={pkg.id}
       borderRadius="xl"
       overflow="hidden"
-      minH={{lg:"40rem"}}
+      minH={{lg:"42rem"}}
       boxShadow="lg"
       transition="all 0.3s ease"
       _hover={{
@@ -275,7 +224,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
           animation={`${bounce} 2s infinite`}
           onClick={() => setOpenBookingModal({ open: true, data: pkg })}
         >
-          Book Now
+          Enquire Now
         </Button>
       </CardFooter>
       <BookingInfoModal

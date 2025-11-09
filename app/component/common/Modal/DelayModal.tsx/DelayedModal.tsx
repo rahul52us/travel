@@ -209,7 +209,7 @@ const DelayedModal = () => {
                   bgGradient="linear(to-r, #1A3C52, #294A62)"
                   bgClip="text"
                 >
-                  Begin Your Adventure Today
+                  Plan Your Dream Holiday Now
                 </Text>
                 <IconButton
                   icon={<CloseIcon />}
@@ -332,7 +332,7 @@ const DelayedModal = () => {
                         fontWeight={600}
                         letterSpacing="wide"
                       >
-                        Preferred Location
+                        Your Next Destination
                       </FormLabel>
                       <Select
                         name="location"

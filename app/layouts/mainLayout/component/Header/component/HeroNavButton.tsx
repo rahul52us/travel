@@ -14,7 +14,7 @@ const HeroNavButton = ({ onClick }: any) => {
       // _hover={{ bgGradient: "linear(to-r,brand.100,rgb(34, 112, 164))"}}
       onClick={onClick}
     >
-      Book Trip
+      Enquire Now
     </Button>
   );
 };

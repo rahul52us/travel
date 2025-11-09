@@ -1,21 +1,20 @@
 "use client";
 import { Box } from "@chakra-ui/react";
-import ContactUs from "../../component/ContactUs/ContactUs";
-import TravelBentoGrid from "../../travelComponent/common/TravelBentoGrid/TravelBentoGrid";
+import { observer } from "mobx-react-lite";
 import LocationCarousel from "../../component/common/LocationCarousel/LocationCarousel";
-import SightseeingList from "../../travelComponent/common/SightseeingCard/SightseeingList";
-import TransfersEurailSection from "../../travelComponent/TransfersEurailSection/TransfersEurailSection";
-import HeroSection from "../../travelComponent/TravelHeroSection/TravelHeroSection";
+import ContactUs from "../../component/ContactUs/ContactUs";
+import FAQ from "../../component/FAQ/FAQ";
 import TestimonialSection from "../../component/TestimonialSection/TestimonialSection";
+import stores from "../../store/stores";
+import FloatingSocialIcons from "../../travelComponent/common/FloatingIcons/FloatingIcons";
+import SightseeingList from "../../travelComponent/common/SightseeingCard/SightseeingList";
+import TravelBentoGrid from "../../travelComponent/common/TravelBentoGrid/TravelBentoGrid";
 import ExploreEuropeCarousel from "../../travelComponent/ExploreSection/ExploreSection";
 import FeaturedDestination from "../../travelComponent/FeaturedDestination/FeaturedDestination";
 import TourPackageSection from "../../travelComponent/TourPackageSection/TourPackageSection";
-import WhyChoose from "./component/WhyChoose/WhyChoose";
+import HeroSection from "../../travelComponent/TravelHeroSection/TravelHeroSection";
 import BudgetWrapper from "./component/BudgetWrapper/BudgetWrapper";
-import FAQ from "../../component/FAQ/FAQ";
-import FloatingSocialIcons from "../../travelComponent/common/FloatingIcons/FloatingIcons";
-import { observer } from "mobx-react-lite";
-import stores from "../../store/stores";
+import WhyChoose from "./component/WhyChoose/WhyChoose";
 
 const Home = observer(() => {
   const {locationStore : {location}} = stores
@@ -31,7 +30,7 @@ const Home = observer(() => {
       <TestimonialSection />
       <WhyChoose />
       <FeaturedDestination />
-      <TransfersEurailSection />
+      {/* <TransfersEurailSection /> */}
       <FAQ />
       <Box>
         <ContactUs />

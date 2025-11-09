@@ -180,7 +180,7 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
                 color={"brand.200"}
                 _hover={{ bg: themeConfig.colors.custom.light.primary }}
               >
-                BOOK NOW
+                Enquire Now
               </CustomButton>
             ) : (
               <Button

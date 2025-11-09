@@ -1,6 +1,5 @@
 import {
   Box,
-  Center,
   Container,
   Divider,
   Flex,
@@ -20,83 +19,85 @@ import ContactSection from "./components/ContactSection";
 import FooterSection from "./components/FooterSection";
 import { footerData } from "./components/footerData";
 
-// Removed empty interface
 export const Footer: React.FC = observer(() => {
-  const {destinationStore : {destination}, locationStore : {location} } = stores
+  const {
+    destinationStore: { destination },
+    locationStore: { location },
+  } = stores;
   const textColor = useColorModeValue("gray.100", "white");
-
-  const [destinationData, setDestinationsData] = useState([])
+  const [destinationData, setDestinationsData] = useState([]);
 
   useEffect(() => {
     if (destinationData.length === 0 && destination?.data?.length > 0) {
       setDestinationsData(destination.data.slice(0, 7));
     }
-  }, [destination?.data])
+  }, [destination?.data]);
 
-  const sections : any = [
+  const sections: any = [
     {
       title: "Quick Links",
       links: [
         { name: "Home", href: "/" },
         { name: "About Us", href: "/about-us" },
-        { name: "Sightseeing", href: "/sightseeing" },
+        { name: "Group Tour", href: "/groupTour" },
         { name: "Blogs", href: "/blogs" },
         { name: "Testimonials", href: "/testimonials" },
-        { name: "Contact Us", href: "/contact-us" }
-      ]
+        { name: "Contact Us", href: "/contact-us" },
+      ],
     },
-    // {
-    //   title: "Destinations",
-    //   links: destinationData?.map((dt: any) => ({
-    //     name: dt?.destination?.join(", "),
-    //     href: `/destinations/${dt?.location?.name?.split(" ").join("-")}/${getDestinationArray(dt)}`,
-    //   })) || []
-    // }
     {
       title: "Destinations",
-      links: location?.data?.map((dt: any) => ({
-        name: dt?.name,
-        href: `/destinations/${dt?.name?.split(" ").join("-")}`,
-      })) || []
-    }
-  ]
-
+      links:
+        location?.data?.map((dt: any) => ({
+          name: dt?.name,
+          href: `/destinations/${dt?.name?.split(" ").join("-")}`,
+        })) || [],
+    },
+  ];
 
   return (
     <Box
-      // bg={'#1C2B47 '}
-      bgGradient={"linear(to-r, #1C2B47,#0A192F)"}
+      bgGradient={"linear(to-r, #1c2f47ff, #0A192F)"}
       color={textColor}
-      // borderTopRadius={{ base: "24px", md: "40px" }}
       py={{ base: "8", md: 6 }}
     >
-   <Flex
-  align={"center"}
-  justify={"space-between"}
-  maxW={{ base: "90%", md: "75%" }} // Adjust max width for mobile and tablet
-  mx={"auto"}
-  mb={4}
-  pt={2}
-  direction={{ base: "column", md: "row" }} // Stack vertically on mobile, row on tablet and above
-  gap={{ base: 4, md: 0 }} // Add gap between items on mobile
->
-  <Flex align={"center"} gap={2}>
-    <Box>
-      <Image src="/icons/support.png" alt="Support" boxSize={{ base: "50px", md: "70px" }} objectFit={'contain'} />
-    </Box>
-    <Text ml={4} fontSize={{ base: "lg", md: "2xl" }} fontWeight={700}>
-      Need Any Support For Tour & Travels ?
-    </Text>
-  </Flex>
-  <Flex align={"center"} gap={2}>
-    <Box>
-      <Image src="/icons/vacation.png" alt="Support" boxSize={{ base: "50px", md: "70px" }} objectFit={'contain'} />
-    </Box>
-    <Text ml={4} fontSize={{ base: "xl", md: "2xl" }} fontWeight={700}>
-      Ready to Get Started With Vacations!
-    </Text>
-  </Flex>
-</Flex>
+      <Flex
+        align={"center"}
+        justify={"space-between"}
+        maxW={{ base: "90%", md: "75%" }} // Adjust max width for mobile and tablet
+        mx={"auto"}
+        mb={4}
+        pt={2}
+        direction={{ base: "column", md: "row" }} // Stack vertically on mobile, row on tablet and above
+        gap={{ base: 4, md: 0 }} // Add gap between items on mobile
+      >
+        <Flex align={"center"} gap={2}>
+          <Box>
+            <Image
+              src="/icons/support.png"
+              alt="Support"
+              boxSize={{ base: "50px", md: "70px" }}
+              objectFit={"contain"}
+            />
+          </Box>
+          <Text ml={4} fontSize={{ base: "lg", md: "2xl" }} fontWeight={700}>
+            Need Any Support For Tour & Travels ?
+          </Text>
+        </Flex>
+        <Flex align={"center"} gap={2}>
+          <Box>
+            <Image
+              src="/icons/vacation.png"
+              alt="Support"
+              boxSize={{ base: "50px", md: "70px" }}
+              objectFit={"contain"}
+            />
+          </Box>
+          <Text ml={4} fontSize={{ base: "xl", md: "2xl" }} fontWeight={700}>
+            Ready to Get Started With Vacations!
+          </Text>
+        </Flex>
+      </Flex>
       <Divider mb={6} maxW={"80%"} mx={"auto"} />
       <Box>
         <Container as={Stack} maxW={{ lg: "90%" }} px={{ base: 4, md: 8 }}>
@@ -115,15 +116,15 @@ export const Footer: React.FC = observer(() => {
               align={{ base: "center", md: "flex-start" }}
             >
               <Box textAlign={{ base: "center", md: "left" }}>
-                <Center rounded={"xl"}>
-                  <Image
-                    src="/images/logo3.png"
-                    alt="logo"
-                    objectFit={"cover"}
-                    h={{ base: "70px", lg: "160px" }}
-                    mx={{ base: "auto", md: 0 }}
-                  />
-                </Center>
+                {/* <Center rounded={"xl"}> */}
+                <Image
+                  src="/images/logo3.png"
+                  alt="logo"
+                  objectFit={"cover"}
+                  h={{ base: "70px", lg: "100px" }}
+                  mx={{ base: "auto", md: 0 }}
+                />
+                {/* </Center> */}
                 <Text
                   pl={1}
                   fontSize={{ base: "md", md: "lg", lg: "xl" }}
@@ -155,26 +156,12 @@ export const Footer: React.FC = observer(() => {
               </Stack>
             </Stack>
 
-            {/* Sections */}
             {sections.map((section) => (
               <FooterSection key={section.title} section={section} />
             ))}
 
-            {/* Contact Info */}
             <ContactSection contactInfo={footerData.contactInfo} />
           </SimpleGrid>
-
-          {/* Crisis Notice */}
-          {/* <Box
-            pt={{ base: 4, md: 10 }}
-            pb={2}
-            textAlign={{ base: "center", md: "left" }}
-          >
-            <Text textAlign={"center"} fontSize={{ base: "sm", md: "lg" }}>
-              {`We're not a crisis service. For immediate help, call `}
-              {footerData.companyInfo.crisisNumber}.
-            </Text>
-          </Box> */}
         </Container>
 
         <Box mt={6}>
@@ -240,4 +227,4 @@ export const Footer: React.FC = observer(() => {
       </Box>
     </Box>
   );
-})
+});

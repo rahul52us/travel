@@ -290,7 +290,7 @@ const ContactUs = observer(() => {
                 <GridItem colSpan={{ base: 1, md: 2 }}>
                   <FormControl isRequired>
                     <FormLabel fontSize="sm" color="#1A3C52" fontWeight={600} letterSpacing="wide">
-                      Preferred Location
+                      Your Next Destination
                     </FormLabel>
                     <Select
                       name="location"

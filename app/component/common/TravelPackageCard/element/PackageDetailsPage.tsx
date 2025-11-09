@@ -443,7 +443,7 @@ export default function TourDetails({ pkg }: TourDetailsProps) {
                 </Stack>
 
                 <Button size="lg" colorScheme="blue" w="full">
-                  Book Now
+                  Enquire Now
                 </Button>
 
                 <Text fontSize="sm" color="gray.500" textAlign="center">

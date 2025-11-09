@@ -221,7 +221,7 @@ const SightSeeingCard2 = ({ tour }) => {
               size={{ base: "sm", md: "md" }}
               onClick={() => setOpenBookingModal({ data: tour, open: true })}
             >
-              Book Now
+              Enquire Now
             </Button>
           </Flex>
         </Flex>

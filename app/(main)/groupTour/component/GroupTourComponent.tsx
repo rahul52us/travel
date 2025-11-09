@@ -30,7 +30,6 @@ import {
 import { formatTitle } from "../../../config/utils/function";
 import BookingInfoModal from "../../../component/BookingInfoModal/BookingInfoModal";
 
-// Subtle bounce for "Book Now"
 const bounce = keyframes`
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
@@ -264,7 +263,7 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
               animation={`${bounce} 2s infinite`}
               onClick={() => setOpenBookingModal({ open: true, data: pkg })}
             >
-              Book Now
+              Enquire Now
             </Button>
           </Flex>
         </Flex>

@@ -18,7 +18,7 @@ import { useState } from "react";
 import { FaMapMarkerAlt, FaStar, FaStarHalfAlt, FaRegStar, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import BookingInfoModal from "../../../../component/BookingInfoModal/BookingInfoModal";
 import { formatTitle } from "../../../../config/utils/function";
-import PerkIcon from "./PerkIcon";
+import PerkIcon from "../../../../component/common/TravelPackageCard/element/PerkIcon";
 
 const bounce = keyframes`
   0%, 100% { transform: translateY(0); }
@@ -240,7 +240,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
           animation={`${bounce} 2s infinite`}
           onClick={() => setOpenBookingModal({ open: true, data: pkg })}
         >
-          Book Now
+          Enquire Now
         </Button>
       </CardFooter>
       <BookingInfoModal
