@@ -13,13 +13,14 @@ import { useState } from "react";
 import { readFileAsBase64 } from "../../config/utils/utils";
 import stores from "../../store/stores";
 import Form from "./component/Form";
-import TherapistsTable from "./component/Users/UsersTable";
+import LeadTable from "./component/Leads/LeadTable";
 import { initialValues, titles } from "./component/utils/constant";
-import DeleteData from "./component/Users/component/DeleteUser";
+import DeleteData from "./component/Leads/component/DeleteUser";
+import { replaceLabelValueObjects } from "../../config/utils/function";
 
-const UsersPage = () => {
+const LeadPage = () => {
   const {
-    userStore: { createUser, getAllUsers, updateUser },
+    leadStore: { createLead, updateLead , getAllLeads},
   } = stores;
   const [isDrawerOpen, setIsDrawerOpen] = useState<any>({
     isOpen: false,
@@ -31,26 +32,12 @@ const UsersPage = () => {
 
   const handleAddSubmit = async (formData: any) => {
     try {
-      const values = { ...formData };
-      if (values.pic?.file && values.pic?.file?.length !== 0) {
-        const buffer = await readFileAsBase64(values.pic?.file);
-        const fileData = {
-          buffer: buffer,
-          filename: values.pic?.file?.name,
-          type: values.pic?.file?.type,
-          isAdd: values.pic?.isAdd || 1,
-        };
-        formData.pic = fileData;
-      }
 
-      createUser({
-        ...values,
-        title: formData?.data,
-        availability: formData?.availability?.map((it: any) => it.value),
-        profileDetails: { ...formData },
-      })
+      console.log('the form data are', formData)
+      const values = { ...formData };
+      createLead(replaceLabelValueObjects(values))
         .then(() => {
-          getAllUsers({ page: 1, limit: 30 });
+          getAllLeads({ page: 1, limit: 30 });
           setIsDrawerOpen({ isOpen: false, type: "add", data: null });
           toast({
             title: "Lead Added.",
@@ -105,14 +92,10 @@ const UsersPage = () => {
       }
     }
 
-    updateUser({
-      ...values,
-      pic: formData?.pic,
-      title: formData?.title?.label || titles[0].label,
-      profileDetails: { ...formData },
-    })
+    const {_id , referenceId, createdBy, createdAt,sno,company, ...rest} = values
+    updateLead(isDrawerOpen?.data?._id, replaceLabelValueObjects(rest))
       .then(() => {
-        getAllUsers({ page: 1, limit: 30 });
+        getAllLeads({ page: 1, limit: 30 });
         setIsDrawerOpen({ isOpen: false, type: "add", data: null });
         toast({
           title: "User updated.",
@@ -135,7 +118,7 @@ const UsersPage = () => {
 
   return (
     <Box>
-      <TherapistsTable
+      <LeadTable
         onDelete={(ft: any) => {
           setIsDrawerOpen({ open: true, type: "delete", data: ft })
         }
@@ -205,7 +188,7 @@ const UsersPage = () => {
       </Drawer>}
       {isDrawerOpen.type === "delete" && isDrawerOpen.open && (
         <DeleteData
-          getData={getAllUsers}
+          getData={getAllLeads}
           data={isDrawerOpen.data}
           isOpen={isDrawerOpen.open}
           onClose={() =>
@@ -217,4 +200,4 @@ const UsersPage = () => {
   );
 };
 
-export default UsersPage;
+export default LeadPage;

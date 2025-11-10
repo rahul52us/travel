@@ -33,7 +33,7 @@ import { tablePageLimit } from "../../../../component/config/utils/variable";
 import CustomTable from "../../../../component/config/component/CustomTable/CustomTable";
 import { formatDateTime } from "../../../../component/config/utils/dateUtils";
 
-const TherapistsTable = observer(({ onAdd, onEdit, onDelete }: any) => {
+const UsersTable = observer(({ onAdd, onEdit, onDelete }: any) => {
   const {
     userStore: { getAllUsers, therapist },
     auth: { openNotification },
@@ -344,4 +344,4 @@ const TherapistsTable = observer(({ onAdd, onEdit, onDelete }: any) => {
   );
 });
 
-export default TherapistsTable;
+export default UsersTable;

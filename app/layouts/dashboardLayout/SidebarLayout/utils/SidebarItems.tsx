@@ -1,17 +1,11 @@
 import {
   FaChartPie,
   FaUsers,
-  FaAddressBook,
-  FaMapMarkedAlt,
-  FaGlobeAsia,
-  FaLandmark,
-  FaCommentAlt,
   FaCogs,
   FaRoute,
   FaHotel,
 } from "react-icons/fa";
-import { CalendarIcon } from "@chakra-ui/icons";
-import { dashboard } from "../../../../config/utils/routes";
+import { MdLeakAdd } from "react-icons/md";
 
 interface SidebarItem {
   id: number;
@@ -51,44 +45,13 @@ const sidebarDatas: SidebarItem[] = [
     url: "/dashboard/hotel",
     role: ["user"],
   },
-  // {
-  //   id: 9,
-  //   name: "Booking",
-  //   icon: <FaCommentAlt />,
-  //   url: "/dashboard/bookings",
-  //   role: ["user"],
-  // },
-  // {
-  //   id: 5,
-  //   name: "Page Sections",
-  //   icon: <FaLayerGroup />,
-  //   url: "/dashboard/content-section",
-  //   role: ["user"],
-  // },
-  // Blogs
-  // {
-  //   id: 501,
-  //   name: "Blogs",
-  //   icon: <FaBlog />,
-  //   url: dashboard.blog.index,
-  //   role: ["user", "superadmin", "manager", "admin"],
-  //   children: [
-  //     {
-  //       id: 502,
-  //       name: "Index",
-  //       icon: <CalendarIcon />,
-  //       url: `${dashboard.blog.index}`,
-  //       role: ["user", "superadmin", "manager", "admin"],
-  //     },
-  //     {
-  //       id: 503,
-  //       name: "Create",
-  //       icon: <FaPlusCircle />,
-  //       url: `${dashboard.blog.create}`,
-  //       role: ["superadmin", "manager", "admin"],
-  //     },
-  //   ],
-  // },
+  {
+    id: 12,
+    name: "Leads",
+    icon: <MdLeakAdd />,
+    url: "/dashboard/leads",
+    role: ["user"],
+  },
 ];
 
 export const sidebarFooterData: SidebarItem[] = [

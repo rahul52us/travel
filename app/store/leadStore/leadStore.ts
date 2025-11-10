@@ -19,11 +19,11 @@ class LeadStore {
   getAllLeads = async (payload: any) => {
     this.leads.loading = true;
     try {
-      const response: any = await axios.post("/lead", {
+      const response: any = await axios.post("/leads/get", {
         ...payload,
-        company: authStore.company,
+        company: authStore.company
       });
-      this.leads.data = response?.data?.data?.data || [];
+      this.leads.data = response?.data?.data || [];
       this.leads.totalPages = response?.data?.data?.totalPages || 1;
       return response;
     } catch (err: any) {
@@ -36,7 +36,7 @@ class LeadStore {
   getLeadById = async (leadId: string) => {
     this.isLoading = true;
     try {
-      const response = await axios.get(`/lead/${leadId}`);
+      const response = await axios.get(`/leads/${leadId}`);
       this.leadDetails = response?.data?.data || null;
       return response;
     } catch (err: any) {
@@ -50,7 +50,7 @@ class LeadStore {
   createLead = async (payload: any) => {
     this.isLoading = true;
     try {
-      const response = await axios.post("/lead/create", {
+      const response = await axios.post("/leads/create", {
         ...payload,
         company: authStore.company,
       });
@@ -65,7 +65,7 @@ class LeadStore {
   updateLead = async (leadId: string, payload: any) => {
     this.isLoading = true;
     try {
-      const response = await axios.put(`/lead/${leadId}`, {
+      const response = await axios.put(`/leads/${leadId}`, {
         ...payload,
         company: authStore.company,
       });
@@ -84,7 +84,7 @@ class LeadStore {
   deleteLead = async (leadId: string) => {
     this.isLoading = true;
     try {
-      const response = await axios.delete(`/lead/${leadId}`);
+      const response = await axios.delete(`/leads/${leadId}`);
       this.leads.data = this.leads.data.filter((lead: any) => lead.id !== leadId);
       return response;
     } catch (err: any) {
