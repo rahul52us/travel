@@ -61,7 +61,7 @@ const VideoCarousel = observer(() => {
 
 
   return (
-    <Box p={{ base: 8, lg: 4 }} maxW={{ lg: "85%", xl: '80%' }} mx={'auto'}>
+    <Box p={{ base: 8, lg: 4 }} maxW={{ lg: "85%", xl: '80%' }} mx={'auto'} display="none">
       <CustomSmallTitle>VIDEO LIBRARY</CustomSmallTitle>
       <CustomSubHeading highlightText="Epic Travel Moments: Watch & Explore"> </CustomSubHeading>
       <Box mt={6}>

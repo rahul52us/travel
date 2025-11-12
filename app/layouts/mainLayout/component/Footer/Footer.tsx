@@ -121,8 +121,10 @@ export const Footer: React.FC = observer(() => {
                   src="/images/logo3.png"
                   alt="logo"
                   objectFit={"cover"}
+                  // display="none"
                   h={{ base: "70px", lg: "100px" }}
                   mx={{ base: "auto", md: 0 }}
+                  mt={6}
                 />
                 {/* </Center> */}
                 <Text

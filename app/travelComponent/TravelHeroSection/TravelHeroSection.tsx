@@ -15,7 +15,7 @@ const slides = [
   {
     image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     title: 'Live New Experiences',
-    subtitle: 'Create stories worth remembering',
+    subtitle: 'Create stories worth telling',
     text: 'From mountain peaks to underwater adventures - find your thrill'
   },
   {
@@ -151,7 +151,7 @@ const HeroSection = () => {
       </Flex>
 
       {/* Progress Bar */}
-      
+
       {/* <MotionBox
         position="absolute"
         bottom="0"
