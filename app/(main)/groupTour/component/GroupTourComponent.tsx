@@ -6,58 +6,48 @@ import {
   Divider,
   Flex,
   Heading,
-  Icon,
   SimpleGrid,
   Tag,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { useState } from "react";
-import { IconType } from "react-icons";
 import {
-  FaBed,
-  FaBinoculars,
-  FaBus,
-  FaHotel,
-  FaMapMarkedAlt,
   FaMapMarkerAlt,
-  FaQuestionCircle,
-  FaShip,
-  FaStar,
-  FaTrain,
-  FaUtensils,
+  FaStar
 } from "react-icons/fa";
-import { formatTitle } from "../../../config/utils/function";
 import BookingInfoModal from "../../../component/BookingInfoModal/BookingInfoModal";
+import PerkIcon from "../../../component/common/TravelPackageCard/element/PerkIcon";
+import { formatTitle } from "../../../config/utils/function";
 
 const bounce = keyframes`
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
 `;
 
-const PerkIcon = ({ type }: { type: string }) => {
-  const icons: Record<string, IconType> = {
-    "5-star hotels": FaBed,
-    "Daily breakfast": FaUtensils,
-    "Guided tours": FaBinoculars,
-    "Airport transfer": FaBus,
-    "Ryokan stay": FaBed,
-    "Kaiseki dinner": FaUtensils,
-    "Tea ceremony": FaBinoculars,
-    "Bullet train pass": FaBus,
-    "4 Star Hotels": FaHotel,
-    "3 Star Hotels": FaHotel,
-    Breakfast: FaUtensils,
-    Lunch: FaUtensils,
-    Dinner: FaUtensils,
-    "Sightseeing and Tours": FaMapMarkedAlt,
-    "Transfers and Boat": FaShip,
-    "Transfers and EURAIL": FaTrain,
-  };
+// const PerkIcon = ({ type }: { type: string }) => {
+//   const icons: Record<string, IconType> = {
+//     "5-star hotels": FaBed,
+//     "Daily breakfast": FaUtensils,
+//     "Guided tours": FaBinoculars,
+//     "Airport transfer": FaBus,
+//     "Ryokan stay": FaBed,
+//     "Kaiseki dinner": FaUtensils,
+//     "Tea ceremony": FaBinoculars,
+//     "Bullet train pass": FaBus,
+//     "4 Star Hotels": FaHotel,
+//     "3 Star Hotels": FaHotel,
+//     Breakfast: FaUtensils,
+//     Lunch: FaUtensils,
+//     Dinner: FaUtensils,
+//     "Sightseeing and Tours": FaMapMarkedAlt,
+//     "Transfers and Boat": FaShip,
+//     "Transfers and EURAIL": FaTrain,
+//   };
 
-  const SelectedIcon = icons[type] || FaQuestionCircle;
-  return <Icon as={SelectedIcon} color="brand.100" boxSize={4} />;
-};
+//   const SelectedIcon = icons[type] || FaQuestionCircle;
+//   return <Icon as={SelectedIcon} color="brand.100" boxSize={4} />;
+// };
 
 const GroupTourComponent = ({ pkg }: { pkg: any }) => {
   const [openBookingModal, setOpenBookingModal] = useState({

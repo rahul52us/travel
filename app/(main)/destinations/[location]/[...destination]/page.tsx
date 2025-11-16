@@ -1,15 +1,15 @@
 "use client";
 
+import { Box, Button, Center, Image, SimpleGrid, Skeleton, Text, VStack } from "@chakra-ui/react";
+import { observer } from "mobx-react-lite";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { observer } from "mobx-react-lite";
-import stores from "../../../../store/stores";
-import TravelPackageCard from "../../../../component/common/TravelPackageCard/element/TravelPackageCard";
 import PageHero from "../../../../component/common/CommonHeroSection/CommonHeroSection";
+import TravelPackageCard from "../../../../component/common/TravelPackageCard/element/TravelPackageCard";
+import { formatTitle } from "../../../../config/utils/function";
+import stores from "../../../../store/stores";
 import CustomSubHeading from "../../../../travelComponent/common/CustomSubHeading/CustomSubHeading";
 import SightSeeingCard2 from "../../../sightseeing/component/SightseeingCard2";
-import { Box, Text, Center, VStack, Image, Button, SimpleGrid, Skeleton } from "@chakra-ui/react";
-import { formatTitle } from "../../../../config/utils/function";
 
 const Page = observer(() => {
   const {

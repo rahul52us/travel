@@ -78,7 +78,7 @@ const Page = observer(() => {
         }
       />
 
-      <Box maxW={{ base: "95%", xl: "90%" }} mx="auto" py={6}>
+      <Box maxW={{ md: "95%", xl: "90%" }} mx="auto" py={6}>
         {destination.loading ? (
           <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={6}>
             {[...Array(4)].map((_, index) => (
@@ -107,7 +107,7 @@ const Page = observer(() => {
               Explore Our Best Travel Packages
             </Heading>
             <Divider />
-            <SimpleGrid columns={{ base: 1 }} spacing={6}>
+            <SimpleGrid columns={{ base: 1 }} spacing={6} p={2}>
               {filteredPackages.map((pkg) => (
                 <TravelPackageCard key={pkg._id} pkg={pkg} />
               ))}

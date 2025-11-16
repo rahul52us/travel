@@ -87,10 +87,10 @@ const PageHero = ({
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <Text
-            fontSize={{ base: "lg", md: "xl" }}
+            fontSize={{ base: "md", md: "xl" }}
             maxW="800px"
-            lineHeight="1.6"
-            fontWeight="medium"
+            lineHeight={{base:"1.4",md:"1.6"}}
+            fontWeight={{base:"normal",md:"medium"}}
             textShadow="0 2px 4px rgba(0, 0, 0, 0.2)"
             px={{ base: 0, md: 8 }}
             animation={floating}

@@ -1,7 +1,6 @@
-import { Box, Input, Image, Text, VStack, HStack, Grid, Heading, Flex, useBreakpointValue } from "@chakra-ui/react";
-import React from "react";
-import CustomSmallTitle from "../../../../component/common/CustomSmallTitle/CustomSmallTitle";
+import { Box, Flex, Grid, Heading, Image, Input, Text, useBreakpointValue, VStack } from "@chakra-ui/react";
 import CustomButton from "../../../../component/common/CustomButton/CustomButton";
+import CustomSmallTitle from "../../../../component/common/CustomSmallTitle/CustomSmallTitle";
 import { INSTRAGRAM_LINK } from "../../../../config/utils/variables";
 
 const StayTune = () => {
@@ -34,7 +33,7 @@ const StayTune = () => {
                     </Text>
 
                     {/* Input Box and Button */}
-                    <HStack spacing={2} w="100%" mt={6}>
+                    <Flex gap={2} direction={{base:"column",md:"row"}} w="100%" mt={6}>
                         <Input
                             placeholder="Enter Your Email"
                             bg="brand.200"
@@ -53,7 +52,7 @@ const StayTune = () => {
                         >
                             Subscribe Now
                         </CustomButton>
-                    </HStack>
+                    </Flex>
                 </VStack>
 
                 {/* Right Side - Image */}
