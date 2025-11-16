@@ -1,5 +1,6 @@
 import { Icon } from "@chakra-ui/react";
 import { IconType } from "react-icons";
+import { BsWater } from "react-icons/bs";
 import {
     FaBed,
     FaBinoculars,
@@ -7,6 +8,7 @@ import {
     FaHotel,
     FaMapMarkedAlt,
     FaMountain,
+    FaPassport,
     FaPlane,
     FaQuestionCircle,
     FaShip,
@@ -16,10 +18,13 @@ import {
     FaUtensils,
     FaWater,
 } from "react-icons/fa";
+import { GiWaterfall } from "react-icons/gi";
 import { GrUserManager } from "react-icons/gr";
 import { HiOutlineReceiptTax } from "react-icons/hi";
-import { IoTicketOutline } from "react-icons/io5";
+import { IoCarSportOutline, IoTicketOutline } from "react-icons/io5";
+import { LuMountain } from "react-icons/lu";
 import {
+  MdDirectionsRailway,
     MdEmojiFoodBeverage,
     MdOutlineHotel,
     MdPool,
@@ -58,6 +63,8 @@ const PerkIcon = ({ type }: { type: string }) => {
     { keyword: "cruise", icon: FaShip },
     { keyword: "ferry", icon: FaShip },
     { keyword: "boat", icon: FaShip },
+    { keyword: "vehicle", icon: IoCarSportOutline  },
+    { keyword: "ac coach", icon: MdDirectionsRailway    },
 
     // 🎟️ Activities / Tours
     { keyword: "tour", icon: FaMapMarkedAlt },
@@ -81,18 +88,22 @@ const PerkIcon = ({ type }: { type: string }) => {
     // 🌴 Leisure / Vacation
     { keyword: "beach", icon: FaUmbrellaBeach },
     { keyword: "pool", icon: MdPool },
+    { keyword: "lake", icon: BsWater },
     { keyword: "mountain", icon: FaMountain },
     { keyword: "island", icon: FaUmbrellaBeach },
     { keyword: "resort", icon: FaHotel },
     { keyword: "ice", icon: FaSnowflake },
+    { keyword: "waterfall", icon: GiWaterfall },
+    { keyword: "hill", icon: LuMountain  },
 
     // 💱 Taxes / Extras
     { keyword: "gst", icon: HiOutlineReceiptTax },
+    { keyword: "visa", icon: FaPassport  },
   ];
 
   const matched = iconMap.find((item) => lower.includes(item.keyword));
 
-  const SelectedIcon = matched ? matched.icon : FaQuestionCircle;
+  const SelectedIcon = matched ? matched.icon : FaMapMarkedAlt;
 
   return <Icon as={SelectedIcon} color="brand.100" boxSize={4} />;
 };

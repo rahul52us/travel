@@ -57,33 +57,40 @@ const NavItem: React.FC<NavItemProps> = ({ item ,onClose}) => {
   }
 
   return (
-    <Box
-      as="span"
-      fontWeight={500}
-      fontSize={{ lg: "16px", xl: "18px" }}
-      color="brand.100"
-      position="relative"
-      cursor="pointer"
-      _hover={{
-        "&::after": {
-          content: '""',
-          position: "absolute",
-          bottom: "-4px",
-          left: 0,
-          width: "100%",
-          height: "4px",
-          backgroundColor: "#1C2B47",
-        },
-      }}
-      onClick={() => {
-        if (item.link) router.push(item.link);
-        if(onClose){
-          onClose();
-        }
-      }}
-    >
-      {item.title}
-    </Box>
+  <Box
+  as="span"
+  fontWeight={500}
+  fontSize={{ lg: "16px", xl: "18px" }}
+  color="brand.100"
+  position="relative"
+  cursor="pointer"
+  _after={{
+    content: '""',
+    position: "absolute",
+    bottom: "-3px",
+    left: 0,
+    width: "100%",
+    height: "3px",
+    backgroundColor: "brand.100",
+    transform: "scaleX(0)",
+    transformOrigin: "left",
+    transition: "transform 0.3s ease",
+  }}
+  _hover={{
+    "&::after": {
+      transform: "scaleX(1)",
+    },
+  }}
+  onClick={() => {
+    if (item.link) router.push(item.link);
+    if (onClose) {
+      onClose();
+    }
+  }}
+>
+  {item.title}
+</Box>
+
   );
 };
 

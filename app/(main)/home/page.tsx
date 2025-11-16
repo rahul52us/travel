@@ -7,7 +7,6 @@ import FAQ from "../../component/FAQ/FAQ";
 import TestimonialSection from "../../component/TestimonialSection/TestimonialSection";
 import stores from "../../store/stores";
 import FloatingSocialIcons from "../../travelComponent/common/FloatingIcons/FloatingIcons";
-import SightseeingList from "../../travelComponent/common/SightseeingCard/SightseeingList";
 import TravelBentoGrid from "../../travelComponent/common/TravelBentoGrid/TravelBentoGrid";
 import ExploreEuropeCarousel from "../../travelComponent/ExploreSection/ExploreSection";
 import FeaturedDestination from "../../travelComponent/FeaturedDestination/FeaturedDestination";
@@ -26,7 +25,7 @@ const Home = observer(() => {
       <LocationCarousel locations={location?.data || []}/>
       <BudgetWrapper />
       <ExploreEuropeCarousel />
-      <SightseeingList />
+      {/* <SightseeingList /> */}
       <TestimonialSection />
       <WhyChoose />
       <FeaturedDestination />
