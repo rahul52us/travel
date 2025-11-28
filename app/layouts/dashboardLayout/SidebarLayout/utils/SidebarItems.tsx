@@ -1,17 +1,16 @@
+import { CalendarIcon } from "@chakra-ui/icons";
 import {
-  FaChartPie,
-  FaUsers,
   FaAddressBook,
-  FaMapMarkedAlt,
+  FaBlog,
+  FaChartPie,
+  FaCogs,
+  FaCommentAlt,
   FaGlobeAsia,
   FaLandmark,
-  FaCommentAlt,
   FaLayerGroup,
-  FaCogs,
-  FaBlog,
-  FaPlusCircle,
+  FaMapMarkedAlt,
+  FaPlusCircle
 } from "react-icons/fa";
-import { CalendarIcon } from "@chakra-ui/icons";
 import { dashboard } from "../../../../config/utils/routes";
 
 interface SidebarItem {
@@ -31,13 +30,13 @@ const sidebarDatas: SidebarItem[] = [
     url: "/dashboard",
     role: ["user"],
   },
-  {
-    id: 2,
-    name: "Users",
-    icon: <FaUsers />,
-    url: "/dashboard/users",
-    role: ["user"],
-  },
+  // {
+  //   id: 2,
+  //   name: "Users",
+  //   icon: <FaUsers />,
+  //   url: "/dashboard/users",
+  //   role: ["user"],
+  // },
   {
     id: 3,
     name: "Contacts",
@@ -146,4 +145,5 @@ const getSidebarDataByRole = (role: string[] = ["user"]): SidebarItem[] => {
 const userRole = ["user"]; // Example role
 const sidebarData = getSidebarDataByRole(userRole);
 
-export { sidebarData, getSidebarDataByRole };
+export { getSidebarDataByRole, sidebarData };
+
