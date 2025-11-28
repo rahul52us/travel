@@ -52,7 +52,7 @@ const Header = observer(() => {
       >
         <Image
           src="/images/logo3.png"
-          alt="best child psychologist in noida"
+          alt="Embark on Your Next Adventure"
           h={{ base: "43px", sm: "48px" }} // Reduced logo size
           cursor="pointer"
           onClick={() => router.push("/")}
