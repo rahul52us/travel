@@ -54,7 +54,20 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <ColorModeScript initialColorMode="light" />
+
+        {/* ---------- SEO TAGS HERE ---------- */}
+        <title>Best International Tour Company | Cosmic Travels India</title>
+        <meta
+          name="description"
+          content="Trusted international travel company in India for romantic getaways, family holidays & group tours. Customized itineraries & complete support."
+        />
+        <meta
+          name="keywords"
+          content="International tour packages from India, Best travel agency for abroad trips, Customized international holidays, Visa flights hotel packages, Family international trips, Honeymoon international trips"
+        />
+        {/* ---------- END SEO TAGS ---------- */}
       </head>
+
       <body className={`${montserrat.className} ${poppins.className}`} style={{ margin: 0, padding: 0 }}>
         <ChakraProvider theme={theme}>
           <Notification />
