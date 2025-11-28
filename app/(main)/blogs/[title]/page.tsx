@@ -23,16 +23,6 @@ import { FACEBOOK_LINK, INSTRAGRAM_LINK } from "../../../config/utils/variables"
 import BlogCardSection from "../components/BlogsCard/BlogCardSection";
 
 const socialLinks = [
-  // {
-  //   name: "LinkedIn",
-  //   url: "https://www.linkedin.com/company/metamind-healthcare/",
-  //   icon: FaLinkedinIn
-  // },
-  // {
-  //   name: "FaXTwitter",
-  //   url: "https://x.com/metamindhealth",
-  //   icon: FaXTwitter
-  // },
   {
     name: "Instagram",
     url: INSTRAGRAM_LINK,

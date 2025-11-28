@@ -12,35 +12,8 @@ export const otherBlogData = [
     title: "Eating Disorders & BPD: The Hidden Connection",
     charges: "NO COST",
     description:
-      "This webinar is open for mental health professionals - Counselors, Psychologists, Clinical Psychologists,  Psychiatric Social Workers , Psychiatrists & Mental health educators.",
+      "Trusted international travel company in India for romantic getaways, family holidays & group tours. Customized itineraries & complete support.",
   },
-  // {
-  //   id: 2,
-  //   image: "/images/blogs/blogCard.png",
-  //   date: "18 January",
-  //   title: "How to Build a Daily Reading Habit On your Own",
-  //   charges: "₹200 /per person",
-  //   description:
-  //     "Cultivating a reading habit can transform your life. Learn simple techniques to make reading a daily ritual and expand your knowledge effortlessly.",
-  // },
-  // {
-  //   id: 3,
-  //   image: "/images/blogs/blogCard.png",
-  //   date: "22 January",
-  //   title: "The Benefits of Mindfulness for Kids and Students",
-  //   charges: "₹200 /per person",
-  //   description:
-  //     "Mindfulness can help children stay focused, reduce stress, and develop emotional intelligence. Here’s how to introduce mindfulness into their daily routine.",
-  // },
-  // {
-  //   id: 4,
-  //   image: "/images/blogs/blogCard.png",
-  //   date: "22 January",
-  //   title: "The Benefits of Mindfulness for Kids and Students",
-  //   charges: "₹200 /per person",
-  //   description:
-  //     "Mindfulness can help children stay focused, reduce stress, and develop emotional intelligence. Here’s how to introduce mindfulness into their daily routine.",
-  // },
 ];
 
 const OtherBlogSection = () => {

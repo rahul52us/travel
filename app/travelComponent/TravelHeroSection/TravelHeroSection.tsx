@@ -1,46 +1,49 @@
-import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const MotionBox = motion(Box);
 const MotionFlex = motion(Flex);
 
 const slides = [
   {
-    image: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    title: 'Discover Hidden Wonders',
-    subtitle: 'Explore destinations off the beaten path',
-    text: 'Uncover secret spots known only to locals and seasoned travelers'
+    image:
+      "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    title: "Discover Hidden Wonders",
+    subtitle: "Explore destinations off the beaten path",
+    text: "Uncover secret spots known only to locals and seasoned travelers",
   },
   {
-    image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    title: 'Live New Experiences',
-    subtitle: 'Create stories worth telling',
-    text: 'From mountain peaks to underwater adventures - find your thrill'
+    image:
+      "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    title: "Live New Experiences",
+    subtitle: "Create stories worth telling",
+    text: "From mountain peaks to underwater adventures - find your thrill",
   },
   {
-    image: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    title: 'Taste World Flavors',
-    subtitle: 'Journey through global cuisines',
-    text: 'Savor authentic dishes in their places of origin'
-  }
+    image:
+      "https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    title: "Taste World Flavors",
+    subtitle: "Journey through global cuisines",
+    text: "Savor authentic dishes in their places of origin",
+  },
 ];
 
 const HeroSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState<'left' | 'right'>('right');
+  const [direction, setDirection] = useState<"left" | "right">("right");
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDirection('right');
-      setActiveIndex(prev => (prev + 1) % slides.length);
+      setDirection("right");
+      setActiveIndex((prev) => (prev + 1) % slides.length);
     }, 8000);
 
     return () => clearInterval(interval);
   }, []);
 
   const handleSlideChange = (newIndex: number) => {
-    setDirection(newIndex > activeIndex ? 'right' : 'left');
+    setDirection(newIndex > activeIndex ? "right" : "left");
     setActiveIndex(newIndex);
   };
 
@@ -56,10 +59,13 @@ const HeroSection = () => {
           bg={`url('${slides[activeIndex].image}')`}
           bgSize="cover"
           bgPosition="center"
-          initial={{ x: direction === 'right' ? '100%' : '-100%', opacity: 0.5 }}
+          initial={{
+            x: direction === "right" ? "100%" : "-100%",
+            opacity: 0.5,
+          }}
           animate={{ x: 0, opacity: 1 }}
-          exit={{ x: direction === 'right' ? '-100%' : '100%', opacity: 0.5 }}
-          transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+          exit={{ x: direction === "right" ? "-100%" : "100%", opacity: 0.5 }}
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
         />
       </AnimatePresence>
 
@@ -85,23 +91,32 @@ const HeroSection = () => {
             exit={{ opacity: 0, y: -50 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-           <Heading
-  fontSize={{ base: '4xl', md: '6xl' }}
-  mb={6}
-  bgGradient="linear(to-r, #42c4d0ff, #A3E5ED, #E0FFFF)"
-  bgClip="text"
-  lineHeight="1.2"
-  textShadow="0 2px 8px rgba(0, 0, 0, 0.25)"
-
+            <Heading
+              fontSize={{ base: "4xl", md: "6xl" }}
+              mb={6}
+              bgGradient="linear(to-r, #42c4d0ff, #A3E5ED, #E0FFFF)"
+              bgClip="text"
+              lineHeight="1.2"
+              textShadow="0 2px 8px rgba(0, 0, 0, 0.25)"
             >
               {slides[activeIndex].title}
             </Heading>
 
-            <Text fontSize={{ base: 'xl', md: '3xl' }} mb={4} fontWeight="semibold" textShadow={'2px 2px 4px rgba(0, 0, 0, 0.5)'}>
+            <Text
+              fontSize={{ base: "xl", md: "3xl" }}
+              mb={4}
+              fontWeight="semibold"
+              textShadow={"2px 2px 4px rgba(0, 0, 0, 0.5)"}
+            >
               {slides[activeIndex].subtitle}
             </Text>
 
-            <Text fontSize={{ base: 'md', md: 'lg' }} mb={8} maxW="600px" textShadow={'2px 2px 4px rgba(0, 0, 0, 0.5)'}>
+            <Text
+              fontSize={{ base: "md", md: "lg" }}
+              mb={8}
+              maxW="600px"
+              textShadow={"2px 2px 4px rgba(0, 0, 0, 0.5)"}
+            >
               {slides[activeIndex].text}
             </Text>
 
@@ -110,14 +125,14 @@ const HeroSection = () => {
               size="lg"
               px={8}
               fontSize="lg"
-              bg={'transparent'}
-              rounded={'full'}
-              border={'1px groove white'}
-              _hover={{ transform: 'scale(1.05)' }}
-              backdropFilter={'auto'}
-              backdropBlur={'8px'}
-              _focus={{ boxShadow: 'outline' }}
-              backdropBrightness={'0.7'}
+              bg={"transparent"}
+              rounded={"full"}
+              border={"1px groove white"}
+              _hover={{ transform: "scale(1.05)" }}
+              backdropFilter={"auto"}
+              backdropBlur={"8px"}
+              _focus={{ boxShadow: "outline" }}
+              backdropBrightness={"0.7"}
               transition="all 0.2s"
             >
               Start Journey
@@ -142,8 +157,8 @@ const HeroSection = () => {
             w="3"
             h="3"
             borderRadius="full"
-            bg={index === activeIndex ? 'teal.300' : 'whiteAlpha.600'}
-            _hover={{ bg: 'teal.200' }}
+            bg={index === activeIndex ? "teal.300" : "whiteAlpha.600"}
+            _hover={{ bg: "teal.200" }}
             onClick={() => handleSlideChange(index)}
             transition="all 0.3s"
           />

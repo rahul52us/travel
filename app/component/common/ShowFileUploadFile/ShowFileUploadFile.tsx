@@ -65,7 +65,7 @@ import FileViewer from "./FilesViewer/FileViewer";
           return (
             <Image
               src={url}
-              alt="Who is the best counseling psychologist in Noida"
+              alt=""
               maxW="100%"
                     maxH="100%"
                     objectFit="contain"
