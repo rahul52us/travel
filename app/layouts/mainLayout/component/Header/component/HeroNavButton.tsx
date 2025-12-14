@@ -2,7 +2,7 @@
 import { Button } from "@chakra-ui/react";
 import React from "react";
 
-const HeroNavButton = () => {
+const HeroNavButton = ({} : any) => {
   const handleClick = () => {
     const phone = "9958805754";
     const message =

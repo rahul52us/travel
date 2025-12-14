@@ -20,7 +20,7 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/navigation";
 import { observer } from "mobx-react-lite";
 
-const Header = observer(() => {
+const Header = observer(({} : any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
 
