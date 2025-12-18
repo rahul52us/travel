@@ -8,14 +8,11 @@ import {
   Heading,
   SimpleGrid,
   Tag,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { useState } from "react";
-import {
-  FaMapMarkerAlt,
-  FaStar
-} from "react-icons/fa";
+import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import BookingInfoModal from "../../../component/BookingInfoModal/BookingInfoModal";
 import PerkIcon from "../../../component/common/TravelPackageCard/element/PerkIcon";
 import { formatTitle } from "../../../config/utils/function";
@@ -239,7 +236,7 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
             {/* Sky Blue Button */}
             <Button
               borderRadius="full"
-              bg={'brand.100'}
+              bg={"brand.100"}
               // bgGradient="linear(to-r, blue.400, blue.500)"
               color="white"
               _hover={{
@@ -251,14 +248,30 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
               size="sm"
               fontWeight="semibold"
               animation={`${bounce} 2s infinite`}
-              onClick={() => setOpenBookingModal({ open: true, data: pkg })}
+              // onClick={() => setOpenBookingModal({ open: true, data: pkg })}
+              onClick={() => {
+                const phone = "9958805754";
+                const message = `Hi, I am interested in the ${
+                  pkg?.name || pkg?.destination
+                } group tour. Please share more details.`;
+                const encodedMsg = encodeURIComponent(message);
+
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(
+                  navigator.userAgent
+                );
+
+                const url = isMobile
+                  ? `https://wa.me/91${phone}?text=${encodedMsg}`
+                  : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
+
+                window.open(url, "_blank");
+              }}
             >
               Enquire Now
             </Button>
           </Flex>
         </Flex>
       </Flex>
-
       {/* Booking Modal */}
       <BookingInfoModal
         isOpen={openBookingModal.open}

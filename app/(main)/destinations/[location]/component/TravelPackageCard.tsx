@@ -308,6 +308,20 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
           }}
           animation={`${bounce} 2s infinite`}
           onClick={() => setOpenBookingModal({ open: true, data: pkg })}
+//           onClick={() => {
+//   const phone = "9958805754";
+//   const message = `Hi, I am interested in the ${pkg?.name || pkg?.destination} travel package. Please share more details.`;
+//   const encodedMsg = encodeURIComponent(message);
+
+//   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+//   const url = isMobile
+//     ? `https://wa.me/91${phone}?text=${encodedMsg}`
+//     : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
+
+//   window.open(url, "_blank");
+// }}
+
         >
           Enquire Now
         </Button>
