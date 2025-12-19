@@ -16,7 +16,8 @@ import { keyframes } from "@emotion/react";
 import { useState } from "react";
 import {
   FaMapMarkerAlt,
-  FaStar
+  FaStar,
+  FaWhatsapp
 } from "react-icons/fa";
 import { formatTitle } from "../../../../config/utils/function";
 import BookingInfoModal from "../../../BookingInfoModal/BookingInfoModal";
@@ -42,7 +43,7 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
       key={pkg.id}
       borderRadius="xl"
       overflow="hidden"
-      minH={{lg:"42rem"}}
+      minH={{ lg: "42rem" }}
       boxShadow="lg"
       transition="all 0.3s ease"
       _hover={{
@@ -106,8 +107,8 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
       <CardBody bg="white">
         <Flex justify="space-between" align="center" mb={3}>
           <Tag
-          bg={'brand.100'}
-          color={'white'}
+            bg={'brand.100'}
+            color={'white'}
             // colorScheme="blue"
             borderRadius="full"
             px={4}
@@ -214,33 +215,42 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
             </Text>
           </Heading>
         </Box>
-        <Button
-          // colorScheme="red"
-          bg={'brand.100'}
-          color={'white'}
-          _hover={{bg:"brand.100"}}
-          borderRadius="full"
-          size={{ base: "xs", lg: "sm" }}
-          animation={`${bounce} 2s infinite`}
-          // onClick={() => setOpenBookingModal({ open: true, data: pkg })}
-          onClick={() => {
-  const phone = "9958805754";
-  const message = `Hi, I am interested in the ${pkg?.name || pkg?.destination} travel package. Please share more details.`;
-  const encodedMsg = encodeURIComponent(message);
+        <Flex gap={2} align="center">
+          <Button
+            bg="#25D366"
+            color="white"
+            _hover={{ bg: "#128C7E" }}
+            borderRadius="full"
+            size={{ base: "xs", lg: "sm" }}
+            onClick={() => {
+              const phone = "9958805754";
+              const message = `Hi, I am interested in the ${pkg?.name || pkg?.destination} travel package. Please share more details.`;
+              const encodedMsg = encodeURIComponent(message);
 
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+              const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  const url = isMobile
-    ? `https://wa.me/91${phone}?text=${encodedMsg}`
-    : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
+              const url = isMobile
+                ? `https://wa.me/91${phone}?text=${encodedMsg}`
+                : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
 
-  window.open(url, "_blank");
-}}
-
-
-        >
-          Enquire Now
-        </Button>
+              window.open(url, "_blank");
+            }}
+            p={{ base: 2, lg: 3 }}
+          >
+            <FaWhatsapp size={20} />
+          </Button>
+          <Button
+            bg={'brand.100'}
+            color={'white'}
+            _hover={{ bg: "brand.100" }}
+            borderRadius="full"
+            size={{ base: "xs", lg: "sm" }}
+            animation={`${bounce} 2s infinite`}
+            onClick={() => setOpenBookingModal({ open: true, data: pkg })}
+          >
+            Enquire Now
+          </Button>
+        </Flex>
       </CardFooter>
       <BookingInfoModal
         isOpen={openBookingModal.open}
