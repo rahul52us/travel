@@ -21,7 +21,7 @@ export default function RootLayout({
   const { companyStore: { getCompanyDetails } } = stores;
   const pathname = usePathname();
 
-  // --- Extend Chakra Theme ---
+  // //--- Extend Chakra Theme ---
   const theme = extendTheme({
     ...stores.themeStore.themeConfig,
     fonts: {
