@@ -1,45 +1,45 @@
 "use client"
 
 import {
-    Accordion,
-    AccordionButton,
-    AccordionIcon,
-    AccordionItem,
-    AccordionPanel,
-    AspectRatio,
-    Badge,
-    Box,
-    Button,
-    chakra,
-    Container,
-    Divider,
-    Flex,
-    Grid,
-    Heading,
-    Icon,
-    Image,
-    List,
-    ListIcon,
-    ListItem,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalOverlay,
-    shouldForwardProp,
-    SimpleGrid,
-    Stack,
-    Stat,
-    StatLabel,
-    StatNumber,
-    Tab,
-    TabList,
-    TabPanel,
-    TabPanels,
-    Tabs,
-    Text,
-    useColorModeValue,
-    useDisclosure,
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  AspectRatio,
+  Badge,
+  Box,
+  Button,
+  chakra,
+  Container,
+  Divider,
+  Flex,
+  Grid,
+  Heading,
+  Icon,
+  Image,
+  List,
+  ListIcon,
+  ListItem,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+  shouldForwardProp,
+  SimpleGrid,
+  Stack,
+  Stat,
+  StatLabel,
+  StatNumber,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+  useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react"
 import { isValidMotionProp, motion } from "framer-motion"
 // import dynamic from "next/dynamic"
@@ -69,7 +69,7 @@ export default function TourDetails({ pkg }: TourDetailsProps) {
   return (
     <Box bg={bgColor} minH="100vh">
       {/* Hero Section with Parallax */}
-      
+
       {/* <Box position="relative" height="90vh" overflow="hidden">
         <Box
           position="absolute"
@@ -232,7 +232,7 @@ export default function TourDetails({ pkg }: TourDetailsProps) {
                         key={day.place}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        // transition={{ duration: 0.5, delay: index * 0.1 }}
+                      // transition={{ duration: 0.5, delay: index * 0.1 }}
                       >
                         <Box bg={cardBg} p={6} borderRadius="lg" shadow="md">
                           <Flex gap={4}>

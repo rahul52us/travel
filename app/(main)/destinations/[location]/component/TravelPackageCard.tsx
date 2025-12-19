@@ -21,7 +21,8 @@ import {
   FaMapMarkerAlt,
   FaRegStar,
   FaStar,
-  FaStarHalfAlt
+  FaStarHalfAlt,
+  FaWhatsapp
 } from "react-icons/fa";
 import BookingInfoModal from "../../../../component/BookingInfoModal/BookingInfoModal";
 import PerkIcon from "../../../../component/common/TravelPackageCard/element/PerkIcon";
@@ -296,35 +297,47 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
           </Flex>
         </Box>
 
-        <Button
-          borderRadius="full"
-          size="sm"
-          px={5}
-          bgGradient="linear(to-r, brand.100, blue.600)"
-          color="white"
-          _hover={{
-            bgGradient: "linear(to-r, brand.100, blue.700)",
-            transform: "scale(1.05)",
-          }}
-          animation={`${bounce} 2s infinite`}
-          onClick={() => setOpenBookingModal({ open: true, data: pkg })}
-//           onClick={() => {
-//   const phone = "9958805754";
-//   const message = `Hi, I am interested in the ${pkg?.name || pkg?.destination} travel package. Please share more details.`;
-//   const encodedMsg = encodeURIComponent(message);
+        <Flex gap={2} align="center">
+          <Button
+            bg="#25D366"
+            color="white"
+            _hover={{ bg: "#128C7E" }}
+            borderRadius="full"
+            size="sm"
+            onClick={() => {
+              const phone = "9958805754";
+              const message = `Hi, I am interested in the ${pkg?.name || pkg?.destination} travel package. Please share more details.`;
+              const encodedMsg = encodeURIComponent(message);
 
-//   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+              const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-//   const url = isMobile
-//     ? `https://wa.me/91${phone}?text=${encodedMsg}`
-//     : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
+              const url = isMobile
+                ? `https://wa.me/91${phone}?text=${encodedMsg}`
+                : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
 
-//   window.open(url, "_blank");
-// }}
+              window.open(url, "_blank");
+            }}
+            p={{ base: 2, lg: 3 }}
+          >
+            <FaWhatsapp size={20} />
+          </Button>
 
-        >
-          Enquire Now
-        </Button>
+          <Button
+            borderRadius="full"
+            size="sm"
+            px={5}
+            bgGradient="linear(to-r, brand.100, blue.600)"
+            color="white"
+            _hover={{
+              bgGradient: "linear(to-r, brand.100, blue.700)",
+              transform: "scale(1.05)",
+            }}
+            animation={`${bounce} 2s infinite`}
+            onClick={() => setOpenBookingModal({ open: true, data: pkg })}
+          >
+            Enquire Now
+          </Button>
+        </Flex>
       </CardFooter>
 
       <BookingInfoModal

@@ -128,13 +128,13 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
                   {title}
                 </Text>
                 <Text noOfLines={2}
-          sx={{
-            display: "-webkit-box",
-            WebkitLineClamp: "2",
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }} mt={1} dangerouslySetInnerHTML={{ __html: subTitle }} />
+                  sx={{
+                    display: "-webkit-box",
+                    WebkitLineClamp: "2",
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }} mt={1} dangerouslySetInnerHTML={{ __html: subTitle }} />
               </Stack>
             </Flex>
           ) : (
@@ -155,20 +155,20 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
                   WebkitBoxOrient: "vertical",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
-                  minH:'20px',
+                  minH: '20px',
                 }}
               >
                 {title}
               </Text>
               <Text mt={1} noOfLines={2}
-          sx={{
-            display: "-webkit-box",
-            WebkitLineClamp: "2",
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
-            minH:'20px',
-            textOverflow: "ellipsis",
-          }} dangerouslySetInnerHTML={{ __html: subTitle }} />
+                sx={{
+                  display: "-webkit-box",
+                  WebkitLineClamp: "2",
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  minH: '20px',
+                  textOverflow: "ellipsis",
+                }} dangerouslySetInnerHTML={{ __html: subTitle }} />
             </>
           )}
           <Flex justifyContent={"space-between"} alignItems={"center"} mt={2}>
@@ -176,22 +176,22 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
               <CustomButton
                 // onClick={() => router.push("#")} // Event booking page ka URL
                 onClick={() => {
-    const phone = "9958805754";
-    const message = `Hi, I am interested in the blog "${title}". Please share more details.`;
-    const encodedMsg = encodeURIComponent(message);
+                  const phone = "9958805754";
+                  const message = `Hi, I am interested in the blog "${title}". Please share more details.`;
+                  const encodedMsg = encodeURIComponent(message);
 
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    const url = isMobile
-      ? `https://wa.me/91${phone}?text=${encodedMsg}`
-      : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
+                  const url = isMobile
+                    ? `https://wa.me/91${phone}?text=${encodedMsg}`
+                    : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
 
-    window.location.href = url;
-  }}
-  size={{ base: "sm", md: "md" }}
-  bg={themeConfig.colors.custom.light.primary}
-  color={"brand.200"}
-  _hover={{ bg: themeConfig.colors.custom.light.primary }}
+                  window.location.href = url;
+                }}
+                size={{ base: "sm", md: "md" }}
+                bg={themeConfig.colors.custom.light.primary}
+                color={"brand.200"}
+                _hover={{ bg: themeConfig.colors.custom.light.primary }}
               >
                 Enquire Now
               </CustomButton>
