@@ -1,8 +1,9 @@
 "use client";
-import { Button } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
+import { FaWhatsapp } from "react-icons/fa";
 
-const HeroNavButton = ({onClick} : any) => {
-  const handleClick = () => {
+const HeroNavButton = ({ onClick }: any) => {
+  const handleWhatsAppClick = () => {
     const phone = "9958805754";
     const message =
       "Hi, I am interested in your travel packages. Please share more details.";
@@ -18,17 +19,31 @@ const HeroNavButton = ({onClick} : any) => {
   };
 
   return (
-    <Button
-      bg={"brand.100"}
-      _hover={{ bg: "brand.100", transform: "translateY(-2px)" }}
-      color={"brand.200"}
-      size="lg"
-      fontWeight={600}
-      fontSize="sm"
-      onClick={onClick}
-    >
-      Enquire Now
-    </Button>
+    <Flex gap={2} align="center">
+      <Button
+        bg="#25D366"
+        color="white"
+        _hover={{ bg: "#128C7E", transform: "translateY(-2px)" }}
+        size="lg"
+        fontWeight={600}
+        borderRadius="full"
+        onClick={handleWhatsAppClick}
+        p={3}
+      >
+        <FaWhatsapp size={24} />
+      </Button>
+      <Button
+        bg={"brand.100"}
+        _hover={{ bg: "brand.100", transform: "translateY(-2px)" }}
+        color={"brand.200"}
+        size="lg"
+        fontWeight={600}
+        fontSize="sm"
+        onClick={onClick}
+      >
+        Enquire Now
+      </Button>
+    </Flex>
   );
 };
 
