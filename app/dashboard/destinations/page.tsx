@@ -42,7 +42,7 @@ const Page = observer(() => {
       {/* Header Section with Button */}
       <Flex align="center" mb={6}>
         <Heading as="h1" size="lg" color="blue.600">
-          City
+          Itinerary
         </Heading>
         <Spacer />
         <Button
