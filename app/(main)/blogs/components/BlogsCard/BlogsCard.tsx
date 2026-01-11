@@ -176,18 +176,27 @@ const BlogsCard: React.FC<BlogCardProps> = observer(
               <CustomButton
                 // onClick={() => router.push("#")} // Event booking page ka URL
                 onClick={() => {
-                  const phone = "9958805754";
-                  const message = `Hi, I am interested in the blog "${title}". Please share more details.`;
-                  const encodedMsg = encodeURIComponent(message);
+  // 🔥 Track WhatsApp click in Google Tag Manager
+  (window as any).dataLayer = (window as any).dataLayer || [];
+  (window as any).dataLayer.push({
+    event: "whatsapp_click",
+    click_text: "WhatsApp Button",
+    blog_title: title || "Unknown Blog",
+  });
 
-                  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const phone = "9958805754";
+  const message = `Hi, I am interested in the blog "${title}". Please share more details.`;
+  const encodedMsg = encodeURIComponent(message);
 
-                  const url = isMobile
-                    ? `https://wa.me/91${phone}?text=${encodedMsg}`
-                    : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-                  window.location.href = url;
-                }}
+  const url = isMobile
+    ? `https://wa.me/91${phone}?text=${encodedMsg}`
+    : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
+
+  window.location.href = url;
+}}
+
                 size={{ base: "sm", md: "md" }}
                 bg={themeConfig.colors.custom.light.primary}
                 color={"brand.200"}

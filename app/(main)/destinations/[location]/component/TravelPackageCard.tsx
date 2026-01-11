@@ -305,18 +305,29 @@ const TravelPackageCard = ({ pkg }: { pkg: any }) => {
             borderRadius="full"
             size="sm"
             onClick={() => {
-              const phone = "9958805754";
-              const message = `Hi, I am interested in the ${pkg?.name || pkg?.destination} travel package. Please share more details.`;
-              const encodedMsg = encodeURIComponent(message);
+  // 🔥 Send WhatsApp click event to Google Tag Manager
+  (window as any).dataLayer = (window as any).dataLayer || [];
+  (window as any).dataLayer.push({
+    event: "whatsapp_click",
+    click_text: "WhatsApp Button",
+    package_name: pkg?.name || pkg?.destination || "Unknown Package",
+  });
 
-              const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const phone = "9958805754";
+  const message = `Hi, I am interested in the ${
+    pkg?.name || pkg?.destination
+  } travel package. Please share more details.`;
+  const encodedMsg = encodeURIComponent(message);
 
-              const url = isMobile
-                ? `https://wa.me/91${phone}?text=${encodedMsg}`
-                : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-              window.open(url, "_blank");
-            }}
+  const url = isMobile
+    ? `https://wa.me/91${phone}?text=${encodedMsg}`
+    : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
+
+  window.open(url, "_blank");
+}}
+
             p={{ base: 2, lg: 3 }}
           >
             <FaWhatsapp size={20} />
