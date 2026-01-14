@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Home from "./(main)/home/page";
-// home
+// // home
 const page = () => {
   return (
     <>
