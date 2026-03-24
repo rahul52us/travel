@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { useState } from "react";
-import { FaMapMarkerAlt, FaStar, FaWhatsapp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaMapMarkerAlt, FaStar, FaWhatsapp } from "react-icons/fa";
 import BookingInfoModal from "../../../component/BookingInfoModal/BookingInfoModal";
 import PerkIcon from "../../../component/common/TravelPackageCard/element/PerkIcon";
 import { formatTitle } from "../../../config/utils/function";
@@ -51,6 +51,13 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
     open: false,
     data: pkg,
   });
+  const [showMoreDesc, setShowMoreDesc] = useState(false);
+
+  const sentences =
+    pkg?.description
+      ?.split(".")
+      .filter((s: string) => s.trim().length > 0)
+      .map((s: string) => s.trim()) || [];
 
   return (
     <Card
@@ -157,25 +164,88 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
               color="brand.100"
               fontWeight="semibold"
             >
-              {pkg?.title || `Explore ${pkg?.destination}`}
+              {pkg?.name || formatTitle(pkg?.destination)}
             </Heading>
 
             {/* Description */}
             {pkg?.description && (
-              <Text
-                color="gray.600"
-                fontSize="sm"
-                mb={3}
-                noOfLines={2}
-                lineHeight="1.4"
-              >
-                {pkg.description}
-              </Text>
+              <Box mb={3}>
+                <Text fontSize="sm" color="gray.600" lineHeight="1.6">
+                  {sentences
+                    .slice(0, showMoreDesc ? sentences.length : 3)
+                    .map((sentence, index) => (
+                      <p key={index}>{sentence}.</p>
+                    ))}
+                </Text>
+
+                {sentences.length > 3 && (
+                  <Button
+                    variant="link"
+                    color="brand.100"
+                    size="sm"
+                    onClick={() => setShowMoreDesc(!showMoreDesc)}
+                    rightIcon={showMoreDesc ? <FaChevronUp /> : <FaChevronDown />}
+                  >
+                    {showMoreDesc ? "Show Less" : "Read More"}
+                  </Button>
+                )}
+              </Box>
             )}
 
+            {/* Itinerary */}
+            <Flex
+              mt={4}
+              overflowX="auto"
+              minW={"100%"}
+              align="center"
+              pb={2}
+              mb={3}
+              sx={{
+                "::-webkit-scrollbar": { display: "none" },
+                scrollbarWidth: "none",
+              }}
+            >
+              <Text fontSize="sm" fontWeight="bold" mr={4} flexShrink={0}>
+                Cities:
+              </Text>
+
+              {pkg?.itinerary.map((stop: any, index: number) => (
+                <Flex
+                  key={index}
+                  align="center"
+                  mr={3}
+                  whiteSpace="nowrap"
+                  _hover={{ color: "brand.100" }}
+                >
+                  <Box textAlign="center">
+                    <Text
+                      fontSize="sm"
+                      fontWeight="600"
+                      color="brand.100"
+                      noOfLines={1}
+                    >
+                      {stop?.place}
+                    </Text>
+                    <Text fontSize="sm" color="gray.500">
+                      {stop?.nights} nights
+                    </Text>
+                  </Box>
+
+                  {index < pkg.itinerary.length - 1 && (
+                    <Text mx={2} color="gray.300" fontWeight="bold" px={2}>
+                      →
+                    </Text>
+                  )}
+                </Flex>
+              ))}
+            </Flex>
+
             {/* Perks */}
+            <Text fontSize="sm" fontWeight="bold" mt={4} mb={2}>
+              Highlights:
+            </Text>
             <SimpleGrid columns={{ base: 2, md: 2 }} spacing={2} mb={4}>
-              {pkg.perks.slice(0, 4).map((perk: string, i: number) => (
+              {pkg?.perks?.map((perk: string, i: number) => (
                 <Flex key={i} align="center">
                   <PerkIcon type={perk} />
                   <Text ml={2} fontSize="sm" color="gray.700" noOfLines={1}>
@@ -184,38 +254,6 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
                 </Flex>
               ))}
             </SimpleGrid>
-
-            {/* Itinerary */}
-            <Flex
-              overflowX="auto"
-              align="center"
-              mb={3}
-              sx={{
-                "::-webkit-scrollbar": { display: "none" },
-                scrollbarWidth: "none",
-              }}
-            >
-              {pkg.itinerary.map((stop, index) => (
-                <Flex key={index} align="center" mr={3} whiteSpace="nowrap">
-                  <Box textAlign="center">
-                    <Text
-                      fontSize="xs"
-                      fontWeight="medium"
-                      color="brand.100"
-                      noOfLines={1}
-                    >
-                      {stop.place}
-                    </Text>
-                    <Text fontSize="xs" color="gray.500">
-                      {stop.nights} nights
-                    </Text>
-                  </Box>
-                  {index < pkg.itinerary.length - 1 && (
-                    <Box flex="1" height="2px" bg="gray.300" mx={2} />
-                  )}
-                </Flex>
-              ))}
-            </Flex>
           </Box>
 
           {/* Footer */}
@@ -242,28 +280,27 @@ const GroupTourComponent = ({ pkg }: { pkg: any }) => {
                 borderRadius="full"
                 size="sm"
                 onClick={() => {
-  // 🔥 Track WhatsApp click in Google Tag Manager
-  (window as any).dataLayer = (window as any).dataLayer || [];
-  (window as any).dataLayer.push({
-    event: "whatsapp_click",
-    click_text: "WhatsApp Button",
-    package_name: pkg?.name || pkg?.destination || "Unknown Package",
-  });
+                  // 🔥 Track WhatsApp click in Google Tag Manager
+                  (window as any).dataLayer = (window as any).dataLayer || [];
+                  (window as any).dataLayer.push({
+                    event: "whatsapp_click",
+                    click_text: "WhatsApp Button",
+                    package_name: pkg?.name || pkg?.destination || "Unknown Package",
+                  });
 
-  const phone = "9958805754";
-  const message = `Hi, I am interested in the ${
-    pkg?.name || pkg?.destination
-  } travel package. Please share more details.`;
-  const encodedMsg = encodeURIComponent(message);
+                  const phone = "9958805754";
+                  const message = `Hi, I am interested in the ${pkg?.name || pkg?.destination
+                    } travel package. Please share more details.`;
+                  const encodedMsg = encodeURIComponent(message);
 
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  const url = isMobile
-    ? `https://wa.me/91${phone}?text=${encodedMsg}`
-    : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
+                  const url = isMobile
+                    ? `https://wa.me/91${phone}?text=${encodedMsg}`
+                    : `https://api.whatsapp.com/send?phone=91${phone}&text=${encodedMsg}`;
 
-  window.open(url, "_blank");
-}}
+                  window.open(url, "_blank");
+                }}
 
                 p={{ base: 2, lg: 3 }}
               >
